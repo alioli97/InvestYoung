@@ -776,5 +776,38 @@
         "type": "String"
       }
     }
+  },
+  "investmentsNetContributed": "Capital aportado",
+  "@investmentsNetContributed": {
+    "description": "Net contributed capital label."
+  },
+  "investmentsContributedShort": "Aportado: {amount}",
+  "@investmentsContributedShort": {
+    "description": "Net contributed in the total card.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "investmentsIncome": "Dividendos, cupones e intereses",
+  "@investmentsIncome": {
+    "description": "Income received label."
+  },
+  "investmentsReturn": "Rentabilidad",
+  "@investmentsReturn": {
+    "description": "Return label."
+  },
+  "investmentsHoldings": "Unidades",
+  "@investmentsHoldings": {
+    "description": "Holdings label."
+  },
+  "investmentsAveragePrice": "Precio medio de compra",
+  "@investmentsAveragePrice": {
+    "description": "Average purchase price label."
+  },
+  "investmentsReturnExplanation": "Rentabilidad = valor actual + ingresos − capital aportado. Las comisiones cuentan como capital aportado.",
+  "@investmentsReturnExplanation": {
+    "description": "Explains how the return is calculated."
   }
 }

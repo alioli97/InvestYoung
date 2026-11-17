@@ -65,7 +65,7 @@ void main() {
 
     expect(find.text('Compra'), findsOneWidget);
     expect(findMoney('0,5 uds.', contains: true), findsOneWidget);
-    expect(findMoney('1.002,00 €'), findsOneWidget);
+    expect(findMoney('1.002,00 €'), findsWidgets);
 
     // Selling more than held is rejected.
     await tapVisible(tester, find.byType(FloatingActionButton));
