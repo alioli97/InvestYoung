@@ -73,7 +73,10 @@ void main() {
 
   test('watchProfile emits updates', () async {
     final stream = repo.watchProfile();
-    expectLater(stream.map((p) => p?.riskScore), emitsInOrder([isNull, 8]));
+    final expectation = expectLater(
+      stream.map((p) => p?.riskScore),
+      emitsInOrder([isNull, 8]),
+    );
     await Future<void>.delayed(Duration.zero);
     await repo.saveProfile(_profile());
     await expectation;
