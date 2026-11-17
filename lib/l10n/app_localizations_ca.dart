@@ -855,4 +855,25 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get learnTipsTab => 'Consells ràpids';
+
+  @override
+  String get profilePreferences => 'Preferències';
+
+  @override
+  String get profileYourData => 'Les teves dades';
+
+  @override
+  String get profileLanguage => 'Idioma';
+
+  @override
+  String get profileTheme => 'Tema';
+
+  @override
+  String get profileThemeSystem => 'Segons el sistema';
+
+  @override
+  String get profileThemeLight => 'Clar';
+
+  @override
+  String get profileThemeDark => 'Fosc';
 }

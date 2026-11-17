@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 
 import '../../features/goals/domain/goal_type.dart';
+import '../domain/app_theme_mode.dart';
 import '../../features/investments/domain/investment_enums.dart';
 import '../../features/onboarding/domain/profile_enums.dart';
 import 'converters.dart';
@@ -28,6 +29,11 @@ class UserProfiles extends Table {
   IntColumn get emergencyMonths => integer()();
   TextColumn get locale => text()();
   DateTimeColumn get onboardingCompletedAt => dateTime().nullable()();
+
+  /// Added in schema v2.
+  TextColumn get themeMode => text()
+      .map(const DbEnumConverter(AppThemeMode.values))
+      .withDefault(const Constant('system'))();
 }
 
 @DataClassName('MonthlyExpenseRow')

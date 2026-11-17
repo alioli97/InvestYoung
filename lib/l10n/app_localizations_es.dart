@@ -854,4 +854,25 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get learnTipsTab => 'Consejos rápidos';
+
+  @override
+  String get profilePreferences => 'Preferencias';
+
+  @override
+  String get profileYourData => 'Tus datos';
+
+  @override
+  String get profileLanguage => 'Idioma';
+
+  @override
+  String get profileTheme => 'Tema';
+
+  @override
+  String get profileThemeSystem => 'Según el sistema';
+
+  @override
+  String get profileThemeLight => 'Claro';
+
+  @override
+  String get profileThemeDark => 'Oscuro';
 }

@@ -1143,5 +1143,33 @@
   "learnTipsTab": "Consejos rápidos",
   "@learnTipsTab": {
     "description": "Learn tab: quick tips."
+  },
+  "profilePreferences": "Preferencias",
+  "@profilePreferences": {
+    "description": "Profile section: preferences."
+  },
+  "profileYourData": "Tus datos",
+  "@profileYourData": {
+    "description": "Profile section: user data."
+  },
+  "profileLanguage": "Idioma",
+  "@profileLanguage": {
+    "description": "Language setting."
+  },
+  "profileTheme": "Tema",
+  "@profileTheme": {
+    "description": "Theme setting."
+  },
+  "profileThemeSystem": "Según el sistema",
+  "@profileThemeSystem": {
+    "description": "Theme follows the system."
+  },
+  "profileThemeLight": "Claro",
+  "@profileThemeLight": {
+    "description": "Light theme."
+  },
+  "profileThemeDark": "Oscuro",
+  "@profileThemeDark": {
+    "description": "Dark theme."
   }
 }

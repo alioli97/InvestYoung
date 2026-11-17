@@ -10,7 +10,7 @@ bool _configured = false;
 
 /// Linux hosts often ship only `libsqlite3.so.0` (no `-dev` package), which
 /// the default loader does not find. Fall back to it when needed.
-void _configureSqlite() {
+void configureSqliteForTests() {
   if (_configured) return;
   _configured = true;
   if (!Platform.isLinux) return;
@@ -25,7 +25,7 @@ void _configureSqlite() {
 
 /// A fresh in-memory [AppDatabase] for tests.
 AppDatabase createTestDatabase() {
-  _configureSqlite();
+  configureSqliteForTests();
   return AppDatabase(
     DatabaseConnection(
       NativeDatabase.memory(),

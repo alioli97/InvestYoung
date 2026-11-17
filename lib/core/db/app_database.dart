@@ -10,6 +10,8 @@ import '../../features/investments/domain/investment_enums.dart';
 import '../../features/learn/data/lesson_progress_dao.dart';
 import '../../features/onboarding/data/profile_dao.dart';
 import '../../features/onboarding/domain/profile_enums.dart';
+import '../domain/app_theme_mode.dart';
+import 'app_database.steps.dart';
 import 'converters.dart';
 import 'tables.dart';
 
@@ -42,11 +44,16 @@ class AppDatabase extends _$AppDatabase {
 
   /// Bump on every schema change and add the matching migration step.
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) => m.createAll(),
+    onUpgrade: stepByStep(
+      from1To2: (m, schema) async {
+        await m.addColumn(schema.userProfiles, schema.userProfiles.themeMode);
+      },
+    ),
     beforeOpen: (details) async {
       await customStatement('PRAGMA foreign_keys = ON');
     },

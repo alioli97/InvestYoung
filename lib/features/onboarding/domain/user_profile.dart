@@ -1,3 +1,4 @@
+import '../../../core/domain/app_theme_mode.dart';
 import 'profile_enums.dart';
 
 /// Result of the onboarding questionnaire. There is a single profile per app.
@@ -16,6 +17,7 @@ class UserProfile {
     required this.emergencyMonths,
     required this.locale,
     this.onboardingCompletedAt,
+    this.themeMode = AppThemeMode.system,
   });
 
   /// `null` until persisted.
@@ -37,6 +39,10 @@ class UserProfile {
   /// UTC timestamp; `null` while onboarding is not completed.
   final DateTime? onboardingCompletedAt;
 
+  /// Changed from Profile only (`ProfileRepository.updatePreferences`);
+  /// saving the questionnaire never overwrites it.
+  final AppThemeMode themeMode;
+
   bool get onboardingCompleted => onboardingCompletedAt != null;
 
   UserProfile withEmergencyMonths(int months) => UserProfile(
@@ -53,6 +59,7 @@ class UserProfile {
     emergencyMonths: months,
     locale: locale,
     onboardingCompletedAt: onboardingCompletedAt,
+    themeMode: themeMode,
   );
 }
 

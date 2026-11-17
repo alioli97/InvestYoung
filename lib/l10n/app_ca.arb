@@ -250,5 +250,12 @@
   "learnQuizFailed": "Revisa les respostes marcades i torna-ho a provar.",
   "learnProgress": "Has llegit {read} de {total} lliçons",
   "learnLessonsTab": "Lliçons",
-  "learnTipsTab": "Consells ràpids"
+  "learnTipsTab": "Consells ràpids",
+  "profilePreferences": "Preferències",
+  "profileYourData": "Les teves dades",
+  "profileLanguage": "Idioma",
+  "profileTheme": "Tema",
+  "profileThemeSystem": "Segons el sistema",
+  "profileThemeLight": "Clar",
+  "profileThemeDark": "Fosc"
 }

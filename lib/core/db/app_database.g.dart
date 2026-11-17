@@ -149,6 +149,16 @@ class $UserProfilesTable extends UserProfiles
         requiredDuringInsert: false,
       );
   @override
+  late final GeneratedColumnWithTypeConverter<AppThemeMode, String> themeMode =
+      GeneratedColumn<String>(
+        'theme_mode',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+        defaultValue: const Constant('system'),
+      ).withConverter<AppThemeMode>($UserProfilesTable.$converterthemeMode);
+  @override
   List<GeneratedColumn> get $columns => [
     id,
     ageRange,
@@ -163,6 +173,7 @@ class $UserProfilesTable extends UserProfiles
     emergencyMonths,
     locale,
     onboardingCompletedAt,
+    themeMode,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -321,6 +332,12 @@ class $UserProfilesTable extends UserProfiles
         DriftSqlType.dateTime,
         data['${effectivePrefix}onboarding_completed_at'],
       ),
+      themeMode: $UserProfilesTable.$converterthemeMode.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}theme_mode'],
+        )!,
+      ),
     );
   }
 
@@ -337,6 +354,8 @@ class $UserProfilesTable extends UserProfiles
       const DbEnumConverter(RiskProfile.values);
   static TypeConverter<KnowledgeLevel, String> $converterknowledgeLevel =
       const DbEnumConverter(KnowledgeLevel.values);
+  static TypeConverter<AppThemeMode, String> $converterthemeMode =
+      const DbEnumConverter(AppThemeMode.values);
 }
 
 class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
@@ -353,6 +372,9 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
   final int emergencyMonths;
   final String locale;
   final DateTime? onboardingCompletedAt;
+
+  /// Added in schema v2.
+  final AppThemeMode themeMode;
   const UserProfileRow({
     required this.id,
     required this.ageRange,
@@ -367,6 +389,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     required this.emergencyMonths,
     required this.locale,
     this.onboardingCompletedAt,
+    required this.themeMode,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -408,6 +431,11 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
         onboardingCompletedAt,
       );
     }
+    {
+      map['theme_mode'] = Variable<String>(
+        $UserProfilesTable.$converterthemeMode.toSql(themeMode),
+      );
+    }
     return map;
   }
 
@@ -432,6 +460,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
       onboardingCompletedAt: onboardingCompletedAt == null && nullToAbsent
           ? const Value.absent()
           : Value(onboardingCompletedAt),
+      themeMode: Value(themeMode),
     );
   }
 
@@ -460,6 +489,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
       onboardingCompletedAt: serializer.fromJson<DateTime?>(
         json['onboardingCompletedAt'],
       ),
+      themeMode: serializer.fromJson<AppThemeMode>(json['themeMode']),
     );
   }
   @override
@@ -481,6 +511,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
       'onboardingCompletedAt': serializer.toJson<DateTime?>(
         onboardingCompletedAt,
       ),
+      'themeMode': serializer.toJson<AppThemeMode>(themeMode),
     };
   }
 
@@ -498,6 +529,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     int? emergencyMonths,
     String? locale,
     Value<DateTime?> onboardingCompletedAt = const Value.absent(),
+    AppThemeMode? themeMode,
   }) => UserProfileRow(
     id: id ?? this.id,
     ageRange: ageRange ?? this.ageRange,
@@ -516,6 +548,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     onboardingCompletedAt: onboardingCompletedAt.present
         ? onboardingCompletedAt.value
         : this.onboardingCompletedAt,
+    themeMode: themeMode ?? this.themeMode,
   );
   UserProfileRow copyWithCompanion(UserProfilesCompanion data) {
     return UserProfileRow(
@@ -548,6 +581,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
       onboardingCompletedAt: data.onboardingCompletedAt.present
           ? data.onboardingCompletedAt.value
           : this.onboardingCompletedAt,
+      themeMode: data.themeMode.present ? data.themeMode.value : this.themeMode,
     );
   }
 
@@ -566,7 +600,8 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
           ..write('knowledgeLevel: $knowledgeLevel, ')
           ..write('emergencyMonths: $emergencyMonths, ')
           ..write('locale: $locale, ')
-          ..write('onboardingCompletedAt: $onboardingCompletedAt')
+          ..write('onboardingCompletedAt: $onboardingCompletedAt, ')
+          ..write('themeMode: $themeMode')
           ..write(')'))
         .toString();
   }
@@ -586,6 +621,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     emergencyMonths,
     locale,
     onboardingCompletedAt,
+    themeMode,
   );
   @override
   bool operator ==(Object other) =>
@@ -603,7 +639,8 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
           other.knowledgeLevel == this.knowledgeLevel &&
           other.emergencyMonths == this.emergencyMonths &&
           other.locale == this.locale &&
-          other.onboardingCompletedAt == this.onboardingCompletedAt);
+          other.onboardingCompletedAt == this.onboardingCompletedAt &&
+          other.themeMode == this.themeMode);
 }
 
 class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
@@ -620,6 +657,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
   final Value<int> emergencyMonths;
   final Value<String> locale;
   final Value<DateTime?> onboardingCompletedAt;
+  final Value<AppThemeMode> themeMode;
   const UserProfilesCompanion({
     this.id = const Value.absent(),
     this.ageRange = const Value.absent(),
@@ -634,6 +672,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     this.emergencyMonths = const Value.absent(),
     this.locale = const Value.absent(),
     this.onboardingCompletedAt = const Value.absent(),
+    this.themeMode = const Value.absent(),
   });
   UserProfilesCompanion.insert({
     this.id = const Value.absent(),
@@ -649,6 +688,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     required int emergencyMonths,
     required String locale,
     this.onboardingCompletedAt = const Value.absent(),
+    this.themeMode = const Value.absent(),
   }) : ageRange = Value(ageRange),
        employment = Value(employment),
        hasDependents = Value(hasDependents),
@@ -672,6 +712,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     Expression<int>? emergencyMonths,
     Expression<String>? locale,
     Expression<DateTime>? onboardingCompletedAt,
+    Expression<String>? themeMode,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -690,6 +731,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
       if (locale != null) 'locale': locale,
       if (onboardingCompletedAt != null)
         'onboarding_completed_at': onboardingCompletedAt,
+      if (themeMode != null) 'theme_mode': themeMode,
     });
   }
 
@@ -707,6 +749,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     Value<int>? emergencyMonths,
     Value<String>? locale,
     Value<DateTime?>? onboardingCompletedAt,
+    Value<AppThemeMode>? themeMode,
   }) {
     return UserProfilesCompanion(
       id: id ?? this.id,
@@ -723,6 +766,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
       locale: locale ?? this.locale,
       onboardingCompletedAt:
           onboardingCompletedAt ?? this.onboardingCompletedAt,
+      themeMode: themeMode ?? this.themeMode,
     );
   }
 
@@ -778,6 +822,11 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
         onboardingCompletedAt.value,
       );
     }
+    if (themeMode.present) {
+      map['theme_mode'] = Variable<String>(
+        $UserProfilesTable.$converterthemeMode.toSql(themeMode.value),
+      );
+    }
     return map;
   }
 
@@ -796,7 +845,8 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
           ..write('knowledgeLevel: $knowledgeLevel, ')
           ..write('emergencyMonths: $emergencyMonths, ')
           ..write('locale: $locale, ')
-          ..write('onboardingCompletedAt: $onboardingCompletedAt')
+          ..write('onboardingCompletedAt: $onboardingCompletedAt, ')
+          ..write('themeMode: $themeMode')
           ..write(')'))
         .toString();
   }
@@ -2936,6 +2986,7 @@ typedef $$UserProfilesTableCreateCompanionBuilder =
       required int emergencyMonths,
       required String locale,
       Value<DateTime?> onboardingCompletedAt,
+      Value<AppThemeMode> themeMode,
     });
 typedef $$UserProfilesTableUpdateCompanionBuilder =
     UserProfilesCompanion Function({
@@ -2952,6 +3003,7 @@ typedef $$UserProfilesTableUpdateCompanionBuilder =
       Value<int> emergencyMonths,
       Value<String> locale,
       Value<DateTime?> onboardingCompletedAt,
+      Value<AppThemeMode> themeMode,
     });
 
 class $$UserProfilesTableFilterComposer
@@ -3031,6 +3083,12 @@ class $$UserProfilesTableFilterComposer
     column: $table.onboardingCompletedAt,
     builder: (column) => ColumnFilters(column),
   );
+
+  ColumnWithTypeConverterFilters<AppThemeMode, AppThemeMode, String>
+  get themeMode => $composableBuilder(
+    column: $table.themeMode,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
 }
 
 class $$UserProfilesTableOrderingComposer
@@ -3106,6 +3164,11 @@ class $$UserProfilesTableOrderingComposer
     column: $table.onboardingCompletedAt,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<String> get themeMode => $composableBuilder(
+    column: $table.themeMode,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$UserProfilesTableAnnotationComposer
@@ -3174,6 +3237,9 @@ class $$UserProfilesTableAnnotationComposer
     column: $table.onboardingCompletedAt,
     builder: (column) => column,
   );
+
+  GeneratedColumnWithTypeConverter<AppThemeMode, String> get themeMode =>
+      $composableBuilder(column: $table.themeMode, builder: (column) => column);
 }
 
 class $$UserProfilesTableTableManager
@@ -3220,6 +3286,7 @@ class $$UserProfilesTableTableManager
                 Value<int> emergencyMonths = const Value.absent(),
                 Value<String> locale = const Value.absent(),
                 Value<DateTime?> onboardingCompletedAt = const Value.absent(),
+                Value<AppThemeMode> themeMode = const Value.absent(),
               }) => UserProfilesCompanion(
                 id: id,
                 ageRange: ageRange,
@@ -3234,6 +3301,7 @@ class $$UserProfilesTableTableManager
                 emergencyMonths: emergencyMonths,
                 locale: locale,
                 onboardingCompletedAt: onboardingCompletedAt,
+                themeMode: themeMode,
               ),
           createCompanionCallback:
               ({
@@ -3250,6 +3318,7 @@ class $$UserProfilesTableTableManager
                 required int emergencyMonths,
                 required String locale,
                 Value<DateTime?> onboardingCompletedAt = const Value.absent(),
+                Value<AppThemeMode> themeMode = const Value.absent(),
               }) => UserProfilesCompanion.insert(
                 id: id,
                 ageRange: ageRange,
@@ -3264,6 +3333,7 @@ class $$UserProfilesTableTableManager
                 emergencyMonths: emergencyMonths,
                 locale: locale,
                 onboardingCompletedAt: onboardingCompletedAt,
+                themeMode: themeMode,
               ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))

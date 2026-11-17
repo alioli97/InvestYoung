@@ -6,6 +6,7 @@ import 'core/l10n/l10n.dart';
 import 'core/l10n/locale_provider.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
+import 'core/theme/theme_mode_provider.dart';
 
 class InvestYoungApp extends ConsumerWidget {
   const InvestYoungApp({super.key});
@@ -18,7 +19,7 @@ class InvestYoungApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
-      themeMode: ThemeMode.system,
+      themeMode: ref.watch(themePreferenceProvider).themeMode,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
