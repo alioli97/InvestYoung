@@ -25,4 +25,16 @@ class Asset {
   /// UTC.
   final DateTime createdAt;
   final bool archived;
+
+  /// Copy assigned to [goalId] (`null` unassigns it).
+  Asset withGoal(int? goalId) => Asset(
+    id: id,
+    category: category,
+    name: name,
+    goalId: goalId,
+    metadata: metadata,
+    notes: notes,
+    createdAt: createdAt,
+    archived: archived,
+  );
 }

@@ -624,4 +624,140 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get investmentsReturnExplanation =>
       'Rentabilidad = valor actual + ingresos − capital aportado. Las comisiones cuentan como capital aportado.';
+
+  @override
+  String get goalsAddGoal => 'Nuevo objetivo';
+
+  @override
+  String get goalsNewGoal => 'Nuevo objetivo';
+
+  @override
+  String get goalsEditGoal => 'Editar objetivo';
+
+  @override
+  String get goalsCustomGoal => 'Objetivo personalizado';
+
+  @override
+  String goalsProgressAmounts(String current, String target) {
+    return '$current de $target';
+  }
+
+  @override
+  String get goalsNoTarget => 'Aún no has definido el importe objetivo';
+
+  @override
+  String get goalsSetUpPrompt =>
+      'Configura este objetivo para calcular cuánto necesitas';
+
+  @override
+  String get goalsRemaining => 'Te falta';
+
+  @override
+  String get goalsTargetDate => 'Fecha objetivo';
+
+  @override
+  String get goalsExpectedReturn => 'Rentabilidad anual esperada';
+
+  @override
+  String get goalsExpectedReturnHelp =>
+      'Estimación orientativa; usa 0 % si el dinero no se invierte';
+
+  @override
+  String get goalsRequiredMonthly => 'Aportación mensual necesaria';
+
+  @override
+  String goalsMonthsLeft(int months) {
+    String _temp0 = intl.Intl.pluralLogic(
+      months,
+      locale: localeName,
+      other: 'Quedan $months meses',
+      one: 'Queda 1 mes',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get goalsDatePassed => 'La fecha objetivo ya ha llegado';
+
+  @override
+  String get goalsAssignedAssets => 'Activos del objetivo';
+
+  @override
+  String get goalsAssignAssets => 'Asignar activos';
+
+  @override
+  String get goalsEmergencyAutoAssets =>
+      'Los activos de la categoría Fondo de emergencia sin otro objetivo cuentan automáticamente.';
+
+  @override
+  String get goalsNoAssets => 'Todavía no hay activos asignados';
+
+  @override
+  String get goalsNoAssetsToAssign => 'Primero añade activos en Inversiones';
+
+  @override
+  String goalsAssignedTo(String goal) {
+    return 'Ahora en: $goal';
+  }
+
+  @override
+  String get goalsMonthlyExpenses => 'Gastos mensuales';
+
+  @override
+  String get goalsMonthsCovered => 'Meses de gastos cubiertos';
+
+  @override
+  String goalsRecommendedMonths(int min, int max) {
+    return 'Recomendado para tu perfil: entre $min y $max meses';
+  }
+
+  @override
+  String get goalsHomePrice => 'Precio de la vivienda';
+
+  @override
+  String get goalsDownPayment => 'Entrada';
+
+  @override
+  String get goalsFees => 'Impuestos y gastos';
+
+  @override
+  String get goalsFeesHelp =>
+      'ITP o IVA, notaría, registro… suelen rondar el 10 %';
+
+  @override
+  String get goalsCurrentAge => 'Edad actual';
+
+  @override
+  String get goalsRetirementAge => 'Edad de jubilación';
+
+  @override
+  String get goalsMonthlySpending => 'Gasto mensual en la jubilación';
+
+  @override
+  String get goalsMonthlySpendingHelp => 'En euros de hoy';
+
+  @override
+  String get goalsRetirementRule =>
+      'Objetivo calculado con la regla del 4 % (gasto anual × 25)';
+
+  @override
+  String goalsInvalidAge(int min, int max) {
+    return 'Introduce una edad entre $min y $max';
+  }
+
+  @override
+  String get goalsFieldName => 'Nombre';
+
+  @override
+  String get goalsTargetAmount => 'Importe objetivo';
+
+  @override
+  String get goalsComputedTarget => 'Objetivo';
+
+  @override
+  String get goalsDeleteTitle => '¿Eliminar este objetivo?';
+
+  @override
+  String get goalsDeleteBody =>
+      'Sus activos no se eliminan; solo dejan de estar asignados.';
 }

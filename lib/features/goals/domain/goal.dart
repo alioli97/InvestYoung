@@ -29,4 +29,21 @@ class Goal {
 
   /// UTC.
   final DateTime createdAt;
+
+  Goal copyWith({
+    String? name,
+    int? targetCents,
+    DateTime? Function()? targetDate,
+    double? expectedAnnualReturn,
+    Map<String, Object?>? params,
+  }) => Goal(
+    id: id,
+    type: type,
+    name: name ?? this.name,
+    targetCents: targetCents ?? this.targetCents,
+    targetDate: targetDate != null ? targetDate() : this.targetDate,
+    expectedAnnualReturn: expectedAnnualReturn ?? this.expectedAnnualReturn,
+    params: params ?? this.params,
+    createdAt: createdAt,
+  );
 }

@@ -45,6 +45,13 @@ int requiredMonthlyContribution({
   return (monthly - 1e-6).ceil();
 }
 
+/// House down payment goal: home price × (down payment % + taxes and fees %).
+int housingTarget({
+  required int homePriceCents,
+  required double downPaymentRatio,
+  required double feesRatio,
+}) => (homePriceCents * (downPaymentRatio + feesRatio)).round();
+
 /// Retirement capital using the 4% rule: monthly expense × 12 × 25.
 int retirementTarget(int monthlyExpenseCents) => monthlyExpenseCents * 12 * 25;
 

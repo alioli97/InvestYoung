@@ -1,3 +1,4 @@
+import '../../features/goals/domain/goal_type.dart';
 import '../../features/investments/domain/investment_enums.dart';
 
 /// Route paths used across the app.
@@ -26,4 +27,10 @@ abstract final class Routes {
 
   static String editTransaction(int assetId, int transactionId) =>
       '${asset(assetId)}/transaction/$transactionId';
+
+  static String goal(int goalId) => '$goals/$goalId';
+
+  static String editGoal(int goalId) => '${goal(goalId)}/edit';
+
+  static String newGoal(GoalType type) => '$goals/new/${type.dbValue}';
 }

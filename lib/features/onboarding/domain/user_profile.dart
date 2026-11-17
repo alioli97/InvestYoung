@@ -38,6 +38,22 @@ class UserProfile {
   final DateTime? onboardingCompletedAt;
 
   bool get onboardingCompleted => onboardingCompletedAt != null;
+
+  UserProfile withEmergencyMonths(int months) => UserProfile(
+    id: id,
+    ageRange: ageRange,
+    employment: employment,
+    monthlyIncomeCents: monthlyIncomeCents,
+    hasDependents: hasDependents,
+    hasHighInterestDebt: hasHighInterestDebt,
+    debtCents: debtCents,
+    riskScore: riskScore,
+    riskProfile: riskProfile,
+    knowledgeLevel: knowledgeLevel,
+    emergencyMonths: months,
+    locale: locale,
+    onboardingCompletedAt: onboardingCompletedAt,
+  );
 }
 
 /// Amount spent per month in one [ExpenseCategory].

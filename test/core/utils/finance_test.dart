@@ -171,6 +171,38 @@ void main() {
     });
   });
 
+  group('housingTarget', () {
+    test('adds down payment and fees over the home price', () {
+      expect(
+        housingTarget(
+          homePriceCents: 20000000,
+          downPaymentRatio: 0.20,
+          feesRatio: 0.10,
+        ),
+        6000000,
+      );
+      expect(
+        housingTarget(
+          homePriceCents: 15000000,
+          downPaymentRatio: 0.15,
+          feesRatio: 0.12,
+        ),
+        4050000,
+      );
+    });
+
+    test('is 0 for a 0 € home or 0 %', () {
+      expect(
+        housingTarget(homePriceCents: 0, downPaymentRatio: 0.2, feesRatio: 0.1),
+        0,
+      );
+      expect(
+        housingTarget(homePriceCents: 100, downPaymentRatio: 0, feesRatio: 0),
+        0,
+      );
+    });
+  });
+
   group('retirementTarget', () {
     test('applies the 4% rule (× 12 × 25)', () {
       expect(retirementTarget(150000), 45000000);
