@@ -42,7 +42,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 
 ## Phase 5 — Learn
 - [x] `index.json` + locale-aware Markdown reader
-- [ ] 2 full lessons per module for modules 1–3 (es + ca)
+- [x] 2 full lessons per module for modules 1–3 (es + ca)
 - [ ] Quiz and progress tracking
 - [ ] Quick tips
 

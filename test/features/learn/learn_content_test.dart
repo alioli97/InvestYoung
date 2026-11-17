@@ -54,6 +54,31 @@ void main() {
     }
   });
 
+  test('modules 1–3 have two lessons each', () {
+    for (final module in index.modules.take(3)) {
+      expect(module.lessons, hasLength(2), reason: module.id);
+    }
+  });
+
+  test('es and ca versions have the same structure', () async {
+    List<String> skeleton(String md) => [
+      for (final line in md.split('\n'))
+        if (line.startsWith('#'))
+          line.split(' ').first
+        else if (line.startsWith('|'))
+          '|'
+        else if (line.startsWith('> '))
+          '>',
+    ];
+    for (final lesson in index.lessons) {
+      expect(
+        skeleton(await repo.loadLesson(lesson, 'ca')),
+        skeleton(await repo.loadLesson(lesson, 'es')),
+        reason: lesson.id,
+      );
+    }
+  });
+
   test('LocalizedText falls back to Spanish', () {
     const text = LocalizedText({'es': 'Hola'});
     expect(text.of('ca'), 'Hola');
