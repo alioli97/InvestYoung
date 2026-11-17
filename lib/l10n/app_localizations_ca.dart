@@ -792,4 +792,9 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get dashboardTipOfTheDay => 'Consell del dia';
+
+  @override
+  String investmentsEmergencyWarning(String current, String target) {
+    return 'El teu fons d\'emergència encara no és complet ($current de $target). El més habitual és completar-lo abans d\'invertir en actius amb més risc, però pots continuar igualment.';
+  }
 }

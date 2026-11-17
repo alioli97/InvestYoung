@@ -1500,6 +1500,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Consejo del día'**
   String get dashboardTipOfTheDay;
+
+  /// Non-blocking warning when adding equities or crypto before the emergency fund is complete.
+  ///
+  /// In es, this message translates to:
+  /// **'Tu fondo de emergencia aún no está completo ({current} de {target}). Lo habitual es completarlo antes de invertir en activos con más riesgo, pero puedes continuar igualmente.'**
+  String investmentsEmergencyWarning(String current, String target);
 }
 
 class _AppLocalizationsDelegate
