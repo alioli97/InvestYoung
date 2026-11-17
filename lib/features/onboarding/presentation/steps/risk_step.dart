@@ -5,7 +5,7 @@ import '../../../../core/l10n/l10n.dart';
 import '../../domain/onboarding_logic.dart';
 import '../onboarding_controller.dart';
 import '../onboarding_labels.dart';
-import '../widgets/option_tile.dart';
+import '../../../../core/widgets/option_tile.dart';
 import '../widgets/step_layout.dart';
 
 /// Step 4: four risk tolerance questions, each answer worth 1–3 points.

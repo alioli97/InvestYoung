@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/l10n/l10n.dart';
 import '../../../../core/l10n/locale_provider.dart';
-import '../widgets/option_tile.dart';
+import '../../../../core/widgets/option_tile.dart';
 import '../widgets/step_layout.dart';
 
 /// Step 0: language, preselected from the device locale.

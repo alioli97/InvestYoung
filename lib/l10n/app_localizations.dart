@@ -1518,6 +1518,84 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'{minutes} min de lectura'**
   String learnMinutes(int minutes);
+
+  /// Button to mark a lesson as read.
+  ///
+  /// In es, this message translates to:
+  /// **'Marcar como leída'**
+  String get learnMarkRead;
+
+  /// Lesson already read.
+  ///
+  /// In es, this message translates to:
+  /// **'Lección leída'**
+  String get learnRead;
+
+  /// Button to take the lesson quiz.
+  ///
+  /// In es, this message translates to:
+  /// **'Hacer el test'**
+  String get learnTakeQuiz;
+
+  /// Retake a passed quiz.
+  ///
+  /// In es, this message translates to:
+  /// **'Repetir'**
+  String get learnQuizRetake;
+
+  /// Quiz already passed.
+  ///
+  /// In es, this message translates to:
+  /// **'Test superado'**
+  String get learnQuizPassedShort;
+
+  /// Quiz screen title.
+  ///
+  /// In es, this message translates to:
+  /// **'Test'**
+  String get learnQuizTitle;
+
+  /// Button to grade the quiz.
+  ///
+  /// In es, this message translates to:
+  /// **'Comprobar'**
+  String get learnQuizCheck;
+
+  /// Retry a failed quiz.
+  ///
+  /// In es, this message translates to:
+  /// **'Volver a intentarlo'**
+  String get learnQuizRetry;
+
+  /// Back to the lesson after passing.
+  ///
+  /// In es, this message translates to:
+  /// **'Volver a la lección'**
+  String get learnBackToLesson;
+
+  /// Quiz score.
+  ///
+  /// In es, this message translates to:
+  /// **'{correct} de {total} correctas'**
+  String learnQuizScore(int correct, int total);
+
+  /// Quiz passed message.
+  ///
+  /// In es, this message translates to:
+  /// **'¡Perfecto! Has superado el test.'**
+  String get learnQuizPassed;
+
+  /// Quiz failed message.
+  ///
+  /// In es, this message translates to:
+  /// **'Revisa las respuestas marcadas y vuelve a intentarlo.'**
+  String get learnQuizFailed;
+
+  /// Overall learning progress.
+  ///
+  /// In es, this message translates to:
+  /// **'Has leído {read} de {total} lecciones'**
+  String learnProgress(int read, int total);
 }
 
 class _AppLocalizationsDelegate

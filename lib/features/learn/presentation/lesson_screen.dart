@@ -6,6 +6,7 @@ import '../../../core/l10n/l10n.dart';
 import '../../../core/widgets/async_value_view.dart';
 import '../data/learn_repository.dart';
 import '../domain/learn_content.dart';
+import 'widgets/lesson_actions.dart';
 
 /// Reads a lesson in the current language.
 class LessonScreen extends ConsumerWidget {
@@ -31,6 +32,7 @@ class LessonScreen extends ConsumerWidget {
               data: text,
               styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context)),
             ),
+            if (lesson != null) LessonActions(lesson: lesson),
           ],
         ),
       ),
