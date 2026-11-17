@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:invest_young/features/onboarding/data/profile_repository.dart';
 
@@ -40,7 +41,7 @@ void main() {
     await _openLearn(tester);
 
     expect(find.text('El presupuesto 50/30/20'), findsOneWidget);
-    expect(find.text('4 min de lectura'), findsOneWidget);
+    expect(find.text('4 min de lectura'), findsWidgets);
     // Basic knowledge → emergency fund, fixed income and equities.
     await pumpUntilFound(tester, find.text('Recomendado para ti'));
     await tester.scrollUntilVisible(find.text('Renta variable'), 200);
@@ -57,5 +58,24 @@ void main() {
     await _openLearn(tester, locale: 'ca');
     await _openLesson(tester, 'El pressupost 50/30/20');
     expect(find.textContaining('estalvi i inversió'), findsWidgets);
+  });
+
+  testWidgets('renders every lesson without errors', (tester) async {
+    await _openLearn(tester);
+    for (final title in [
+      'Inflación e interés compuesto',
+      'Qué es y cuánto necesitas',
+      'Dónde guardar tu fondo de emergencia',
+      'Deuda buena, deuda mala y su coste real',
+      'Cómo salir de las deudas',
+    ]) {
+      await tester.scrollUntilVisible(find.text(title), 200);
+      await tester.tap(find.text(title));
+      await tester.pump();
+      await pumpUntilFound(tester, find.widgetWithText(AppBar, title));
+      await pumpUntilFound(tester, find.byType(MarkdownBody));
+      await tester.tap(find.byType(BackButton));
+      await tester.pumpAndSettle();
+    }
   });
 }

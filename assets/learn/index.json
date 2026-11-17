@@ -76,16 +76,388 @@
               "answer": 1
             }
           ]
+        },
+        {
+          "id": "fundamentals-inflation-compound",
+          "file": "fundamentals-inflation-compound.md",
+          "minutes": 5,
+          "title": {
+            "es": "Inflación e interés compuesto",
+            "ca": "Inflació i interès compost"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "Con una inflación del 3 % anual, ¿qué pasa con 100 € guardados en un cajón durante 10 años?",
+                "ca": "Amb una inflació del 3 % anual, què passa amb 100 € guardats en un calaix durant 10 anys?"
+              },
+              "options": [
+                {
+                  "es": "Compran lo mismo que hoy",
+                  "ca": "Compren el mateix que avui"
+                },
+                {
+                  "es": "Compran menos, unos 74 € de hoy",
+                  "ca": "Compren menys, uns 74 € d'avui"
+                },
+                {
+                  "es": "Compran más",
+                  "ca": "Compren més"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Qué es el interés compuesto?",
+                "ca": "Què és l'interès compost?"
+              },
+              "options": [
+                {
+                  "es": "Que los intereses ganados también generan intereses",
+                  "ca": "Que els interessos guanyats també generen interessos"
+                },
+                {
+                  "es": "Un interés fijo que nunca cambia",
+                  "ca": "Un interès fix que no canvia mai"
+                },
+                {
+                  "es": "Una comisión del banco",
+                  "ca": "Una comissió del banc"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "Según la regla del 72, ¿cuánto tarda en duplicarse una inversión al 6 % anual?",
+                "ca": "Segons la regla del 72, quant triga a duplicar-se una inversió al 6 % anual?"
+              },
+              "options": [
+                {
+                  "es": "6 años",
+                  "ca": "6 anys"
+                },
+                {
+                  "es": "12 años",
+                  "ca": "12 anys"
+                },
+                {
+                  "es": "72 años",
+                  "ca": "72 anys"
+                }
+              ],
+              "answer": 1
+            }
+          ]
         }
       ]
     },
     {
       "id": "emergency-fund",
-      "lessons": []
+      "lessons": [
+        {
+          "id": "emergency-fund-how-much",
+          "file": "emergency-fund-how-much.md",
+          "minutes": 4,
+          "title": {
+            "es": "Qué es y cuánto necesitas",
+            "ca": "Què és i quant en necessites"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "¿En qué se mide el fondo de emergencia?",
+                "ca": "En què es mesura el fons d'emergència?"
+              },
+              "options": [
+                {
+                  "es": "En meses de ingresos",
+                  "ca": "En mesos d'ingressos"
+                },
+                {
+                  "es": "En meses de gastos",
+                  "ca": "En mesos de despeses"
+                },
+                {
+                  "es": "En un porcentaje de tu patrimonio",
+                  "ca": "En un percentatge del teu patrimoni"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "Si eres autónomo/a, ¿qué rango se recomienda?",
+                "ca": "Si ets autònom/a, quin rang es recomana?"
+              },
+              "options": [
+                {
+                  "es": "1–2 meses",
+                  "ca": "1–2 mesos"
+                },
+                {
+                  "es": "3–6 meses",
+                  "ca": "3–6 mesos"
+                },
+                {
+                  "es": "6–12 meses",
+                  "ca": "6–12 mesos"
+                }
+              ],
+              "answer": 2
+            },
+            {
+              "question": {
+                "es": "¿Por qué conviene tenerlo antes de invertir?",
+                "ca": "Per què convé tenir-lo abans d'invertir?"
+              },
+              "options": [
+                {
+                  "es": "Para no tener que endeudarte ni vender inversiones en un mal momento",
+                  "ca": "Per no haver d'endeutar-te ni vendre inversions en un mal moment"
+                },
+                {
+                  "es": "Porque da más rentabilidad que invertir",
+                  "ca": "Perquè dona més rendibilitat que invertir"
+                },
+                {
+                  "es": "Porque es obligatorio por ley",
+                  "ca": "Perquè és obligatori per llei"
+                }
+              ],
+              "answer": 0
+            }
+          ]
+        },
+        {
+          "id": "emergency-fund-where",
+          "file": "emergency-fund-where.md",
+          "minutes": 4,
+          "title": {
+            "es": "Dónde guardar tu fondo de emergencia",
+            "ca": "On guardar el teu fons d'emergència"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "¿Qué es lo más importante para el fondo de emergencia?",
+                "ca": "Què és el més important per al fons d'emergència?"
+              },
+              "options": [
+                {
+                  "es": "La máxima rentabilidad",
+                  "ca": "La màxima rendibilitat"
+                },
+                {
+                  "es": "Seguridad y disponibilidad",
+                  "ca": "Seguretat i disponibilitat"
+                },
+                {
+                  "es": "Que sea difícil sacarlo",
+                  "ca": "Que sigui difícil treure'l"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Hasta cuánto cubre el Fondo de Garantía de Depósitos?",
+                "ca": "Fins a quant cobreix el Fons de Garantia de Dipòsits?"
+              },
+              "options": [
+                {
+                  "es": "10.000 € por titular y entidad",
+                  "ca": "10.000 € per titular i entitat"
+                },
+                {
+                  "es": "100.000 € por titular y entidad",
+                  "ca": "100.000 € per titular i entitat"
+                },
+                {
+                  "es": "Sin límite",
+                  "ca": "Sense límit"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Cuál de estas opciones NO es adecuada para el fondo de emergencia?",
+                "ca": "Quina d'aquestes opcions NO és adequada per al fons d'emergència?"
+              },
+              "options": [
+                {
+                  "es": "Una cuenta remunerada",
+                  "ca": "Un compte remunerat"
+                },
+                {
+                  "es": "Un depósito a plazo corto",
+                  "ca": "Un dipòsit a termini curt"
+                },
+                {
+                  "es": "Criptomonedas",
+                  "ca": "Criptomonedes"
+                }
+              ],
+              "answer": 2
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "debt",
-      "lessons": []
+      "lessons": [
+        {
+          "id": "debt-good-bad",
+          "file": "debt-good-bad.md",
+          "minutes": 4,
+          "title": {
+            "es": "Deuda buena, deuda mala y su coste real",
+            "ca": "Deute bo, deute dolent i el seu cost real"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "¿Qué dato permite comparar el coste real de dos préstamos?",
+                "ca": "Quina dada permet comparar el cost real de dos préstecs?"
+              },
+              "options": [
+                {
+                  "es": "El TIN",
+                  "ca": "El TIN"
+                },
+                {
+                  "es": "La TAE",
+                  "ca": "La TAE"
+                },
+                {
+                  "es": "La cuota mensual",
+                  "ca": "La quota mensual"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Cuál de estas deudas suele ser más cara?",
+                "ca": "Quin d'aquests deutes sol ser més car?"
+              },
+              "options": [
+                {
+                  "es": "Una tarjeta revolving",
+                  "ca": "Una targeta revolving"
+                },
+                {
+                  "es": "Una hipoteca",
+                  "ca": "Una hipoteca"
+                },
+                {
+                  "es": "Un préstamo sin intereses de un familiar",
+                  "ca": "Un préstec sense interessos d'un familiar"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "Si tienes una deuda al 20 % y dinero ahorrado, ¿qué suele tener más sentido?",
+                "ca": "Si tens un deute al 20 % i diners estalviats, què sol tenir més sentit?"
+              },
+              "options": [
+                {
+                  "es": "Invertirlo y seguir pagando el mínimo",
+                  "ca": "Invertir-los i continuar pagant el mínim"
+                },
+                {
+                  "es": "Amortizar la deuda, manteniendo un pequeño colchón",
+                  "ca": "Amortitzar el deute, mantenint un petit coixí"
+                },
+                {
+                  "es": "Pedir otro préstamo para invertir",
+                  "ca": "Demanar un altre préstec per invertir"
+                }
+              ],
+              "answer": 1
+            }
+          ]
+        },
+        {
+          "id": "debt-pay-off",
+          "file": "debt-pay-off.md",
+          "minutes": 4,
+          "title": {
+            "es": "Cómo salir de las deudas",
+            "ca": "Com sortir dels deutes"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "En el método avalancha, ¿por qué deuda empiezas?",
+                "ca": "En el mètode allau, per quin deute comences?"
+              },
+              "options": [
+                {
+                  "es": "La de interés más alto",
+                  "ca": "La d'interès més alt"
+                },
+                {
+                  "es": "La de saldo más pequeño",
+                  "ca": "La de saldo més petit"
+                },
+                {
+                  "es": "La más reciente",
+                  "ca": "La més recent"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "¿Qué ventaja tiene el método bola de nieve?",
+                "ca": "Quin avantatge té el mètode bola de neu?"
+              },
+              "options": [
+                {
+                  "es": "Siempre es el más barato",
+                  "ca": "Sempre és el més barat"
+                },
+                {
+                  "es": "Consigues victorias rápidas que motivan",
+                  "ca": "Aconsegueixes victòries ràpides que motiven"
+                },
+                {
+                  "es": "Elimina los intereses",
+                  "ca": "Elimina els interessos"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Qué debes hacer con las demás deudas mientras atacas una?",
+                "ca": "Què has de fer amb els altres deutes mentre n'ataques un?"
+              },
+              "options": [
+                {
+                  "es": "Dejar de pagarlas",
+                  "ca": "Deixar de pagar-los"
+                },
+                {
+                  "es": "Pagar al menos la cuota mínima",
+                  "ca": "Pagar com a mínim la quota mínima"
+                },
+                {
+                  "es": "Pedir más crédito",
+                  "ca": "Demanar més crèdit"
+                }
+              ],
+              "answer": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "fixed-income",
