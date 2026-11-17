@@ -369,4 +369,17 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get commonSaveError =>
       'No se han podido guardar los datos. Inténtalo de nuevo.';
+
+  @override
+  String get commonClose => 'Cerrar';
+
+  @override
+  String get profileRetakeQuestionnaire => 'Repetir cuestionario';
+
+  @override
+  String get profileRetakeQuestionnaireSubtitle =>
+      'Actualiza tu perfil y tu fondo de emergencia';
+
+  @override
+  String get profileRetakeSaved => 'Perfil actualizado';
 }

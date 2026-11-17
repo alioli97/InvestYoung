@@ -1,7 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:invest_young/features/goals/domain/goal.dart';
+import 'package:invest_young/features/goals/domain/goal_type.dart';
 import 'package:invest_young/features/onboarding/domain/onboarding_answers.dart';
 import 'package:invest_young/features/onboarding/domain/onboarding_logic.dart';
 import 'package:invest_young/features/onboarding/domain/profile_enums.dart';
+import 'package:invest_young/features/onboarding/domain/user_profile.dart';
 
 const _complete = OnboardingAnswers(
   legalAccepted: true,
@@ -98,5 +101,44 @@ void main() {
         isFalse,
       );
     });
+  });
+
+  test('fromSaved prefills everything except risk answers', () {
+    final answers = OnboardingAnswers.fromSaved(
+      profile: const UserProfile(
+        ageRange: AgeRange.from31To35,
+        employment: Employment.student,
+        monthlyIncomeCents: 90000,
+        hasDependents: true,
+        hasHighInterestDebt: true,
+        debtCents: 300000,
+        riskScore: 5,
+        riskProfile: RiskProfile.conservative,
+        knowledgeLevel: KnowledgeLevel.none,
+        emergencyMonths: 7,
+        locale: 'es',
+      ),
+      expenses: const [
+        MonthlyExpense(category: ExpenseCategory.food, amountCents: 20000),
+      ],
+      goals: [
+        Goal(
+          type: GoalType.retirement,
+          name: 'Jubilación',
+          targetCents: 0,
+          createdAt: DateTime.utc(2026),
+        ),
+      ],
+    );
+
+    expect(answers.legalAccepted, isTrue);
+    expect(answers.employment, Employment.student);
+    expect(answers.debtCents, 300000);
+    expect(answers.totalExpensesCents, 20000);
+    expect(answers.emergencyMonths, 7);
+    expect(answers.wantsRetirement, isTrue);
+    expect(answers.wantsHousing, isFalse);
+    expect(answers.riskCompleted, isFalse);
+    expect(answers.isStepComplete(OnboardingStep.situation), isTrue);
   });
 }

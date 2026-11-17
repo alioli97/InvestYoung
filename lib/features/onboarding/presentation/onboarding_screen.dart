@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n/l10n.dart';
 import '../domain/onboarding_answers.dart';
@@ -15,8 +16,13 @@ import 'steps/situation_step.dart';
 import 'steps/welcome_step.dart';
 
 /// Onboarding questionnaire: one step per screen with progress and Back.
+///
+/// With [retake], it is opened from Profile: it can be closed, and confirming
+/// returns to Profile instead of finishing onboarding.
 class OnboardingScreen extends ConsumerWidget {
-  const OnboardingScreen({super.key});
+  const OnboardingScreen({super.key, this.retake = false});
+
+  final bool retake;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,6 +39,13 @@ class OnboardingScreen extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          leading: retake
+              ? IconButton(
+                  icon: const Icon(Icons.close),
+                  tooltip: context.l10n.commonClose,
+                  onPressed: () => context.pop(),
+                )
+              : null,
           title: Text(context.l10n.onboardingStepCounter(current, total)),
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(4),
@@ -61,6 +74,7 @@ class OnboardingScreen extends ConsumerWidget {
   Future<void> _confirm(BuildContext context, WidgetRef ref) async {
     final l10n = context.l10n;
     final messenger = ScaffoldMessenger.of(context);
+    final router = GoRouter.of(context);
     try {
       await ref
           .read(onboardingControllerProvider.notifier)
@@ -76,7 +90,12 @@ class OnboardingScreen extends ConsumerWidget {
       messenger.showSnackBar(SnackBar(content: Text(l10n.commonSaveError)));
       return;
     }
-    ref.read(onboardingStatusProvider.notifier).markCompleted();
+    if (retake) {
+      messenger.showSnackBar(SnackBar(content: Text(l10n.profileRetakeSaved)));
+      router.pop();
+    } else {
+      ref.read(onboardingStatusProvider.notifier).markCompleted();
+    }
   }
 
   static Widget _stepBody(OnboardingStep step) => switch (step) {

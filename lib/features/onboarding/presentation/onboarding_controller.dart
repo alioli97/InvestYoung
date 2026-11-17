@@ -40,6 +40,10 @@ class OnboardingController extends _$OnboardingController {
   @override
   OnboardingFlowState build() => const OnboardingFlowState();
 
+  /// Restarts the flow from the first step with [answers] prefilled.
+  void start(OnboardingAnswers answers) =>
+      state = OnboardingFlowState(answers: answers);
+
   /// Moves to the next step if the current one is complete.
   void next() {
     if (!state.canContinue || state.isLast) return;
