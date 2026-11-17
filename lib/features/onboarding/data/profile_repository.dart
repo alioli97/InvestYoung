@@ -1,0 +1,84 @@
+import 'package:drift/drift.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../../core/db/app_database.dart';
+import '../domain/user_profile.dart';
+import 'profile_dao.dart';
+
+part 'profile_repository.g.dart';
+
+class ProfileRepository {
+  const ProfileRepository(this._dao);
+
+  final ProfileDao _dao;
+
+  Future<UserProfile?> getProfile() async =>
+      (await _dao.getProfile())?.toDomain();
+
+  Stream<UserProfile?> watchProfile() =>
+      _dao.watchProfile().map((row) => row?.toDomain());
+
+  /// Creates or replaces the profile and returns its id.
+  Future<int> saveProfile(UserProfile profile) =>
+      _dao.saveProfile(profile.toCompanion());
+
+  Future<List<MonthlyExpense>> getExpenses() async =>
+      (await _dao.getExpenses()).map((r) => r.toDomain()).toList();
+
+  Stream<List<MonthlyExpense>> watchExpenses() => _dao.watchExpenses().map(
+    (rows) => rows.map((r) => r.toDomain()).toList(),
+  );
+
+  Future<void> replaceExpenses(List<MonthlyExpense> expenses) =>
+      _dao.replaceExpenses([
+        for (final e in expenses)
+          MonthlyExpensesCompanion.insert(
+            category: e.category,
+            amountCents: e.amountCents,
+          ),
+      ]);
+}
+
+@Riverpod(keepAlive: true)
+ProfileRepository profileRepository(Ref ref) =>
+    ProfileRepository(ref.watch(appDatabaseProvider).profileDao);
+
+extension on UserProfileRow {
+  UserProfile toDomain() => UserProfile(
+    id: id,
+    ageRange: ageRange,
+    employment: employment,
+    monthlyIncomeCents: monthlyIncomeCents,
+    hasDependents: hasDependents,
+    hasHighInterestDebt: hasHighInterestDebt,
+    debtCents: debtCents,
+    riskScore: riskScore,
+    riskProfile: riskProfile,
+    knowledgeLevel: knowledgeLevel,
+    emergencyMonths: emergencyMonths,
+    locale: locale,
+    onboardingCompletedAt: onboardingCompletedAt,
+  );
+}
+
+extension on MonthlyExpenseRow {
+  MonthlyExpense toDomain() =>
+      MonthlyExpense(category: category, amountCents: amountCents);
+}
+
+extension on UserProfile {
+  UserProfilesCompanion toCompanion() => UserProfilesCompanion.insert(
+    ageRange: ageRange,
+    employment: employment,
+    monthlyIncomeCents: Value(monthlyIncomeCents),
+    hasDependents: hasDependents,
+    hasHighInterestDebt: hasHighInterestDebt,
+    debtCents: Value(debtCents),
+    riskScore: riskScore,
+    riskProfile: riskProfile,
+    knowledgeLevel: knowledgeLevel,
+    emergencyMonths: emergencyMonths,
+    locale: locale,
+    onboardingCompletedAt: Value(onboardingCompletedAt?.toUtc()),
+  );
+}
