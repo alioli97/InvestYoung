@@ -750,6 +750,30 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'No se han podido guardar los datos. Inténtalo de nuevo.'**
   String get commonSaveError;
+
+  /// Close button tooltip.
+  ///
+  /// In es, this message translates to:
+  /// **'Cerrar'**
+  String get commonClose;
+
+  /// Profile option to retake onboarding.
+  ///
+  /// In es, this message translates to:
+  /// **'Repetir cuestionario'**
+  String get profileRetakeQuestionnaire;
+
+  /// Subtitle of the retake option.
+  ///
+  /// In es, this message translates to:
+  /// **'Actualiza tu perfil y tu fondo de emergencia'**
+  String get profileRetakeQuestionnaireSubtitle;
+
+  /// Shown after retaking the questionnaire.
+  ///
+  /// In es, this message translates to:
+  /// **'Perfil actualizado'**
+  String get profileRetakeSaved;
 }
 
 class _AppLocalizationsDelegate

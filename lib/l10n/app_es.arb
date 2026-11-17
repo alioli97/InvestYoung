@@ -468,5 +468,21 @@
   "commonSaveError": "No se han podido guardar los datos. Inténtalo de nuevo.",
   "@commonSaveError": {
     "description": "Generic error when saving fails."
+  },
+  "commonClose": "Cerrar",
+  "@commonClose": {
+    "description": "Close button tooltip."
+  },
+  "profileRetakeQuestionnaire": "Repetir cuestionario",
+  "@profileRetakeQuestionnaire": {
+    "description": "Profile option to retake onboarding."
+  },
+  "profileRetakeQuestionnaireSubtitle": "Actualiza tu perfil y tu fondo de emergencia",
+  "@profileRetakeQuestionnaireSubtitle": {
+    "description": "Subtitle of the retake option."
+  },
+  "profileRetakeSaved": "Perfil actualizado",
+  "@profileRetakeSaved": {
+    "description": "Shown after retaking the questionnaire."
   }
 }

@@ -107,5 +107,9 @@
   "learnModuleCrypto": "Criptomonedes",
   "learnModuleTaxes": "Fiscalitat bàsica a Espanya",
   "learnModulePsychology": "Psicologia de l'inversor",
-  "commonSaveError": "No s'han pogut desar les dades. Torna-ho a provar."
+  "commonSaveError": "No s'han pogut desar les dades. Torna-ho a provar.",
+  "commonClose": "Tancar",
+  "profileRetakeQuestionnaire": "Repetir el qüestionari",
+  "profileRetakeQuestionnaireSubtitle": "Actualitza el teu perfil i el teu fons d'emergència",
+  "profileRetakeSaved": "Perfil actualitzat"
 }

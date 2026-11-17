@@ -6,4 +6,5 @@ abstract final class Routes {
   static const investments = '/investments';
   static const learn = '/learn';
   static const profile = '/profile';
+  static const retakeOnboarding = '/retake-onboarding';
 }

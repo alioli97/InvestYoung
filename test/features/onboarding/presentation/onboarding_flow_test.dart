@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:invest_young/features/goals/data/goals_repository.dart';
 import 'package:invest_young/features/goals/domain/goal_type.dart';
+import 'package:invest_young/features/onboarding/data/onboarding_repository.dart';
+import 'package:invest_young/features/onboarding/data/profile_repository.dart';
+import 'package:invest_young/features/onboarding/domain/onboarding_answers.dart';
+
+import '../../../helpers/test_database.dart';
 import 'package:invest_young/features/onboarding/domain/profile_enums.dart';
 
 import 'package:invest_young/features/onboarding/domain/user_profile.dart';
@@ -139,5 +145,90 @@ void main() {
 
     expect(find.text('Tria el teu idioma'), findsOneWidget);
     expect(find.text('Pas 1 de 8'), findsOneWidget);
+  });
+
+  testWidgets('retakes the questionnaire from Profile', (tester) async {
+    final db = createTestDatabase();
+    final profiles = ProfileRepository(db.profileDao);
+    final goals = GoalsRepository(db.goalsDao);
+    await tester.runAsync(
+      () => OnboardingRepository(db, profiles, goals).complete(
+        const OnboardingAnswers(
+          legalAccepted: true,
+          ageRange: AgeRange.from26To30,
+          employment: Employment.permanent,
+          hasDependents: false,
+          hasHighInterestDebt: false,
+          expenses: {ExpenseCategory.housing: 50000},
+          riskAnswers: [3, 3, 3, 3],
+          wantsHousing: true,
+          knowledgeLevel: KnowledgeLevel.basic,
+        ),
+        locale: 'es',
+        names: (emergency: 'Fondo', housing: 'Piso', retirement: 'Jubilación'),
+      ),
+    );
+    final saved = (await tester.runAsync(profiles.getProfile))!;
+
+    await pumpApp(tester, database: db, startupProfile: saved);
+    await tapVisible(tester, find.text('Perfil'));
+    await tapVisible(tester, find.text('Repetir cuestionario'));
+
+    // Language and legal notice are already answered.
+    await _continue(tester);
+    await _continue(tester);
+    expect(find.text('Paso 3 de 8'), findsOneWidget);
+    await tapVisible(tester, find.text('Autónomo/a'));
+    await _continue(tester);
+    await _continue(tester);
+    for (final answer in [
+      'Invierto más aprovechando la bajada',
+      'En más de 5 años',
+      'Asumir mucho riesgo por la posibilidad de ganar mucho',
+      'Tranquilo/a, es parte de invertir a largo plazo',
+    ]) {
+      await tapVisible(tester, find.text(answer));
+    }
+    await _continue(tester);
+    await _continue(tester);
+    await _continue(tester);
+    await tapVisible(tester, find.text('Confirmar y empezar'));
+
+    expect(find.text('Perfil actualizado'), findsOneWidget);
+    expect(find.text('Repetir cuestionario'), findsOneWidget);
+
+    final profile = (await tester.runAsync(profiles.getProfile))!;
+    expect(profile.employment, Employment.selfEmployed);
+    // Self-employed → 6–12 months; the saved 5 is clamped to 6.
+    expect(profile.emergencyMonths, 6);
+    final allGoals = (await tester.runAsync(goals.getGoals))!;
+    expect(allGoals, hasLength(2));
+    expect(allGoals.first.targetCents, 50000 * 6);
+  });
+
+  testWidgets('closing the retake returns to Profile without saving', (
+    tester,
+  ) async {
+    await pumpApp(
+      tester,
+      startupProfile: UserProfile(
+        ageRange: AgeRange.over35,
+        employment: Employment.permanent,
+        hasDependents: false,
+        hasHighInterestDebt: false,
+        riskScore: 8,
+        riskProfile: RiskProfile.moderate,
+        knowledgeLevel: KnowledgeLevel.basic,
+        emergencyMonths: 5,
+        locale: 'es',
+        onboardingCompletedAt: DateTime.utc(2026),
+      ),
+    );
+    await tapVisible(tester, find.text('Perfil'));
+    await tapVisible(tester, find.text('Repetir cuestionario'));
+    await tapVisible(tester, find.byTooltip('Cerrar'));
+
+    expect(find.text('Repetir cuestionario'), findsOneWidget);
+    expect(find.byType(NavigationBar), findsOneWidget);
   });
 }

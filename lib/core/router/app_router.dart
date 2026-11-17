@@ -8,6 +8,7 @@ import '../../features/investments/presentation/investments_screen.dart';
 import '../../features/learn/presentation/learn_screen.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/onboarding/presentation/onboarding_status_provider.dart';
+import '../../features/onboarding/presentation/retake_onboarding_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import 'app_shell.dart';
 import 'routes.dart';
@@ -33,6 +34,10 @@ GoRouter appRouter(Ref ref) {
       GoRoute(
         path: Routes.onboarding,
         builder: (context, state) => const OnboardingScreen(),
+      ),
+      GoRoute(
+        path: Routes.retakeOnboarding,
+        builder: (context, state) => const RetakeOnboardingScreen(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>

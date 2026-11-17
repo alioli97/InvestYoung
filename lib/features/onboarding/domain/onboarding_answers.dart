@@ -1,4 +1,6 @@
 import '../../../core/utils/finance.dart';
+import '../../goals/domain/goal.dart';
+import '../../goals/domain/goal_type.dart';
 import 'onboarding_logic.dart';
 import 'profile_enums.dart';
 import 'user_profile.dart';
@@ -34,6 +36,32 @@ class OnboardingAnswers {
     this.knowledgeLevel,
     this.emergencyMonths,
   });
+
+  /// Prefills the questionnaire from saved data when it is retaken.
+  ///
+  /// Risk answers are left empty (only the score is stored) and the custom
+  /// goal is not preselected, so the user answers those again.
+  factory OnboardingAnswers.fromSaved({
+    required UserProfile profile,
+    required List<MonthlyExpense> expenses,
+    required List<Goal> goals,
+  }) {
+    bool has(GoalType type) => goals.any((g) => g.type == type);
+    return OnboardingAnswers(
+      legalAccepted: true,
+      ageRange: profile.ageRange,
+      employment: profile.employment,
+      monthlyIncomeCents: profile.monthlyIncomeCents,
+      hasDependents: profile.hasDependents,
+      hasHighInterestDebt: profile.hasHighInterestDebt,
+      debtCents: profile.debtCents,
+      expenses: {for (final e in expenses) e.category: e.amountCents},
+      wantsHousing: has(GoalType.housing),
+      wantsRetirement: has(GoalType.retirement),
+      knowledgeLevel: profile.knowledgeLevel,
+      emergencyMonths: profile.emergencyMonths,
+    );
+  }
 
   final bool legalAccepted;
   final AgeRange? ageRange;

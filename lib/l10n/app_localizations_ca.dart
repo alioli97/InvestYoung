@@ -369,4 +369,17 @@ class AppLocalizationsCa extends AppLocalizations {
   @override
   String get commonSaveError =>
       'No s\'han pogut desar les dades. Torna-ho a provar.';
+
+  @override
+  String get commonClose => 'Tancar';
+
+  @override
+  String get profileRetakeQuestionnaire => 'Repetir el qüestionari';
+
+  @override
+  String get profileRetakeQuestionnaireSubtitle =>
+      'Actualitza el teu perfil i el teu fons d\'emergència';
+
+  @override
+  String get profileRetakeSaved => 'Perfil actualitzat';
 }

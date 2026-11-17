@@ -45,7 +45,7 @@ final class OnboardingControllerProvider
 }
 
 String _$onboardingControllerHash() =>
-    r'd40fd75eb67294f617c36b8275c08973c5f25354';
+    r'd2b2f4c90e4ee576eb859281201ecc3e8372e203';
 
 /// Step navigation and answers of the onboarding questionnaire.
 
