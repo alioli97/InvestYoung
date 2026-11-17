@@ -16,7 +16,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [x] Locale-aware currency, percentage and date formatting helpers
 
 ## Phase 1 — Data and logic
-- [ ] Drift AppDatabase with all tables from SPEC §10
+- [x] Drift AppDatabase with all tables from SPEC §10
 - [ ] DAOs and repositories per feature
 - [ ] `core/utils/finance.dart` with the SPEC §8 formulas + unit tests
 - [ ] Asset metrics calculation (SPEC §6) + tests
