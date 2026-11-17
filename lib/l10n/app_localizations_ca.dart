@@ -779,4 +779,17 @@ class AppLocalizationsCa extends AppLocalizations {
   String goalsProjectionAssumption(String amount) {
     return 'Suposant que aportes $amount al mes amb la rendibilitat esperada.';
   }
+
+  @override
+  String get dashboardNetWorth => 'Patrimoni total';
+
+  @override
+  String get dashboardAllocation => 'Repartiment per categoria';
+
+  @override
+  String get dashboardNoInvestments =>
+      'Afegeix la teva primera inversió per veure\'n el repartiment';
+
+  @override
+  String get dashboardTipOfTheDay => 'Consell del dia';
 }

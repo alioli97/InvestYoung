@@ -228,5 +228,9 @@
   "goalsProjectionTitle": "Projecció fins a la jubilació",
   "goalsProjectionValue": "Valor projectat: {amount}",
   "goalsProjectionContributed": "Capital aportat: {amount}",
-  "goalsProjectionAssumption": "Suposant que aportes {amount} al mes amb la rendibilitat esperada."
+  "goalsProjectionAssumption": "Suposant que aportes {amount} al mes amb la rendibilitat esperada.",
+  "dashboardNetWorth": "Patrimoni total",
+  "dashboardAllocation": "Repartiment per categoria",
+  "dashboardNoInvestments": "Afegeix la teva primera inversió per veure'n el repartiment",
+  "dashboardTipOfTheDay": "Consell del dia"
 }

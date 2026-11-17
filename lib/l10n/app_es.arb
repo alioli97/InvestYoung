@@ -1026,5 +1026,21 @@
         "type": "String"
       }
     }
+  },
+  "dashboardNetWorth": "Patrimonio total",
+  "@dashboardNetWorth": {
+    "description": "Net worth label."
+  },
+  "dashboardAllocation": "Reparto por categoría",
+  "@dashboardAllocation": {
+    "description": "Allocation chart title."
+  },
+  "dashboardNoInvestments": "Añade tu primera inversión para ver tu reparto",
+  "@dashboardNoInvestments": {
+    "description": "Home empty state for investments."
+  },
+  "dashboardTipOfTheDay": "Consejo del día",
+  "@dashboardTipOfTheDay": {
+    "description": "Tip of the day label."
   }
 }
