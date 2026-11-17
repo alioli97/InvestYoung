@@ -1171,5 +1171,65 @@
   "profileThemeDark": "Oscuro",
   "@profileThemeDark": {
     "description": "Dark theme."
+  },
+  "profileExport": "Exportar copia de seguridad",
+  "@profileExport": {
+    "description": "Export backup option."
+  },
+  "profileExportSubtitle": "Guarda o comparte un archivo con todos tus datos",
+  "@profileExportSubtitle": {
+    "description": "Export backup subtitle."
+  },
+  "profileExportError": "No se ha podido exportar la copia",
+  "@profileExportError": {
+    "description": "Export failed."
+  },
+  "profileImport": "Importar copia de seguridad",
+  "@profileImport": {
+    "description": "Import backup option."
+  },
+  "profileImportSubtitle": "Restaura tus datos desde un archivo",
+  "@profileImportSubtitle": {
+    "description": "Import backup subtitle."
+  },
+  "profileImportConfirmTitle": "¿Reemplazar todos tus datos?",
+  "@profileImportConfirmTitle": {
+    "description": "Import confirmation title."
+  },
+  "profileImportConfirmBody": "Los datos actuales se borrarán y se sustituirán por los de la copia. Esta acción no se puede deshacer.",
+  "@profileImportConfirmBody": {
+    "description": "Import confirmation body."
+  },
+  "profileImportConfirm": "Reemplazar",
+  "@profileImportConfirm": {
+    "description": "Confirm import."
+  },
+  "profileImportDone": "Copia importada",
+  "@profileImportDone": {
+    "description": "Import succeeded."
+  },
+  "profileImportError": "El archivo no es una copia válida de la app. No se ha cambiado nada.",
+  "@profileImportError": {
+    "description": "Import failed."
+  },
+  "profileDeleteAll": "Borrar todos los datos",
+  "@profileDeleteAll": {
+    "description": "Delete all data option."
+  },
+  "profileDeleteAllSubtitle": "Perfil, objetivos, inversiones y progreso",
+  "@profileDeleteAllSubtitle": {
+    "description": "Delete all data subtitle."
+  },
+  "profileDeleteAllTitle": "¿Borrar todos los datos?",
+  "@profileDeleteAllTitle": {
+    "description": "Delete all confirmation title."
+  },
+  "profileDeleteAllBody": "Se borrarán tu perfil, tus objetivos, tus inversiones y tu progreso. Si quieres conservarlos, exporta antes una copia. Esta acción no se puede deshacer.",
+  "@profileDeleteAllBody": {
+    "description": "Delete all confirmation body."
+  },
+  "profileDeleteAllConfirm": "Borrar todo",
+  "@profileDeleteAllConfirm": {
+    "description": "Confirm delete all."
   }
 }

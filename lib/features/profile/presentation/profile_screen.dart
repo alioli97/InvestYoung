@@ -8,6 +8,7 @@ import '../../../core/router/routes.dart';
 import '../../../core/theme/theme_mode_provider.dart';
 import '../data/preferences_service.dart';
 import 'widgets/choice_dialog.dart';
+import 'widgets/data_section.dart';
 import 'widgets/section_header.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -72,6 +73,7 @@ class ProfileScreen extends ConsumerWidget {
             trailing: const Icon(Icons.chevron_right),
             onTap: () => context.push(Routes.retakeOnboarding),
           ),
+          const DataSection(),
         ],
       ),
     );

@@ -876,4 +876,56 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get profileThemeDark => 'Fosc';
+
+  @override
+  String get profileExport => 'Exportar còpia de seguretat';
+
+  @override
+  String get profileExportSubtitle =>
+      'Desa o comparteix un fitxer amb totes les teves dades';
+
+  @override
+  String get profileExportError => 'No s\'ha pogut exportar la còpia';
+
+  @override
+  String get profileImport => 'Importar còpia de seguretat';
+
+  @override
+  String get profileImportSubtitle =>
+      'Restaura les teves dades des d\'un fitxer';
+
+  @override
+  String get profileImportConfirmTitle =>
+      'Vols substituir totes les teves dades?';
+
+  @override
+  String get profileImportConfirmBody =>
+      'Les dades actuals s\'esborraran i se substituiran per les de la còpia. Aquesta acció no es pot desfer.';
+
+  @override
+  String get profileImportConfirm => 'Substituir';
+
+  @override
+  String get profileImportDone => 'Còpia importada';
+
+  @override
+  String get profileImportError =>
+      'El fitxer no és una còpia vàlida de l\'app. No s\'ha canviat res.';
+
+  @override
+  String get profileDeleteAll => 'Esborrar totes les dades';
+
+  @override
+  String get profileDeleteAllSubtitle =>
+      'Perfil, objectius, inversions i progrés';
+
+  @override
+  String get profileDeleteAllTitle => 'Vols esborrar totes les dades?';
+
+  @override
+  String get profileDeleteAllBody =>
+      'S\'esborraran el teu perfil, els teus objectius, les teves inversions i el teu progrés. Si els vols conservar, exporta abans una còpia. Aquesta acció no es pot desfer.';
+
+  @override
+  String get profileDeleteAllConfirm => 'Esborrar-ho tot';
 }
