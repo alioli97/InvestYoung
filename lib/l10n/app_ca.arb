@@ -179,5 +179,12 @@
   "investmentsFieldNote": "Nota",
   "investmentsAmountPositive": "L'import ha de ser més gran que 0",
   "investmentsSellTooMuch": "Només tens {available} unitats",
-  "investmentsUnits": "{quantity} u."
+  "investmentsUnits": "{quantity} u.",
+  "investmentsNetContributed": "Capital aportat",
+  "investmentsContributedShort": "Aportat: {amount}",
+  "investmentsIncome": "Dividends, cupons i interessos",
+  "investmentsReturn": "Rendibilitat",
+  "investmentsHoldings": "Unitats",
+  "investmentsAveragePrice": "Preu mitjà de compra",
+  "investmentsReturnExplanation": "Rendibilitat = valor actual + ingressos − capital aportat. Les comissions compten com a capital aportat."
 }

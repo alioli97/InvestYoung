@@ -1182,6 +1182,48 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'{quantity} uds.'**
   String investmentsUnits(String quantity);
+
+  /// Net contributed capital label.
+  ///
+  /// In es, this message translates to:
+  /// **'Capital aportado'**
+  String get investmentsNetContributed;
+
+  /// Net contributed in the total card.
+  ///
+  /// In es, this message translates to:
+  /// **'Aportado: {amount}'**
+  String investmentsContributedShort(String amount);
+
+  /// Income received label.
+  ///
+  /// In es, this message translates to:
+  /// **'Dividendos, cupones e intereses'**
+  String get investmentsIncome;
+
+  /// Return label.
+  ///
+  /// In es, this message translates to:
+  /// **'Rentabilidad'**
+  String get investmentsReturn;
+
+  /// Holdings label.
+  ///
+  /// In es, this message translates to:
+  /// **'Unidades'**
+  String get investmentsHoldings;
+
+  /// Average purchase price label.
+  ///
+  /// In es, this message translates to:
+  /// **'Precio medio de compra'**
+  String get investmentsAveragePrice;
+
+  /// Explains how the return is calculated.
+  ///
+  /// In es, this message translates to:
+  /// **'Rentabilidad = valor actual + ingresos − capital aportado. Las comisiones cuentan como capital aportado.'**
+  String get investmentsReturnExplanation;
 }
 
 class _AppLocalizationsDelegate

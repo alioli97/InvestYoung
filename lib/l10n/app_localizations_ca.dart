@@ -601,4 +601,28 @@ class AppLocalizationsCa extends AppLocalizations {
   String investmentsUnits(String quantity) {
     return '$quantity u.';
   }
+
+  @override
+  String get investmentsNetContributed => 'Capital aportat';
+
+  @override
+  String investmentsContributedShort(String amount) {
+    return 'Aportat: $amount';
+  }
+
+  @override
+  String get investmentsIncome => 'Dividends, cupons i interessos';
+
+  @override
+  String get investmentsReturn => 'Rendibilitat';
+
+  @override
+  String get investmentsHoldings => 'Unitats';
+
+  @override
+  String get investmentsAveragePrice => 'Preu mitjà de compra';
+
+  @override
+  String get investmentsReturnExplanation =>
+      'Rendibilitat = valor actual + ingressos − capital aportat. Les comissions compten com a capital aportat.';
 }

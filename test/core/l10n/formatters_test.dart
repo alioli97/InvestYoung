@@ -73,6 +73,24 @@ void main() {
     });
   });
 
+  group('unitPrice', () {
+    test('uses 2 decimals from 1 € and up to 6 below', () {
+      expect(
+        _n(Formatters.unitPrice(Decimal.parse('8500000'), es)),
+        '85.000,00 €',
+      );
+      expect(
+        _n(Formatters.unitPrice(Decimal.parse('10686.66666667'), es)),
+        '106,87 €',
+      );
+      expect(
+        _n(Formatters.unitPrice(Decimal.parse('0.0123'), ca)),
+        '0,000123 €',
+      );
+      expect(_n(Formatters.unitPrice(Decimal.zero, es)), '0,00 €');
+    });
+  });
+
   group('dates', () {
     final utc = DateTime.utc(2026, 3, 15, 12);
 

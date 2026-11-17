@@ -32,11 +32,18 @@ class TotalCard extends StatelessWidget {
               style: theme.textTheme.headlineMedium?.copyWith(color: onColor),
             ),
             const SizedBox(height: 4),
-            if (metrics.hasActivity)
+            if (metrics.hasActivity) ...[
+              Text(
+                context.l10n.investmentsContributedShort(
+                  context.formatCurrency(metrics.netContributedCents),
+                ),
+                style: theme.textTheme.bodyMedium?.copyWith(color: onColor),
+              ),
               ReturnText(
                 returnCents: metrics.returnCents,
                 ratio: metrics.returnRatio,
               ),
+            ],
           ],
         ),
       ),

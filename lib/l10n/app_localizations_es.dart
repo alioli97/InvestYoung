@@ -600,4 +600,28 @@ class AppLocalizationsEs extends AppLocalizations {
   String investmentsUnits(String quantity) {
     return '$quantity uds.';
   }
+
+  @override
+  String get investmentsNetContributed => 'Capital aportado';
+
+  @override
+  String investmentsContributedShort(String amount) {
+    return 'Aportado: $amount';
+  }
+
+  @override
+  String get investmentsIncome => 'Dividendos, cupones e intereses';
+
+  @override
+  String get investmentsReturn => 'Rentabilidad';
+
+  @override
+  String get investmentsHoldings => 'Unidades';
+
+  @override
+  String get investmentsAveragePrice => 'Precio medio de compra';
+
+  @override
+  String get investmentsReturnExplanation =>
+      'Rentabilidad = valor actual + ingresos − capital aportado. Las comisiones cuentan como capital aportado.';
 }

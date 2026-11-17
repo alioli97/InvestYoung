@@ -50,5 +50,6 @@ void main() {
     expect(findMoney('1.100,00 €'), findsOneWidget);
     expect(findMoney('+100,00 €', contains: true), findsNWidgets(2));
     expect(findMoney('+10,0', contains: true), findsOneWidget);
+    expect(findMoney('Aportado: 4.000,00 €'), findsOneWidget);
   });
 }

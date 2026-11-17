@@ -39,6 +39,18 @@ class Formatters {
     return format.format(ratio);
   }
 
+  /// Formats a price per unit given in (possibly fractional) cents. Prices
+  /// under 1 € keep up to 6 decimals so tiny crypto prices stay readable.
+  static String unitPrice(Decimal cents, Locale locale) {
+    final euros = cents.toDouble() / 100;
+    final format = NumberFormat.currency(
+      locale: intlLocale(locale),
+      symbol: '€',
+      decimalDigits: euros.abs() >= 1 || euros == 0 ? 2 : 6,
+    );
+    return format.format(euros);
+  }
+
   /// Formats a [Decimal] quantity keeping all its decimals, with locale
   /// grouping and decimal comma, e.g. `1234.5678` → `1.234,5678`.
   static String quantity(Decimal value, Locale locale) {
@@ -71,6 +83,8 @@ extension FormattingContext on BuildContext {
 
   String formatPercent(double ratio, {int decimalDigits = 1}) =>
       Formatters.percent(ratio, _locale, decimalDigits: decimalDigits);
+
+  String formatUnitPrice(Decimal cents) => Formatters.unitPrice(cents, _locale);
 
   String formatQuantity(Decimal value) => Formatters.quantity(value, _locale);
 

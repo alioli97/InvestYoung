@@ -18,7 +18,12 @@ Future<AppDatabase> pumpApp(
   UserProfile? startupProfile,
 }) async {
   final db = database ?? createTestDatabase();
-  addTearDown(db.close);
+  // Unmount first so no stream query is left waiting, then close outside the
+  // fake-async zone; otherwise a failing test can hang the whole suite.
+  addTearDown(() async {
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.runAsync(db.close);
+  });
   tester.platformDispatcher.localesTestValue = [locale];
   addTearDown(tester.platformDispatcher.clearLocalesTestValue);
   tester.view.physicalSize = size;

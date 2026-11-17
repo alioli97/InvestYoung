@@ -31,7 +31,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [x] Screen with the 4 categories and their totals
 - [x] Asset list per category + create/edit form (category-specific fields)
 - [x] Asset detail with transactions + transaction form
-- [ ] Visible metrics (contributed, value, return)
+- [x] Visible metrics (contributed, value, return)
 
 ## Phase 4 — Goals and Home
 - [ ] Goal screens: emergency, housing, retirement, custom
