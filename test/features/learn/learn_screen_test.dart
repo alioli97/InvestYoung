@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:invest_young/features/learn/presentation/widgets/lessons_tab.dart';
 import 'package:invest_young/features/onboarding/data/profile_repository.dart';
 
 import '../../helpers/fixtures.dart';
 import '../../helpers/pump_app.dart';
 import '../../helpers/test_database.dart';
+
+final _lessonsList = find
+    .descendant(of: find.byType(LessonsTab), matching: find.byType(Scrollable))
+    .first;
 
 /// Opens the Learn tab with a saved profile (basic knowledge).
 Future<void> _openLearn(WidgetTester tester, {String locale = 'es'}) async {
@@ -44,7 +49,11 @@ void main() {
     expect(find.text('4 min de lectura'), findsWidgets);
     // Basic knowledge → emergency fund, fixed income and equities.
     await pumpUntilFound(tester, find.text('Recomendado para ti'));
-    await tester.scrollUntilVisible(find.text('Renta variable'), 200);
+    await tester.scrollUntilVisible(
+      find.text('Renta variable'),
+      200,
+      scrollable: _lessonsList,
+    );
     expect(find.text('Próximamente'), findsWidgets);
   });
 
@@ -69,7 +78,11 @@ void main() {
       'Deuda buena, deuda mala y su coste real',
       'Cómo salir de las deudas',
     ]) {
-      await tester.scrollUntilVisible(find.text(title), 200);
+      await tester.scrollUntilVisible(
+        find.text(title),
+        200,
+        scrollable: _lessonsList,
+      );
       await tester.tap(find.text(title));
       await tester.pump();
       await pumpUntilFound(tester, find.widgetWithText(AppBar, title));
