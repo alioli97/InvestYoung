@@ -49,3 +49,9 @@ Future<List<AssetSummary>> categoryAssets(
 @riverpod
 Stream<Asset?> asset(Ref ref, int id) =>
     ref.watch(investmentsRepositoryProvider).watchAsset(id);
+
+/// Transactions of one asset, oldest first.
+@riverpod
+Stream<List<AssetTransaction>> assetTransactions(Ref ref, int assetId) => ref
+    .watch(investmentsRepositoryProvider)
+    .watchTransactions(assetId: assetId);

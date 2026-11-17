@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -54,6 +55,21 @@ void main() {
       expect(_n(Formatters.percent(0.05, es)), '5,0 %');
       expect(_n(Formatters.percent(0.1234, ca, decimalDigits: 2)), '12,34 %');
       expect(_n(Formatters.percent(-0.2, es, decimalDigits: 0)), '-20 %');
+    });
+  });
+
+  group('quantity', () {
+    test('keeps every decimal and uses locale separators', () {
+      expect(
+        Formatters.quantity(Decimal.parse('0.00012345'), es),
+        '0,00012345',
+      );
+      expect(Formatters.quantity(Decimal.parse('12'), ca), '12');
+      expect(
+        Formatters.quantity(Decimal.parse('1234567.5'), es),
+        '1.234.567,5',
+      );
+      expect(Formatters.quantity(Decimal.parse('-3.25'), es), '-3,25');
     });
   });
 

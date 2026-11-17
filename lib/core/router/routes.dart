@@ -17,5 +17,13 @@ abstract final class Routes {
   static String newAsset(AssetCategory category) =>
       '${investmentCategory(category)}/new';
 
-  static String editAsset(int assetId) => '$investments/asset/$assetId/edit';
+  static String asset(int assetId) => '$investments/asset/$assetId';
+
+  static String editAsset(int assetId) => '${asset(assetId)}/edit';
+
+  static String newTransaction(int assetId) =>
+      '${asset(assetId)}/transaction/new';
+
+  static String editTransaction(int assetId, int transactionId) =>
+      '${asset(assetId)}/transaction/$transactionId';
 }

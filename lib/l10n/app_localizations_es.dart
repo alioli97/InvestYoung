@@ -513,4 +513,91 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get investmentsDeleteAssetBody =>
       'Se eliminarán también todos sus movimientos. Esta acción no se puede deshacer.';
+
+  @override
+  String get investmentsCurrentValue => 'Valor actual';
+
+  @override
+  String get investmentsTransactions => 'Movimientos';
+
+  @override
+  String get investmentsNoTransactions =>
+      'Aún no hay movimientos. Añade tu primera aportación o compra.';
+
+  @override
+  String get investmentsAddTransaction => 'Añadir movimiento';
+
+  @override
+  String get investmentsNewTransaction => 'Nuevo movimiento';
+
+  @override
+  String get investmentsEditTransaction => 'Editar movimiento';
+
+  @override
+  String get investmentsDeleteTransactionTitle => '¿Eliminar este movimiento?';
+
+  @override
+  String get investmentsTxDeposit => 'Aportación';
+
+  @override
+  String get investmentsTxWithdrawal => 'Retirada';
+
+  @override
+  String get investmentsTxBuy => 'Compra';
+
+  @override
+  String get investmentsTxSell => 'Venta';
+
+  @override
+  String get investmentsTxIncome => 'Dividendo, cupón o interés';
+
+  @override
+  String get investmentsTxValuation => 'Actualizar valor';
+
+  @override
+  String get investmentsTxAmountDeposit => 'Importe aportado';
+
+  @override
+  String get investmentsTxAmountWithdrawal => 'Importe retirado';
+
+  @override
+  String get investmentsTxAmountBuy => 'Importe invertido';
+
+  @override
+  String get investmentsTxAmountSell => 'Importe recibido';
+
+  @override
+  String get investmentsTxAmountIncome => 'Importe cobrado';
+
+  @override
+  String get investmentsTxAmountValuation => 'Valor total actual';
+
+  @override
+  String get investmentsValuationHint =>
+      'Indica cuánto vale hoy todo este activo. Se usará como valor actual.';
+
+  @override
+  String get investmentsFieldDate => 'Fecha';
+
+  @override
+  String get investmentsFieldQuantity => 'Unidades o participaciones';
+
+  @override
+  String get investmentsFieldFee => 'Comisión';
+
+  @override
+  String get investmentsFieldNote => 'Nota';
+
+  @override
+  String get investmentsAmountPositive => 'El importe debe ser mayor que 0';
+
+  @override
+  String investmentsSellTooMuch(String available) {
+    return 'Solo tienes $available unidades';
+  }
+
+  @override
+  String investmentsUnits(String quantity) {
+    return '$quantity uds.';
+  }
 }

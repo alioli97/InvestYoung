@@ -1020,6 +1020,168 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Se eliminarán también todos sus movimientos. Esta acción no se puede deshacer.'**
   String get investmentsDeleteAssetBody;
+
+  /// Current value label.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor actual'**
+  String get investmentsCurrentValue;
+
+  /// Transactions section title.
+  ///
+  /// In es, this message translates to:
+  /// **'Movimientos'**
+  String get investmentsTransactions;
+
+  /// Empty transactions list.
+  ///
+  /// In es, this message translates to:
+  /// **'Aún no hay movimientos. Añade tu primera aportación o compra.'**
+  String get investmentsNoTransactions;
+
+  /// Button to add a transaction.
+  ///
+  /// In es, this message translates to:
+  /// **'Añadir movimiento'**
+  String get investmentsAddTransaction;
+
+  /// Title of the create transaction form.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo movimiento'**
+  String get investmentsNewTransaction;
+
+  /// Title of the edit transaction form.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar movimiento'**
+  String get investmentsEditTransaction;
+
+  /// Delete transaction dialog title.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Eliminar este movimiento?'**
+  String get investmentsDeleteTransactionTitle;
+
+  /// Transaction type: deposit.
+  ///
+  /// In es, this message translates to:
+  /// **'Aportación'**
+  String get investmentsTxDeposit;
+
+  /// Transaction type: withdrawal.
+  ///
+  /// In es, this message translates to:
+  /// **'Retirada'**
+  String get investmentsTxWithdrawal;
+
+  /// Transaction type: buy.
+  ///
+  /// In es, this message translates to:
+  /// **'Compra'**
+  String get investmentsTxBuy;
+
+  /// Transaction type: sell.
+  ///
+  /// In es, this message translates to:
+  /// **'Venta'**
+  String get investmentsTxSell;
+
+  /// Transaction type: income.
+  ///
+  /// In es, this message translates to:
+  /// **'Dividendo, cupón o interés'**
+  String get investmentsTxIncome;
+
+  /// Transaction type: valuation.
+  ///
+  /// In es, this message translates to:
+  /// **'Actualizar valor'**
+  String get investmentsTxValuation;
+
+  /// Amount label for deposits.
+  ///
+  /// In es, this message translates to:
+  /// **'Importe aportado'**
+  String get investmentsTxAmountDeposit;
+
+  /// Amount label for withdrawals.
+  ///
+  /// In es, this message translates to:
+  /// **'Importe retirado'**
+  String get investmentsTxAmountWithdrawal;
+
+  /// Amount label for buys.
+  ///
+  /// In es, this message translates to:
+  /// **'Importe invertido'**
+  String get investmentsTxAmountBuy;
+
+  /// Amount label for sells.
+  ///
+  /// In es, this message translates to:
+  /// **'Importe recibido'**
+  String get investmentsTxAmountSell;
+
+  /// Amount label for income.
+  ///
+  /// In es, this message translates to:
+  /// **'Importe cobrado'**
+  String get investmentsTxAmountIncome;
+
+  /// Amount label for valuations.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor total actual'**
+  String get investmentsTxAmountValuation;
+
+  /// Explains the valuation transaction.
+  ///
+  /// In es, this message translates to:
+  /// **'Indica cuánto vale hoy todo este activo. Se usará como valor actual.'**
+  String get investmentsValuationHint;
+
+  /// Transaction date field.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha'**
+  String get investmentsFieldDate;
+
+  /// Quantity field.
+  ///
+  /// In es, this message translates to:
+  /// **'Unidades o participaciones'**
+  String get investmentsFieldQuantity;
+
+  /// Fee field.
+  ///
+  /// In es, this message translates to:
+  /// **'Comisión'**
+  String get investmentsFieldFee;
+
+  /// Transaction note field.
+  ///
+  /// In es, this message translates to:
+  /// **'Nota'**
+  String get investmentsFieldNote;
+
+  /// Validation: amount must be positive.
+  ///
+  /// In es, this message translates to:
+  /// **'El importe debe ser mayor que 0'**
+  String get investmentsAmountPositive;
+
+  /// Validation: selling more units than held.
+  ///
+  /// In es, this message translates to:
+  /// **'Solo tienes {available} unidades'**
+  String investmentsSellTooMuch(String available);
+
+  /// Quantity of units shown in lists.
+  ///
+  /// In es, this message translates to:
+  /// **'{quantity} uds.'**
+  String investmentsUnits(String quantity);
 }
 
 class _AppLocalizationsDelegate
