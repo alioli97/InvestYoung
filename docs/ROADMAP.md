@@ -35,7 +35,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 
 ## Phase 4 — Goals and Home
 - [ ] Goal screens: emergency, housing, retirement, custom
-- [ ] Assign assets to a goal and compute progress
+- [x] Assign assets to a goal and compute progress
 - [ ] Retirement projection chart
 - [ ] Dashboard: net worth, goal cards, pie chart, tip of the day
 - [ ] Warning when adding Equities/Crypto before the emergency fund is complete

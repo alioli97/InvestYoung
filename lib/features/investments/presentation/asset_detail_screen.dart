@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/widgets/async_value_view.dart';
+import '../../goals/presentation/goals_providers.dart';
 import '../domain/asset.dart';
 import '../domain/asset_metrics.dart';
 import '../domain/asset_transaction.dart';
@@ -42,6 +43,10 @@ class _AssetDetail extends ConsumerWidget {
     final id = asset.id!;
     final transactions = ref.watch(assetTransactionsProvider(id));
     final details = l10n.assetDetailsLine(context, asset);
+    final goalName = (ref.watch(goalsProvider).value ?? const [])
+        .where((g) => g.id == asset.goalId)
+        .firstOrNull
+        ?.name;
 
     return Scaffold(
       appBar: AppBar(
@@ -72,6 +77,11 @@ class _AssetDetail extends ConsumerWidget {
                   avatar: Icon(assetCategoryIcon(asset.category), size: 18),
                   label: Text(l10n.assetCategory(asset.category)),
                 ),
+                if (goalName != null)
+                  Chip(
+                    avatar: const Icon(Icons.flag_outlined, size: 18),
+                    label: Text(goalName),
+                  ),
                 if (details.isNotEmpty) Text(details),
               ],
             ),
