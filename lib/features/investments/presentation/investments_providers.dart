@@ -34,3 +34,18 @@ Future<Map<AssetCategory, AssetMetrics>> categoryTotals(Ref ref) async =>
     AssetSummary.totalsByCategory(
       await ref.watch(assetSummariesProvider.future),
     );
+
+/// Active assets of one category with their metrics.
+@riverpod
+Future<List<AssetSummary>> categoryAssets(
+  Ref ref,
+  AssetCategory category,
+) async => [
+  for (final summary in await ref.watch(assetSummariesProvider.future))
+    if (summary.asset.category == category) summary,
+];
+
+/// One asset, or `null` if it does not exist (e.g. after deleting it).
+@riverpod
+Stream<Asset?> asset(Ref ref, int id) =>
+    ref.watch(investmentsRepositoryProvider).watchAsset(id);

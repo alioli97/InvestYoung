@@ -834,6 +834,192 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'BTC, ETH…'**
   String get investmentsCategoryCryptoExamples;
+
+  /// Save button.
+  ///
+  /// In es, this message translates to:
+  /// **'Guardar'**
+  String get commonSave;
+
+  /// Cancel button.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar'**
+  String get commonCancel;
+
+  /// Delete button.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar'**
+  String get commonDelete;
+
+  /// Clear a field.
+  ///
+  /// In es, this message translates to:
+  /// **'Borrar'**
+  String get commonClear;
+
+  /// Validation error for required fields.
+  ///
+  /// In es, this message translates to:
+  /// **'Campo obligatorio'**
+  String get commonRequired;
+
+  /// Validation error for numeric fields.
+  ///
+  /// In es, this message translates to:
+  /// **'Introduce un número válido'**
+  String get commonInvalidNumber;
+
+  /// Button to add an asset.
+  ///
+  /// In es, this message translates to:
+  /// **'Añadir activo'**
+  String get investmentsAddAsset;
+
+  /// Title of the create asset form.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo activo'**
+  String get investmentsNewAsset;
+
+  /// Title of the edit asset form.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar activo'**
+  String get investmentsEditAsset;
+
+  /// Empty state of a category.
+  ///
+  /// In es, this message translates to:
+  /// **'Aún no tienes nada en esta categoría'**
+  String get investmentsEmptyCategory;
+
+  /// Asset name field.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre'**
+  String get investmentsFieldName;
+
+  /// Bank or institution field.
+  ///
+  /// In es, this message translates to:
+  /// **'Entidad'**
+  String get investmentsFieldInstitution;
+
+  /// Annual percentage yield field.
+  ///
+  /// In es, this message translates to:
+  /// **'Rentabilidad anual (TAE)'**
+  String get investmentsFieldApy;
+
+  /// Fixed income issuer field.
+  ///
+  /// In es, this message translates to:
+  /// **'Emisor'**
+  String get investmentsFieldIssuer;
+
+  /// Fixed income yield or coupon field.
+  ///
+  /// In es, this message translates to:
+  /// **'Rentabilidad o cupón anual'**
+  String get investmentsFieldYield;
+
+  /// Maturity date field.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de vencimiento'**
+  String get investmentsFieldMaturity;
+
+  /// Ticker or ISIN field.
+  ///
+  /// In es, this message translates to:
+  /// **'Ticker o ISIN'**
+  String get investmentsFieldTicker;
+
+  /// Equity subtype field.
+  ///
+  /// In es, this message translates to:
+  /// **'Tipo'**
+  String get investmentsFieldSubtype;
+
+  /// Crypto symbol field.
+  ///
+  /// In es, this message translates to:
+  /// **'Símbolo'**
+  String get investmentsFieldSymbol;
+
+  /// Crypto exchange or wallet field.
+  ///
+  /// In es, this message translates to:
+  /// **'Exchange o wallet'**
+  String get investmentsFieldExchange;
+
+  /// Assigned goal field.
+  ///
+  /// In es, this message translates to:
+  /// **'Objetivo asignado'**
+  String get investmentsFieldGoal;
+
+  /// No goal assigned option.
+  ///
+  /// In es, this message translates to:
+  /// **'Ninguno'**
+  String get investmentsNoGoal;
+
+  /// Notes field.
+  ///
+  /// In es, this message translates to:
+  /// **'Notas'**
+  String get investmentsFieldNotes;
+
+  /// Equity subtype.
+  ///
+  /// In es, this message translates to:
+  /// **'Fondo indexado'**
+  String get investmentsSubtypeIndexFund;
+
+  /// Equity subtype.
+  ///
+  /// In es, this message translates to:
+  /// **'ETF'**
+  String get investmentsSubtypeEtf;
+
+  /// Equity subtype.
+  ///
+  /// In es, this message translates to:
+  /// **'Acción'**
+  String get investmentsSubtypeStock;
+
+  /// Equity subtype.
+  ///
+  /// In es, this message translates to:
+  /// **'Otro'**
+  String get investmentsSubtypeOther;
+
+  /// APY shown in asset lists.
+  ///
+  /// In es, this message translates to:
+  /// **'{rate} TAE'**
+  String investmentsApyShort(String rate);
+
+  /// Maturity shown in asset lists.
+  ///
+  /// In es, this message translates to:
+  /// **'vence {date}'**
+  String investmentsMaturityShort(String date);
+
+  /// Delete asset dialog title.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Eliminar este activo?'**
+  String get investmentsDeleteAssetTitle;
+
+  /// Delete asset dialog body.
+  ///
+  /// In es, this message translates to:
+  /// **'Se eliminarán también todos sus movimientos. Esta acción no se puede deshacer.'**
+  String get investmentsDeleteAssetBody;
 }
 
 class _AppLocalizationsDelegate

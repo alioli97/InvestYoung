@@ -51,4 +51,25 @@ void main() {
       }
     });
   });
+
+  group('percent input', () {
+    test('parses percentages into ratios', () {
+      expect(parsePercentToRatio('2,5'), closeTo(0.025, 1e-12));
+      expect(parsePercentToRatio('2.5 %'), closeTo(0.025, 1e-12));
+      expect(parsePercentToRatio('-0,3'), closeTo(-0.003, 1e-12));
+      expect(parsePercentToRatio('4'), closeTo(0.04, 1e-12));
+    });
+
+    test('rejects empty or invalid input', () {
+      expect(parsePercentToRatio(''), isNull);
+      expect(parsePercentToRatio('abc'), isNull);
+      expect(parsePercentToRatio('1,2,3'), isNull);
+    });
+
+    test('formats ratios for editing', () {
+      expect(formatRatioForInput(0.025), '2,5');
+      expect(formatRatioForInput(0.04), '4');
+      expect(formatRatioForInput(0.0335), '3,35');
+    });
+  });
 }

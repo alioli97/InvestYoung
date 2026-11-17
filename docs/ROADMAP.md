@@ -29,7 +29,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 
 ## Phase 3 — Investments
 - [x] Screen with the 4 categories and their totals
-- [ ] Asset list per category + create/edit form (category-specific fields)
+- [x] Asset list per category + create/edit form (category-specific fields)
 - [ ] Asset detail with transactions + transaction form
 - [ ] Visible metrics (contributed, value, return)
 

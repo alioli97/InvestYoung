@@ -192,3 +192,167 @@ final class CategoryTotalsProvider
 }
 
 String _$categoryTotalsHash() => r'3d64d23cb951491db64dd952648c08674fe1d5ed';
+
+/// Active assets of one category with their metrics.
+
+@ProviderFor(categoryAssets)
+final categoryAssetsProvider = CategoryAssetsFamily._();
+
+/// Active assets of one category with their metrics.
+
+final class CategoryAssetsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<AssetSummary>>,
+          List<AssetSummary>,
+          FutureOr<List<AssetSummary>>
+        >
+    with
+        $FutureModifier<List<AssetSummary>>,
+        $FutureProvider<List<AssetSummary>> {
+  /// Active assets of one category with their metrics.
+  CategoryAssetsProvider._({
+    required CategoryAssetsFamily super.from,
+    required AssetCategory super.argument,
+  }) : super(
+         retry: null,
+         name: r'categoryAssetsProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$categoryAssetsHash();
+
+  @override
+  String toString() {
+    return r'categoryAssetsProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $FutureProviderElement<List<AssetSummary>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<AssetSummary>> create(Ref ref) {
+    final argument = this.argument as AssetCategory;
+    return categoryAssets(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is CategoryAssetsProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$categoryAssetsHash() => r'87568c2eae29afc014f981a38125dc8207a218ee';
+
+/// Active assets of one category with their metrics.
+
+final class CategoryAssetsFamily extends $Family
+    with
+        $FunctionalFamilyOverride<FutureOr<List<AssetSummary>>, AssetCategory> {
+  CategoryAssetsFamily._()
+    : super(
+        retry: null,
+        name: r'categoryAssetsProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  /// Active assets of one category with their metrics.
+
+  CategoryAssetsProvider call(AssetCategory category) =>
+      CategoryAssetsProvider._(argument: category, from: this);
+
+  @override
+  String toString() => r'categoryAssetsProvider';
+}
+
+/// One asset, or `null` if it does not exist (e.g. after deleting it).
+
+@ProviderFor(asset)
+final assetProvider = AssetFamily._();
+
+/// One asset, or `null` if it does not exist (e.g. after deleting it).
+
+final class AssetProvider
+    extends $FunctionalProvider<AsyncValue<Asset?>, Asset?, Stream<Asset?>>
+    with $FutureModifier<Asset?>, $StreamProvider<Asset?> {
+  /// One asset, or `null` if it does not exist (e.g. after deleting it).
+  AssetProvider._({
+    required AssetFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'assetProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$assetHash();
+
+  @override
+  String toString() {
+    return r'assetProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $StreamProviderElement<Asset?> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<Asset?> create(Ref ref) {
+    final argument = this.argument as int;
+    return asset(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is AssetProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$assetHash() => r'6772e83b19e54ce9827a7070377c83f0e3e46b7e';
+
+/// One asset, or `null` if it does not exist (e.g. after deleting it).
+
+final class AssetFamily extends $Family
+    with $FunctionalFamilyOverride<Stream<Asset?>, int> {
+  AssetFamily._()
+    : super(
+        retry: null,
+        name: r'assetProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  /// One asset, or `null` if it does not exist (e.g. after deleting it).
+
+  AssetProvider call(int id) => AssetProvider._(argument: id, from: this);
+
+  @override
+  String toString() => r'assetProvider';
+}

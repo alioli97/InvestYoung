@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n/l10n.dart';
+import '../../../core/router/routes.dart';
 import '../../../core/widgets/async_value_view.dart';
 import '../domain/asset_metrics.dart';
 import '../domain/investment_enums.dart';
@@ -26,7 +28,11 @@ class InvestmentsScreen extends ConsumerWidget {
             TotalCard(metrics: AssetMetrics.sum(totals.values)),
             const SizedBox(height: 16),
             for (final category in AssetCategory.values) ...[
-              CategoryCard(category: category, metrics: totals[category]!),
+              CategoryCard(
+                category: category,
+                metrics: totals[category]!,
+                onTap: () => context.go(Routes.investmentCategory(category)),
+              ),
               const SizedBox(height: 12),
             ],
           ],

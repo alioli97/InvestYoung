@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/dashboard/presentation/dashboard_screen.dart';
 import '../../features/goals/presentation/goals_screen.dart';
-import '../../features/investments/presentation/investments_screen.dart';
+import '../../features/investments/presentation/investments_routes.dart';
 import '../../features/learn/presentation/learn_screen.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/onboarding/presentation/onboarding_status_provider.dart';
@@ -45,7 +45,7 @@ GoRouter appRouter(Ref ref) {
         branches: [
           _branch(Routes.home, const DashboardScreen()),
           _branch(Routes.goals, const GoalsScreen()),
-          _branch(Routes.investments, const InvestmentsScreen()),
+          StatefulShellBranch(routes: [investmentsRoute]),
           _branch(Routes.learn, const LearnScreen()),
           _branch(Routes.profile, const ProfileScreen()),
         ],
