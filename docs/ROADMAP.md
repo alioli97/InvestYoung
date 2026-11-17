@@ -1,0 +1,59 @@
+# Roadmap
+
+Tick each task with [x] when done. Work on one phase at a time; at the end of each phase
+run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in English).
+
+## Phase 0 — Project foundation
+- [ ] Dependencies: flutter_riverpod, riverpod_annotation, go_router, drift, drift_flutter, intl,
+      flutter_localizations (sdk), fl_chart, decimal, flutter_markdown, file_picker, share_plus;
+      dev: build_runner, drift_dev, riverpod_generator, riverpod_lint, custom_lint
+- [ ] `l10n.yaml` + `app_es.arb` and `app_ca.arb` with the first keys
+- [ ] Folder structure as described in CLAUDE.md
+- [ ] Material 3 theme (light and dark)
+- [ ] go_router with StatefulShellRoute, 5 empty tabs + redirect to onboarding
+- [ ] Locale-aware currency, percentage and date formatting helpers
+
+## Phase 1 — Data and logic
+- [ ] Drift AppDatabase with all tables from SPEC §10
+- [ ] DAOs and repositories per feature
+- [ ] `core/utils/finance.dart` with the SPEC §8 formulas + unit tests
+- [ ] Asset metrics calculation (SPEC §6) + tests
+
+## Phase 2 — Onboarding
+- [ ] Steps 0–7 flow (SPEC §3) with state in a Notifier
+- [ ] Risk profile and emergency months logic + tests
+- [ ] Persist profile, expenses and goals on confirm
+- [ ] Retake questionnaire from Profile
+
+## Phase 3 — Investments
+- [ ] Screen with the 4 categories and their totals
+- [ ] Asset list per category + create/edit form (category-specific fields)
+- [ ] Asset detail with transactions + transaction form
+- [ ] Visible metrics (contributed, value, return)
+
+## Phase 4 — Goals and Home
+- [ ] Goal screens: emergency, housing, retirement, custom
+- [ ] Assign assets to a goal and compute progress
+- [ ] Retirement projection chart
+- [ ] Dashboard: net worth, goal cards, pie chart, tip of the day
+- [ ] Warning when adding Equities/Crypto before the emergency fund is complete
+
+## Phase 5 — Learn
+- [ ] `index.json` + locale-aware Markdown reader
+- [ ] 2 full lessons per module for modules 1–3 (es + ca)
+- [ ] Quiz and progress tracking
+- [ ] Quick tips
+
+## Phase 6 — Profile and polish
+- [ ] Language and theme switching
+- [ ] JSON export/import + delete all data
+- [ ] Legal notice
+- [ ] Empty states, form validation and basic accessibility
+
+## Future
+- [ ] Remaining lessons (modules 4–8)
+- [ ] Recurring contribution reminders (local notifications)
+- [ ] Biometric/PIN lock (local_auth)
+- [ ] Automatic prices (stock and crypto APIs)
+- [ ] CSV export
+- [ ] Cloud sync
