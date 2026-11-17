@@ -19,7 +19,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [x] Drift AppDatabase with all tables from SPEC §10
 - [x] DAOs and repositories per feature
 - [x] `core/utils/finance.dart` with the SPEC §8 formulas + unit tests
-- [ ] Asset metrics calculation (SPEC §6) + tests
+- [x] Asset metrics calculation (SPEC §6) + tests
 
 ## Phase 2 — Onboarding
 - [ ] Steps 0–7 flow (SPEC §3) with state in a Notifier
