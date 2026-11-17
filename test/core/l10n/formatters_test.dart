@@ -50,6 +50,17 @@ void main() {
     });
   });
 
+  group('compactCurrency', () {
+    test('abbreviates large amounts', () {
+      expect(_n(Formatters.compactCurrency(25000000, es)), contains('250'));
+      expect(_n(Formatters.compactCurrency(25000000, es)), contains('€'));
+      expect(
+        _n(Formatters.compactCurrency(25000000, es)).length,
+        lessThan(_n(Formatters.currency(25000000, es)).length),
+      );
+    });
+  });
+
   group('percent', () {
     test('formats ratios as percentages', () {
       expect(_n(Formatters.percent(0.05, es)), '5,0 %');

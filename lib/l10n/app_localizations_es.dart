@@ -760,4 +760,22 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get goalsDeleteBody =>
       'Sus activos no se eliminan; solo dejan de estar asignados.';
+
+  @override
+  String get goalsProjectionTitle => 'Proyección hasta la jubilación';
+
+  @override
+  String goalsProjectionValue(String amount) {
+    return 'Valor proyectado: $amount';
+  }
+
+  @override
+  String goalsProjectionContributed(String amount) {
+    return 'Capital aportado: $amount';
+  }
+
+  @override
+  String goalsProjectionAssumption(String amount) {
+    return 'Suponiendo que aportas $amount al mes con la rentabilidad esperada.';
+  }
 }

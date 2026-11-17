@@ -1452,6 +1452,30 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Sus activos no se eliminan; solo dejan de estar asignados.'**
   String get goalsDeleteBody;
+
+  /// Retirement chart title.
+  ///
+  /// In es, this message translates to:
+  /// **'Proyección hasta la jubilación'**
+  String get goalsProjectionTitle;
+
+  /// Legend: projected value with compound interest.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor proyectado: {amount}'**
+  String goalsProjectionValue(String amount);
+
+  /// Legend: contributed capital.
+  ///
+  /// In es, this message translates to:
+  /// **'Capital aportado: {amount}'**
+  String goalsProjectionContributed(String amount);
+
+  /// Explains the chart assumptions.
+  ///
+  /// In es, this message translates to:
+  /// **'Suponiendo que aportas {amount} al mes con la rentabilidad esperada.'**
+  String goalsProjectionAssumption(String amount);
 }
 
 class _AppLocalizationsDelegate

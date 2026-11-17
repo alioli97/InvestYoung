@@ -8,11 +8,13 @@ import '../../../core/widgets/async_value_view.dart';
 import '../../investments/presentation/widgets/asset_tile.dart';
 import '../domain/goal_progress.dart';
 import '../domain/goal_type.dart';
+import '../domain/retirement_projection.dart';
 import 'goals_providers.dart';
 import 'widgets/assign_assets_dialog.dart';
 import 'widgets/goal_inputs_card.dart';
 import 'widgets/goal_plan_card.dart';
 import 'widgets/goal_progress_card.dart';
+import 'widgets/retirement_chart.dart';
 
 /// One goal: progress, plan, inputs and the assets counted for it.
 class GoalDetailScreen extends ConsumerWidget {
@@ -44,6 +46,9 @@ class _GoalDetail extends StatelessWidget {
     final l10n = context.l10n;
     final goal = progress.goal;
     final theme = Theme.of(context);
+    final projection = goal.type == GoalType.retirement
+        ? RetirementProjection.fromProgress(progress, DateTime.now())
+        : null;
     return Scaffold(
       appBar: AppBar(
         title: Text(goal.name),
@@ -63,6 +68,10 @@ class _GoalDetail extends StatelessWidget {
           GoalPlanCard(progress: progress),
           const SizedBox(height: 12),
           GoalInputsCard(goal: goal),
+          if (projection != null) ...[
+            const SizedBox(height: 12),
+            RetirementChart(projection: projection),
+          ],
           const SizedBox(height: 24),
           Row(
             children: [

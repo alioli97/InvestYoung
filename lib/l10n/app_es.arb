@@ -995,5 +995,36 @@
   "goalsDeleteBody": "Sus activos no se eliminan; solo dejan de estar asignados.",
   "@goalsDeleteBody": {
     "description": "Delete goal dialog body."
+  },
+  "goalsProjectionTitle": "Proyección hasta la jubilación",
+  "@goalsProjectionTitle": {
+    "description": "Retirement chart title."
+  },
+  "goalsProjectionValue": "Valor proyectado: {amount}",
+  "@goalsProjectionValue": {
+    "description": "Legend: projected value with compound interest.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "goalsProjectionContributed": "Capital aportado: {amount}",
+  "@goalsProjectionContributed": {
+    "description": "Legend: contributed capital.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "goalsProjectionAssumption": "Suponiendo que aportas {amount} al mes con la rentabilidad esperada.",
+  "@goalsProjectionAssumption": {
+    "description": "Explains the chart assumptions.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
   }
 }
