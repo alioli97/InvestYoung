@@ -774,6 +774,66 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Perfil actualizado'**
   String get profileRetakeSaved;
+
+  /// Generic error when loading data fails.
+  ///
+  /// In es, this message translates to:
+  /// **'No se han podido cargar los datos.'**
+  String get commonLoadError;
+
+  /// Label of the total value of all investments.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor total'**
+  String get investmentsTotalValue;
+
+  /// Investment category.
+  ///
+  /// In es, this message translates to:
+  /// **'Fondo de emergencia'**
+  String get investmentsCategoryEmergency;
+
+  /// Investment category.
+  ///
+  /// In es, this message translates to:
+  /// **'Renta fija'**
+  String get investmentsCategoryFixedIncome;
+
+  /// Investment category.
+  ///
+  /// In es, this message translates to:
+  /// **'Renta variable'**
+  String get investmentsCategoryEquity;
+
+  /// Investment category.
+  ///
+  /// In es, this message translates to:
+  /// **'Criptomonedas'**
+  String get investmentsCategoryCrypto;
+
+  /// Examples of the emergency fund category.
+  ///
+  /// In es, this message translates to:
+  /// **'Cuentas remuneradas, depósitos, fondos monetarios'**
+  String get investmentsCategoryEmergencyExamples;
+
+  /// Examples of the fixed income category.
+  ///
+  /// In es, this message translates to:
+  /// **'Letras del Tesoro, bonos, fondos de renta fija'**
+  String get investmentsCategoryFixedIncomeExamples;
+
+  /// Examples of the equities category.
+  ///
+  /// In es, this message translates to:
+  /// **'Fondos indexados, ETF, acciones'**
+  String get investmentsCategoryEquityExamples;
+
+  /// Examples of the crypto category.
+  ///
+  /// In es, this message translates to:
+  /// **'BTC, ETH…'**
+  String get investmentsCategoryCryptoExamples;
 }
 
 class _AppLocalizationsDelegate
