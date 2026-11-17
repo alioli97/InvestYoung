@@ -1,35 +1,468 @@
 {
   "@@locale": "es",
   "appTitle": "Invertir siendo Joven",
-  "@appTitle": {"description": "Application name."},
+  "@appTitle": {
+    "description": "Application name."
+  },
   "navHome": "Inicio",
-  "@navHome": {"description": "Bottom navigation label for the Home tab."},
+  "@navHome": {
+    "description": "Bottom navigation label for the Home tab."
+  },
   "navGoals": "Objetivos",
-  "@navGoals": {"description": "Bottom navigation label for the Goals tab."},
+  "@navGoals": {
+    "description": "Bottom navigation label for the Goals tab."
+  },
   "navInvestments": "Inversiones",
-  "@navInvestments": {"description": "Bottom navigation label for the Investments tab."},
+  "@navInvestments": {
+    "description": "Bottom navigation label for the Investments tab."
+  },
   "navLearn": "Aprender",
-  "@navLearn": {"description": "Bottom navigation label for the Learn tab."},
+  "@navLearn": {
+    "description": "Bottom navigation label for the Learn tab."
+  },
   "navProfile": "Perfil",
-  "@navProfile": {"description": "Bottom navigation label for the Profile tab."},
+  "@navProfile": {
+    "description": "Bottom navigation label for the Profile tab."
+  },
   "dashboardTitle": "Inicio",
-  "@dashboardTitle": {"description": "Home screen app bar title."},
+  "@dashboardTitle": {
+    "description": "Home screen app bar title."
+  },
   "goalsTitle": "Objetivos",
-  "@goalsTitle": {"description": "Goals screen app bar title."},
+  "@goalsTitle": {
+    "description": "Goals screen app bar title."
+  },
   "investmentsTitle": "Inversiones",
-  "@investmentsTitle": {"description": "Investments screen app bar title."},
+  "@investmentsTitle": {
+    "description": "Investments screen app bar title."
+  },
   "learnTitle": "Aprender",
-  "@learnTitle": {"description": "Learn screen app bar title."},
+  "@learnTitle": {
+    "description": "Learn screen app bar title."
+  },
   "profileTitle": "Perfil",
-  "@profileTitle": {"description": "Profile screen app bar title."},
+  "@profileTitle": {
+    "description": "Profile screen app bar title."
+  },
   "onboardingWelcomeTitle": "Bienvenido/a",
-  "@onboardingWelcomeTitle": {"description": "Onboarding welcome title."},
+  "@onboardingWelcomeTitle": {
+    "description": "Onboarding welcome title."
+  },
   "onboardingWelcomeBody": "Organiza tus finanzas y empieza a invertir con cabeza.",
-  "@onboardingWelcomeBody": {"description": "Onboarding welcome subtitle."},
-  "onboardingStartButton": "Empezar",
-  "@onboardingStartButton": {"description": "Button that starts or completes onboarding."},
+  "@onboardingWelcomeBody": {
+    "description": "Onboarding welcome subtitle."
+  },
   "commonComingSoon": "Próximamente",
-  "@commonComingSoon": {"description": "Placeholder text for sections not implemented yet."},
+  "@commonComingSoon": {
+    "description": "Placeholder text for sections not implemented yet."
+  },
   "commonSimulationDisclaimer": "Simulación orientativa, los resultados no están garantizados",
-  "@commonSimulationDisclaimer": {"description": "Mandatory disclaimer shown with every return simulation."}
+  "@commonSimulationDisclaimer": {
+    "description": "Mandatory disclaimer shown with every return simulation."
+  },
+  "commonBack": "Atrás",
+  "@commonBack": {
+    "description": "Button to go to the previous step."
+  },
+  "commonContinue": "Continuar",
+  "@commonContinue": {
+    "description": "Button to go to the next step."
+  },
+  "commonYes": "Sí",
+  "@commonYes": {
+    "description": "Yes option."
+  },
+  "commonNo": "No",
+  "@commonNo": {
+    "description": "No option."
+  },
+  "commonOptional": "Opcional",
+  "@commonOptional": {
+    "description": "Helper text for optional fields."
+  },
+  "commonInvalidAmount": "Introduce un importe válido",
+  "@commonInvalidAmount": {
+    "description": "Validation error for money fields."
+  },
+  "commonLegalNoticeTitle": "Aviso legal",
+  "@commonLegalNoticeTitle": {
+    "description": "Legal notice title."
+  },
+  "commonLegalNoticeBody": "Invertir siendo Joven es una aplicación educativa. La información, los perfiles, los rangos y las simulaciones que muestra son orientativos y no constituyen asesoramiento financiero ni una recomendación personalizada de inversión, actividad regulada en España por la Comisión Nacional del Mercado de Valores (CNMV).\n\nInvertir conlleva riesgos, incluida la pérdida del capital invertido, y las rentabilidades pasadas no garantizan rentabilidades futuras. Antes de tomar decisiones de inversión, infórmate bien y, si lo necesitas, consulta con un profesional autorizado.\n\nTus datos se guardan solo en tu dispositivo.",
+  "@commonLegalNoticeBody": {
+    "description": "Legal notice body (educational app, no financial advice, CNMV)."
+  },
+  "onboardingStepCounter": "Paso {current} de {total}",
+  "@onboardingStepCounter": {
+    "description": "Progress label in onboarding.",
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "onboardingLanguageTitle": "Elige tu idioma",
+  "@onboardingLanguageTitle": {
+    "description": "Language step title."
+  },
+  "onboardingLanguageSpanish": "Castellano",
+  "@onboardingLanguageSpanish": {
+    "description": "Spanish language option."
+  },
+  "onboardingLanguageCatalan": "Catalán",
+  "@onboardingLanguageCatalan": {
+    "description": "Catalan language option."
+  },
+  "onboardingLegalAccept": "He leído y acepto el aviso legal",
+  "@onboardingLegalAccept": {
+    "description": "Checkbox to accept the legal notice."
+  },
+  "onboardingSituationTitle": "Tu situación",
+  "@onboardingSituationTitle": {
+    "description": "Personal situation step title."
+  },
+  "onboardingAgeRange": "Edad",
+  "@onboardingAgeRange": {
+    "description": "Age range question."
+  },
+  "onboardingAge16To20": "16–20",
+  "@onboardingAge16To20": {
+    "description": "Age range option."
+  },
+  "onboardingAge21To25": "21–25",
+  "@onboardingAge21To25": {
+    "description": "Age range option."
+  },
+  "onboardingAge26To30": "26–30",
+  "@onboardingAge26To30": {
+    "description": "Age range option."
+  },
+  "onboardingAge31To35": "31–35",
+  "@onboardingAge31To35": {
+    "description": "Age range option."
+  },
+  "onboardingAgeOver35": "Más de 35",
+  "@onboardingAgeOver35": {
+    "description": "Age range option."
+  },
+  "onboardingEmployment": "Situación laboral",
+  "@onboardingEmployment": {
+    "description": "Employment question."
+  },
+  "onboardingEmploymentPermanent": "Contrato indefinido",
+  "@onboardingEmploymentPermanent": {
+    "description": "Employment option."
+  },
+  "onboardingEmploymentTemporary": "Contrato temporal",
+  "@onboardingEmploymentTemporary": {
+    "description": "Employment option."
+  },
+  "onboardingEmploymentSelfEmployed": "Autónomo/a",
+  "@onboardingEmploymentSelfEmployed": {
+    "description": "Employment option."
+  },
+  "onboardingEmploymentStudent": "Estudiante",
+  "@onboardingEmploymentStudent": {
+    "description": "Employment option."
+  },
+  "onboardingEmploymentUnemployed": "En paro",
+  "@onboardingEmploymentUnemployed": {
+    "description": "Employment option."
+  },
+  "onboardingIncome": "Ingresos netos mensuales",
+  "@onboardingIncome": {
+    "description": "Net monthly income field label."
+  },
+  "onboardingDependents": "¿Tienes personas a tu cargo?",
+  "@onboardingDependents": {
+    "description": "Dependents question."
+  },
+  "onboardingDebt": "¿Tienes deudas con intereses altos? (tarjetas de crédito, préstamos personales)",
+  "@onboardingDebt": {
+    "description": "High-interest debt question."
+  },
+  "onboardingDebtAmount": "Importe pendiente",
+  "@onboardingDebtAmount": {
+    "description": "Outstanding debt amount label."
+  },
+  "onboardingExpensesTitle": "Tus gastos mensuales",
+  "@onboardingExpensesTitle": {
+    "description": "Expenses step title."
+  },
+  "onboardingExpensesSubtitle": "Aproximado está bien. Deja en blanco lo que no tengas.",
+  "@onboardingExpensesSubtitle": {
+    "description": "Expenses step subtitle."
+  },
+  "onboardingExpenseHousing": "Vivienda (alquiler o hipoteca, suministros)",
+  "@onboardingExpenseHousing": {
+    "description": "Expense category."
+  },
+  "onboardingExpenseFood": "Alimentación",
+  "@onboardingExpenseFood": {
+    "description": "Expense category."
+  },
+  "onboardingExpenseTransport": "Transporte",
+  "@onboardingExpenseTransport": {
+    "description": "Expense category."
+  },
+  "onboardingExpenseInsurance": "Seguros",
+  "@onboardingExpenseInsurance": {
+    "description": "Expense category."
+  },
+  "onboardingExpenseSubscriptions": "Suscripciones",
+  "@onboardingExpenseSubscriptions": {
+    "description": "Expense category."
+  },
+  "onboardingExpenseOtherFixed": "Otros gastos fijos",
+  "@onboardingExpenseOtherFixed": {
+    "description": "Expense category."
+  },
+  "onboardingExpensesTotal": "Total: {amount} al mes",
+  "@onboardingExpensesTotal": {
+    "description": "Live total of monthly expenses.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingRiskTitle": "Tu tolerancia al riesgo",
+  "@onboardingRiskTitle": {
+    "description": "Risk step title."
+  },
+  "onboardingRiskQ1": "Si tu inversión cae un 20 % en un mes…",
+  "@onboardingRiskQ1": {
+    "description": "Risk question 1."
+  },
+  "onboardingRiskQ1A1": "Lo vendo todo",
+  "@onboardingRiskQ1A1": {
+    "description": "Risk answer (1 point)."
+  },
+  "onboardingRiskQ1A2": "Espero a que se recupere",
+  "@onboardingRiskQ1A2": {
+    "description": "Risk answer (2 points)."
+  },
+  "onboardingRiskQ1A3": "Invierto más aprovechando la bajada",
+  "@onboardingRiskQ1A3": {
+    "description": "Risk answer (3 points)."
+  },
+  "onboardingRiskQ2": "¿Cuándo crees que necesitarás este dinero?",
+  "@onboardingRiskQ2": {
+    "description": "Risk question 2."
+  },
+  "onboardingRiskQ2A1": "En menos de 2 años",
+  "@onboardingRiskQ2A1": {
+    "description": "Risk answer (1 point)."
+  },
+  "onboardingRiskQ2A2": "Entre 2 y 5 años",
+  "@onboardingRiskQ2A2": {
+    "description": "Risk answer (2 points)."
+  },
+  "onboardingRiskQ2A3": "En más de 5 años",
+  "@onboardingRiskQ2A3": {
+    "description": "Risk answer (3 points)."
+  },
+  "onboardingRiskQ3": "¿Qué prefieres?",
+  "@onboardingRiskQ3": {
+    "description": "Risk question 3."
+  },
+  "onboardingRiskQ3A1": "Ganar poco, pero con seguridad",
+  "@onboardingRiskQ3A1": {
+    "description": "Risk answer (1 point)."
+  },
+  "onboardingRiskQ3A2": "Asumir algo de riesgo por algo más de rentabilidad",
+  "@onboardingRiskQ3A2": {
+    "description": "Risk answer (2 points)."
+  },
+  "onboardingRiskQ3A3": "Asumir mucho riesgo por la posibilidad de ganar mucho",
+  "@onboardingRiskQ3A3": {
+    "description": "Risk answer (3 points)."
+  },
+  "onboardingRiskQ4": "¿Cómo te sentirías viendo tu inversión en negativo durante un año?",
+  "@onboardingRiskQ4": {
+    "description": "Risk question 4."
+  },
+  "onboardingRiskQ4A1": "Muy intranquilo/a, me quitaría el sueño",
+  "@onboardingRiskQ4A1": {
+    "description": "Risk answer (1 point)."
+  },
+  "onboardingRiskQ4A2": "Incómodo/a, pero lo aguantaría",
+  "@onboardingRiskQ4A2": {
+    "description": "Risk answer (2 points)."
+  },
+  "onboardingRiskQ4A3": "Tranquilo/a, es parte de invertir a largo plazo",
+  "@onboardingRiskQ4A3": {
+    "description": "Risk answer (3 points)."
+  },
+  "onboardingGoalsTitle": "Tus objetivos",
+  "@onboardingGoalsTitle": {
+    "description": "Goals step title."
+  },
+  "onboardingGoalsSubtitle": "Puedes elegir varios. Podrás ajustarlos más adelante.",
+  "@onboardingGoalsSubtitle": {
+    "description": "Goals step subtitle."
+  },
+  "onboardingGoalEmergency": "Fondo de emergencia",
+  "@onboardingGoalEmergency": {
+    "description": "Emergency fund goal option."
+  },
+  "onboardingGoalEmergencyHint": "Siempre es el primer paso",
+  "@onboardingGoalEmergencyHint": {
+    "description": "Explains why the emergency goal is always on."
+  },
+  "onboardingGoalHousing": "Entrada de una vivienda",
+  "@onboardingGoalHousing": {
+    "description": "House down payment goal option."
+  },
+  "onboardingGoalRetirement": "Jubilación",
+  "@onboardingGoalRetirement": {
+    "description": "Retirement goal option."
+  },
+  "onboardingGoalOther": "Otro",
+  "@onboardingGoalOther": {
+    "description": "Custom goal option."
+  },
+  "onboardingGoalOtherName": "Nombre del objetivo",
+  "@onboardingGoalOtherName": {
+    "description": "Custom goal name field."
+  },
+  "onboardingKnowledgeTitle": "¿Cuánto sabes de inversión?",
+  "@onboardingKnowledgeTitle": {
+    "description": "Knowledge step title."
+  },
+  "onboardingKnowledgeNone": "Nada, empiezo de cero",
+  "@onboardingKnowledgeNone": {
+    "description": "Knowledge level option."
+  },
+  "onboardingKnowledgeBasic": "Lo básico",
+  "@onboardingKnowledgeBasic": {
+    "description": "Knowledge level option."
+  },
+  "onboardingKnowledgeIntermediate": "Nivel intermedio",
+  "@onboardingKnowledgeIntermediate": {
+    "description": "Knowledge level option."
+  },
+  "onboardingResultTitle": "Tu punto de partida",
+  "@onboardingResultTitle": {
+    "description": "Result step title."
+  },
+  "onboardingResultRiskProfile": "Perfil de riesgo",
+  "@onboardingResultRiskProfile": {
+    "description": "Result: risk profile label."
+  },
+  "onboardingRiskProfileConservative": "Conservador",
+  "@onboardingRiskProfileConservative": {
+    "description": "Risk profile name."
+  },
+  "onboardingRiskProfileModerate": "Moderado",
+  "@onboardingRiskProfileModerate": {
+    "description": "Risk profile name."
+  },
+  "onboardingRiskProfileAggressive": "Dinámico",
+  "@onboardingRiskProfileAggressive": {
+    "description": "Risk profile name."
+  },
+  "onboardingRiskProfileConservativeDesc": "Priorizas la estabilidad y te incomodan las caídas.",
+  "@onboardingRiskProfileConservativeDesc": {
+    "description": "Risk profile description."
+  },
+  "onboardingRiskProfileModerateDesc": "Aceptas algo de volatilidad a cambio de más rentabilidad potencial.",
+  "@onboardingRiskProfileModerateDesc": {
+    "description": "Risk profile description."
+  },
+  "onboardingRiskProfileAggressiveDesc": "Toleras bien las caídas y piensas a largo plazo.",
+  "@onboardingRiskProfileAggressiveDesc": {
+    "description": "Risk profile description."
+  },
+  "onboardingResultEmergencyTitle": "Fondo de emergencia",
+  "@onboardingResultEmergencyTitle": {
+    "description": "Result: emergency fund card title."
+  },
+  "onboardingResultEmergencyRange": "Te recomendamos cubrir entre {min} y {max} meses de gastos: de {minAmount} a {maxAmount}.",
+  "@onboardingResultEmergencyRange": {
+    "description": "Result: recommended emergency fund range.",
+    "placeholders": {
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      },
+      "minAmount": {
+        "type": "String"
+      },
+      "maxAmount": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingResultMonths": "{months, plural, =1{1 mes} other{{months} meses}}",
+  "@onboardingResultMonths": {
+    "description": "Number of months.",
+    "placeholders": {
+      "months": {
+        "type": "int"
+      }
+    }
+  },
+  "onboardingResultTarget": "Tu objetivo: {amount}",
+  "@onboardingResultTarget": {
+    "description": "Result: chosen emergency fund target.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingResultNoExpenses": "No has indicado gastos, así que el objetivo es 0 €. Podrás cambiarlo más adelante.",
+  "@onboardingResultNoExpenses": {
+    "description": "Result: warning when expenses are zero."
+  },
+  "onboardingResultDebtWarning": "Prioriza pagar esta deuda antes de invertir",
+  "@onboardingResultDebtWarning": {
+    "description": "Result: high-interest debt warning."
+  },
+  "onboardingResultLessons": "Te recomendamos empezar por",
+  "@onboardingResultLessons": {
+    "description": "Result: recommended lessons heading."
+  },
+  "onboardingConfirm": "Confirmar y empezar",
+  "@onboardingConfirm": {
+    "description": "Final onboarding button."
+  },
+  "learnModuleFundamentals": "Fundamentos",
+  "@learnModuleFundamentals": {
+    "description": "Learn module name."
+  },
+  "learnModuleEmergencyFund": "Fondo de emergencia",
+  "@learnModuleEmergencyFund": {
+    "description": "Learn module name."
+  },
+  "learnModuleDebt": "Deudas",
+  "@learnModuleDebt": {
+    "description": "Learn module name."
+  },
+  "learnModuleFixedIncome": "Renta fija",
+  "@learnModuleFixedIncome": {
+    "description": "Learn module name."
+  },
+  "learnModuleEquities": "Renta variable",
+  "@learnModuleEquities": {
+    "description": "Learn module name."
+  },
+  "learnModuleCrypto": "Criptomonedas",
+  "@learnModuleCrypto": {
+    "description": "Learn module name."
+  },
+  "learnModuleTaxes": "Fiscalidad básica en España",
+  "@learnModuleTaxes": {
+    "description": "Learn module name."
+  },
+  "learnModulePsychology": "Psicología del inversor",
+  "@learnModulePsychology": {
+    "description": "Learn module name."
+  }
 }

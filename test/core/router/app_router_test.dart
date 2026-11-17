@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:invest_young/app.dart';
 import 'package:invest_young/core/router/app_router.dart';
 import 'package:invest_young/core/router/routes.dart';
+
+import '../../helpers/pump_app.dart';
 
 void main() {
   group('onboardingRedirect', () {
@@ -19,32 +19,14 @@ void main() {
     });
   });
 
-  testWidgets('opens onboarding, then shows the 5 tabs', (tester) async {
-    tester.platformDispatcher.localesTestValue = const [Locale('es')];
-    addTearDown(tester.platformDispatcher.clearLocalesTestValue);
-
-    await tester.pumpWidget(const ProviderScope(child: InvestYoungApp()));
-    await tester.pumpAndSettle();
-
+  testWidgets('opens onboarding when it is not completed', (tester) async {
+    await pumpApp(tester);
     expect(find.byType(NavigationBar), findsNothing);
-    await tester.tap(find.text('Empezar'));
-    await tester.pumpAndSettle();
-
-    expect(find.byType(NavigationBar), findsOneWidget);
-    expect(find.byType(NavigationDestination), findsNWidgets(5));
-
-    await tester.tap(find.text('Perfil'));
-    await tester.pumpAndSettle();
-    expect(find.widgetWithText(AppBar, 'Perfil'), findsOneWidget);
+    expect(find.text('Elige tu idioma'), findsOneWidget);
   });
 
   testWidgets('uses Catalan when the device locale is Catalan', (tester) async {
-    tester.platformDispatcher.localesTestValue = const [Locale('ca', 'ES')];
-    addTearDown(tester.platformDispatcher.clearLocalesTestValue);
-
-    await tester.pumpWidget(const ProviderScope(child: InvestYoungApp()));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Començar'), findsOneWidget);
+    await pumpApp(tester, locale: const Locale('ca', 'ES'));
+    expect(find.text('Tria el teu idioma'), findsOneWidget);
   });
 }

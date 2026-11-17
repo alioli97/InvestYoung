@@ -49,12 +49,320 @@ class AppLocalizationsCa extends AppLocalizations {
       'Organitza les teves finances i comença a invertir amb seny.';
 
   @override
-  String get onboardingStartButton => 'Començar';
-
-  @override
   String get commonComingSoon => 'Properament';
 
   @override
   String get commonSimulationDisclaimer =>
       'Simulació orientativa, els resultats no estan garantits';
+
+  @override
+  String get commonBack => 'Enrere';
+
+  @override
+  String get commonContinue => 'Continuar';
+
+  @override
+  String get commonYes => 'Sí';
+
+  @override
+  String get commonNo => 'No';
+
+  @override
+  String get commonOptional => 'Opcional';
+
+  @override
+  String get commonInvalidAmount => 'Introdueix un import vàlid';
+
+  @override
+  String get commonLegalNoticeTitle => 'Avís legal';
+
+  @override
+  String get commonLegalNoticeBody =>
+      'Invertir sent Jove és una aplicació educativa. La informació, els perfils, els rangs i les simulacions que mostra són orientatius i no constitueixen assessorament financer ni una recomanació personalitzada d\'inversió, activitat regulada a Espanya per la Comissió Nacional del Mercat de Valors (CNMV).\n\nInvertir comporta riscos, inclosa la pèrdua del capital invertit, i les rendibilitats passades no garanteixen rendibilitats futures. Abans de prendre decisions d\'inversió, informa\'t bé i, si cal, consulta un professional autoritzat.\n\nLes teves dades es desen només al teu dispositiu.';
+
+  @override
+  String onboardingStepCounter(int current, int total) {
+    return 'Pas $current de $total';
+  }
+
+  @override
+  String get onboardingLanguageTitle => 'Tria el teu idioma';
+
+  @override
+  String get onboardingLanguageSpanish => 'Castellà';
+
+  @override
+  String get onboardingLanguageCatalan => 'Català';
+
+  @override
+  String get onboardingLegalAccept => 'He llegit i accepto l\'avís legal';
+
+  @override
+  String get onboardingSituationTitle => 'La teva situació';
+
+  @override
+  String get onboardingAgeRange => 'Edat';
+
+  @override
+  String get onboardingAge16To20 => '16–20';
+
+  @override
+  String get onboardingAge21To25 => '21–25';
+
+  @override
+  String get onboardingAge26To30 => '26–30';
+
+  @override
+  String get onboardingAge31To35 => '31–35';
+
+  @override
+  String get onboardingAgeOver35 => 'Més de 35';
+
+  @override
+  String get onboardingEmployment => 'Situació laboral';
+
+  @override
+  String get onboardingEmploymentPermanent => 'Contracte indefinit';
+
+  @override
+  String get onboardingEmploymentTemporary => 'Contracte temporal';
+
+  @override
+  String get onboardingEmploymentSelfEmployed => 'Autònom/a';
+
+  @override
+  String get onboardingEmploymentStudent => 'Estudiant';
+
+  @override
+  String get onboardingEmploymentUnemployed => 'A l\'atur';
+
+  @override
+  String get onboardingIncome => 'Ingressos nets mensuals';
+
+  @override
+  String get onboardingDependents => 'Tens persones al teu càrrec?';
+
+  @override
+  String get onboardingDebt =>
+      'Tens deutes amb interessos alts? (targetes de crèdit, préstecs personals)';
+
+  @override
+  String get onboardingDebtAmount => 'Import pendent';
+
+  @override
+  String get onboardingExpensesTitle => 'Les teves despeses mensuals';
+
+  @override
+  String get onboardingExpensesSubtitle =>
+      'Aproximat ja està bé. Deixa en blanc el que no tinguis.';
+
+  @override
+  String get onboardingExpenseHousing =>
+      'Habitatge (lloguer o hipoteca, subministraments)';
+
+  @override
+  String get onboardingExpenseFood => 'Alimentació';
+
+  @override
+  String get onboardingExpenseTransport => 'Transport';
+
+  @override
+  String get onboardingExpenseInsurance => 'Assegurances';
+
+  @override
+  String get onboardingExpenseSubscriptions => 'Subscripcions';
+
+  @override
+  String get onboardingExpenseOtherFixed => 'Altres despeses fixes';
+
+  @override
+  String onboardingExpensesTotal(String amount) {
+    return 'Total: $amount al mes';
+  }
+
+  @override
+  String get onboardingRiskTitle => 'La teva tolerància al risc';
+
+  @override
+  String get onboardingRiskQ1 => 'Si la teva inversió cau un 20 % en un mes…';
+
+  @override
+  String get onboardingRiskQ1A1 => 'Ho venc tot';
+
+  @override
+  String get onboardingRiskQ1A2 => 'Espero que es recuperi';
+
+  @override
+  String get onboardingRiskQ1A3 => 'Hi inverteixo més aprofitant la baixada';
+
+  @override
+  String get onboardingRiskQ2 => 'Quan creus que necessitaràs aquests diners?';
+
+  @override
+  String get onboardingRiskQ2A1 => 'En menys de 2 anys';
+
+  @override
+  String get onboardingRiskQ2A2 => 'Entre 2 i 5 anys';
+
+  @override
+  String get onboardingRiskQ2A3 => 'En més de 5 anys';
+
+  @override
+  String get onboardingRiskQ3 => 'Què prefereixes?';
+
+  @override
+  String get onboardingRiskQ3A1 => 'Guanyar poc, però amb seguretat';
+
+  @override
+  String get onboardingRiskQ3A2 =>
+      'Assumir una mica de risc per una mica més de rendibilitat';
+
+  @override
+  String get onboardingRiskQ3A3 =>
+      'Assumir molt de risc per la possibilitat de guanyar molt';
+
+  @override
+  String get onboardingRiskQ4 =>
+      'Com et sentiries veient la teva inversió en negatiu durant un any?';
+
+  @override
+  String get onboardingRiskQ4A1 => 'Molt intranquil/a, em trauria la son';
+
+  @override
+  String get onboardingRiskQ4A2 => 'Incòmode/a, però ho aguantaria';
+
+  @override
+  String get onboardingRiskQ4A3 =>
+      'Tranquil/a, és part d\'invertir a llarg termini';
+
+  @override
+  String get onboardingGoalsTitle => 'Els teus objectius';
+
+  @override
+  String get onboardingGoalsSubtitle =>
+      'En pots triar diversos. Els podràs ajustar més endavant.';
+
+  @override
+  String get onboardingGoalEmergency => 'Fons d\'emergència';
+
+  @override
+  String get onboardingGoalEmergencyHint => 'Sempre és el primer pas';
+
+  @override
+  String get onboardingGoalHousing => 'Entrada d\'un habitatge';
+
+  @override
+  String get onboardingGoalRetirement => 'Jubilació';
+
+  @override
+  String get onboardingGoalOther => 'Un altre';
+
+  @override
+  String get onboardingGoalOtherName => 'Nom de l\'objectiu';
+
+  @override
+  String get onboardingKnowledgeTitle => 'Quant en saps, d\'inversió?';
+
+  @override
+  String get onboardingKnowledgeNone => 'Res, començo de zero';
+
+  @override
+  String get onboardingKnowledgeBasic => 'El bàsic';
+
+  @override
+  String get onboardingKnowledgeIntermediate => 'Nivell intermedi';
+
+  @override
+  String get onboardingResultTitle => 'El teu punt de partida';
+
+  @override
+  String get onboardingResultRiskProfile => 'Perfil de risc';
+
+  @override
+  String get onboardingRiskProfileConservative => 'Conservador';
+
+  @override
+  String get onboardingRiskProfileModerate => 'Moderat';
+
+  @override
+  String get onboardingRiskProfileAggressive => 'Dinàmic';
+
+  @override
+  String get onboardingRiskProfileConservativeDesc =>
+      'Prioritzes l\'estabilitat i et incomoden les caigudes.';
+
+  @override
+  String get onboardingRiskProfileModerateDesc =>
+      'Acceptes una mica de volatilitat a canvi de més rendibilitat potencial.';
+
+  @override
+  String get onboardingRiskProfileAggressiveDesc =>
+      'Toleres bé les caigudes i penses a llarg termini.';
+
+  @override
+  String get onboardingResultEmergencyTitle => 'Fons d\'emergència';
+
+  @override
+  String onboardingResultEmergencyRange(
+    int min,
+    int max,
+    String minAmount,
+    String maxAmount,
+  ) {
+    return 'Et recomanem cobrir entre $min i $max mesos de despeses: de $minAmount a $maxAmount.';
+  }
+
+  @override
+  String onboardingResultMonths(int months) {
+    String _temp0 = intl.Intl.pluralLogic(
+      months,
+      locale: localeName,
+      other: '$months mesos',
+      one: '1 mes',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String onboardingResultTarget(String amount) {
+    return 'El teu objectiu: $amount';
+  }
+
+  @override
+  String get onboardingResultNoExpenses =>
+      'No has indicat despeses, així que l\'objectiu és 0 €. El podràs canviar més endavant.';
+
+  @override
+  String get onboardingResultDebtWarning =>
+      'Prioritza pagar aquest deute abans d\'invertir';
+
+  @override
+  String get onboardingResultLessons => 'Et recomanem començar per';
+
+  @override
+  String get onboardingConfirm => 'Confirmar i començar';
+
+  @override
+  String get learnModuleFundamentals => 'Fonaments';
+
+  @override
+  String get learnModuleEmergencyFund => 'Fons d\'emergència';
+
+  @override
+  String get learnModuleDebt => 'Deutes';
+
+  @override
+  String get learnModuleFixedIncome => 'Renda fixa';
+
+  @override
+  String get learnModuleEquities => 'Renda variable';
+
+  @override
+  String get learnModuleCrypto => 'Criptomonedes';
+
+  @override
+  String get learnModuleTaxes => 'Fiscalitat bàsica a Espanya';
+
+  @override
+  String get learnModulePsychology => 'Psicologia de l\'inversor';
 }
