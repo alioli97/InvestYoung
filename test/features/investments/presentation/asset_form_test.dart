@@ -96,6 +96,8 @@ void main() {
     await tapVisible(tester, find.widgetWithText(FilledButton, 'Guardar'));
 
     expect(findMoney('Mi banco · 2,25 % TAE'), findsOneWidget);
+    await tapVisible(tester, find.text('Cuenta remunerada'));
+    expect(find.widgetWithText(Chip, 'Fondo de emergencia'), findsNWidgets(2));
     final asset = (await tester.runAsync(repo.getAssets))!.single;
     expect(asset.metadata['apy'], closeTo(0.0225, 1e-12));
     expect(asset.goalId, goalId);
