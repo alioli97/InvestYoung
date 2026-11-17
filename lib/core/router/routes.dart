@@ -33,4 +33,6 @@ abstract final class Routes {
   static String editGoal(int goalId) => '${goal(goalId)}/edit';
 
   static String newGoal(GoalType type) => '$goals/new/${type.dbValue}';
+
+  static String lesson(String lessonId) => '$learn/lesson/$lessonId';
 }

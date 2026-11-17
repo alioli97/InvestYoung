@@ -797,4 +797,12 @@ class AppLocalizationsCa extends AppLocalizations {
   String investmentsEmergencyWarning(String current, String target) {
     return 'El teu fons d\'emergència encara no és complet ($current de $target). El més habitual és completar-lo abans d\'invertir en actius amb més risc, però pots continuar igualment.';
   }
+
+  @override
+  String get learnRecommended => 'Recomanat per a tu';
+
+  @override
+  String learnMinutes(int minutes) {
+    return '$minutes min de lectura';
+  }
 }

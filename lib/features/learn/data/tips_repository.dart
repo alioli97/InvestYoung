@@ -16,6 +16,7 @@ class TipsRepository {
   Future<List<Tip>> load(String languageCode) async {
     final json = await _bundle.loadString(
       'assets/learn/$languageCode/tips.json',
+      cache: false, // See LearnRepository.
     );
     final data = jsonDecode(json) as Map<String, dynamic>;
     return [

@@ -1506,6 +1506,18 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Tu fondo de emergencia aún no está completo ({current} de {target}). Lo habitual es completarlo antes de invertir en activos con más riesgo, pero puedes continuar igualmente.'**
   String investmentsEmergencyWarning(String current, String target);
+
+  /// Marks modules recommended for the user's knowledge level.
+  ///
+  /// In es, this message translates to:
+  /// **'Recomendado para ti'**
+  String get learnRecommended;
+
+  /// Lesson reading time.
+  ///
+  /// In es, this message translates to:
+  /// **'{minutes} min de lectura'**
+  String learnMinutes(int minutes);
 }
 
 class _AppLocalizationsDelegate

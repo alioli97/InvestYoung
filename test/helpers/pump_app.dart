@@ -72,3 +72,23 @@ Finder findMoney(String text, {bool contains = false}) =>
       final normalized = _normalizeSpaces(data);
       return contains ? normalized.contains(text) : normalized == text;
     }, description: 'text "$text"');
+
+/// Pumps until [finder] matches something, letting real async work (asset
+/// loading) progress between frames. Fails after [timeout].
+Future<void> pumpUntilFound(
+  WidgetTester tester,
+  Finder finder, {
+  Duration timeout = const Duration(seconds: 10),
+}) async {
+  final end = DateTime.now().add(timeout);
+  while (finder.evaluate().isEmpty) {
+    if (DateTime.now().isAfter(end)) {
+      throw TestFailure('Timed out waiting for $finder');
+    }
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 20)),
+    );
+    await tester.pump();
+  }
+  await tester.pumpAndSettle();
+}
