@@ -744,6 +744,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Psicología del inversor'**
   String get learnModulePsychology;
+
+  /// Generic error when saving fails.
+  ///
+  /// In es, this message translates to:
+  /// **'No se han podido guardar los datos. Inténtalo de nuevo.'**
+  String get commonSaveError;
 }
 
 class _AppLocalizationsDelegate

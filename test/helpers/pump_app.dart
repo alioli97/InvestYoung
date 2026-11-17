@@ -2,21 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:invest_young/app.dart';
+import 'package:invest_young/core/db/app_database.dart';
+import 'package:invest_young/features/onboarding/domain/user_profile.dart';
+import 'package:invest_young/features/onboarding/presentation/onboarding_status_provider.dart';
 
-/// Pumps the whole app with the device locale set to [locale].
-Future<void> pumpApp(
+import 'test_database.dart';
+
+/// Pumps the whole app with the device locale set to [locale], backed by an
+/// in-memory database (returned so tests can inspect it).
+Future<AppDatabase> pumpApp(
   WidgetTester tester, {
   Locale locale = const Locale('es'),
   Size size = const Size(400, 900),
+  AppDatabase? database,
+  UserProfile? startupProfile,
 }) async {
+  final db = database ?? createTestDatabase();
+  addTearDown(db.close);
   tester.platformDispatcher.localesTestValue = [locale];
   addTearDown(tester.platformDispatcher.clearLocalesTestValue);
   tester.view.physicalSize = size;
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
 
-  await tester.pumpWidget(const ProviderScope(child: InvestYoungApp()));
+  await tester.pumpWidget(
+    ProviderScope(
+      overrides: [
+        appDatabaseProvider.overrideWithValue(db),
+        startupProfileProvider.overrideWithValue(startupProfile),
+      ],
+      child: const InvestYoungApp(),
+    ),
+  );
   await tester.pumpAndSettle();
+  return db;
 }
 
 /// Taps the widget found by [finder], scrolling it into view first (lazy

@@ -24,7 +24,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 ## Phase 2 — Onboarding
 - [x] Steps 0–7 flow (SPEC §3) with state in a Notifier
 - [x] Risk profile and emergency months logic + tests
-- [ ] Persist profile, expenses and goals on confirm
+- [x] Persist profile, expenses and goals on confirm
 - [ ] Retake questionnaire from Profile
 
 ## Phase 3 — Investments

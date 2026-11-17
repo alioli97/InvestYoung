@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:invest_young/features/goals/domain/goal_type.dart';
+import 'package:invest_young/features/onboarding/domain/profile_enums.dart';
+
+import 'package:invest_young/features/onboarding/domain/user_profile.dart';
 
 import '../../../helpers/pump_app.dart';
 
@@ -51,8 +55,8 @@ Future<void> completeUntilResult(WidgetTester tester) async {
 }
 
 void main() {
-  testWidgets('walks through the 8 steps to the result', (tester) async {
-    await pumpApp(tester);
+  testWidgets('walks through the 8 steps and saves the result', (tester) async {
+    final db = await pumpApp(tester);
     expect(find.text('Paso 1 de 8'), findsOneWidget);
 
     await completeUntilResult(tester);
@@ -69,6 +73,41 @@ void main() {
 
     await tapVisible(tester, find.text('Confirmar y empezar'));
     expect(find.byType(NavigationBar), findsOneWidget);
+
+    final profile = await db.select(db.userProfiles).getSingle();
+    expect(profile.employment, Employment.temporary);
+    expect(profile.riskProfile, RiskProfile.moderate);
+    expect(profile.emergencyMonths, 9);
+    expect(profile.hasHighInterestDebt, isTrue);
+    expect(profile.locale, 'es');
+    expect(profile.onboardingCompletedAt, isNotNull);
+
+    final goals = await db.select(db.goals).get();
+    expect(goals.map((g) => g.type), [GoalType.emergency, GoalType.retirement]);
+    expect(goals.first.targetCents, 720450);
+    expect(await db.select(db.monthlyExpenses).get(), hasLength(6));
+  });
+
+  testWidgets('starts on Home with the saved language when onboarded', (
+    tester,
+  ) async {
+    await pumpApp(
+      tester,
+      startupProfile: UserProfile(
+        ageRange: AgeRange.over35,
+        employment: Employment.permanent,
+        hasDependents: false,
+        hasHighInterestDebt: false,
+        riskScore: 8,
+        riskProfile: RiskProfile.moderate,
+        knowledgeLevel: KnowledgeLevel.basic,
+        emergencyMonths: 5,
+        locale: 'ca',
+        onboardingCompletedAt: DateTime.utc(2026),
+      ),
+    );
+    expect(find.byType(NavigationBar), findsOneWidget);
+    expect(find.text('Inici'), findsWidgets);
   });
 
   testWidgets('continue is disabled until the legal notice is accepted', (

@@ -52,11 +52,31 @@ class OnboardingScreen extends ConsumerWidget {
           flow: flow,
           onBack: controller.back,
           onNext: controller.next,
-          onConfirm: () =>
-              ref.read(onboardingStatusProvider.notifier).markCompleted(),
+          onConfirm: () => _confirm(context, ref),
         ),
       ),
     );
+  }
+
+  Future<void> _confirm(BuildContext context, WidgetRef ref) async {
+    final l10n = context.l10n;
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      await ref
+          .read(onboardingControllerProvider.notifier)
+          .confirm(
+            locale: Localizations.localeOf(context).languageCode,
+            names: (
+              emergency: l10n.onboardingGoalEmergency,
+              housing: l10n.onboardingGoalHousing,
+              retirement: l10n.onboardingGoalRetirement,
+            ),
+          );
+    } on Exception {
+      messenger.showSnackBar(SnackBar(content: Text(l10n.commonSaveError)));
+      return;
+    }
+    ref.read(onboardingStatusProvider.notifier).markCompleted();
   }
 
   static Widget _stepBody(OnboardingStep step) => switch (step) {

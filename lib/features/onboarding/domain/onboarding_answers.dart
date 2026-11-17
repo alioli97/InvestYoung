@@ -1,6 +1,7 @@
 import '../../../core/utils/finance.dart';
 import 'onboarding_logic.dart';
 import 'profile_enums.dart';
+import 'user_profile.dart';
 
 /// Screens of the onboarding questionnaire (docs/SPEC.md §3), in order.
 enum OnboardingStep {
@@ -115,6 +116,39 @@ class OnboardingAnswers {
           .where((s) => s != OnboardingStep.result)
           .every(isStepComplete),
   };
+
+  /// Builds the profile to persist. Requires every step to be complete.
+  UserProfile toProfile({
+    int? id,
+    required String locale,
+    required DateTime completedAt,
+  }) {
+    if (!isStepComplete(OnboardingStep.result)) {
+      throw StateError('Onboarding answers are incomplete');
+    }
+    final hasDebt = hasHighInterestDebt!;
+    return UserProfile(
+      id: id,
+      ageRange: ageRange!,
+      employment: employment!,
+      monthlyIncomeCents: monthlyIncomeCents,
+      hasDependents: hasDependents!,
+      hasHighInterestDebt: hasDebt,
+      debtCents: hasDebt ? debtCents : null,
+      riskScore: riskScoreValue!,
+      riskProfile: riskProfile!,
+      knowledgeLevel: knowledgeLevel!,
+      emergencyMonths: selectedEmergencyMonths!,
+      locale: locale,
+      onboardingCompletedAt: completedAt.toUtc(),
+    );
+  }
+
+  /// Expenses to persist, one per category (0 when not filled in).
+  List<MonthlyExpense> get monthlyExpenses => [
+    for (final category in ExpenseCategory.values)
+      MonthlyExpense(category: category, amountCents: expenseCents(category)),
+  ];
 
   /// Nullable fields take a getter so they can be explicitly cleared.
   OnboardingAnswers copyWith({

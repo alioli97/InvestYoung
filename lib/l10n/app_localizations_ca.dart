@@ -365,4 +365,8 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get learnModulePsychology => 'Psicologia de l\'inversor';
+
+  @override
+  String get commonSaveError =>
+      'No s\'han pogut desar les dades. Torna-ho a provar.';
 }
