@@ -8,24 +8,64 @@ part of 'onboarding_status_provider.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
+/// Profile loaded from the database before the app starts (see `main.dart`).
+/// `null` when there is none yet; tests can leave it un-overridden.
+
+@ProviderFor(startupProfile)
+final startupProfileProvider = StartupProfileProvider._();
+
+/// Profile loaded from the database before the app starts (see `main.dart`).
+/// `null` when there is none yet; tests can leave it un-overridden.
+
+final class StartupProfileProvider
+    extends $FunctionalProvider<UserProfile?, UserProfile?, UserProfile?>
+    with $Provider<UserProfile?> {
+  /// Profile loaded from the database before the app starts (see `main.dart`).
+  /// `null` when there is none yet; tests can leave it un-overridden.
+  StartupProfileProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'startupProfileProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$startupProfileHash();
+
+  @$internal
+  @override
+  $ProviderElement<UserProfile?> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  UserProfile? create(Ref ref) {
+    return startupProfile(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(UserProfile? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<UserProfile?>(value),
+    );
+  }
+}
+
+String _$startupProfileHash() => r'd13f62ece5c8eb3eda97e5518118ee029fb3aa39';
+
 /// Whether the user has completed the onboarding questionnaire.
-///
-/// In-memory for now; it will be backed by `user_profiles.onboarding_completed_at`
-/// once the database exists (Phase 1–2).
 
 @ProviderFor(OnboardingStatus)
 final onboardingStatusProvider = OnboardingStatusProvider._();
 
 /// Whether the user has completed the onboarding questionnaire.
-///
-/// In-memory for now; it will be backed by `user_profiles.onboarding_completed_at`
-/// once the database exists (Phase 1–2).
 final class OnboardingStatusProvider
     extends $NotifierProvider<OnboardingStatus, bool> {
   /// Whether the user has completed the onboarding questionnaire.
-  ///
-  /// In-memory for now; it will be backed by `user_profiles.onboarding_completed_at`
-  /// once the database exists (Phase 1–2).
   OnboardingStatusProvider._()
     : super(
         from: null,
@@ -53,12 +93,9 @@ final class OnboardingStatusProvider
   }
 }
 
-String _$onboardingStatusHash() => r'70d41d11cb688cd686ddff2d231dfbac0eebe8c5';
+String _$onboardingStatusHash() => r'f74164fbd859a317004775b5e52ed25eaec682bd';
 
 /// Whether the user has completed the onboarding questionnaire.
-///
-/// In-memory for now; it will be backed by `user_profiles.onboarding_completed_at`
-/// once the database exists (Phase 1–2).
 
 abstract class _$OnboardingStatus extends $Notifier<bool> {
   bool build();

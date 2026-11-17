@@ -106,5 +106,6 @@
   "learnModuleEquities": "Renda variable",
   "learnModuleCrypto": "Criptomonedes",
   "learnModuleTaxes": "Fiscalitat bàsica a Espanya",
-  "learnModulePsychology": "Psicologia de l'inversor"
+  "learnModulePsychology": "Psicologia de l'inversor",
+  "commonSaveError": "No s'han pogut desar les dades. Torna-ho a provar."
 }

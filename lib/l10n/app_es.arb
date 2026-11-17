@@ -464,5 +464,9 @@
   "learnModulePsychology": "Psicología del inversor",
   "@learnModulePsychology": {
     "description": "Learn module name."
+  },
+  "commonSaveError": "No se han podido guardar los datos. Inténtalo de nuevo.",
+  "@commonSaveError": {
+    "description": "Generic error when saving fails."
   }
 }

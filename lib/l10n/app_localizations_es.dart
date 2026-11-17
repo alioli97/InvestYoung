@@ -365,4 +365,8 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get learnModulePsychology => 'Psicología del inversor';
+
+  @override
+  String get commonSaveError =>
+      'No se han podido guardar los datos. Inténtalo de nuevo.';
 }

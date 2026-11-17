@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../data/onboarding_repository.dart';
 import '../domain/onboarding_answers.dart';
 import '../domain/profile_enums.dart';
 
@@ -9,21 +10,27 @@ class OnboardingFlowState {
   const OnboardingFlowState({
     this.step = OnboardingStep.language,
     this.answers = const OnboardingAnswers(),
+    this.saving = false,
   });
 
   final OnboardingStep step;
   final OnboardingAnswers answers;
 
+  /// `true` while the result is being persisted.
+  final bool saving;
+
   bool get isFirst => step == OnboardingStep.values.first;
   bool get isLast => step == OnboardingStep.values.last;
-  bool get canContinue => answers.isStepComplete(step);
+  bool get canContinue => !saving && answers.isStepComplete(step);
 
   OnboardingFlowState copyWith({
     OnboardingStep? step,
     OnboardingAnswers? answers,
+    bool? saving,
   }) => OnboardingFlowState(
     step: step ?? this.step,
     answers: answers ?? this.answers,
+    saving: saving ?? this.saving,
   );
 }
 
@@ -62,6 +69,22 @@ class OnboardingController extends _$OnboardingController {
       ],
     ),
   );
+
+  /// Persists the answers. Throws if saving fails (state stays editable).
+  Future<void> confirm({
+    required String locale,
+    required OnboardingGoalNames names,
+  }) async {
+    if (!state.isLast || !state.canContinue) return;
+    state = state.copyWith(saving: true);
+    try {
+      await ref
+          .read(onboardingRepositoryProvider)
+          .complete(state.answers, locale: locale, names: names);
+    } finally {
+      if (ref.mounted) state = state.copyWith(saving: false);
+    }
+  }
 
   void setHighInterestDebt(bool value) => update(
     (a) => a.copyWith(
