@@ -1476,6 +1476,30 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Suponiendo que aportas {amount} al mes con la rentabilidad esperada.'**
   String goalsProjectionAssumption(String amount);
+
+  /// Net worth label.
+  ///
+  /// In es, this message translates to:
+  /// **'Patrimonio total'**
+  String get dashboardNetWorth;
+
+  /// Allocation chart title.
+  ///
+  /// In es, this message translates to:
+  /// **'Reparto por categoría'**
+  String get dashboardAllocation;
+
+  /// Home empty state for investments.
+  ///
+  /// In es, this message translates to:
+  /// **'Añade tu primera inversión para ver tu reparto'**
+  String get dashboardNoInvestments;
+
+  /// Tip of the day label.
+  ///
+  /// In es, this message translates to:
+  /// **'Consejo del día'**
+  String get dashboardTipOfTheDay;
 }
 
 class _AppLocalizationsDelegate
