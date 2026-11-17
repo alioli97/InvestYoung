@@ -1,0 +1,19 @@
+{
+  "@@locale": "ca",
+  "appTitle": "Invertir sent Jove",
+  "navHome": "Inici",
+  "navGoals": "Objectius",
+  "navInvestments": "Inversions",
+  "navLearn": "Aprendre",
+  "navProfile": "Perfil",
+  "dashboardTitle": "Inici",
+  "goalsTitle": "Objectius",
+  "investmentsTitle": "Inversions",
+  "learnTitle": "Aprendre",
+  "profileTitle": "Perfil",
+  "onboardingWelcomeTitle": "Benvingut/da",
+  "onboardingWelcomeBody": "Organitza les teves finances i comença a invertir amb seny.",
+  "onboardingStartButton": "Començar",
+  "commonComingSoon": "Properament",
+  "commonSimulationDisclaimer": "Simulació orientativa, els resultats no estan garantits"
+}
