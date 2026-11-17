@@ -53,3 +53,17 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
   await tester.tap(finder);
   await tester.pumpAndSettle();
 }
+
+String _normalizeSpaces(String s) =>
+    s.replaceAll(' ', ' ').replaceAll(' ', ' ');
+
+/// Finds [Text] widgets whose text equals [text] ignoring non-breaking
+/// spaces (intl uses them in currency and percent formats).
+Finder findMoney(String text, {bool contains = false}) =>
+    find.byWidgetPredicate((w) {
+      if (w is! Text) return false;
+      final data = w.data ?? w.textSpan?.toPlainText();
+      if (data == null) return false;
+      final normalized = _normalizeSpaces(data);
+      return contains ? normalized.contains(text) : normalized == text;
+    }, description: 'text "$text"');

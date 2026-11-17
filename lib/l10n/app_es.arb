@@ -484,5 +484,45 @@
   "profileRetakeSaved": "Perfil actualizado",
   "@profileRetakeSaved": {
     "description": "Shown after retaking the questionnaire."
+  },
+  "commonLoadError": "No se han podido cargar los datos.",
+  "@commonLoadError": {
+    "description": "Generic error when loading data fails."
+  },
+  "investmentsTotalValue": "Valor total",
+  "@investmentsTotalValue": {
+    "description": "Label of the total value of all investments."
+  },
+  "investmentsCategoryEmergency": "Fondo de emergencia",
+  "@investmentsCategoryEmergency": {
+    "description": "Investment category."
+  },
+  "investmentsCategoryFixedIncome": "Renta fija",
+  "@investmentsCategoryFixedIncome": {
+    "description": "Investment category."
+  },
+  "investmentsCategoryEquity": "Renta variable",
+  "@investmentsCategoryEquity": {
+    "description": "Investment category."
+  },
+  "investmentsCategoryCrypto": "Criptomonedas",
+  "@investmentsCategoryCrypto": {
+    "description": "Investment category."
+  },
+  "investmentsCategoryEmergencyExamples": "Cuentas remuneradas, depósitos, fondos monetarios",
+  "@investmentsCategoryEmergencyExamples": {
+    "description": "Examples of the emergency fund category."
+  },
+  "investmentsCategoryFixedIncomeExamples": "Letras del Tesoro, bonos, fondos de renta fija",
+  "@investmentsCategoryFixedIncomeExamples": {
+    "description": "Examples of the fixed income category."
+  },
+  "investmentsCategoryEquityExamples": "Fondos indexados, ETF, acciones",
+  "@investmentsCategoryEquityExamples": {
+    "description": "Examples of the equities category."
+  },
+  "investmentsCategoryCryptoExamples": "BTC, ETH…",
+  "@investmentsCategoryCryptoExamples": {
+    "description": "Examples of the crypto category."
   }
 }

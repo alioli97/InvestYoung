@@ -111,5 +111,15 @@
   "commonClose": "Tancar",
   "profileRetakeQuestionnaire": "Repetir el qüestionari",
   "profileRetakeQuestionnaireSubtitle": "Actualitza el teu perfil i el teu fons d'emergència",
-  "profileRetakeSaved": "Perfil actualitzat"
+  "profileRetakeSaved": "Perfil actualitzat",
+  "commonLoadError": "No s'han pogut carregar les dades.",
+  "investmentsTotalValue": "Valor total",
+  "investmentsCategoryEmergency": "Fons d'emergència",
+  "investmentsCategoryFixedIncome": "Renda fixa",
+  "investmentsCategoryEquity": "Renda variable",
+  "investmentsCategoryCrypto": "Criptomonedes",
+  "investmentsCategoryEmergencyExamples": "Comptes remunerats, dipòsits, fons monetaris",
+  "investmentsCategoryFixedIncomeExamples": "Lletres del Tresor, bons, fons de renda fixa",
+  "investmentsCategoryEquityExamples": "Fons indexats, ETF, accions",
+  "investmentsCategoryCryptoExamples": "BTC, ETH…"
 }

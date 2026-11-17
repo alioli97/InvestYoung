@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'finance_colors.dart';
+
 /// Material 3 light and dark themes built from a single seed color.
 class AppTheme {
   const AppTheme._();
@@ -17,6 +19,11 @@ class AppTheme {
     );
     return ThemeData(
       colorScheme: colorScheme,
+      extensions: [
+        brightness == Brightness.light
+            ? FinanceColors.light
+            : FinanceColors.dark,
+      ],
       appBarTheme: const AppBarTheme(centerTitle: false),
       cardTheme: const CardThemeData(
         elevation: 0,

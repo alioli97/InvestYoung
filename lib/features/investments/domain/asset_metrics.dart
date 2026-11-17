@@ -103,6 +103,10 @@ class AssetMetrics {
   /// Return = current value + income − net contributed.
   int get returnCents => currentValueCents + incomeCents - netContributedCents;
 
+  /// Whether there is anything to show (money in, value or income).
+  bool get hasActivity =>
+      netContributedCents != 0 || currentValueCents != 0 || incomeCents != 0;
+
   /// Return over net contributed capital as a ratio (`0.1` = 10 %), or `null`
   /// when nothing net has been contributed.
   double? get returnRatio =>

@@ -382,4 +382,37 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get profileRetakeSaved => 'Perfil actualizado';
+
+  @override
+  String get commonLoadError => 'No se han podido cargar los datos.';
+
+  @override
+  String get investmentsTotalValue => 'Valor total';
+
+  @override
+  String get investmentsCategoryEmergency => 'Fondo de emergencia';
+
+  @override
+  String get investmentsCategoryFixedIncome => 'Renta fija';
+
+  @override
+  String get investmentsCategoryEquity => 'Renta variable';
+
+  @override
+  String get investmentsCategoryCrypto => 'Criptomonedas';
+
+  @override
+  String get investmentsCategoryEmergencyExamples =>
+      'Cuentas remuneradas, depósitos, fondos monetarios';
+
+  @override
+  String get investmentsCategoryFixedIncomeExamples =>
+      'Letras del Tesoro, bonos, fondos de renta fija';
+
+  @override
+  String get investmentsCategoryEquityExamples =>
+      'Fondos indexados, ETF, acciones';
+
+  @override
+  String get investmentsCategoryCryptoExamples => 'BTC, ETH…';
 }
