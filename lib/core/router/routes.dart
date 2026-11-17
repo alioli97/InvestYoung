@@ -35,4 +35,6 @@ abstract final class Routes {
   static String newGoal(GoalType type) => '$goals/new/${type.dbValue}';
 
   static String lesson(String lessonId) => '$learn/lesson/$lessonId';
+
+  static String quiz(String lessonId) => '${lesson(lessonId)}/quiz';
 }

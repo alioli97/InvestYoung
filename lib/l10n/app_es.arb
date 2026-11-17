@@ -1067,5 +1067,73 @@
         "type": "int"
       }
     }
+  },
+  "learnMarkRead": "Marcar como leída",
+  "@learnMarkRead": {
+    "description": "Button to mark a lesson as read."
+  },
+  "learnRead": "Lección leída",
+  "@learnRead": {
+    "description": "Lesson already read."
+  },
+  "learnTakeQuiz": "Hacer el test",
+  "@learnTakeQuiz": {
+    "description": "Button to take the lesson quiz."
+  },
+  "learnQuizRetake": "Repetir",
+  "@learnQuizRetake": {
+    "description": "Retake a passed quiz."
+  },
+  "learnQuizPassedShort": "Test superado",
+  "@learnQuizPassedShort": {
+    "description": "Quiz already passed."
+  },
+  "learnQuizTitle": "Test",
+  "@learnQuizTitle": {
+    "description": "Quiz screen title."
+  },
+  "learnQuizCheck": "Comprobar",
+  "@learnQuizCheck": {
+    "description": "Button to grade the quiz."
+  },
+  "learnQuizRetry": "Volver a intentarlo",
+  "@learnQuizRetry": {
+    "description": "Retry a failed quiz."
+  },
+  "learnBackToLesson": "Volver a la lección",
+  "@learnBackToLesson": {
+    "description": "Back to the lesson after passing."
+  },
+  "learnQuizScore": "{correct} de {total} correctas",
+  "@learnQuizScore": {
+    "description": "Quiz score.",
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "learnQuizPassed": "¡Perfecto! Has superado el test.",
+  "@learnQuizPassed": {
+    "description": "Quiz passed message."
+  },
+  "learnQuizFailed": "Revisa las respuestas marcadas y vuelve a intentarlo.",
+  "@learnQuizFailed": {
+    "description": "Quiz failed message."
+  },
+  "learnProgress": "Has leído {read} de {total} lecciones",
+  "@learnProgress": {
+    "description": "Overall learning progress.",
+    "placeholders": {
+      "read": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
   }
 }

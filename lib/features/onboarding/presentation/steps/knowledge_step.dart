@@ -5,7 +5,7 @@ import '../../../../core/l10n/l10n.dart';
 import '../../domain/profile_enums.dart';
 import '../onboarding_controller.dart';
 import '../onboarding_labels.dart';
-import '../widgets/option_tile.dart';
+import '../../../../core/widgets/option_tile.dart';
 import '../widgets/step_layout.dart';
 
 /// Step 6: prior investing knowledge.

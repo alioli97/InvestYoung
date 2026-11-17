@@ -235,5 +235,18 @@
   "dashboardTipOfTheDay": "Consell del dia",
   "investmentsEmergencyWarning": "El teu fons d'emergència encara no és complet ({current} de {target}). El més habitual és completar-lo abans d'invertir en actius amb més risc, però pots continuar igualment.",
   "learnRecommended": "Recomanat per a tu",
-  "learnMinutes": "{minutes} min de lectura"
+  "learnMinutes": "{minutes} min de lectura",
+  "learnMarkRead": "Marcar com a llegida",
+  "learnRead": "Lliçó llegida",
+  "learnTakeQuiz": "Fer el test",
+  "learnQuizRetake": "Repetir",
+  "learnQuizPassedShort": "Test superat",
+  "learnQuizTitle": "Test",
+  "learnQuizCheck": "Comprovar",
+  "learnQuizRetry": "Tornar-ho a provar",
+  "learnBackToLesson": "Tornar a la lliçó",
+  "learnQuizScore": "{correct} de {total} correctes",
+  "learnQuizPassed": "Perfecte! Has superat el test.",
+  "learnQuizFailed": "Revisa les respostes marcades i torna-ho a provar.",
+  "learnProgress": "Has llegit {read} de {total} lliçons"
 }

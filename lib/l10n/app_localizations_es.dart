@@ -804,4 +804,48 @@ class AppLocalizationsEs extends AppLocalizations {
   String learnMinutes(int minutes) {
     return '$minutes min de lectura';
   }
+
+  @override
+  String get learnMarkRead => 'Marcar como leída';
+
+  @override
+  String get learnRead => 'Lección leída';
+
+  @override
+  String get learnTakeQuiz => 'Hacer el test';
+
+  @override
+  String get learnQuizRetake => 'Repetir';
+
+  @override
+  String get learnQuizPassedShort => 'Test superado';
+
+  @override
+  String get learnQuizTitle => 'Test';
+
+  @override
+  String get learnQuizCheck => 'Comprobar';
+
+  @override
+  String get learnQuizRetry => 'Volver a intentarlo';
+
+  @override
+  String get learnBackToLesson => 'Volver a la lección';
+
+  @override
+  String learnQuizScore(int correct, int total) {
+    return '$correct de $total correctas';
+  }
+
+  @override
+  String get learnQuizPassed => '¡Perfecto! Has superado el test.';
+
+  @override
+  String get learnQuizFailed =>
+      'Revisa las respuestas marcadas y vuelve a intentarlo.';
+
+  @override
+  String learnProgress(int read, int total) {
+    return 'Has leído $read de $total lecciones';
+  }
 }

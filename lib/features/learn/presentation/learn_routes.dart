@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/router/routes.dart';
 import 'learn_screen.dart';
 import 'lesson_screen.dart';
+import 'quiz_screen.dart';
 
 /// Routes of the Learn tab.
 final learnRoute = GoRoute(
@@ -13,6 +14,13 @@ final learnRoute = GoRoute(
       path: 'lesson/:lessonId',
       builder: (context, state) =>
           LessonScreen(lessonId: state.pathParameters['lessonId']!),
+      routes: [
+        GoRoute(
+          path: 'quiz',
+          builder: (context, state) =>
+              QuizScreen(lessonId: state.pathParameters['lessonId']!),
+        ),
+      ],
     ),
   ],
 );
