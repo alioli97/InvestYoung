@@ -28,8 +28,17 @@ part 'app_database.g.dart';
 )
 class AppDatabase extends _$AppDatabase {
   /// Opens the on-device database, or uses [executor] (e.g. in-memory in tests).
-  AppDatabase([QueryExecutor? executor])
-    : super(executor ?? driftDatabase(name: 'invest_young'));
+  AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
+
+  static QueryExecutor _openConnection() => driftDatabase(
+    name: 'invest_young',
+    // Web is only used for local previews (`flutter run -d chrome`). Both
+    // files live in web/ and must match the drift / sqlite3 package versions.
+    web: DriftWebOptions(
+      sqlite3Wasm: Uri.parse('sqlite3.wasm'),
+      driftWorker: Uri.parse('drift_worker.js'),
+    ),
+  );
 
   /// Bump on every schema change and add the matching migration step.
   @override

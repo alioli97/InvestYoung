@@ -92,3 +92,9 @@ The app is **educational** and does not provide financial advice (regulated by t
 - Profiles, ranges, indicative percentages and simulations are fine.
 - Every return simulation shows the (localized) text "Indicative simulation, results are not guaranteed".
 - The legal notice is shown during onboarding and is accessible from Profile.
+
+## Web preview
+
+`flutter run -d chrome` is supported for quick previews only (targets are still Android and iOS).
+Drift on web needs `web/sqlite3.wasm` and `web/drift_worker.js`; when upgrading `drift` or
+`sqlite3`, download the matching files from the drift and sqlite3.dart GitHub releases.
