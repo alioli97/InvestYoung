@@ -26,6 +26,10 @@ class ProfileDao extends DatabaseAccessor<AppDatabase> with _$ProfileDaoMixin {
     });
   }
 
+  /// Updates only the given preference columns of the profile, if any.
+  Future<void> updatePreferences(UserProfilesCompanion preferences) =>
+      update(userProfiles).write(preferences);
+
   Future<List<MonthlyExpenseRow>> getExpenses() =>
       (select(monthlyExpenses)..orderBy([(e) => OrderingTerm.asc(e.id)])).get();
 

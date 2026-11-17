@@ -40,8 +40,8 @@ void main() {
         ),
       );
 
-  test('schema version is 1', () {
-    expect(db.schemaVersion, 1);
+  test('schema version is 2', () {
+    expect(db.schemaVersion, 2);
   });
 
   test('stores user profile enums with stable db values', () async {

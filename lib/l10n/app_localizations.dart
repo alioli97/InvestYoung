@@ -1608,6 +1608,48 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Consejos rápidos'**
   String get learnTipsTab;
+
+  /// Profile section: preferences.
+  ///
+  /// In es, this message translates to:
+  /// **'Preferencias'**
+  String get profilePreferences;
+
+  /// Profile section: user data.
+  ///
+  /// In es, this message translates to:
+  /// **'Tus datos'**
+  String get profileYourData;
+
+  /// Language setting.
+  ///
+  /// In es, this message translates to:
+  /// **'Idioma'**
+  String get profileLanguage;
+
+  /// Theme setting.
+  ///
+  /// In es, this message translates to:
+  /// **'Tema'**
+  String get profileTheme;
+
+  /// Theme follows the system.
+  ///
+  /// In es, this message translates to:
+  /// **'Según el sistema'**
+  String get profileThemeSystem;
+
+  /// Light theme.
+  ///
+  /// In es, this message translates to:
+  /// **'Claro'**
+  String get profileThemeLight;
+
+  /// Dark theme.
+  ///
+  /// In es, this message translates to:
+  /// **'Oscuro'**
+  String get profileThemeDark;
 }
 
 class _AppLocalizationsDelegate

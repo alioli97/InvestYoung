@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/db/app_database.dart';
+import '../../../core/domain/app_theme_mode.dart';
 import '../domain/user_profile.dart';
 import 'profile_dao.dart';
 
@@ -21,6 +22,17 @@ class ProfileRepository {
   /// Creates or replaces the profile and returns its id.
   Future<int> saveProfile(UserProfile profile) =>
       _dao.saveProfile(profile.toCompanion());
+
+  /// Saves language and/or theme without touching the other answers.
+  Future<void> updatePreferences({String? locale, AppThemeMode? themeMode}) =>
+      _dao.updatePreferences(
+        UserProfilesCompanion(
+          locale: locale == null ? const Value.absent() : Value(locale),
+          themeMode: themeMode == null
+              ? const Value.absent()
+              : Value(themeMode),
+        ),
+      );
 
   Future<List<MonthlyExpense>> getExpenses() async =>
       (await _dao.getExpenses()).map((r) => r.toDomain()).toList();
@@ -58,6 +70,7 @@ extension on UserProfileRow {
     emergencyMonths: emergencyMonths,
     locale: locale,
     onboardingCompletedAt: onboardingCompletedAt,
+    themeMode: themeMode,
   );
 }
 
