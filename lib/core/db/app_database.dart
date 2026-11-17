@@ -3,8 +3,12 @@ import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../features/goals/data/goals_dao.dart';
 import '../../features/goals/domain/goal_type.dart';
+import '../../features/investments/data/investments_dao.dart';
 import '../../features/investments/domain/investment_enums.dart';
+import '../../features/learn/data/lesson_progress_dao.dart';
+import '../../features/onboarding/data/profile_dao.dart';
 import '../../features/onboarding/domain/profile_enums.dart';
 import 'converters.dart';
 import 'tables.dart';
@@ -20,6 +24,7 @@ part 'app_database.g.dart';
     Transactions,
     LessonProgress,
   ],
+  daos: [ProfileDao, GoalsDao, InvestmentsDao, LessonProgressDao],
 )
 class AppDatabase extends _$AppDatabase {
   /// Opens the on-device database, or uses [executor] (e.g. in-memory in tests).
