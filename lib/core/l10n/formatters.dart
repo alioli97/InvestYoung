@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
@@ -38,6 +39,18 @@ class Formatters {
     return format.format(ratio);
   }
 
+  /// Formats a [Decimal] quantity keeping all its decimals, with locale
+  /// grouping and decimal comma, e.g. `1234.5678` → `1.234,5678`.
+  static String quantity(Decimal value, Locale locale) {
+    final negative = value < Decimal.zero;
+    final parts = value.abs().toString().split('.');
+    final integer = NumberFormat.decimalPattern(
+      intlLocale(locale),
+    ).format(BigInt.parse(parts[0]).toInt());
+    final fraction = parts.length > 1 ? ',${parts[1]}' : '';
+    return '${negative ? '-' : ''}$integer$fraction';
+  }
+
   /// Formats a UTC [date] in local time with a medium pattern, e.g. `17 nov 2026`.
   static String date(DateTime date, Locale locale) {
     return DateFormat.yMMMd(intlLocale(locale)).format(date.toLocal());
@@ -58,6 +71,8 @@ extension FormattingContext on BuildContext {
 
   String formatPercent(double ratio, {int decimalDigits = 1}) =>
       Formatters.percent(ratio, _locale, decimalDigits: decimalDigits);
+
+  String formatQuantity(Decimal value) => Formatters.quantity(value, _locale);
 
   String formatDate(DateTime date) => Formatters.date(date, _locale);
 

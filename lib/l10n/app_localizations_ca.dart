@@ -513,4 +513,92 @@ class AppLocalizationsCa extends AppLocalizations {
   @override
   String get investmentsDeleteAssetBody =>
       'També se n\'eliminaran tots els moviments. Aquesta acció no es pot desfer.';
+
+  @override
+  String get investmentsCurrentValue => 'Valor actual';
+
+  @override
+  String get investmentsTransactions => 'Moviments';
+
+  @override
+  String get investmentsNoTransactions =>
+      'Encara no hi ha moviments. Afegeix la teva primera aportació o compra.';
+
+  @override
+  String get investmentsAddTransaction => 'Afegir moviment';
+
+  @override
+  String get investmentsNewTransaction => 'Nou moviment';
+
+  @override
+  String get investmentsEditTransaction => 'Editar moviment';
+
+  @override
+  String get investmentsDeleteTransactionTitle =>
+      'Vols eliminar aquest moviment?';
+
+  @override
+  String get investmentsTxDeposit => 'Aportació';
+
+  @override
+  String get investmentsTxWithdrawal => 'Retirada';
+
+  @override
+  String get investmentsTxBuy => 'Compra';
+
+  @override
+  String get investmentsTxSell => 'Venda';
+
+  @override
+  String get investmentsTxIncome => 'Dividend, cupó o interès';
+
+  @override
+  String get investmentsTxValuation => 'Actualitzar valor';
+
+  @override
+  String get investmentsTxAmountDeposit => 'Import aportat';
+
+  @override
+  String get investmentsTxAmountWithdrawal => 'Import retirat';
+
+  @override
+  String get investmentsTxAmountBuy => 'Import invertit';
+
+  @override
+  String get investmentsTxAmountSell => 'Import rebut';
+
+  @override
+  String get investmentsTxAmountIncome => 'Import cobrat';
+
+  @override
+  String get investmentsTxAmountValuation => 'Valor total actual';
+
+  @override
+  String get investmentsValuationHint =>
+      'Indica quant val avui tot aquest actiu. S\'utilitzarà com a valor actual.';
+
+  @override
+  String get investmentsFieldDate => 'Data';
+
+  @override
+  String get investmentsFieldQuantity => 'Unitats o participacions';
+
+  @override
+  String get investmentsFieldFee => 'Comissió';
+
+  @override
+  String get investmentsFieldNote => 'Nota';
+
+  @override
+  String get investmentsAmountPositive => 'L\'import ha de ser més gran que 0';
+
+  @override
+  String investmentsSellTooMuch(String available) {
+    return 'Només tens $available unitats';
+  }
+
+  @override
+  String investmentsUnits(String quantity) {
+    return '$quantity u.';
+  }
 }

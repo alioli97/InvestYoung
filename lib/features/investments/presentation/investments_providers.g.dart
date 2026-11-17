@@ -356,3 +356,89 @@ final class AssetFamily extends $Family
   @override
   String toString() => r'assetProvider';
 }
+
+/// Transactions of one asset, oldest first.
+
+@ProviderFor(assetTransactions)
+final assetTransactionsProvider = AssetTransactionsFamily._();
+
+/// Transactions of one asset, oldest first.
+
+final class AssetTransactionsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<AssetTransaction>>,
+          List<AssetTransaction>,
+          Stream<List<AssetTransaction>>
+        >
+    with
+        $FutureModifier<List<AssetTransaction>>,
+        $StreamProvider<List<AssetTransaction>> {
+  /// Transactions of one asset, oldest first.
+  AssetTransactionsProvider._({
+    required AssetTransactionsFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'assetTransactionsProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$assetTransactionsHash();
+
+  @override
+  String toString() {
+    return r'assetTransactionsProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $StreamProviderElement<List<AssetTransaction>> $createElement(
+    $ProviderPointer pointer,
+  ) => $StreamProviderElement(pointer);
+
+  @override
+  Stream<List<AssetTransaction>> create(Ref ref) {
+    final argument = this.argument as int;
+    return assetTransactions(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is AssetTransactionsProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$assetTransactionsHash() => r'4926d49588b2d36d1207a755621e2a33a4cb93c5';
+
+/// Transactions of one asset, oldest first.
+
+final class AssetTransactionsFamily extends $Family
+    with $FunctionalFamilyOverride<Stream<List<AssetTransaction>>, int> {
+  AssetTransactionsFamily._()
+    : super(
+        retry: null,
+        name: r'assetTransactionsProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  /// Transactions of one asset, oldest first.
+
+  AssetTransactionsProvider call(int assetId) =>
+      AssetTransactionsProvider._(argument: assetId, from: this);
+
+  @override
+  String toString() => r'assetTransactionsProvider';
+}

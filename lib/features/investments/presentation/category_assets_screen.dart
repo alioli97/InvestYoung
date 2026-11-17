@@ -47,7 +47,7 @@ class CategoryAssetsScreen extends ConsumerWidget {
                     AssetTile(
                       summary: summary,
                       onTap: () =>
-                          context.push(Routes.editAsset(summary.asset.id!)),
+                          context.push(Routes.asset(summary.asset.id!)),
                     ),
                 ],
               ),

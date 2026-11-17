@@ -658,5 +658,123 @@
   "investmentsDeleteAssetBody": "Se eliminarán también todos sus movimientos. Esta acción no se puede deshacer.",
   "@investmentsDeleteAssetBody": {
     "description": "Delete asset dialog body."
+  },
+  "investmentsCurrentValue": "Valor actual",
+  "@investmentsCurrentValue": {
+    "description": "Current value label."
+  },
+  "investmentsTransactions": "Movimientos",
+  "@investmentsTransactions": {
+    "description": "Transactions section title."
+  },
+  "investmentsNoTransactions": "Aún no hay movimientos. Añade tu primera aportación o compra.",
+  "@investmentsNoTransactions": {
+    "description": "Empty transactions list."
+  },
+  "investmentsAddTransaction": "Añadir movimiento",
+  "@investmentsAddTransaction": {
+    "description": "Button to add a transaction."
+  },
+  "investmentsNewTransaction": "Nuevo movimiento",
+  "@investmentsNewTransaction": {
+    "description": "Title of the create transaction form."
+  },
+  "investmentsEditTransaction": "Editar movimiento",
+  "@investmentsEditTransaction": {
+    "description": "Title of the edit transaction form."
+  },
+  "investmentsDeleteTransactionTitle": "¿Eliminar este movimiento?",
+  "@investmentsDeleteTransactionTitle": {
+    "description": "Delete transaction dialog title."
+  },
+  "investmentsTxDeposit": "Aportación",
+  "@investmentsTxDeposit": {
+    "description": "Transaction type: deposit."
+  },
+  "investmentsTxWithdrawal": "Retirada",
+  "@investmentsTxWithdrawal": {
+    "description": "Transaction type: withdrawal."
+  },
+  "investmentsTxBuy": "Compra",
+  "@investmentsTxBuy": {
+    "description": "Transaction type: buy."
+  },
+  "investmentsTxSell": "Venta",
+  "@investmentsTxSell": {
+    "description": "Transaction type: sell."
+  },
+  "investmentsTxIncome": "Dividendo, cupón o interés",
+  "@investmentsTxIncome": {
+    "description": "Transaction type: income."
+  },
+  "investmentsTxValuation": "Actualizar valor",
+  "@investmentsTxValuation": {
+    "description": "Transaction type: valuation."
+  },
+  "investmentsTxAmountDeposit": "Importe aportado",
+  "@investmentsTxAmountDeposit": {
+    "description": "Amount label for deposits."
+  },
+  "investmentsTxAmountWithdrawal": "Importe retirado",
+  "@investmentsTxAmountWithdrawal": {
+    "description": "Amount label for withdrawals."
+  },
+  "investmentsTxAmountBuy": "Importe invertido",
+  "@investmentsTxAmountBuy": {
+    "description": "Amount label for buys."
+  },
+  "investmentsTxAmountSell": "Importe recibido",
+  "@investmentsTxAmountSell": {
+    "description": "Amount label for sells."
+  },
+  "investmentsTxAmountIncome": "Importe cobrado",
+  "@investmentsTxAmountIncome": {
+    "description": "Amount label for income."
+  },
+  "investmentsTxAmountValuation": "Valor total actual",
+  "@investmentsTxAmountValuation": {
+    "description": "Amount label for valuations."
+  },
+  "investmentsValuationHint": "Indica cuánto vale hoy todo este activo. Se usará como valor actual.",
+  "@investmentsValuationHint": {
+    "description": "Explains the valuation transaction."
+  },
+  "investmentsFieldDate": "Fecha",
+  "@investmentsFieldDate": {
+    "description": "Transaction date field."
+  },
+  "investmentsFieldQuantity": "Unidades o participaciones",
+  "@investmentsFieldQuantity": {
+    "description": "Quantity field."
+  },
+  "investmentsFieldFee": "Comisión",
+  "@investmentsFieldFee": {
+    "description": "Fee field."
+  },
+  "investmentsFieldNote": "Nota",
+  "@investmentsFieldNote": {
+    "description": "Transaction note field."
+  },
+  "investmentsAmountPositive": "El importe debe ser mayor que 0",
+  "@investmentsAmountPositive": {
+    "description": "Validation: amount must be positive."
+  },
+  "investmentsSellTooMuch": "Solo tienes {available} unidades",
+  "@investmentsSellTooMuch": {
+    "description": "Validation: selling more units than held.",
+    "placeholders": {
+      "available": {
+        "type": "String"
+      }
+    }
+  },
+  "investmentsUnits": "{quantity} uds.",
+  "@investmentsUnits": {
+    "description": "Quantity of units shown in lists.",
+    "placeholders": {
+      "quantity": {
+        "type": "String"
+      }
+    }
   }
 }

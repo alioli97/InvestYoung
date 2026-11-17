@@ -116,12 +116,14 @@ void main() {
     expect(find.text('IE00B4L5Y983 · Fondo indexado'), findsOneWidget);
 
     await tapVisible(tester, find.text('Fondo indexado').first);
+    await tapVisible(tester, find.byTooltip('Editar activo'));
     expect(find.text('Editar activo'), findsOneWidget);
     await _enter(tester, 'Nombre', 'Fondo global');
     await tapVisible(tester, find.widgetWithText(FilledButton, 'Guardar'));
-    expect(find.text('Fondo global'), findsOneWidget);
+    // Back on the detail screen, with the new name in the app bar.
+    expect(find.widgetWithText(AppBar, 'Fondo global'), findsOneWidget);
 
-    await tapVisible(tester, find.text('Fondo global'));
+    await tapVisible(tester, find.byTooltip('Editar activo'));
     await tapVisible(tester, find.byTooltip('Eliminar'));
     expect(find.text('¿Eliminar este activo?'), findsOneWidget);
     await tapVisible(tester, find.widgetWithText(FilledButton, 'Eliminar'));
