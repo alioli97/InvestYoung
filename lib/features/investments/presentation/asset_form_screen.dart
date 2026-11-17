@@ -12,6 +12,7 @@ import '../domain/investment_enums.dart';
 import 'investment_labels.dart';
 import 'investments_providers.dart';
 import 'widgets/asset_metadata_fields.dart';
+import 'widgets/emergency_fund_warning.dart';
 import 'widgets/goal_dropdown.dart';
 
 /// Creates a new asset in a category, or edits an existing one.
@@ -139,6 +140,7 @@ class _AssetFormState extends ConsumerState<_AssetForm> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
+            if (!_isEdit) EmergencyFundWarning(category: widget.category),
             Padding(
               padding: const EdgeInsets.only(bottom: 16),
               child: Chip(

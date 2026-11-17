@@ -38,7 +38,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [x] Assign assets to a goal and compute progress
 - [x] Retirement projection chart
 - [x] Dashboard: net worth, goal cards, pie chart, tip of the day
-- [ ] Warning when adding Equities/Crypto before the emergency fund is complete
+- [x] Warning when adding Equities/Crypto before the emergency fund is complete
 
 ## Phase 5 — Learn
 - [ ] `index.json` + locale-aware Markdown reader
