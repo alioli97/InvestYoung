@@ -30,6 +30,15 @@ class Formatters {
     return format.format(cents / 100);
   }
 
+  /// Short euro amount for chart axes, e.g. `250000000` → `2,5 M €`.
+  static String compactCurrency(int cents, Locale locale) {
+    return NumberFormat.compactCurrency(
+      locale: intlLocale(locale),
+      symbol: '€',
+      decimalDigits: 0,
+    ).format(cents / 100);
+  }
+
   /// Formats a ratio as a percentage, e.g. `0.05` → `5,0 %`.
   static String percent(double ratio, Locale locale, {int decimalDigits = 1}) {
     final format = NumberFormat.decimalPercentPattern(
@@ -80,6 +89,9 @@ extension FormattingContext on BuildContext {
 
   String formatCurrency(int cents, {int decimalDigits = 2}) =>
       Formatters.currency(cents, _locale, decimalDigits: decimalDigits);
+
+  String formatCompactCurrency(int cents) =>
+      Formatters.compactCurrency(cents, _locale);
 
   String formatPercent(double ratio, {int decimalDigits = 1}) =>
       Formatters.percent(ratio, _locale, decimalDigits: decimalDigits);

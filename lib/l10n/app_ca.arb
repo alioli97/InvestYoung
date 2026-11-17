@@ -224,5 +224,9 @@
   "goalsTargetAmount": "Import objectiu",
   "goalsComputedTarget": "Objectiu",
   "goalsDeleteTitle": "Vols eliminar aquest objectiu?",
-  "goalsDeleteBody": "Els seus actius no s'eliminen; només deixen d'estar assignats."
+  "goalsDeleteBody": "Els seus actius no s'eliminen; només deixen d'estar assignats.",
+  "goalsProjectionTitle": "Projecció fins a la jubilació",
+  "goalsProjectionValue": "Valor projectat: {amount}",
+  "goalsProjectionContributed": "Capital aportat: {amount}",
+  "goalsProjectionAssumption": "Suposant que aportes {amount} al mes amb la rendibilitat esperada."
 }

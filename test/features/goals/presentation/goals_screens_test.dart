@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:invest_young/core/db/app_database.dart';
@@ -106,8 +107,11 @@ void main() {
     expect(find.text('Quedan 444 meses'), findsOneWidget);
     expect(
       find.text('Simulación orientativa, los resultados no están garantizados'),
-      findsOneWidget,
+      findsNWidgets(2),
     );
+    expect(find.byType(LineChart), findsOneWidget);
+    expect(find.text('Proyección hasta la jubilación'), findsOneWidget);
+    expect(findMoney('Capital aportado: ', contains: true), findsOneWidget);
 
     final saved = (await tester.runAsync(goals.getGoals))!.last;
     expect(saved.type, GoalType.retirement);
