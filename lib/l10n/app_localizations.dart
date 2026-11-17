@@ -1224,6 +1224,234 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Rentabilidad = valor actual + ingresos − capital aportado. Las comisiones cuentan como capital aportado.'**
   String get investmentsReturnExplanation;
+
+  /// Button to add a goal.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo objetivo'**
+  String get goalsAddGoal;
+
+  /// Title of the create goal form.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo objetivo'**
+  String get goalsNewGoal;
+
+  /// Title of the edit goal form.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar objetivo'**
+  String get goalsEditGoal;
+
+  /// Custom goal type.
+  ///
+  /// In es, this message translates to:
+  /// **'Objetivo personalizado'**
+  String get goalsCustomGoal;
+
+  /// Goal progress amounts.
+  ///
+  /// In es, this message translates to:
+  /// **'{current} de {target}'**
+  String goalsProgressAmounts(String current, String target);
+
+  /// Goal without target.
+  ///
+  /// In es, this message translates to:
+  /// **'Aún no has definido el importe objetivo'**
+  String get goalsNoTarget;
+
+  /// Prompt to set up a goal.
+  ///
+  /// In es, this message translates to:
+  /// **'Configura este objetivo para calcular cuánto necesitas'**
+  String get goalsSetUpPrompt;
+
+  /// Remaining amount label.
+  ///
+  /// In es, this message translates to:
+  /// **'Te falta'**
+  String get goalsRemaining;
+
+  /// Target date label.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha objetivo'**
+  String get goalsTargetDate;
+
+  /// Expected annual return label.
+  ///
+  /// In es, this message translates to:
+  /// **'Rentabilidad anual esperada'**
+  String get goalsExpectedReturn;
+
+  /// Help text for the expected return.
+  ///
+  /// In es, this message translates to:
+  /// **'Estimación orientativa; usa 0 % si el dinero no se invierte'**
+  String get goalsExpectedReturnHelp;
+
+  /// Required monthly contribution label.
+  ///
+  /// In es, this message translates to:
+  /// **'Aportación mensual necesaria'**
+  String get goalsRequiredMonthly;
+
+  /// Months left until the target date.
+  ///
+  /// In es, this message translates to:
+  /// **'{months, plural, =1{Queda 1 mes} other{Quedan {months} meses}}'**
+  String goalsMonthsLeft(int months);
+
+  /// Target date reached.
+  ///
+  /// In es, this message translates to:
+  /// **'La fecha objetivo ya ha llegado'**
+  String get goalsDatePassed;
+
+  /// Assigned assets section title.
+  ///
+  /// In es, this message translates to:
+  /// **'Activos del objetivo'**
+  String get goalsAssignedAssets;
+
+  /// Button to assign assets to a goal.
+  ///
+  /// In es, this message translates to:
+  /// **'Asignar activos'**
+  String get goalsAssignAssets;
+
+  /// Explains the emergency fund counting rule.
+  ///
+  /// In es, this message translates to:
+  /// **'Los activos de la categoría Fondo de emergencia sin otro objetivo cuentan automáticamente.'**
+  String get goalsEmergencyAutoAssets;
+
+  /// No assets for a goal.
+  ///
+  /// In es, this message translates to:
+  /// **'Todavía no hay activos asignados'**
+  String get goalsNoAssets;
+
+  /// No assets exist yet.
+  ///
+  /// In es, this message translates to:
+  /// **'Primero añade activos en Inversiones'**
+  String get goalsNoAssetsToAssign;
+
+  /// Asset currently assigned to another goal.
+  ///
+  /// In es, this message translates to:
+  /// **'Ahora en: {goal}'**
+  String goalsAssignedTo(String goal);
+
+  /// Monthly expenses label.
+  ///
+  /// In es, this message translates to:
+  /// **'Gastos mensuales'**
+  String get goalsMonthlyExpenses;
+
+  /// Emergency fund months label.
+  ///
+  /// In es, this message translates to:
+  /// **'Meses de gastos cubiertos'**
+  String get goalsMonthsCovered;
+
+  /// Recommended emergency months.
+  ///
+  /// In es, this message translates to:
+  /// **'Recomendado para tu perfil: entre {min} y {max} meses'**
+  String goalsRecommendedMonths(int min, int max);
+
+  /// Home price label.
+  ///
+  /// In es, this message translates to:
+  /// **'Precio de la vivienda'**
+  String get goalsHomePrice;
+
+  /// Down payment percent label.
+  ///
+  /// In es, this message translates to:
+  /// **'Entrada'**
+  String get goalsDownPayment;
+
+  /// Taxes and fees percent label.
+  ///
+  /// In es, this message translates to:
+  /// **'Impuestos y gastos'**
+  String get goalsFees;
+
+  /// Help for taxes and fees.
+  ///
+  /// In es, this message translates to:
+  /// **'ITP o IVA, notaría, registro… suelen rondar el 10 %'**
+  String get goalsFeesHelp;
+
+  /// Current age label.
+  ///
+  /// In es, this message translates to:
+  /// **'Edad actual'**
+  String get goalsCurrentAge;
+
+  /// Retirement age label.
+  ///
+  /// In es, this message translates to:
+  /// **'Edad de jubilación'**
+  String get goalsRetirementAge;
+
+  /// Monthly spending in retirement label.
+  ///
+  /// In es, this message translates to:
+  /// **'Gasto mensual en la jubilación'**
+  String get goalsMonthlySpending;
+
+  /// Help for retirement spending.
+  ///
+  /// In es, this message translates to:
+  /// **'En euros de hoy'**
+  String get goalsMonthlySpendingHelp;
+
+  /// Explains the 4% rule.
+  ///
+  /// In es, this message translates to:
+  /// **'Objetivo calculado con la regla del 4 % (gasto anual × 25)'**
+  String get goalsRetirementRule;
+
+  /// Invalid age error.
+  ///
+  /// In es, this message translates to:
+  /// **'Introduce una edad entre {min} y {max}'**
+  String goalsInvalidAge(int min, int max);
+
+  /// Goal name field.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre'**
+  String get goalsFieldName;
+
+  /// Custom goal target amount.
+  ///
+  /// In es, this message translates to:
+  /// **'Importe objetivo'**
+  String get goalsTargetAmount;
+
+  /// Computed target label.
+  ///
+  /// In es, this message translates to:
+  /// **'Objetivo'**
+  String get goalsComputedTarget;
+
+  /// Delete goal dialog title.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Eliminar este objetivo?'**
+  String get goalsDeleteTitle;
+
+  /// Delete goal dialog body.
+  ///
+  /// In es, this message translates to:
+  /// **'Sus activos no se eliminan; solo dejan de estar asignados.'**
+  String get goalsDeleteBody;
 }
 
 class _AppLocalizationsDelegate

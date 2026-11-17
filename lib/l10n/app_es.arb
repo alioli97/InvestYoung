@@ -809,5 +809,191 @@
   "investmentsReturnExplanation": "Rentabilidad = valor actual + ingresos − capital aportado. Las comisiones cuentan como capital aportado.",
   "@investmentsReturnExplanation": {
     "description": "Explains how the return is calculated."
+  },
+  "goalsAddGoal": "Nuevo objetivo",
+  "@goalsAddGoal": {
+    "description": "Button to add a goal."
+  },
+  "goalsNewGoal": "Nuevo objetivo",
+  "@goalsNewGoal": {
+    "description": "Title of the create goal form."
+  },
+  "goalsEditGoal": "Editar objetivo",
+  "@goalsEditGoal": {
+    "description": "Title of the edit goal form."
+  },
+  "goalsCustomGoal": "Objetivo personalizado",
+  "@goalsCustomGoal": {
+    "description": "Custom goal type."
+  },
+  "goalsProgressAmounts": "{current} de {target}",
+  "@goalsProgressAmounts": {
+    "description": "Goal progress amounts.",
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "goalsNoTarget": "Aún no has definido el importe objetivo",
+  "@goalsNoTarget": {
+    "description": "Goal without target."
+  },
+  "goalsSetUpPrompt": "Configura este objetivo para calcular cuánto necesitas",
+  "@goalsSetUpPrompt": {
+    "description": "Prompt to set up a goal."
+  },
+  "goalsRemaining": "Te falta",
+  "@goalsRemaining": {
+    "description": "Remaining amount label."
+  },
+  "goalsTargetDate": "Fecha objetivo",
+  "@goalsTargetDate": {
+    "description": "Target date label."
+  },
+  "goalsExpectedReturn": "Rentabilidad anual esperada",
+  "@goalsExpectedReturn": {
+    "description": "Expected annual return label."
+  },
+  "goalsExpectedReturnHelp": "Estimación orientativa; usa 0 % si el dinero no se invierte",
+  "@goalsExpectedReturnHelp": {
+    "description": "Help text for the expected return."
+  },
+  "goalsRequiredMonthly": "Aportación mensual necesaria",
+  "@goalsRequiredMonthly": {
+    "description": "Required monthly contribution label."
+  },
+  "goalsMonthsLeft": "{months, plural, =1{Queda 1 mes} other{Quedan {months} meses}}",
+  "@goalsMonthsLeft": {
+    "description": "Months left until the target date.",
+    "placeholders": {
+      "months": {
+        "type": "int"
+      }
+    }
+  },
+  "goalsDatePassed": "La fecha objetivo ya ha llegado",
+  "@goalsDatePassed": {
+    "description": "Target date reached."
+  },
+  "goalsAssignedAssets": "Activos del objetivo",
+  "@goalsAssignedAssets": {
+    "description": "Assigned assets section title."
+  },
+  "goalsAssignAssets": "Asignar activos",
+  "@goalsAssignAssets": {
+    "description": "Button to assign assets to a goal."
+  },
+  "goalsEmergencyAutoAssets": "Los activos de la categoría Fondo de emergencia sin otro objetivo cuentan automáticamente.",
+  "@goalsEmergencyAutoAssets": {
+    "description": "Explains the emergency fund counting rule."
+  },
+  "goalsNoAssets": "Todavía no hay activos asignados",
+  "@goalsNoAssets": {
+    "description": "No assets for a goal."
+  },
+  "goalsNoAssetsToAssign": "Primero añade activos en Inversiones",
+  "@goalsNoAssetsToAssign": {
+    "description": "No assets exist yet."
+  },
+  "goalsAssignedTo": "Ahora en: {goal}",
+  "@goalsAssignedTo": {
+    "description": "Asset currently assigned to another goal.",
+    "placeholders": {
+      "goal": {
+        "type": "String"
+      }
+    }
+  },
+  "goalsMonthlyExpenses": "Gastos mensuales",
+  "@goalsMonthlyExpenses": {
+    "description": "Monthly expenses label."
+  },
+  "goalsMonthsCovered": "Meses de gastos cubiertos",
+  "@goalsMonthsCovered": {
+    "description": "Emergency fund months label."
+  },
+  "goalsRecommendedMonths": "Recomendado para tu perfil: entre {min} y {max} meses",
+  "@goalsRecommendedMonths": {
+    "description": "Recommended emergency months.",
+    "placeholders": {
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "goalsHomePrice": "Precio de la vivienda",
+  "@goalsHomePrice": {
+    "description": "Home price label."
+  },
+  "goalsDownPayment": "Entrada",
+  "@goalsDownPayment": {
+    "description": "Down payment percent label."
+  },
+  "goalsFees": "Impuestos y gastos",
+  "@goalsFees": {
+    "description": "Taxes and fees percent label."
+  },
+  "goalsFeesHelp": "ITP o IVA, notaría, registro… suelen rondar el 10 %",
+  "@goalsFeesHelp": {
+    "description": "Help for taxes and fees."
+  },
+  "goalsCurrentAge": "Edad actual",
+  "@goalsCurrentAge": {
+    "description": "Current age label."
+  },
+  "goalsRetirementAge": "Edad de jubilación",
+  "@goalsRetirementAge": {
+    "description": "Retirement age label."
+  },
+  "goalsMonthlySpending": "Gasto mensual en la jubilación",
+  "@goalsMonthlySpending": {
+    "description": "Monthly spending in retirement label."
+  },
+  "goalsMonthlySpendingHelp": "En euros de hoy",
+  "@goalsMonthlySpendingHelp": {
+    "description": "Help for retirement spending."
+  },
+  "goalsRetirementRule": "Objetivo calculado con la regla del 4 % (gasto anual × 25)",
+  "@goalsRetirementRule": {
+    "description": "Explains the 4% rule."
+  },
+  "goalsInvalidAge": "Introduce una edad entre {min} y {max}",
+  "@goalsInvalidAge": {
+    "description": "Invalid age error.",
+    "placeholders": {
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "goalsFieldName": "Nombre",
+  "@goalsFieldName": {
+    "description": "Goal name field."
+  },
+  "goalsTargetAmount": "Importe objetivo",
+  "@goalsTargetAmount": {
+    "description": "Custom goal target amount."
+  },
+  "goalsComputedTarget": "Objetivo",
+  "@goalsComputedTarget": {
+    "description": "Computed target label."
+  },
+  "goalsDeleteTitle": "¿Eliminar este objetivo?",
+  "@goalsDeleteTitle": {
+    "description": "Delete goal dialog title."
+  },
+  "goalsDeleteBody": "Sus activos no se eliminan; solo dejan de estar asignados.",
+  "@goalsDeleteBody": {
+    "description": "Delete goal dialog body."
   }
 }

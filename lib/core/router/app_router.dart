@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/dashboard/presentation/dashboard_screen.dart';
-import '../../features/goals/presentation/goals_screen.dart';
+import '../../features/goals/presentation/goals_routes.dart';
 import '../../features/investments/presentation/investments_routes.dart';
 import '../../features/learn/presentation/learn_screen.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
@@ -44,7 +44,7 @@ GoRouter appRouter(Ref ref) {
             AppShell(navigationShell: navigationShell),
         branches: [
           _branch(Routes.home, const DashboardScreen()),
-          _branch(Routes.goals, const GoalsScreen()),
+          StatefulShellBranch(routes: [goalsRoute]),
           StatefulShellBranch(routes: [investmentsRoute]),
           _branch(Routes.learn, const LearnScreen()),
           _branch(Routes.profile, const ProfileScreen()),

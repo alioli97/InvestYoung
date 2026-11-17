@@ -34,7 +34,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [x] Visible metrics (contributed, value, return)
 
 ## Phase 4 — Goals and Home
-- [ ] Goal screens: emergency, housing, retirement, custom
+- [x] Goal screens: emergency, housing, retirement, custom
 - [x] Assign assets to a goal and compute progress
 - [ ] Retirement projection chart
 - [ ] Dashboard: net worth, goal cards, pie chart, tip of the day

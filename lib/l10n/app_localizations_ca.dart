@@ -625,4 +625,140 @@ class AppLocalizationsCa extends AppLocalizations {
   @override
   String get investmentsReturnExplanation =>
       'Rendibilitat = valor actual + ingressos − capital aportat. Les comissions compten com a capital aportat.';
+
+  @override
+  String get goalsAddGoal => 'Nou objectiu';
+
+  @override
+  String get goalsNewGoal => 'Nou objectiu';
+
+  @override
+  String get goalsEditGoal => 'Editar objectiu';
+
+  @override
+  String get goalsCustomGoal => 'Objectiu personalitzat';
+
+  @override
+  String goalsProgressAmounts(String current, String target) {
+    return '$current de $target';
+  }
+
+  @override
+  String get goalsNoTarget => 'Encara no has definit l\'import objectiu';
+
+  @override
+  String get goalsSetUpPrompt =>
+      'Configura aquest objectiu per calcular quant necessites';
+
+  @override
+  String get goalsRemaining => 'Et falta';
+
+  @override
+  String get goalsTargetDate => 'Data objectiu';
+
+  @override
+  String get goalsExpectedReturn => 'Rendibilitat anual esperada';
+
+  @override
+  String get goalsExpectedReturnHelp =>
+      'Estimació orientativa; fes servir 0 % si els diners no s\'inverteixen';
+
+  @override
+  String get goalsRequiredMonthly => 'Aportació mensual necessària';
+
+  @override
+  String goalsMonthsLeft(int months) {
+    String _temp0 = intl.Intl.pluralLogic(
+      months,
+      locale: localeName,
+      other: 'Queden $months mesos',
+      one: 'Queda 1 mes',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get goalsDatePassed => 'La data objectiu ja ha arribat';
+
+  @override
+  String get goalsAssignedAssets => 'Actius de l\'objectiu';
+
+  @override
+  String get goalsAssignAssets => 'Assignar actius';
+
+  @override
+  String get goalsEmergencyAutoAssets =>
+      'Els actius de la categoria Fons d\'emergència sense cap altre objectiu compten automàticament.';
+
+  @override
+  String get goalsNoAssets => 'Encara no hi ha actius assignats';
+
+  @override
+  String get goalsNoAssetsToAssign => 'Primer afegeix actius a Inversions';
+
+  @override
+  String goalsAssignedTo(String goal) {
+    return 'Ara a: $goal';
+  }
+
+  @override
+  String get goalsMonthlyExpenses => 'Despeses mensuals';
+
+  @override
+  String get goalsMonthsCovered => 'Mesos de despeses coberts';
+
+  @override
+  String goalsRecommendedMonths(int min, int max) {
+    return 'Recomanat per al teu perfil: entre $min i $max mesos';
+  }
+
+  @override
+  String get goalsHomePrice => 'Preu de l\'habitatge';
+
+  @override
+  String get goalsDownPayment => 'Entrada';
+
+  @override
+  String get goalsFees => 'Impostos i despeses';
+
+  @override
+  String get goalsFeesHelp =>
+      'ITP o IVA, notaria, registre… solen rondar el 10 %';
+
+  @override
+  String get goalsCurrentAge => 'Edat actual';
+
+  @override
+  String get goalsRetirementAge => 'Edat de jubilació';
+
+  @override
+  String get goalsMonthlySpending => 'Despesa mensual a la jubilació';
+
+  @override
+  String get goalsMonthlySpendingHelp => 'En euros d\'avui';
+
+  @override
+  String get goalsRetirementRule =>
+      'Objectiu calculat amb la regla del 4 % (despesa anual × 25)';
+
+  @override
+  String goalsInvalidAge(int min, int max) {
+    return 'Introdueix una edat entre $min i $max';
+  }
+
+  @override
+  String get goalsFieldName => 'Nom';
+
+  @override
+  String get goalsTargetAmount => 'Import objectiu';
+
+  @override
+  String get goalsComputedTarget => 'Objectiu';
+
+  @override
+  String get goalsDeleteTitle => 'Vols eliminar aquest objectiu?';
+
+  @override
+  String get goalsDeleteBody =>
+      'Els seus actius no s\'eliminen; només deixen d\'estar assignats.';
 }
