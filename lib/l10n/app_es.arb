@@ -1054,5 +1054,18 @@
         "type": "String"
       }
     }
+  },
+  "learnRecommended": "Recomendado para ti",
+  "@learnRecommended": {
+    "description": "Marks modules recommended for the user's knowledge level."
+  },
+  "learnMinutes": "{minutes} min de lectura",
+  "@learnMinutes": {
+    "description": "Lesson reading time.",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
   }
 }

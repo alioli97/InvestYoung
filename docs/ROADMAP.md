@@ -41,7 +41,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [x] Warning when adding Equities/Crypto before the emergency fund is complete
 
 ## Phase 5 — Learn
-- [ ] `index.json` + locale-aware Markdown reader
+- [x] `index.json` + locale-aware Markdown reader
 - [ ] 2 full lessons per module for modules 1–3 (es + ca)
 - [ ] Quiz and progress tracking
 - [ ] Quick tips

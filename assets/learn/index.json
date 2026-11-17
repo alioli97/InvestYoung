@@ -1,0 +1,111 @@
+{
+  "modules": [
+    {
+      "id": "fundamentals",
+      "lessons": [
+        {
+          "id": "fundamentals-budget",
+          "file": "fundamentals-budget.md",
+          "minutes": 4,
+          "title": {
+            "es": "El presupuesto 50/30/20",
+            "ca": "El pressupost 50/30/20"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "Según la regla 50/30/20, ¿qué parte de tus ingresos va a ahorro e inversión?",
+                "ca": "Segons la regla 50/30/20, quina part dels teus ingressos va a estalvi i inversió?"
+              },
+              "options": [
+                {
+                  "es": "El 50 %",
+                  "ca": "El 50 %"
+                },
+                {
+                  "es": "El 30 %",
+                  "ca": "El 30 %"
+                },
+                {
+                  "es": "El 20 %",
+                  "ca": "El 20 %"
+                }
+              ],
+              "answer": 2
+            },
+            {
+              "question": {
+                "es": "¿En qué bloque entra el alquiler?",
+                "ca": "A quin bloc entra el lloguer?"
+              },
+              "options": [
+                {
+                  "es": "Necesidades",
+                  "ca": "Necessitats"
+                },
+                {
+                  "es": "Deseos",
+                  "ca": "Desitjos"
+                },
+                {
+                  "es": "Ahorro e inversión",
+                  "ca": "Estalvi i inversió"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "Si ingresas 1.200 € netos al mes, ¿cuánto ahorrarías siguiendo la regla?",
+                "ca": "Si ingresses 1.200 € nets al mes, quant estalviaries seguint la regla?"
+              },
+              "options": [
+                {
+                  "es": "120 €",
+                  "ca": "120 €"
+                },
+                {
+                  "es": "240 €",
+                  "ca": "240 €"
+                },
+                {
+                  "es": "360 €",
+                  "ca": "360 €"
+                }
+              ],
+              "answer": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "emergency-fund",
+      "lessons": []
+    },
+    {
+      "id": "debt",
+      "lessons": []
+    },
+    {
+      "id": "fixed-income",
+      "lessons": []
+    },
+    {
+      "id": "equities",
+      "lessons": []
+    },
+    {
+      "id": "crypto",
+      "lessons": []
+    },
+    {
+      "id": "taxes",
+      "lessons": []
+    },
+    {
+      "id": "psychology",
+      "lessons": []
+    }
+  ]
+}

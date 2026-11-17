@@ -233,5 +233,7 @@
   "dashboardAllocation": "Repartiment per categoria",
   "dashboardNoInvestments": "Afegeix la teva primera inversió per veure'n el repartiment",
   "dashboardTipOfTheDay": "Consell del dia",
-  "investmentsEmergencyWarning": "El teu fons d'emergència encara no és complet ({current} de {target}). El més habitual és completar-lo abans d'invertir en actius amb més risc, però pots continuar igualment."
+  "investmentsEmergencyWarning": "El teu fons d'emergència encara no és complet ({current} de {target}). El més habitual és completar-lo abans d'invertir en actius amb més risc, però pots continuar igualment.",
+  "learnRecommended": "Recomanat per a tu",
+  "learnMinutes": "{minutes} min de lectura"
 }

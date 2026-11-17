@@ -75,6 +75,7 @@ void main() {
     expect(findMoney('75 %'), findsOneWidget);
     expect(findMoney('25 %'), findsOneWidget);
 
+    await pumpUntilFound(tester, find.text('Consejo del día'));
     await tester.scrollUntilVisible(find.text('Consejo del día'), 200);
     expect(find.text('Consejo del día'), findsOneWidget);
   });
