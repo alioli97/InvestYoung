@@ -17,4 +17,6 @@ class OnboardingStatus extends _$OnboardingStatus {
       ref.read(startupProfileProvider)?.onboardingCompleted ?? false;
 
   void markCompleted() => state = true;
+
+  void set({required bool completed}) => state = completed;
 }

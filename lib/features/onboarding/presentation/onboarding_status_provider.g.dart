@@ -93,7 +93,7 @@ final class OnboardingStatusProvider
   }
 }
 
-String _$onboardingStatusHash() => r'f74164fbd859a317004775b5e52ed25eaec682bd';
+String _$onboardingStatusHash() => r'7f267d4c82d166388f2ecee2fdb7cc261ced183d';
 
 /// Whether the user has completed the onboarding questionnaire.
 

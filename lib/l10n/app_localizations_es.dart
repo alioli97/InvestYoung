@@ -875,4 +875,54 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get profileThemeDark => 'Oscuro';
+
+  @override
+  String get profileExport => 'Exportar copia de seguridad';
+
+  @override
+  String get profileExportSubtitle =>
+      'Guarda o comparte un archivo con todos tus datos';
+
+  @override
+  String get profileExportError => 'No se ha podido exportar la copia';
+
+  @override
+  String get profileImport => 'Importar copia de seguridad';
+
+  @override
+  String get profileImportSubtitle => 'Restaura tus datos desde un archivo';
+
+  @override
+  String get profileImportConfirmTitle => '¿Reemplazar todos tus datos?';
+
+  @override
+  String get profileImportConfirmBody =>
+      'Los datos actuales se borrarán y se sustituirán por los de la copia. Esta acción no se puede deshacer.';
+
+  @override
+  String get profileImportConfirm => 'Reemplazar';
+
+  @override
+  String get profileImportDone => 'Copia importada';
+
+  @override
+  String get profileImportError =>
+      'El archivo no es una copia válida de la app. No se ha cambiado nada.';
+
+  @override
+  String get profileDeleteAll => 'Borrar todos los datos';
+
+  @override
+  String get profileDeleteAllSubtitle =>
+      'Perfil, objetivos, inversiones y progreso';
+
+  @override
+  String get profileDeleteAllTitle => '¿Borrar todos los datos?';
+
+  @override
+  String get profileDeleteAllBody =>
+      'Se borrarán tu perfil, tus objetivos, tus inversiones y tu progreso. Si quieres conservarlos, exporta antes una copia. Esta acción no se puede deshacer.';
+
+  @override
+  String get profileDeleteAllConfirm => 'Borrar todo';
 }

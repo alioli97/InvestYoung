@@ -48,7 +48,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 
 ## Phase 6 — Profile and polish
 - [x] Language and theme switching
-- [ ] JSON export/import + delete all data
+- [x] JSON export/import + delete all data
 - [ ] Legal notice
 - [ ] Empty states, form validation and basic accessibility
 

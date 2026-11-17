@@ -1650,6 +1650,96 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Oscuro'**
   String get profileThemeDark;
+
+  /// Export backup option.
+  ///
+  /// In es, this message translates to:
+  /// **'Exportar copia de seguridad'**
+  String get profileExport;
+
+  /// Export backup subtitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Guarda o comparte un archivo con todos tus datos'**
+  String get profileExportSubtitle;
+
+  /// Export failed.
+  ///
+  /// In es, this message translates to:
+  /// **'No se ha podido exportar la copia'**
+  String get profileExportError;
+
+  /// Import backup option.
+  ///
+  /// In es, this message translates to:
+  /// **'Importar copia de seguridad'**
+  String get profileImport;
+
+  /// Import backup subtitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Restaura tus datos desde un archivo'**
+  String get profileImportSubtitle;
+
+  /// Import confirmation title.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Reemplazar todos tus datos?'**
+  String get profileImportConfirmTitle;
+
+  /// Import confirmation body.
+  ///
+  /// In es, this message translates to:
+  /// **'Los datos actuales se borrarán y se sustituirán por los de la copia. Esta acción no se puede deshacer.'**
+  String get profileImportConfirmBody;
+
+  /// Confirm import.
+  ///
+  /// In es, this message translates to:
+  /// **'Reemplazar'**
+  String get profileImportConfirm;
+
+  /// Import succeeded.
+  ///
+  /// In es, this message translates to:
+  /// **'Copia importada'**
+  String get profileImportDone;
+
+  /// Import failed.
+  ///
+  /// In es, this message translates to:
+  /// **'El archivo no es una copia válida de la app. No se ha cambiado nada.'**
+  String get profileImportError;
+
+  /// Delete all data option.
+  ///
+  /// In es, this message translates to:
+  /// **'Borrar todos los datos'**
+  String get profileDeleteAll;
+
+  /// Delete all data subtitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Perfil, objetivos, inversiones y progreso'**
+  String get profileDeleteAllSubtitle;
+
+  /// Delete all confirmation title.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Borrar todos los datos?'**
+  String get profileDeleteAllTitle;
+
+  /// Delete all confirmation body.
+  ///
+  /// In es, this message translates to:
+  /// **'Se borrarán tu perfil, tus objetivos, tus inversiones y tu progreso. Si quieres conservarlos, exporta antes una copia. Esta acción no se puede deshacer.'**
+  String get profileDeleteAllBody;
+
+  /// Confirm delete all.
+  ///
+  /// In es, this message translates to:
+  /// **'Borrar todo'**
+  String get profileDeleteAllConfirm;
 }
 
 class _AppLocalizationsDelegate

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:invest_young/app.dart';
 import 'package:invest_young/core/db/app_database.dart';
@@ -16,6 +17,7 @@ Future<AppDatabase> pumpApp(
   Size size = const Size(400, 900),
   AppDatabase? database,
   UserProfile? startupProfile,
+  List<Override> overrides = const [],
 }) async {
   final db = database ?? createTestDatabase();
   // Unmount first so no stream query is left waiting, then close outside the
@@ -35,6 +37,7 @@ Future<AppDatabase> pumpApp(
       overrides: [
         appDatabaseProvider.overrideWithValue(db),
         startupProfileProvider.overrideWithValue(startupProfile),
+        ...overrides,
       ],
       child: const InvestYoungApp(),
     ),

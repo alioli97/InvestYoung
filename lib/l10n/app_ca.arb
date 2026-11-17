@@ -257,5 +257,20 @@
   "profileTheme": "Tema",
   "profileThemeSystem": "Segons el sistema",
   "profileThemeLight": "Clar",
-  "profileThemeDark": "Fosc"
+  "profileThemeDark": "Fosc",
+  "profileExport": "Exportar còpia de seguretat",
+  "profileExportSubtitle": "Desa o comparteix un fitxer amb totes les teves dades",
+  "profileExportError": "No s'ha pogut exportar la còpia",
+  "profileImport": "Importar còpia de seguretat",
+  "profileImportSubtitle": "Restaura les teves dades des d'un fitxer",
+  "profileImportConfirmTitle": "Vols substituir totes les teves dades?",
+  "profileImportConfirmBody": "Les dades actuals s'esborraran i se substituiran per les de la còpia. Aquesta acció no es pot desfer.",
+  "profileImportConfirm": "Substituir",
+  "profileImportDone": "Còpia importada",
+  "profileImportError": "El fitxer no és una còpia vàlida de l'app. No s'ha canviat res.",
+  "profileDeleteAll": "Esborrar totes les dades",
+  "profileDeleteAllSubtitle": "Perfil, objectius, inversions i progrés",
+  "profileDeleteAllTitle": "Vols esborrar totes les dades?",
+  "profileDeleteAllBody": "S'esborraran el teu perfil, els teus objectius, les teves inversions i el teu progrés. Si els vols conservar, exporta abans una còpia. Aquesta acció no es pot desfer.",
+  "profileDeleteAllConfirm": "Esborrar-ho tot"
 }
