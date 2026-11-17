@@ -1596,6 +1596,18 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Has leído {read} de {total} lecciones'**
   String learnProgress(int read, int total);
+
+  /// Learn tab: lessons.
+  ///
+  /// In es, this message translates to:
+  /// **'Lecciones'**
+  String get learnLessonsTab;
+
+  /// Learn tab: quick tips.
+  ///
+  /// In es, this message translates to:
+  /// **'Consejos rápidos'**
+  String get learnTipsTab;
 }
 
 class _AppLocalizationsDelegate

@@ -849,4 +849,10 @@ class AppLocalizationsCa extends AppLocalizations {
   String learnProgress(int read, int total) {
     return 'Has llegit $read de $total lliçons';
   }
+
+  @override
+  String get learnLessonsTab => 'Lliçons';
+
+  @override
+  String get learnTipsTab => 'Consells ràpids';
 }

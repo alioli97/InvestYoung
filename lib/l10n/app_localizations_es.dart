@@ -848,4 +848,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String learnProgress(int read, int total) {
     return 'Has leído $read de $total lecciones';
   }
+
+  @override
+  String get learnLessonsTab => 'Lecciones';
+
+  @override
+  String get learnTipsTab => 'Consejos rápidos';
 }

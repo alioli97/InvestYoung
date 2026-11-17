@@ -1135,5 +1135,13 @@
         "type": "int"
       }
     }
+  },
+  "learnLessonsTab": "Lecciones",
+  "@learnLessonsTab": {
+    "description": "Learn tab: lessons."
+  },
+  "learnTipsTab": "Consejos rápidos",
+  "@learnTipsTab": {
+    "description": "Learn tab: quick tips."
   }
 }

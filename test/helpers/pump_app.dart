@@ -88,7 +88,8 @@ Future<void> pumpUntilFound(
     await tester.runAsync(
       () => Future<void>.delayed(const Duration(milliseconds: 20)),
     );
-    await tester.pump();
+    // Advance the fake clock too, so animations (e.g. tab changes) progress.
+    await tester.pump(const Duration(milliseconds: 50));
   }
   await tester.pumpAndSettle();
 }
