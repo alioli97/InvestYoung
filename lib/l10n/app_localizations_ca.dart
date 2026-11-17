@@ -414,4 +414,103 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get investmentsCategoryCryptoExamples => 'BTC, ETH…';
+
+  @override
+  String get commonSave => 'Desar';
+
+  @override
+  String get commonCancel => 'Cancel·lar';
+
+  @override
+  String get commonDelete => 'Eliminar';
+
+  @override
+  String get commonClear => 'Esborrar';
+
+  @override
+  String get commonRequired => 'Camp obligatori';
+
+  @override
+  String get commonInvalidNumber => 'Introdueix un número vàlid';
+
+  @override
+  String get investmentsAddAsset => 'Afegir actiu';
+
+  @override
+  String get investmentsNewAsset => 'Nou actiu';
+
+  @override
+  String get investmentsEditAsset => 'Editar actiu';
+
+  @override
+  String get investmentsEmptyCategory =>
+      'Encara no tens res en aquesta categoria';
+
+  @override
+  String get investmentsFieldName => 'Nom';
+
+  @override
+  String get investmentsFieldInstitution => 'Entitat';
+
+  @override
+  String get investmentsFieldApy => 'Rendibilitat anual (TAE)';
+
+  @override
+  String get investmentsFieldIssuer => 'Emissor';
+
+  @override
+  String get investmentsFieldYield => 'Rendibilitat o cupó anual';
+
+  @override
+  String get investmentsFieldMaturity => 'Data de venciment';
+
+  @override
+  String get investmentsFieldTicker => 'Ticker o ISIN';
+
+  @override
+  String get investmentsFieldSubtype => 'Tipus';
+
+  @override
+  String get investmentsFieldSymbol => 'Símbol';
+
+  @override
+  String get investmentsFieldExchange => 'Exchange o wallet';
+
+  @override
+  String get investmentsFieldGoal => 'Objectiu assignat';
+
+  @override
+  String get investmentsNoGoal => 'Cap';
+
+  @override
+  String get investmentsFieldNotes => 'Notes';
+
+  @override
+  String get investmentsSubtypeIndexFund => 'Fons indexat';
+
+  @override
+  String get investmentsSubtypeEtf => 'ETF';
+
+  @override
+  String get investmentsSubtypeStock => 'Acció';
+
+  @override
+  String get investmentsSubtypeOther => 'Altre';
+
+  @override
+  String investmentsApyShort(String rate) {
+    return '$rate TAE';
+  }
+
+  @override
+  String investmentsMaturityShort(String date) {
+    return 'venç $date';
+  }
+
+  @override
+  String get investmentsDeleteAssetTitle => 'Vols eliminar aquest actiu?';
+
+  @override
+  String get investmentsDeleteAssetBody =>
+      'També se n\'eliminaran tots els moviments. Aquesta acció no es pot desfer.';
 }

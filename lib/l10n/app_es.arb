@@ -524,5 +524,139 @@
   "investmentsCategoryCryptoExamples": "BTC, ETH…",
   "@investmentsCategoryCryptoExamples": {
     "description": "Examples of the crypto category."
+  },
+  "commonSave": "Guardar",
+  "@commonSave": {
+    "description": "Save button."
+  },
+  "commonCancel": "Cancelar",
+  "@commonCancel": {
+    "description": "Cancel button."
+  },
+  "commonDelete": "Eliminar",
+  "@commonDelete": {
+    "description": "Delete button."
+  },
+  "commonClear": "Borrar",
+  "@commonClear": {
+    "description": "Clear a field."
+  },
+  "commonRequired": "Campo obligatorio",
+  "@commonRequired": {
+    "description": "Validation error for required fields."
+  },
+  "commonInvalidNumber": "Introduce un número válido",
+  "@commonInvalidNumber": {
+    "description": "Validation error for numeric fields."
+  },
+  "investmentsAddAsset": "Añadir activo",
+  "@investmentsAddAsset": {
+    "description": "Button to add an asset."
+  },
+  "investmentsNewAsset": "Nuevo activo",
+  "@investmentsNewAsset": {
+    "description": "Title of the create asset form."
+  },
+  "investmentsEditAsset": "Editar activo",
+  "@investmentsEditAsset": {
+    "description": "Title of the edit asset form."
+  },
+  "investmentsEmptyCategory": "Aún no tienes nada en esta categoría",
+  "@investmentsEmptyCategory": {
+    "description": "Empty state of a category."
+  },
+  "investmentsFieldName": "Nombre",
+  "@investmentsFieldName": {
+    "description": "Asset name field."
+  },
+  "investmentsFieldInstitution": "Entidad",
+  "@investmentsFieldInstitution": {
+    "description": "Bank or institution field."
+  },
+  "investmentsFieldApy": "Rentabilidad anual (TAE)",
+  "@investmentsFieldApy": {
+    "description": "Annual percentage yield field."
+  },
+  "investmentsFieldIssuer": "Emisor",
+  "@investmentsFieldIssuer": {
+    "description": "Fixed income issuer field."
+  },
+  "investmentsFieldYield": "Rentabilidad o cupón anual",
+  "@investmentsFieldYield": {
+    "description": "Fixed income yield or coupon field."
+  },
+  "investmentsFieldMaturity": "Fecha de vencimiento",
+  "@investmentsFieldMaturity": {
+    "description": "Maturity date field."
+  },
+  "investmentsFieldTicker": "Ticker o ISIN",
+  "@investmentsFieldTicker": {
+    "description": "Ticker or ISIN field."
+  },
+  "investmentsFieldSubtype": "Tipo",
+  "@investmentsFieldSubtype": {
+    "description": "Equity subtype field."
+  },
+  "investmentsFieldSymbol": "Símbolo",
+  "@investmentsFieldSymbol": {
+    "description": "Crypto symbol field."
+  },
+  "investmentsFieldExchange": "Exchange o wallet",
+  "@investmentsFieldExchange": {
+    "description": "Crypto exchange or wallet field."
+  },
+  "investmentsFieldGoal": "Objetivo asignado",
+  "@investmentsFieldGoal": {
+    "description": "Assigned goal field."
+  },
+  "investmentsNoGoal": "Ninguno",
+  "@investmentsNoGoal": {
+    "description": "No goal assigned option."
+  },
+  "investmentsFieldNotes": "Notas",
+  "@investmentsFieldNotes": {
+    "description": "Notes field."
+  },
+  "investmentsSubtypeIndexFund": "Fondo indexado",
+  "@investmentsSubtypeIndexFund": {
+    "description": "Equity subtype."
+  },
+  "investmentsSubtypeEtf": "ETF",
+  "@investmentsSubtypeEtf": {
+    "description": "Equity subtype."
+  },
+  "investmentsSubtypeStock": "Acción",
+  "@investmentsSubtypeStock": {
+    "description": "Equity subtype."
+  },
+  "investmentsSubtypeOther": "Otro",
+  "@investmentsSubtypeOther": {
+    "description": "Equity subtype."
+  },
+  "investmentsApyShort": "{rate} TAE",
+  "@investmentsApyShort": {
+    "description": "APY shown in asset lists.",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "investmentsMaturityShort": "vence {date}",
+  "@investmentsMaturityShort": {
+    "description": "Maturity shown in asset lists.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "investmentsDeleteAssetTitle": "¿Eliminar este activo?",
+  "@investmentsDeleteAssetTitle": {
+    "description": "Delete asset dialog title."
+  },
+  "investmentsDeleteAssetBody": "Se eliminarán también todos sus movimientos. Esta acción no se puede deshacer.",
+  "@investmentsDeleteAssetBody": {
+    "description": "Delete asset dialog body."
   }
 }

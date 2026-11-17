@@ -30,3 +30,23 @@ String formatCentsForInput(int cents) {
   final rest = cents % 100;
   return rest == 0 ? '$euros' : '$euros,${rest.toString().padLeft(2, '0')}';
 }
+
+/// Parses a percentage typed by the user (`2,5`, `2.5`, `2,5 %`) into a
+/// ratio (`0.025`). Returns `null` when empty or invalid. Negative values are
+/// allowed (e.g. negative yields).
+double? parsePercentToRatio(String input) {
+  final text = input
+      .replaceAll(RegExp(r'[\s\u00A0\u202F%]'), '')
+      .replaceAll(',', '.');
+  if (!RegExp(r'^-?\d+(\.\d+)?$').hasMatch(text)) return null;
+  return double.parse(text) / 100;
+}
+
+/// Formats a ratio for an input field (`0.025` → `2,5`).
+String formatRatioForInput(double ratio) {
+  final percent = (ratio * 100 * 10000).round() / 10000;
+  final text = percent == percent.truncateToDouble()
+      ? percent.toInt().toString()
+      : percent.toString();
+  return text.replaceAll('.', ',');
+}
