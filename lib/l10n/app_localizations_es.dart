@@ -925,4 +925,18 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get profileDeleteAllConfirm => 'Borrar todo';
+
+  @override
+  String get profileInformation => 'Información';
+
+  @override
+  String get profileAbout => 'Acerca de';
+
+  @override
+  String get profileAboutBody =>
+      'Aplicación educativa para organizar tus finanzas y aprender a invertir. Funciona sin conexión: tus datos se guardan solo en tu dispositivo y no se envían a ningún servidor.';
+
+  @override
+  String get profileLegalSimulations =>
+      'Las simulaciones de rentabilidad son orientativas, se basan en las hipótesis que tú introduces y no garantizan resultados. Los perfiles, rangos y porcentajes que muestra la app son indicativos y no tienen en cuenta toda tu situación personal.';
 }

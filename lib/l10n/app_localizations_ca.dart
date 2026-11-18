@@ -928,4 +928,18 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get profileDeleteAllConfirm => 'Esborrar-ho tot';
+
+  @override
+  String get profileInformation => 'Informació';
+
+  @override
+  String get profileAbout => 'Quant a';
+
+  @override
+  String get profileAboutBody =>
+      'Aplicació educativa per organitzar les teves finances i aprendre a invertir. Funciona sense connexió: les teves dades es desen només al teu dispositiu i no s\'envien a cap servidor.';
+
+  @override
+  String get profileLegalSimulations =>
+      'Les simulacions de rendibilitat són orientatives, es basen en les hipòtesis que tu introdueixes i no garanteixen resultats. Els perfils, rangs i percentatges que mostra l\'app són indicatius i no tenen en compte tota la teva situació personal.';
 }

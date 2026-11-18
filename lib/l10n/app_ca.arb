@@ -272,5 +272,9 @@
   "profileDeleteAllSubtitle": "Perfil, objectius, inversions i progrés",
   "profileDeleteAllTitle": "Vols esborrar totes les dades?",
   "profileDeleteAllBody": "S'esborraran el teu perfil, els teus objectius, les teves inversions i el teu progrés. Si els vols conservar, exporta abans una còpia. Aquesta acció no es pot desfer.",
-  "profileDeleteAllConfirm": "Esborrar-ho tot"
+  "profileDeleteAllConfirm": "Esborrar-ho tot",
+  "profileInformation": "Informació",
+  "profileAbout": "Quant a",
+  "profileAboutBody": "Aplicació educativa per organitzar les teves finances i aprendre a invertir. Funciona sense connexió: les teves dades es desen només al teu dispositiu i no s'envien a cap servidor.",
+  "profileLegalSimulations": "Les simulacions de rendibilitat són orientatives, es basen en les hipòtesis que tu introdueixes i no garanteixen resultats. Els perfils, rangs i percentatges que mostra l'app són indicatius i no tenen en compte tota la teva situació personal."
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/l10n/l10n.dart';
+import '../../../../core/widgets/legal_notice_card.dart';
 import '../onboarding_controller.dart';
 import '../widgets/step_layout.dart';
 
@@ -12,7 +13,6 @@ class WelcomeStep extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final theme = Theme.of(context);
     final accepted = ref.watch(
       onboardingControllerProvider.select((s) => s.answers.legalAccepted),
     );
@@ -21,23 +21,7 @@ class WelcomeStep extends ConsumerWidget {
       title: l10n.onboardingWelcomeTitle,
       subtitle: l10n.onboardingWelcomeBody,
       children: [
-        Card(
-          color: theme.colorScheme.surfaceContainerHighest,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  l10n.commonLegalNoticeTitle,
-                  style: theme.textTheme.titleMedium,
-                ),
-                const SizedBox(height: 8),
-                Text(l10n.commonLegalNoticeBody),
-              ],
-            ),
-          ),
-        ),
+        const LegalNoticeCard(),
         const SizedBox(height: 8),
         CheckboxListTile(
           value: accepted,

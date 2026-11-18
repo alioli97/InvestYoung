@@ -74,6 +74,27 @@ class ProfileScreen extends ConsumerWidget {
             onTap: () => context.push(Routes.retakeOnboarding),
           ),
           const DataSection(),
+          SectionHeader(l10n.profileInformation),
+          ListTile(
+            leading: const Icon(Icons.gavel_outlined),
+            title: Text(l10n.commonLegalNoticeTitle),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => context.push(Routes.legalNotice),
+          ),
+          ListTile(
+            leading: const Icon(Icons.info_outline),
+            title: Text(l10n.profileAbout),
+            onTap: () => showAboutDialog(
+              context: context,
+              applicationName: l10n.appTitle,
+              applicationIcon: Icon(
+                Icons.savings_outlined,
+                size: 40,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              children: [Text(l10n.profileAboutBody)],
+            ),
+          ),
         ],
       ),
     );

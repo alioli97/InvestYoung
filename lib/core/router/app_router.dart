@@ -9,7 +9,7 @@ import '../../features/learn/presentation/learn_routes.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/onboarding/presentation/onboarding_status_provider.dart';
 import '../../features/onboarding/presentation/retake_onboarding_screen.dart';
-import '../../features/profile/presentation/profile_screen.dart';
+import '../../features/profile/presentation/profile_routes.dart';
 import 'app_shell.dart';
 import 'routes.dart';
 
@@ -47,7 +47,7 @@ GoRouter appRouter(Ref ref) {
           StatefulShellBranch(routes: [goalsRoute]),
           StatefulShellBranch(routes: [investmentsRoute]),
           StatefulShellBranch(routes: [learnRoute]),
-          _branch(Routes.profile, const ProfileScreen()),
+          StatefulShellBranch(routes: [profileRoute]),
         ],
       ),
     ],

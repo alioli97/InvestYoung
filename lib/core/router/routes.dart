@@ -10,6 +10,7 @@ abstract final class Routes {
   static const learn = '/learn';
   static const profile = '/profile';
   static const retakeOnboarding = '/retake-onboarding';
+  static const legalNotice = '$profile/legal';
 
   /// Assets of one investment category.
   static String investmentCategory(AssetCategory category) =>

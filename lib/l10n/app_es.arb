@@ -1231,5 +1231,21 @@
   "profileDeleteAllConfirm": "Borrar todo",
   "@profileDeleteAllConfirm": {
     "description": "Confirm delete all."
+  },
+  "profileInformation": "Información",
+  "@profileInformation": {
+    "description": "Profile section: information."
+  },
+  "profileAbout": "Acerca de",
+  "@profileAbout": {
+    "description": "About option."
+  },
+  "profileAboutBody": "Aplicación educativa para organizar tus finanzas y aprender a invertir. Funciona sin conexión: tus datos se guardan solo en tu dispositivo y no se envían a ningún servidor.",
+  "@profileAboutBody": {
+    "description": "About dialog text."
+  },
+  "profileLegalSimulations": "Las simulaciones de rentabilidad son orientativas, se basan en las hipótesis que tú introduces y no garantizan resultados. Los perfiles, rangos y porcentajes que muestra la app son indicativos y no tienen en cuenta toda tu situación personal.",
+  "@profileLegalSimulations": {
+    "description": "Extra legal text about simulations."
   }
 }
