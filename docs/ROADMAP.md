@@ -56,7 +56,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [ ] Test on real devices; collect feedback and fix the bugs found
 - [x] Own release signing key (kept out of Git) so updates install over previous versions
 - [x] Versioning: bump `version` in pubspec.yaml on every shared build
-- [ ] CI job that builds the release APK and uploads it as a downloadable artifact
+- [x] CI job that builds the release APK and uploads it as a downloadable artifact
 
 ## Phase 8 — Learn content
 - [ ] Module 4 — Fixed income: 2 lessons + quizzes (es + ca)
