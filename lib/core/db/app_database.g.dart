@@ -3336,7 +3336,16 @@ class $$UserProfilesTableTableManager
                 themeMode: themeMode,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$UserProfilesTable, UserProfileRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $UserProfilesTable,
+                    UserProfileRow
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -3501,7 +3510,16 @@ class $$MonthlyExpensesTableTableManager
                 amountCents: amountCents,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$MonthlyExpensesTable, MonthlyExpenseRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $MonthlyExpensesTable,
+                    MonthlyExpenseRow
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -3525,28 +3543,26 @@ typedef $$MonthlyExpensesTableProcessedTableManager =
       MonthlyExpenseRow,
       PrefetchHooks Function()
     >;
-typedef $$GoalsTableCreateCompanionBuilder =
-    GoalsCompanion Function({
-      Value<int> id,
-      required GoalType type,
-      required String name,
-      required int targetCents,
-      Value<DateTime?> targetDate,
-      Value<double> expectedAnnualReturn,
-      Value<String> paramsJson,
-      required DateTime createdAt,
-    });
-typedef $$GoalsTableUpdateCompanionBuilder =
-    GoalsCompanion Function({
-      Value<int> id,
-      Value<GoalType> type,
-      Value<String> name,
-      Value<int> targetCents,
-      Value<DateTime?> targetDate,
-      Value<double> expectedAnnualReturn,
-      Value<String> paramsJson,
-      Value<DateTime> createdAt,
-    });
+typedef $$GoalsTableCreateCompanionBuilder = GoalsCompanion Function({
+  Value<int> id,
+  required GoalType type,
+  required String name,
+  required int targetCents,
+  Value<DateTime?> targetDate,
+  Value<double> expectedAnnualReturn,
+  Value<String> paramsJson,
+  required DateTime createdAt,
+});
+typedef $$GoalsTableUpdateCompanionBuilder = GoalsCompanion Function({
+  Value<int> id,
+  Value<GoalType> type,
+  Value<String> name,
+  Value<int> targetCents,
+  Value<DateTime?> targetDate,
+  Value<double> expectedAnnualReturn,
+  Value<String> paramsJson,
+  Value<DateTime> createdAt,
+});
 
 final class $$GoalsTableReferences
     extends BaseReferences<_$AppDatabase, $GoalsTable, GoalRow> {
@@ -3556,7 +3572,7 @@ final class $$GoalsTableReferences
     _$AppDatabase db,
   ) => MultiTypedResultKey.fromTable(
     db.assets,
-    aliasName: $_aliasNameGenerator(db.goals.id, db.assets.goalId),
+    aliasName: 'goals__id__assets__goal_id',
   );
 
   $$AssetsTableProcessedTableManager get assetsRefs {
@@ -3832,8 +3848,10 @@ class $$GoalsTableTableManager
               ),
           withReferenceMapper: (p0) => p0
               .map(
-                (e) =>
-                    (e.readTable(table), $$GoalsTableReferences(db, table, e)),
+                (e) => (
+                  e.readTable<$GoalsTable, GoalRow>(table),
+                  $$GoalsTableReferences(db, table, e),
+                ),
               )
               .toList(),
           prefetchHooksCallback: ({assetsRefs = false}) {
@@ -3844,15 +3862,20 @@ class $$GoalsTableTableManager
               getPrefetchedDataCallback: (items) async {
                 return [
                   if (assetsRefs)
-                    await $_getPrefetchedData<GoalRow, $GoalsTable, AssetRow>(
+                    await $_getPrefetchedDataByColumns<
+                      GoalRow,
+                      $GoalsTable,
+                      AssetRow,
+                      $AssetsTable
+                    >(
                       currentTable: table,
                       referencedTable: $$GoalsTableReferences._assetsRefsTable(
                         db,
                       ),
                       managerFromTypedResult: (p0) =>
                           $$GoalsTableReferences(db, table, p0).assetsRefs,
-                      referencedItemsForCurrentItem: (item, referencedItems) =>
-                          referencedItems.where((e) => e.goalId == item.id),
+                      currentColumn: 'id',
+                      referencedColumn: 'goal_id',
                       typedResults: items,
                     ),
                 ];
@@ -3877,35 +3900,33 @@ typedef $$GoalsTableProcessedTableManager =
       GoalRow,
       PrefetchHooks Function({bool assetsRefs})
     >;
-typedef $$AssetsTableCreateCompanionBuilder =
-    AssetsCompanion Function({
-      Value<int> id,
-      required AssetCategory category,
-      required String name,
-      Value<int?> goalId,
-      Value<String> metadataJson,
-      Value<String?> notes,
-      required DateTime createdAt,
-      Value<bool> archived,
-    });
-typedef $$AssetsTableUpdateCompanionBuilder =
-    AssetsCompanion Function({
-      Value<int> id,
-      Value<AssetCategory> category,
-      Value<String> name,
-      Value<int?> goalId,
-      Value<String> metadataJson,
-      Value<String?> notes,
-      Value<DateTime> createdAt,
-      Value<bool> archived,
-    });
+typedef $$AssetsTableCreateCompanionBuilder = AssetsCompanion Function({
+  Value<int> id,
+  required AssetCategory category,
+  required String name,
+  Value<int?> goalId,
+  Value<String> metadataJson,
+  Value<String?> notes,
+  required DateTime createdAt,
+  Value<bool> archived,
+});
+typedef $$AssetsTableUpdateCompanionBuilder = AssetsCompanion Function({
+  Value<int> id,
+  Value<AssetCategory> category,
+  Value<String> name,
+  Value<int?> goalId,
+  Value<String> metadataJson,
+  Value<String?> notes,
+  Value<DateTime> createdAt,
+  Value<bool> archived,
+});
 
 final class $$AssetsTableReferences
     extends BaseReferences<_$AppDatabase, $AssetsTable, AssetRow> {
   $$AssetsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $GoalsTable _goalIdTable(_$AppDatabase db) =>
-      db.goals.createAlias($_aliasNameGenerator(db.assets.goalId, db.goals.id));
+      db.goals.createAlias('assets__goal_id__goals__id');
 
   $$GoalsTableProcessedTableManager? get goalId {
     final $_column = $_itemColumn<int>('goal_id');
@@ -3924,7 +3945,7 @@ final class $$AssetsTableReferences
   static MultiTypedResultKey<$TransactionsTable, List<TransactionRow>>
   _transactionsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.transactions,
-    aliasName: $_aliasNameGenerator(db.assets.id, db.transactions.assetId),
+    aliasName: 'assets__id__transactions__asset_id',
   );
 
   $$TransactionsTableProcessedTableManager get transactionsRefs {
@@ -4251,8 +4272,10 @@ class $$AssetsTableTableManager
               ),
           withReferenceMapper: (p0) => p0
               .map(
-                (e) =>
-                    (e.readTable(table), $$AssetsTableReferences(db, table, e)),
+                (e) => (
+                  e.readTable<$AssetsTable, AssetRow>(table),
+                  $$AssetsTableReferences(db, table, e),
+                ),
               )
               .toList(),
           prefetchHooksCallback: ({goalId = false, transactionsRefs = false}) {
@@ -4276,17 +4299,16 @@ class $$AssetsTableTableManager
                     >
                   >(state) {
                     if (goalId) {
-                      state =
-                          state.withJoin(
-                                currentTable: table,
-                                currentColumn: table.goalId,
-                                referencedTable: $$AssetsTableReferences
-                                    ._goalIdTable(db),
-                                referencedColumn: $$AssetsTableReferences
-                                    ._goalIdTable(db)
-                                    .id,
-                              )
-                              as T;
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.goalId,
+                        referencedTable: $$AssetsTableReferences._goalIdTable(
+                          db,
+                        ),
+                        referencedColumn: $$AssetsTableReferences
+                            ._goalIdTable(db)
+                            .id,
+                      ) as T;
                     }
 
                     return state;
@@ -4294,10 +4316,11 @@ class $$AssetsTableTableManager
               getPrefetchedDataCallback: (items) async {
                 return [
                   if (transactionsRefs)
-                    await $_getPrefetchedData<
+                    await $_getPrefetchedDataByColumns<
                       AssetRow,
                       $AssetsTable,
-                      TransactionRow
+                      TransactionRow,
+                      $TransactionsTable
                     >(
                       currentTable: table,
                       referencedTable: $$AssetsTableReferences
@@ -4307,8 +4330,8 @@ class $$AssetsTableTableManager
                         table,
                         p0,
                       ).transactionsRefs,
-                      referencedItemsForCurrentItem: (item, referencedItems) =>
-                          referencedItems.where((e) => e.assetId == item.id),
+                      currentColumn: 'id',
+                      referencedColumn: 'asset_id',
                       typedResults: items,
                     ),
                 ];
@@ -4360,9 +4383,8 @@ final class $$TransactionsTableReferences
     extends BaseReferences<_$AppDatabase, $TransactionsTable, TransactionRow> {
   $$TransactionsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
-  static $AssetsTable _assetIdTable(_$AppDatabase db) => db.assets.createAlias(
-    $_aliasNameGenerator(db.transactions.assetId, db.assets.id),
-  );
+  static $AssetsTable _assetIdTable(_$AppDatabase db) =>
+      db.assets.createAlias('transactions__asset_id__assets__id');
 
   $$AssetsTableProcessedTableManager get assetId {
     final $_column = $_itemColumn<int>('asset_id')!;
@@ -4642,7 +4664,7 @@ class $$TransactionsTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$TransactionsTable, TransactionRow>(table),
                   $$TransactionsTableReferences(db, table, e),
                 ),
               )
@@ -4668,17 +4690,15 @@ class $$TransactionsTableTableManager
                     >
                   >(state) {
                     if (assetId) {
-                      state =
-                          state.withJoin(
-                                currentTable: table,
-                                currentColumn: table.assetId,
-                                referencedTable: $$TransactionsTableReferences
-                                    ._assetIdTable(db),
-                                referencedColumn: $$TransactionsTableReferences
-                                    ._assetIdTable(db)
-                                    .id,
-                              )
-                              as T;
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.assetId,
+                        referencedTable: $$TransactionsTableReferences
+                            ._assetIdTable(db),
+                        referencedColumn: $$TransactionsTableReferences
+                            ._assetIdTable(db)
+                            .id,
+                      ) as T;
                     }
 
                     return state;
@@ -4852,7 +4872,16 @@ class $$LessonProgressTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$LessonProgressTable, LessonProgressRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $LessonProgressTable,
+                    LessonProgressRow
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),

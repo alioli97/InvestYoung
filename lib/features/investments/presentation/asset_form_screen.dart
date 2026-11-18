@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,13 +17,13 @@ import 'widgets/goal_dropdown.dart';
 
 /// Creates a new asset in a category, or edits an existing one.
 class AssetFormScreen extends ConsumerWidget {
-  const AssetFormScreen.create({super.key, required AssetCategory category})
-    : _category = category,
-      _assetId = null;
+  const AssetFormScreen.create({
+    super.key,
+    required AssetCategory this._category,
+  }) : _assetId = null;
 
-  const AssetFormScreen.edit({super.key, required int assetId})
-    : _assetId = assetId,
-      _category = null;
+  const AssetFormScreen.edit({super.key, required int this._assetId})
+    : _category = null;
 
   final AssetCategory? _category;
   final int? _assetId;

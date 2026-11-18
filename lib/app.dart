@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/l10n/l10n.dart';
@@ -22,10 +21,13 @@ class InvestYoungApp extends ConsumerWidget {
       themeMode: ref.watch(themePreferenceProvider).themeMode,
       localizationsDelegates: const [
         AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+        ...GlobalMaterialLocalizations.delegates,
       ],
+      // fl_chart and flutter_markdown_plus still read the legacy
+      // `package:flutter/material.dart` theme and localizations. Remove the
+      // bridge once both have migrated to material_ui.
+      // ignore: deprecated_member_use
+      builder: (context, child) => MaterialUiCompatibilityBridge(child: child!),
       locale: ref.watch(appLocaleProvider),
       supportedLocales: AppLocalizations.supportedLocales,
       localeResolutionCallback: _resolveLocale,

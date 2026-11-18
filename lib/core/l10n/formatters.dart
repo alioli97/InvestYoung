@@ -65,9 +65,8 @@ class Formatters {
   static String quantity(Decimal value, Locale locale) {
     final negative = value < Decimal.zero;
     final parts = value.abs().toString().split('.');
-    final integer = NumberFormat.decimalPattern(
-      intlLocale(locale),
-    ).format(BigInt.parse(parts[0]).toInt());
+    final integer = NumberFormat.decimalPattern(intlLocale(locale))
+        .format(BigInt.parse(parts[0]).toInt());
     final fraction = parts.length > 1 ? ',${parts[1]}' : '';
     return '${negative ? '-' : ''}$integer$fraction';
   }

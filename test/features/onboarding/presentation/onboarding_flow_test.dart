@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:invest_young/features/goals/data/goals_repository.dart';
 import 'package:invest_young/features/goals/domain/goal_type.dart';
@@ -7,6 +7,7 @@ import 'package:invest_young/features/onboarding/data/profile_repository.dart';
 import 'package:invest_young/features/onboarding/domain/onboarding_answers.dart';
 
 import '../../../helpers/test_database.dart';
+
 import 'package:invest_young/features/onboarding/domain/profile_enums.dart';
 
 import 'package:invest_young/features/onboarding/domain/user_profile.dart';

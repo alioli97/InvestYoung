@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// "Label ……… value" line that wraps the value onto a new line when both
 /// do not fit (large text sizes), instead of overflowing.

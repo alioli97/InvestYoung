@@ -6,7 +6,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:invest_young/core/db/app_database.dart';
 import 'package:invest_young/core/domain/app_theme_mode.dart';
 
-import '../../helpers/test_database.dart';
 import 'generated/schema.dart';
 
 void main() {
@@ -14,7 +13,6 @@ void main() {
   late SchemaVerifier verifier;
 
   setUpAll(() {
-    configureSqliteForTests();
     verifier = SchemaVerifier(GeneratedHelper());
   });
 
