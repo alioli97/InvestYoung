@@ -60,7 +60,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 
 ## Phase 8 — Learn content
 - [x] Module 4 — Fixed income: 2 lessons + quizzes (es + ca)
-- [ ] Module 5 — Equities (diversification, index funds, DCA): 2 lessons + quizzes (es + ca)
+- [x] Module 5 — Equities (diversification, index funds, DCA): 2 lessons + quizzes (es + ca)
 - [ ] Module 6 — Crypto (risks, volatility, custody): 2 lessons + quizzes (es + ca)
 - [ ] Module 7 — Basic taxation in Spain: 2 lessons + quizzes (es + ca)
 - [ ] Module 8 — Investor psychology: 2 lessons + quizzes (es + ca)

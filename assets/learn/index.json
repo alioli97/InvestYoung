@@ -614,7 +614,156 @@
     },
     {
       "id": "equities",
-      "lessons": []
+      "lessons": [
+        {
+          "id": "equities-basics",
+          "file": "equities-basics.md",
+          "minutes": 4,
+          "title": {
+            "es": "Qué es la renta variable y por qué diversificar",
+            "ca": "Què és la renda variable i per què diversificar"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "¿Qué compras cuando compras una acción?",
+                "ca": "Què compres quan compres una acció?"
+              },
+              "options": [
+                {
+                  "es": "Un préstamo a la empresa",
+                  "ca": "Un préstec a l'empresa"
+                },
+                {
+                  "es": "Una parte de la empresa",
+                  "ca": "Una part de l'empresa"
+                },
+                {
+                  "es": "Un depósito garantizado",
+                  "ca": "Un dipòsit garantit"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Qué riesgo se puede reducir casi del todo diversificando?",
+                "ca": "Quin risc es pot reduir gairebé del tot diversificant?"
+              },
+              "options": [
+                {
+                  "es": "El riesgo de que se hunda una empresa concreta",
+                  "ca": "El risc que s'enfonsi una empresa concreta"
+                },
+                {
+                  "es": "El riesgo de que caiga toda la bolsa",
+                  "ca": "El risc que caigui tota la borsa"
+                },
+                {
+                  "es": "Ninguno",
+                  "ca": "Cap"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "¿Para qué dinero encaja la renta variable?",
+                "ca": "Per a quins diners encaixa la renda variable?"
+              },
+              "options": [
+                {
+                  "es": "El fondo de emergencia",
+                  "ca": "El fons d'emergència"
+                },
+                {
+                  "es": "Dinero que necesitarás el año que viene",
+                  "ca": "Diners que necessitaràs l'any que ve"
+                },
+                {
+                  "es": "Dinero que no necesitarás en muchos años",
+                  "ca": "Diners que no necessitaràs en molts anys"
+                }
+              ],
+              "answer": 2
+            }
+          ]
+        },
+        {
+          "id": "equities-index-dca",
+          "file": "equities-index-dca.md",
+          "minutes": 5,
+          "title": {
+            "es": "Fondos indexados y aportaciones periódicas",
+            "ca": "Fons indexats i aportacions periòdiques"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "¿Qué hace un fondo indexado?",
+                "ca": "Què fa un fons indexat?"
+              },
+              "options": [
+                {
+                  "es": "Elige las empresas que cree que subirán más",
+                  "ca": "Tria les empreses que creu que pujaran més"
+                },
+                {
+                  "es": "Copia un índice con costes bajos",
+                  "ca": "Copia un índex amb costos baixos"
+                },
+                {
+                  "es": "Garantiza la rentabilidad del mercado",
+                  "ca": "Garanteix la rendibilitat del mercat"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "Con aportaciones periódicas, ¿qué pasa cuando el precio baja?",
+                "ca": "Amb aportacions periòdiques, què passa quan el preu baixa?"
+              },
+              "options": [
+                {
+                  "es": "Compras más participaciones con el mismo dinero",
+                  "ca": "Compres més participacions amb els mateixos diners"
+                },
+                {
+                  "es": "Pierdes lo aportado",
+                  "ca": "Perds el que has aportat"
+                },
+                {
+                  "es": "Tienes que dejar de aportar",
+                  "ca": "Has de deixar d'aportar"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "¿Por qué importan tanto las comisiones a largo plazo?",
+                "ca": "Per què importen tant les comissions a llarg termini?"
+              },
+              "options": [
+                {
+                  "es": "Porque solo se pagan una vez",
+                  "ca": "Perquè només es paguen una vegada"
+                },
+                {
+                  "es": "Porque se descuentan cada año y su efecto se acumula",
+                  "ca": "Perquè es descompten cada any i el seu efecte s'acumula"
+                },
+                {
+                  "es": "No importan si el fondo es bueno",
+                  "ca": "No importen si el fons és bo"
+                }
+              ],
+              "answer": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "crypto",

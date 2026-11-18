@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,6 +10,17 @@ import 'package:invest_young/features/onboarding/data/profile_repository.dart';
 import '../../helpers/fixtures.dart';
 import '../../helpers/pump_app.dart';
 import '../../helpers/test_database.dart';
+
+/// Spanish titles of every lesson in index.json, in display order.
+final List<String> _lessonTitlesEs = [
+  for (final module
+      in jsonDecode(
+            File('assets/learn/index.json').readAsStringSync(),
+          )['modules']
+          as List)
+    for (final lesson in module['lessons'] as List)
+      lesson['title']['es'] as String,
+];
 
 final _lessonsList = find
     .descendant(of: find.byType(LessonsTab), matching: find.byType(Scrollable))
@@ -54,6 +68,12 @@ void main() {
       200,
       scrollable: _lessonsList,
     );
+    // Modules without lessons yet are marked as coming soon.
+    await tester.scrollUntilVisible(
+      find.text('Psicología del inversor'),
+      200,
+      scrollable: _lessonsList,
+    );
     expect(find.text('Próximamente'), findsWidgets);
   });
 
@@ -71,15 +91,7 @@ void main() {
 
   testWidgets('renders every lesson without errors', (tester) async {
     await _openLearn(tester);
-    for (final title in [
-      'Inflación e interés compuesto',
-      'Qué es y cuánto necesitas',
-      'Dónde guardar tu fondo de emergencia',
-      'Deuda buena, deuda mala y su coste real',
-      'Cómo salir de las deudas',
-      'Qué es la renta fija y cómo funciona',
-      'Cómo invertir en renta fija',
-    ]) {
+    for (final title in _lessonTitlesEs) {
       await tester.scrollUntilVisible(
         find.text(title),
         200,
