@@ -767,7 +767,156 @@
     },
     {
       "id": "crypto",
-      "lessons": []
+      "lessons": [
+        {
+          "id": "crypto-risks",
+          "file": "crypto-risks.md",
+          "minutes": 4,
+          "title": {
+            "es": "Qué son las criptomonedas y qué riesgos tienen",
+            "ca": "Què són les criptomonedes i quins riscos tenen"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "¿Qué hay normalmente detrás del precio de una criptomoneda?",
+                "ca": "Què hi ha normalment darrere del preu d'una criptomoneda?"
+              },
+              "options": [
+                {
+                  "es": "Los beneficios de una empresa",
+                  "ca": "Els beneficis d'una empresa"
+                },
+                {
+                  "es": "Lo que otros estén dispuestos a pagar por ella",
+                  "ca": "El que altres estiguin disposats a pagar-hi"
+                },
+                {
+                  "es": "Un tipo de interés fijo",
+                  "ca": "Un tipus d'interès fix"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Qué protege el reglamento europeo MiCA?",
+                "ca": "Què protegeix el reglament europeu MiCA?"
+              },
+              "options": [
+                {
+                  "es": "Exige autorización a las plataformas, pero no te protege de que el precio caiga",
+                  "ca": "Exigeix autorització a les plataformes, però no et protegeix que el preu caigui"
+                },
+                {
+                  "es": "Garantiza tu inversión hasta 100.000 €",
+                  "ca": "Garanteix la teva inversió fins a 100.000 €"
+                },
+                {
+                  "es": "Impide que el precio baje más de un 10 %",
+                  "ca": "Impedeix que el preu baixi més d'un 10 %"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "¿Qué dinero tiene sentido poner en criptomonedas?",
+                "ca": "Quins diners té sentit posar en criptomonedes?"
+              },
+              "options": [
+                {
+                  "es": "El fondo de emergencia",
+                  "ca": "El fons d'emergència"
+                },
+                {
+                  "es": "Dinero pedido prestado",
+                  "ca": "Diners demanats en préstec"
+                },
+                {
+                  "es": "Solo dinero que podrías perder entero",
+                  "ca": "Només diners que podries perdre sencers"
+                }
+              ],
+              "answer": 2
+            }
+          ]
+        },
+        {
+          "id": "crypto-custody",
+          "file": "crypto-custody.md",
+          "minutes": 5,
+          "title": {
+            "es": "Custodia y seguridad: cómo no perder tus criptomonedas",
+            "ca": "Custòdia i seguretat: com no perdre les teves criptomonedes"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "¿Qué riesgo tienes si guardas tus criptomonedas en una plataforma?",
+                "ca": "Quin risc tens si guardes les criptomonedes en una plataforma?"
+              },
+              "options": [
+                {
+                  "es": "Ninguno, están garantizadas",
+                  "ca": "Cap, estan garantides"
+                },
+                {
+                  "es": "Que la plataforma quiebre o bloquee tu cuenta",
+                  "ca": "Que la plataforma faci fallida o bloquegi el teu compte"
+                },
+                {
+                  "es": "Que se conviertan en euros",
+                  "ca": "Que es converteixin en euros"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "Alguien de 'soporte técnico' te pide tu frase semilla. ¿Qué haces?",
+                "ca": "Algú del 'servei tècnic' et demana la frase llavor. Què fas?"
+              },
+              "options": [
+                {
+                  "es": "Se la doy si parece oficial",
+                  "ca": "Li dono si sembla oficial"
+                },
+                {
+                  "es": "Le envío solo la mitad",
+                  "ca": "Li envio només la meitat"
+                },
+                {
+                  "es": "No se la doy nunca: es una estafa",
+                  "ca": "No li dono mai: és una estafa"
+                }
+              ],
+              "answer": 2
+            },
+            {
+              "question": {
+                "es": "¿Dónde es mejor guardar la frase semilla?",
+                "ca": "On és millor guardar la frase llavor?"
+              },
+              "options": [
+                {
+                  "es": "Escrita en papel en un lugar seguro",
+                  "ca": "Escrita en paper en un lloc segur"
+                },
+                {
+                  "es": "En una foto del móvil",
+                  "ca": "En una foto del mòbil"
+                },
+                {
+                  "es": "En un correo a ti mismo",
+                  "ca": "En un correu a tu mateix"
+                }
+              ],
+              "answer": 0
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "taxes",
