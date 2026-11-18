@@ -1073,7 +1073,156 @@
     },
     {
       "id": "psychology",
-      "lessons": []
+      "lessons": [
+        {
+          "id": "psychology-biases",
+          "file": "psychology-biases.md",
+          "minutes": 4,
+          "title": {
+            "es": "Los sesgos que te hacen perder dinero",
+            "ca": "Els biaixos que et fan perdre diners"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "¿Qué suele provocar la aversión a la pérdida?",
+                "ca": "Què sol provocar l'aversió a la pèrdua?"
+              },
+              "options": [
+                {
+                  "es": "Vender en plena caída",
+                  "ca": "Vendre en plena caiguda"
+                },
+                {
+                  "es": "Ahorrar más cada mes",
+                  "ca": "Estalviar més cada mes"
+                },
+                {
+                  "es": "Diversificar mejor",
+                  "ca": "Diversificar millor"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "Todo el mundo en redes habla de una inversión que ha subido mucho. ¿Qué sesgo puede empujarte a comprar?",
+                "ca": "Tothom a les xarxes parla d'una inversió que ha pujat molt. Quin biaix et pot empènyer a comprar?"
+              },
+              "options": [
+                {
+                  "es": "Anclaje",
+                  "ca": "Ancoratge"
+                },
+                {
+                  "es": "Efecto rebaño (FOMO)",
+                  "ca": "Efecte ramat (FOMO)"
+                },
+                {
+                  "es": "Sesgo del presente",
+                  "ca": "Biaix del present"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "Ante una inversión que ha bajado, ¿qué pregunta es más útil?",
+                "ca": "Davant d'una inversió que ha baixat, quina pregunta és més útil?"
+              },
+              "options": [
+                {
+                  "es": "¿Cuánto pagué por ella?",
+                  "ca": "Quant hi vaig pagar?"
+                },
+                {
+                  "es": "¿Qué opinan en redes?",
+                  "ca": "Què en diuen a les xarxes?"
+                },
+                {
+                  "es": "¿La compraría hoy?",
+                  "ca": "La compraria avui?"
+                }
+              ],
+              "answer": 2
+            }
+          ]
+        },
+        {
+          "id": "psychology-plan",
+          "file": "psychology-plan.md",
+          "minutes": 4,
+          "title": {
+            "es": "Un plan para no dejarte llevar",
+            "ca": "Un pla per no deixar-te endur"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "¿Por qué ayuda escribir tu plan de inversión?",
+                "ca": "Per què ajuda escriure el teu pla d'inversió?"
+              },
+              "options": [
+                {
+                  "es": "Porque garantiza ganar",
+                  "ca": "Perquè garanteix guanyar"
+                },
+                {
+                  "es": "Porque decides con calma antes de los momentos difíciles",
+                  "ca": "Perquè decideixes amb calma abans dels moments difícils"
+                },
+                {
+                  "es": "Porque Hacienda lo exige",
+                  "ca": "Perquè Hisenda ho exigeix"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Qué es rebalancear?",
+                "ca": "Què és reequilibrar?"
+              },
+              "options": [
+                {
+                  "es": "Volver al reparto que marca tu plan",
+                  "ca": "Tornar al repartiment que marca el teu pla"
+                },
+                {
+                  "es": "Venderlo todo cuando baja",
+                  "ca": "Vendre-ho tot quan baixa"
+                },
+                {
+                  "es": "Cambiar de plan cada mes",
+                  "ca": "Canviar de pla cada mes"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "La bolsa cae un 30 % y tu plan es a 20 años. ¿Qué suele tener más sentido?",
+                "ca": "La borsa cau un 30 % i el teu pla és a 20 anys. Què sol tenir més sentit?"
+              },
+              "options": [
+                {
+                  "es": "Venderlo todo hasta que pase",
+                  "ca": "Vendre-ho tot fins que passi"
+                },
+                {
+                  "es": "Pedir un préstamo para comprar más",
+                  "ca": "Demanar un préstec per comprar-ne més"
+                },
+                {
+                  "es": "Seguir el plan y no vender por miedo",
+                  "ca": "Seguir el pla i no vendre per por"
+                }
+              ],
+              "answer": 2
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -54,8 +54,8 @@ void main() {
     }
   });
 
-  test('modules 1–7 have two lessons each', () {
-    for (final module in index.modules.take(7)) {
+  test('every module has two lessons', () {
+    for (final module in index.modules) {
       expect(module.lessons, hasLength(2), reason: module.id);
     }
   });
