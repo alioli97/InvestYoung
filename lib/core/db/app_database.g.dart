@@ -180,6 +180,21 @@ class $UserProfilesTable extends UserProfiles
     requiredDuringInsert: false,
     defaultValue: const Constant(540),
   );
+  static const VerificationMeta _appLockEnabledMeta = const VerificationMeta(
+    'appLockEnabled',
+  );
+  @override
+  late final GeneratedColumn<bool> appLockEnabled = GeneratedColumn<bool>(
+    'app_lock_enabled',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("app_lock_enabled" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -198,6 +213,7 @@ class $UserProfilesTable extends UserProfiles
     themeMode,
     reminderDay,
     reminderMinuteOfDay,
+    appLockEnabled,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -305,6 +321,15 @@ class $UserProfilesTable extends UserProfiles
         ),
       );
     }
+    if (data.containsKey('app_lock_enabled')) {
+      context.handle(
+        _appLockEnabledMeta,
+        appLockEnabled.isAcceptableOrUnknown(
+          data['app_lock_enabled']!,
+          _appLockEnabledMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -388,6 +413,10 @@ class $UserProfilesTable extends UserProfiles
         DriftSqlType.int,
         data['${effectivePrefix}reminder_minute_of_day'],
       )!,
+      appLockEnabled: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}app_lock_enabled'],
+      )!,
     );
   }
 
@@ -433,6 +462,9 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
   /// Added in schema v3: local time of the reminder, in minutes after
   /// midnight (default 9:00).
   final int reminderMinuteOfDay;
+
+  /// Added in schema v4: ask for the device's biometrics/PIN on opening.
+  final bool appLockEnabled;
   const UserProfileRow({
     required this.id,
     required this.ageRange,
@@ -450,6 +482,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     required this.themeMode,
     this.reminderDay,
     required this.reminderMinuteOfDay,
+    required this.appLockEnabled,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -500,6 +533,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
       map['reminder_day'] = Variable<int>(reminderDay);
     }
     map['reminder_minute_of_day'] = Variable<int>(reminderMinuteOfDay);
+    map['app_lock_enabled'] = Variable<bool>(appLockEnabled);
     return map;
   }
 
@@ -529,6 +563,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
           ? const Value.absent()
           : Value(reminderDay),
       reminderMinuteOfDay: Value(reminderMinuteOfDay),
+      appLockEnabled: Value(appLockEnabled),
     );
   }
 
@@ -562,6 +597,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
       reminderMinuteOfDay: serializer.fromJson<int>(
         json['reminderMinuteOfDay'],
       ),
+      appLockEnabled: serializer.fromJson<bool>(json['appLockEnabled']),
     );
   }
   @override
@@ -586,6 +622,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
       'themeMode': serializer.toJson<AppThemeMode>(themeMode),
       'reminderDay': serializer.toJson<int?>(reminderDay),
       'reminderMinuteOfDay': serializer.toJson<int>(reminderMinuteOfDay),
+      'appLockEnabled': serializer.toJson<bool>(appLockEnabled),
     };
   }
 
@@ -606,6 +643,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     AppThemeMode? themeMode,
     Value<int?> reminderDay = const Value.absent(),
     int? reminderMinuteOfDay,
+    bool? appLockEnabled,
   }) => UserProfileRow(
     id: id ?? this.id,
     ageRange: ageRange ?? this.ageRange,
@@ -627,6 +665,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     themeMode: themeMode ?? this.themeMode,
     reminderDay: reminderDay.present ? reminderDay.value : this.reminderDay,
     reminderMinuteOfDay: reminderMinuteOfDay ?? this.reminderMinuteOfDay,
+    appLockEnabled: appLockEnabled ?? this.appLockEnabled,
   );
   UserProfileRow copyWithCompanion(UserProfilesCompanion data) {
     return UserProfileRow(
@@ -666,6 +705,9 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
       reminderMinuteOfDay: data.reminderMinuteOfDay.present
           ? data.reminderMinuteOfDay.value
           : this.reminderMinuteOfDay,
+      appLockEnabled: data.appLockEnabled.present
+          ? data.appLockEnabled.value
+          : this.appLockEnabled,
     );
   }
 
@@ -687,7 +729,8 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
           ..write('onboardingCompletedAt: $onboardingCompletedAt, ')
           ..write('themeMode: $themeMode, ')
           ..write('reminderDay: $reminderDay, ')
-          ..write('reminderMinuteOfDay: $reminderMinuteOfDay')
+          ..write('reminderMinuteOfDay: $reminderMinuteOfDay, ')
+          ..write('appLockEnabled: $appLockEnabled')
           ..write(')'))
         .toString();
   }
@@ -710,6 +753,7 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     themeMode,
     reminderDay,
     reminderMinuteOfDay,
+    appLockEnabled,
   );
   @override
   bool operator ==(Object other) =>
@@ -730,7 +774,8 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
           other.onboardingCompletedAt == this.onboardingCompletedAt &&
           other.themeMode == this.themeMode &&
           other.reminderDay == this.reminderDay &&
-          other.reminderMinuteOfDay == this.reminderMinuteOfDay);
+          other.reminderMinuteOfDay == this.reminderMinuteOfDay &&
+          other.appLockEnabled == this.appLockEnabled);
 }
 
 class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
@@ -750,6 +795,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
   final Value<AppThemeMode> themeMode;
   final Value<int?> reminderDay;
   final Value<int> reminderMinuteOfDay;
+  final Value<bool> appLockEnabled;
   const UserProfilesCompanion({
     this.id = const Value.absent(),
     this.ageRange = const Value.absent(),
@@ -767,6 +813,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     this.themeMode = const Value.absent(),
     this.reminderDay = const Value.absent(),
     this.reminderMinuteOfDay = const Value.absent(),
+    this.appLockEnabled = const Value.absent(),
   });
   UserProfilesCompanion.insert({
     this.id = const Value.absent(),
@@ -785,6 +832,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     this.themeMode = const Value.absent(),
     this.reminderDay = const Value.absent(),
     this.reminderMinuteOfDay = const Value.absent(),
+    this.appLockEnabled = const Value.absent(),
   }) : ageRange = Value(ageRange),
        employment = Value(employment),
        hasDependents = Value(hasDependents),
@@ -811,6 +859,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     Expression<String>? themeMode,
     Expression<int>? reminderDay,
     Expression<int>? reminderMinuteOfDay,
+    Expression<bool>? appLockEnabled,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -833,6 +882,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
       if (reminderDay != null) 'reminder_day': reminderDay,
       if (reminderMinuteOfDay != null)
         'reminder_minute_of_day': reminderMinuteOfDay,
+      if (appLockEnabled != null) 'app_lock_enabled': appLockEnabled,
     });
   }
 
@@ -853,6 +903,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     Value<AppThemeMode>? themeMode,
     Value<int?>? reminderDay,
     Value<int>? reminderMinuteOfDay,
+    Value<bool>? appLockEnabled,
   }) {
     return UserProfilesCompanion(
       id: id ?? this.id,
@@ -872,6 +923,7 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
       themeMode: themeMode ?? this.themeMode,
       reminderDay: reminderDay ?? this.reminderDay,
       reminderMinuteOfDay: reminderMinuteOfDay ?? this.reminderMinuteOfDay,
+      appLockEnabled: appLockEnabled ?? this.appLockEnabled,
     );
   }
 
@@ -938,6 +990,9 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     if (reminderMinuteOfDay.present) {
       map['reminder_minute_of_day'] = Variable<int>(reminderMinuteOfDay.value);
     }
+    if (appLockEnabled.present) {
+      map['app_lock_enabled'] = Variable<bool>(appLockEnabled.value);
+    }
     return map;
   }
 
@@ -959,7 +1014,8 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
           ..write('onboardingCompletedAt: $onboardingCompletedAt, ')
           ..write('themeMode: $themeMode, ')
           ..write('reminderDay: $reminderDay, ')
-          ..write('reminderMinuteOfDay: $reminderMinuteOfDay')
+          ..write('reminderMinuteOfDay: $reminderMinuteOfDay, ')
+          ..write('appLockEnabled: $appLockEnabled')
           ..write(')'))
         .toString();
   }
@@ -3102,6 +3158,7 @@ typedef $$UserProfilesTableCreateCompanionBuilder =
       Value<AppThemeMode> themeMode,
       Value<int?> reminderDay,
       Value<int> reminderMinuteOfDay,
+      Value<bool> appLockEnabled,
     });
 typedef $$UserProfilesTableUpdateCompanionBuilder =
     UserProfilesCompanion Function({
@@ -3121,6 +3178,7 @@ typedef $$UserProfilesTableUpdateCompanionBuilder =
       Value<AppThemeMode> themeMode,
       Value<int?> reminderDay,
       Value<int> reminderMinuteOfDay,
+      Value<bool> appLockEnabled,
     });
 
 class $$UserProfilesTableFilterComposer
@@ -3216,6 +3274,11 @@ class $$UserProfilesTableFilterComposer
     column: $table.reminderMinuteOfDay,
     builder: (column) => ColumnFilters(column),
   );
+
+  ColumnFilters<bool> get appLockEnabled => $composableBuilder(
+    column: $table.appLockEnabled,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$UserProfilesTableOrderingComposer
@@ -3306,6 +3369,11 @@ class $$UserProfilesTableOrderingComposer
     column: $table.reminderMinuteOfDay,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<bool> get appLockEnabled => $composableBuilder(
+    column: $table.appLockEnabled,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$UserProfilesTableAnnotationComposer
@@ -3387,6 +3455,11 @@ class $$UserProfilesTableAnnotationComposer
     column: $table.reminderMinuteOfDay,
     builder: (column) => column,
   );
+
+  GeneratedColumn<bool> get appLockEnabled => $composableBuilder(
+    column: $table.appLockEnabled,
+    builder: (column) => column,
+  );
 }
 
 class $$UserProfilesTableTableManager
@@ -3436,6 +3509,7 @@ class $$UserProfilesTableTableManager
                 Value<AppThemeMode> themeMode = const Value.absent(),
                 Value<int?> reminderDay = const Value.absent(),
                 Value<int> reminderMinuteOfDay = const Value.absent(),
+                Value<bool> appLockEnabled = const Value.absent(),
               }) => UserProfilesCompanion(
                 id: id,
                 ageRange: ageRange,
@@ -3453,6 +3527,7 @@ class $$UserProfilesTableTableManager
                 themeMode: themeMode,
                 reminderDay: reminderDay,
                 reminderMinuteOfDay: reminderMinuteOfDay,
+                appLockEnabled: appLockEnabled,
               ),
           createCompanionCallback:
               ({
@@ -3472,6 +3547,7 @@ class $$UserProfilesTableTableManager
                 Value<AppThemeMode> themeMode = const Value.absent(),
                 Value<int?> reminderDay = const Value.absent(),
                 Value<int> reminderMinuteOfDay = const Value.absent(),
+                Value<bool> appLockEnabled = const Value.absent(),
               }) => UserProfilesCompanion.insert(
                 id: id,
                 ageRange: ageRange,
@@ -3489,6 +3565,7 @@ class $$UserProfilesTableTableManager
                 themeMode: themeMode,
                 reminderDay: reminderDay,
                 reminderMinuteOfDay: reminderMinuteOfDay,
+                appLockEnabled: appLockEnabled,
               ),
           withReferenceMapper: (p0) => p0
               .map(

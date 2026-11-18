@@ -302,5 +302,14 @@
   "profileCsvAmount": "Import (€)",
   "profileCsvQuantity": "Quantitat",
   "profileCsvFee": "Comissions (€)",
-  "profileCsvNote": "Nota"
+  "profileCsvNote": "Nota",
+  "profileSecurity": "Seguretat",
+  "profileAppLock": "Bloquejar l'app",
+  "profileAppLockSubtitle": "Demana la teva empremta, la teva cara o el PIN del mòbil en obrir-la",
+  "profileAppLockUnavailable": "Configura primer un bloqueig de pantalla a la configuració del mòbil",
+  "lockReasonUnlock": "Desbloqueja l'app per veure les teves dades",
+  "lockReasonSettings": "Confirma que ets tu per canviar el bloqueig",
+  "lockTitle": "L'app està bloquejada",
+  "lockBody": "Les teves dades financeres estan protegides amb el bloqueig del teu mòbil.",
+  "lockUnlock": "Desbloquejar"
 }

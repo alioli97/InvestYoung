@@ -1369,5 +1369,41 @@
   "profileCsvNote": "Nota",
   "@profileCsvNote": {
     "description": "CSV column header."
+  },
+  "profileSecurity": "Seguridad",
+  "@profileSecurity": {
+    "description": "Profile section: security."
+  },
+  "profileAppLock": "Bloquear la app",
+  "@profileAppLock": {
+    "description": "Switch that turns the app lock on or off."
+  },
+  "profileAppLockSubtitle": "Pide tu huella, tu cara o el PIN del móvil al abrirla",
+  "@profileAppLockSubtitle": {
+    "description": "Subtitle of the app lock switch."
+  },
+  "profileAppLockUnavailable": "Configura primero un bloqueo de pantalla en los ajustes del móvil",
+  "@profileAppLockUnavailable": {
+    "description": "Shown when the device has no screen lock."
+  },
+  "lockReasonUnlock": "Desbloquea la app para ver tus datos",
+  "@lockReasonUnlock": {
+    "description": "System prompt reason when unlocking the app."
+  },
+  "lockReasonSettings": "Confirma que eres tú para cambiar el bloqueo",
+  "@lockReasonSettings": {
+    "description": "System prompt reason when turning the lock on/off."
+  },
+  "lockTitle": "La app está bloqueada",
+  "@lockTitle": {
+    "description": "Lock screen title."
+  },
+  "lockBody": "Tus datos financieros están protegidos con el bloqueo de tu móvil.",
+  "@lockBody": {
+    "description": "Lock screen explanation."
+  },
+  "lockUnlock": "Desbloquear",
+  "@lockUnlock": {
+    "description": "Lock screen button."
   }
 }

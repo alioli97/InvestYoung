@@ -6,7 +6,10 @@ import 'package:invest_young/features/onboarding/domain/profile_enums.dart';
 import 'package:invest_young/features/onboarding/domain/user_profile.dart';
 
 /// A completed onboarding profile, so the app starts on the tabs.
-UserProfile onboardedProfile({String locale = 'es'}) => UserProfile(
+UserProfile onboardedProfile({
+  String locale = 'es',
+  bool appLockEnabled = false,
+}) => UserProfile(
   ageRange: AgeRange.from26To30,
   employment: Employment.permanent,
   hasDependents: false,
@@ -17,6 +20,7 @@ UserProfile onboardedProfile({String locale = 'es'}) => UserProfile(
   emergencyMonths: 5,
   locale: locale,
   onboardingCompletedAt: DateTime.utc(2026),
+  appLockEnabled: appLockEnabled,
 );
 
 Asset testAsset(

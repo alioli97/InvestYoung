@@ -46,6 +46,10 @@ class ProfileRepository {
         ),
       );
 
+  Future<void> updateAppLock({required bool enabled}) => _dao.updatePreferences(
+    UserProfilesCompanion(appLockEnabled: Value(enabled)),
+  );
+
   Future<List<MonthlyExpense>> getExpenses() async =>
       (await _dao.getExpenses()).map((r) => r.toDomain()).toList();
 
@@ -90,6 +94,7 @@ extension on UserProfileRow {
         minuteOfDay: reminderMinuteOfDay,
       ),
     },
+    appLockEnabled: appLockEnabled,
   );
 }
 

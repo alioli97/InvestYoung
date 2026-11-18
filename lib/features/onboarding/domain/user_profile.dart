@@ -20,6 +20,7 @@ class UserProfile {
     this.onboardingCompletedAt,
     this.themeMode = AppThemeMode.system,
     this.reminder,
+    this.appLockEnabled = false,
   });
 
   /// `null` until persisted.
@@ -49,6 +50,9 @@ class UserProfile {
   /// changed from Profile only.
   final ContributionReminder? reminder;
 
+  /// Ask for the device's biometrics/PIN on opening. Profile-only setting.
+  final bool appLockEnabled;
+
   bool get onboardingCompleted => onboardingCompletedAt != null;
 
   UserProfile withEmergencyMonths(int months) => UserProfile(
@@ -67,6 +71,7 @@ class UserProfile {
     onboardingCompletedAt: onboardingCompletedAt,
     themeMode: themeMode,
     reminder: reminder,
+    appLockEnabled: appLockEnabled,
   );
 }
 

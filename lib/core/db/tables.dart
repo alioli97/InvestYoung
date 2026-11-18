@@ -43,6 +43,10 @@ class UserProfiles extends Table {
   /// midnight (default 9:00).
   IntColumn get reminderMinuteOfDay =>
       integer().withDefault(const Constant(540))();
+
+  /// Added in schema v4: ask for the device's biometrics/PIN on opening.
+  BoolColumn get appLockEnabled =>
+      boolean().withDefault(const Constant(false))();
 }
 
 @DataClassName('MonthlyExpenseRow')
