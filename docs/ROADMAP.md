@@ -59,7 +59,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [x] CI job that builds the release APK and uploads it as a downloadable artifact
 
 ## Phase 8 — Learn content
-- [ ] Module 4 — Fixed income: 2 lessons + quizzes (es + ca)
+- [x] Module 4 — Fixed income: 2 lessons + quizzes (es + ca)
 - [ ] Module 5 — Equities (diversification, index funds, DCA): 2 lessons + quizzes (es + ca)
 - [ ] Module 6 — Crypto (risks, volatility, custody): 2 lessons + quizzes (es + ca)
 - [ ] Module 7 — Basic taxation in Spain: 2 lessons + quizzes (es + ca)

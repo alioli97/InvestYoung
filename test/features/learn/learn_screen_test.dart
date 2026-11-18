@@ -77,6 +77,8 @@ void main() {
       'Dónde guardar tu fondo de emergencia',
       'Deuda buena, deuda mala y su coste real',
       'Cómo salir de las deudas',
+      'Qué es la renta fija y cómo funciona',
+      'Cómo invertir en renta fija',
     ]) {
       await tester.scrollUntilVisible(
         find.text(title),

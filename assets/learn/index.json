@@ -461,7 +461,156 @@
     },
     {
       "id": "fixed-income",
-      "lessons": []
+      "lessons": [
+        {
+          "id": "fixed-income-basics",
+          "file": "fixed-income-basics.md",
+          "minutes": 5,
+          "title": {
+            "es": "Qué es la renta fija y cómo funciona",
+            "ca": "Què és la renda fixa i com funciona"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "Cuando compras renta fija, ¿qué estás haciendo?",
+                "ca": "Quan compres renda fixa, què estàs fent?"
+              },
+              "options": [
+                {
+                  "es": "Comprar una parte de una empresa",
+                  "ca": "Comprar una part d'una empresa"
+                },
+                {
+                  "es": "Prestar dinero a cambio de intereses",
+                  "ca": "Prestar diners a canvi d'interessos"
+                },
+                {
+                  "es": "Ahorrar sin ningún riesgo",
+                  "ca": "Estalviar sense cap risc"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "Si los tipos de interés suben, ¿qué pasa con el precio de un bono que ya tienes?",
+                "ca": "Si els tipus d'interès pugen, què passa amb el preu d'un bo que ja tens?"
+              },
+              "options": [
+                {
+                  "es": "Sube",
+                  "ca": "Puja"
+                },
+                {
+                  "es": "Baja",
+                  "ca": "Baixa"
+                },
+                {
+                  "es": "No cambia",
+                  "ca": "No canvia"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Por qué un bono high yield paga más que uno del Estado?",
+                "ca": "Per què un bo high yield paga més que un de l'Estat?"
+              },
+              "options": [
+                {
+                  "es": "Porque su riesgo de impago es mayor",
+                  "ca": "Perquè el seu risc d'impagament és més gran"
+                },
+                {
+                  "es": "Porque está garantizado",
+                  "ca": "Perquè està garantit"
+                },
+                {
+                  "es": "Porque vence antes",
+                  "ca": "Perquè venç abans"
+                }
+              ],
+              "answer": 0
+            }
+          ]
+        },
+        {
+          "id": "fixed-income-how",
+          "file": "fixed-income-how.md",
+          "minutes": 5,
+          "title": {
+            "es": "Cómo invertir en renta fija",
+            "ca": "Com invertir en renda fixa"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "Necesitarás el dinero dentro de un año. ¿Qué encaja mejor?",
+                "ca": "Necessitaràs els diners d'aquí a un any. Què hi encaixa millor?"
+              },
+              "options": [
+                {
+                  "es": "Un bono a 30 años",
+                  "ca": "Un bo a 30 anys"
+                },
+                {
+                  "es": "Letras del Tesoro o un depósito a 12 meses",
+                  "ca": "Lletres del Tresor o un dipòsit a 12 mesos"
+                },
+                {
+                  "es": "Un fondo de renta variable",
+                  "ca": "Un fons de renda variable"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Qué diferencia a un fondo de renta fija de un bono comprado directamente?",
+                "ca": "Què diferencia un fons de renda fixa d'un bo comprat directament?"
+              },
+              "options": [
+                {
+                  "es": "El fondo no tiene vencimiento y su valor oscila con los tipos",
+                  "ca": "El fons no té venciment i el seu valor oscil·la amb els tipus"
+                },
+                {
+                  "es": "El fondo está garantizado por el Estado",
+                  "ca": "El fons està garantit per l'Estat"
+                },
+                {
+                  "es": "El fondo nunca cobra comisiones",
+                  "ca": "El fons mai no cobra comissions"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "¿Para qué sirve una escalera de vencimientos?",
+                "ca": "Per a què serveix una escala de venciments?"
+              },
+              "options": [
+                {
+                  "es": "Para no pagar impuestos",
+                  "ca": "Per no pagar impostos"
+                },
+                {
+                  "es": "Para tener dinero disponible cada poco tiempo y repartir el riesgo de tipos",
+                  "ca": "Per tenir diners disponibles cada poc temps i repartir el risc de tipus"
+                },
+                {
+                  "es": "Para multiplicar la rentabilidad",
+                  "ca": "Per multiplicar la rendibilitat"
+                }
+              ],
+              "answer": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "equities",

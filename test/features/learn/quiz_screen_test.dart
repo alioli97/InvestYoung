@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:invest_young/core/db/app_database.dart';
@@ -9,6 +12,16 @@ import '../../helpers/pump_app.dart';
 import '../../helpers/test_database.dart';
 
 const _lesson = 'El presupuesto 50/30/20';
+
+/// Number of lessons shipped, so adding a module does not break these tests.
+final int _totalLessons = [
+  for (final module
+      in jsonDecode(
+            File('assets/learn/index.json').readAsStringSync(),
+          )['modules']
+          as List)
+    ...module['lessons'] as List,
+].length;
 
 void main() {
   late AppDatabase db;
@@ -23,7 +36,10 @@ void main() {
     await tester.tap(find.byIcon(Icons.school_outlined));
     await tester.pump();
     await pumpUntilFound(tester, find.text(_lesson));
-    expect(find.text('Has leído 0 de 6 lecciones'), findsOneWidget);
+    expect(
+      find.text('Has leído 0 de $_totalLessons lecciones'),
+      findsOneWidget,
+    );
     await tester.tap(find.text(_lesson));
     await tester.pump();
     await pumpUntilFound(tester, find.text('La regla en una frase'));
@@ -87,7 +103,10 @@ void main() {
 
     await tester.tap(find.byType(BackButton));
     await tester.pumpAndSettle();
-    expect(find.text('Has leído 1 de 6 lecciones'), findsOneWidget);
+    expect(
+      find.text('Has leído 1 de $_totalLessons lecciones'),
+      findsOneWidget,
+    );
     expect(find.byIcon(Icons.verified), findsOneWidget);
 
     final status = (await tester.runAsync(
