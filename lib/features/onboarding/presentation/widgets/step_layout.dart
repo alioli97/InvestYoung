@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Scrollable body shared by every onboarding step: title, subtitle, content.
 class StepLayout extends StatelessWidget {

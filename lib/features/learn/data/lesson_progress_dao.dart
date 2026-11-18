@@ -15,8 +15,8 @@ class LessonProgressDao extends DatabaseAccessor<AppDatabase>
   Stream<List<LessonProgressRow>> watchAll() => select(lessonProgress).watch();
 
   /// Inserts or updates only the columns present in [entry].
-  Future<void> upsert(LessonProgressCompanion entry) =>
-      into(lessonProgress).insert(
+  Future<void> upsert(LessonProgressCompanion entry) => into(lessonProgress)
+      .insert(
         entry,
         onConflict: DoUpdate((_) => entry, target: [lessonProgress.lessonId]),
       );

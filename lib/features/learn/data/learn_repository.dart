@@ -19,9 +19,8 @@ class LearnRepository {
 
   Future<LearnIndex> loadIndex() async => LearnIndex.fromJson(
     jsonDecode(
-          await _bundle.loadString('assets/learn/index.json', cache: false),
-        )
-        as Map<String, dynamic>,
+      await _bundle.loadString('assets/learn/index.json', cache: false),
+    ) as Map<String, dynamic>,
   );
 
   Future<String> loadLesson(LessonInfo lesson, String languageCode) =>

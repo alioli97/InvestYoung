@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,13 +20,11 @@ import 'widgets/goal_type_fields.dart';
 
 /// Creates a goal of a type, or edits an existing goal.
 class GoalFormScreen extends ConsumerWidget {
-  const GoalFormScreen.create({super.key, required GoalType type})
-    : _type = type,
-      _goalId = null;
+  const GoalFormScreen.create({super.key, required GoalType this._type})
+    : _goalId = null;
 
-  const GoalFormScreen.edit({super.key, required int goalId})
-    : _goalId = goalId,
-      _type = null;
+  const GoalFormScreen.edit({super.key, required int this._goalId})
+    : _type = null;
 
   final GoalType? _type;
   final int? _goalId;

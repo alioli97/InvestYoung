@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Centered icon, title, optional message and action for empty screens.
 class EmptyState extends StatelessWidget {

@@ -45,7 +45,7 @@ final class OnboardingControllerProvider
 }
 
 String _$onboardingControllerHash() =>
-    r'd2b2f4c90e4ee576eb859281201ecc3e8372e203';
+    r'3de532cae953367ca3b1bfd132cf09c62398be39';
 
 /// Step navigation and answers of the onboarding questionnaire.
 
@@ -53,7 +53,7 @@ abstract class _$OnboardingController extends $Notifier<OnboardingFlowState> {
   OnboardingFlowState build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<OnboardingFlowState, OnboardingFlowState>;
     final element =
         ref.element
@@ -63,6 +63,6 @@ abstract class _$OnboardingController extends $Notifier<OnboardingFlowState> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

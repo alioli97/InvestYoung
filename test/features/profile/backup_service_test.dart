@@ -42,9 +42,8 @@ Future<void> _seed(AppDatabase db) async {
   await investments.addTransaction(
     testTx(assetId, TransactionType.buy, 5000, quantity: '0.00012345'),
   );
-  await LessonProgressRepository(
-    db.lessonProgressDao,
-  ).markQuizPassed('fundamentals-budget', at: DateTime.utc(2026, 3));
+  await LessonProgressRepository(db.lessonProgressDao)
+      .markQuizPassed('fundamentals-budget', at: DateTime.utc(2026, 3));
 }
 
 void main() {
@@ -63,13 +62,9 @@ void main() {
 
   test('exports every table with the schema version', () async {
     await _seed(source);
-    final json =
-        jsonDecode(
-              await BackupService(
-                source,
-              ).exportJson(now: DateTime.utc(2026, 11, 18)),
-            )
-            as Map<String, dynamic>;
+    final json = jsonDecode(
+      await BackupService(source).exportJson(now: DateTime.utc(2026, 11, 18)),
+    ) as Map<String, dynamic>;
 
     expect(json['app'], 'invest_young');
     expect(json['schemaVersion'], source.schemaVersion);
@@ -98,9 +93,8 @@ void main() {
       await BackupService(source).exportJson(now: DateTime.utc(2026)),
     );
 
-    final tx = await InvestmentsRepository(
-      target.investmentsDao,
-    ).getTransactions();
+    final tx = await InvestmentsRepository(target.investmentsDao)
+        .getTransactions();
     expect(tx.single.quantity, Decimal.parse('0.00012345'));
     final goal = (await GoalsRepository(target.goalsDao).getGoals()).single;
     expect(goal.targetDate, DateTime.utc(2030, 6, 1, 10));
@@ -117,9 +111,8 @@ void main() {
         createdAt: DateTime.utc(2025),
       ),
     );
-    await BackupService(
-      target,
-    ).importJson(await BackupService(source).exportJson());
+    await BackupService(target)
+        .importJson(await BackupService(source).exportJson());
     final names = (await GoalsRepository(
       target.goalsDao,
     ).getGoals()).map((g) => g.name);
@@ -202,9 +195,9 @@ void main() {
   test('deleteAll empties every table', () async {
     await _seed(source);
     await BackupService(source).deleteAll();
-    final json =
-        jsonDecode(await BackupService(source).exportJson())
-            as Map<String, dynamic>;
+    final json = jsonDecode(
+      await BackupService(source).exportJson(),
+    ) as Map<String, dynamic>;
     for (final rows in (json['tables'] as Map<String, dynamic>).values) {
       expect(rows, isEmpty);
     }

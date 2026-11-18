@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Single-choice group of chips.
 class ChoiceChips<T> extends StatelessWidget {

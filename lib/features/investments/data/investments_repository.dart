@@ -63,9 +63,9 @@ class InvestmentsRepository {
   // Transactions
 
   Future<List<AssetTransaction>> getTransactions({int? assetId}) async =>
-      (await _dao.getTransactions(
-        assetId: assetId,
-      )).map((r) => r.toDomain()).toList();
+      (await _dao.getTransactions(assetId: assetId))
+          .map((r) => r.toDomain())
+          .toList();
 
   Stream<List<AssetTransaction>> watchTransactions({int? assetId}) => _dao
       .watchTransactions(assetId: assetId)

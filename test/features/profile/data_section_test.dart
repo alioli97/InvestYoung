@@ -72,9 +72,8 @@ void main() {
     final other = createTestDatabase();
     addTearDown(other.close);
     files.toPick = (await tester.runAsync(() async {
-      await ProfileRepository(
-        other.profileDao,
-      ).saveProfile(onboardedProfile(locale: 'ca'));
+      await ProfileRepository(other.profileDao)
+          .saveProfile(onboardedProfile(locale: 'ca'));
       await GoalsRepository(other.goalsDao).addGoal(
         Goal(
           type: GoalType.custom,

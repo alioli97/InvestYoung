@@ -1,5 +1,5 @@
 import 'package:decimal/decimal.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:invest_young/core/db/app_database.dart';
 import 'package:invest_young/features/investments/data/investments_repository.dart';

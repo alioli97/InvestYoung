@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Simple single-choice dialog; returns the chosen value or `null`.
 Future<T?> showChoiceDialog<T>({

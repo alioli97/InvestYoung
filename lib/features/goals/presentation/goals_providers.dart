@@ -23,6 +23,7 @@ Future<List<GoalProgress>> goalProgressList(Ref ref) async =>
 
 /// Progress of the emergency goal, or `null` if there is none.
 @riverpod
-Future<GoalProgress?> emergencyProgress(Ref ref) async => (await ref.watch(
-  goalProgressListProvider.future,
-)).where((p) => p.goal.type == GoalType.emergency).firstOrNull;
+Future<GoalProgress?> emergencyProgress(Ref ref) async =>
+    (await ref.watch(goalProgressListProvider.future))
+        .where((p) => p.goal.type == GoalType.emergency)
+        .firstOrNull;
