@@ -52,10 +52,26 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [x] Legal notice
 - [x] Empty states, form validation and basic accessibility
 
-## Future
-- [ ] Remaining lessons (modules 4–8)
+## Phase 7 — Stability and sharing (APK for family and friends)
+- [ ] Test on real devices; collect feedback and fix the bugs found
+- [ ] Own release signing key (kept out of Git) so updates install over previous versions
+- [ ] Versioning: bump `version` in pubspec.yaml on every shared build
+- [ ] CI job that builds the release APK and uploads it as a downloadable artifact
+
+## Phase 8 — Learn content
+- [ ] Module 4 — Fixed income: 2 lessons + quizzes (es + ca)
+- [ ] Module 5 — Equities (diversification, index funds, DCA): 2 lessons + quizzes (es + ca)
+- [ ] Module 6 — Crypto (risks, volatility, custody): 2 lessons + quizzes (es + ca)
+- [ ] Module 7 — Basic taxation in Spain: 2 lessons + quizzes (es + ca)
+- [ ] Module 8 — Investor psychology: 2 lessons + quizzes (es + ca)
+- [ ] Content review (Catalan wording, no product recommendations, legal tone)
+
+## Phase 9 — Useful features
 - [ ] Recurring contribution reminders (local notifications)
+- [ ] CSV export of transactions
 - [ ] Biometric/PIN lock (local_auth)
+
+## Future
+- [ ] Store release (final application id, icon, splash, privacy policy, Play Store listing)
 - [ ] Automatic prices (stock and crypto APIs)
-- [ ] CSV export
 - [ ] Cloud sync
