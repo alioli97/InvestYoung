@@ -920,7 +920,156 @@
     },
     {
       "id": "taxes",
-      "lessons": []
+      "lessons": [
+        {
+          "id": "taxes-savings",
+          "file": "taxes-savings.md",
+          "minutes": 5,
+          "title": {
+            "es": "Cómo tributan tus ahorros e inversiones",
+            "ca": "Com tributen els teus estalvis i inversions"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "Tu fondo ha subido un 20 % pero no lo has vendido. ¿Pagas impuestos por esa subida?",
+                "ca": "El teu fons ha pujat un 20 % però no l'has venut. Pagues impostos per aquesta pujada?"
+              },
+              "options": [
+                {
+                  "es": "Sí, cada año",
+                  "ca": "Sí, cada any"
+                },
+                {
+                  "es": "No, solo al vender",
+                  "ca": "No, només en vendre"
+                },
+                {
+                  "es": "Solo si supera 6.000 €",
+                  "ca": "Només si supera 6.000 €"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "Ganas 8.000 € vendiendo acciones. ¿Cómo se aplican los tipos?",
+                "ca": "Guanyes 8.000 € venent accions. Com s'apliquen els tipus?"
+              },
+              "options": [
+                {
+                  "es": "Un 21 % sobre todo",
+                  "ca": "Un 21 % sobre tot"
+                },
+                {
+                  "es": "Un 19 % sobre los primeros 6.000 € y un 21 % sobre el resto",
+                  "ca": "Un 19 % sobre els primers 6.000 € i un 21 % sobre la resta"
+                },
+                {
+                  "es": "Un 19 % sobre todo",
+                  "ca": "Un 19 % sobre tot"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Qué es la retención del 19 % sobre intereses y dividendos?",
+                "ca": "Què és la retenció del 19 % sobre interessos i dividends?"
+              },
+              "options": [
+                {
+                  "es": "Un adelanto del impuesto que se regulariza en la declaración",
+                  "ca": "Una bestreta de l'impost que es regularitza a la declaració"
+                },
+                {
+                  "es": "Una comisión del banco",
+                  "ca": "Una comissió del banc"
+                },
+                {
+                  "es": "Un impuesto extra que se suma al final",
+                  "ca": "Un impost extra que se suma al final"
+                }
+              ],
+              "answer": 0
+            }
+          ]
+        },
+        {
+          "id": "taxes-rules",
+          "file": "taxes-rules.md",
+          "minutes": 5,
+          "title": {
+            "es": "Ventajas fiscales y obligaciones que conviene conocer",
+            "ca": "Avantatges fiscals i obligacions que convé conèixer"
+          },
+          "quiz": [
+            {
+              "question": {
+                "es": "¿Qué permite un traspaso entre fondos de inversión?",
+                "ca": "Què permet un traspàs entre fons d'inversió?"
+              },
+              "options": [
+                {
+                  "es": "Cambiar de fondo sin tributar en ese momento",
+                  "ca": "Canviar de fons sense tributar en aquell moment"
+                },
+                {
+                  "es": "No pagar nunca impuestos",
+                  "ca": "No pagar mai impostos"
+                },
+                {
+                  "es": "Cambiar de ETF sin tributar",
+                  "ca": "Canviar d'ETF sense tributar"
+                }
+              ],
+              "answer": 0
+            },
+            {
+              "question": {
+                "es": "Cambias bitcoin por otra criptomoneda con ganancia. ¿Tributa?",
+                "ca": "Canvies bitcoin per una altra criptomoneda amb guany. Tributa?"
+              },
+              "options": [
+                {
+                  "es": "No, porque no has pasado a euros",
+                  "ca": "No, perquè no has passat a euros"
+                },
+                {
+                  "es": "Sí, cuenta como una venta",
+                  "ca": "Sí, compta com una venda"
+                },
+                {
+                  "es": "Solo si supera 50.000 €",
+                  "ca": "Només si supera 50.000 €"
+                }
+              ],
+              "answer": 1
+            },
+            {
+              "question": {
+                "es": "¿Cómo tributa el dinero de un plan de pensiones al rescatarlo?",
+                "ca": "Com tributen els diners d'un pla de pensions quan es rescaten?"
+              },
+              "options": [
+                {
+                  "es": "No tributa",
+                  "ca": "No tributa"
+                },
+                {
+                  "es": "Como renta del ahorro al 19 %",
+                  "ca": "Com a renda de l'estalvi al 19 %"
+                },
+                {
+                  "es": "Como si fuera sueldo",
+                  "ca": "Com si fos sou"
+                }
+              ],
+              "answer": 2
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "psychology",
