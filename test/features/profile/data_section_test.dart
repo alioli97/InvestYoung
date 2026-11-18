@@ -5,6 +5,8 @@ import 'package:invest_young/core/db/app_database.dart';
 import 'package:invest_young/features/goals/data/goals_repository.dart';
 import 'package:invest_young/features/goals/domain/goal.dart';
 import 'package:invest_young/features/goals/domain/goal_type.dart';
+import 'package:invest_young/features/investments/data/investments_repository.dart';
+import 'package:invest_young/features/investments/domain/investment_enums.dart';
 import 'package:invest_young/features/onboarding/data/profile_repository.dart';
 import 'package:invest_young/features/profile/data/backup_files.dart';
 import 'package:invest_young/features/profile/data/backup_service.dart';
@@ -16,12 +18,18 @@ import '../../helpers/test_database.dart';
 class _FakeFiles implements BackupFiles {
   String? shared;
   String? sharedName;
+  String? sharedType;
   String? toPick;
 
   @override
-  Future<void> share(String json, String fileName) async {
-    shared = json;
+  Future<void> share(
+    String content,
+    String fileName, {
+    String mimeType = 'application/json',
+  }) async {
+    shared = content;
     sharedName = fileName;
+    sharedType = mimeType;
   }
 
   @override
@@ -66,6 +74,54 @@ void main() {
     final json = jsonDecode(files.shared!) as Map<String, dynamic>;
     expect(json['app'], 'invest_young');
     expect((json['tables'] as Map)['user_profiles'], hasLength(1));
+  });
+
+  Future<void> tapExportCsv(WidgetTester tester) async {
+    await tester.ensureVisible(find.text('Exportar movimientos (CSV)'));
+    await tester.pumpAndSettle();
+    await tester.runAsync(() async {
+      await tester.tap(find.text('Exportar movimientos (CSV)'));
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+    });
+    await tester.pumpAndSettle();
+  }
+
+  testWidgets('exports the transactions as CSV in the app language', (
+    tester,
+  ) async {
+    await tester.runAsync(() async {
+      final investments = InvestmentsRepository(db.investmentsDao);
+      final id = await investments.addAsset(
+        testAsset(AssetCategory.equity, name: 'Fondo'),
+      );
+      await investments.addTransaction(
+        testTx(id, TransactionType.buy, 150050, quantity: '2.5'),
+      );
+    });
+    await openProfile(tester);
+    await tapExportCsv(tester);
+
+    expect(
+      files.sharedName,
+      matches(RegExp(r'^invest-young-transactions-\d{4}-\d\d-\d\d\.csv$')),
+    );
+    expect(files.sharedType, 'text/csv');
+    final rows = files.shared!.substring(1).split('\r\n');
+    expect(rows.first, startsWith('Fecha;Activo;Categoría;Tipo;Importe (€)'));
+    expect(rows[1], contains(';Fondo;Renta variable;Compra;1500,50;2,5;'));
+  });
+
+  testWidgets('says there is nothing to export without transactions', (
+    tester,
+  ) async {
+    await openProfile(tester);
+    await tapExportCsv(tester);
+
+    expect(files.shared, isNull);
+    expect(
+      find.text('Todavía no hay movimientos que exportar'),
+      findsOneWidget,
+    );
   });
 
   testWidgets('imports a backup after confirmation', (tester) async {
