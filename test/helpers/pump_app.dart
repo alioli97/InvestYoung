@@ -84,7 +84,15 @@ Future<void> pumpUntilFound(
   Duration timeout = const Duration(seconds: 10),
 }) async {
   final end = DateTime.now().add(timeout);
-  while (finder.evaluate().isEmpty) {
+  bool found() {
+    try {
+      return finder.evaluate().isNotEmpty;
+    } on StateError {
+      return false; // e.g. `.first` on an empty finder
+    }
+  }
+
+  while (!found()) {
     if (DateTime.now().isAfter(end)) {
       throw TestFailure('Timed out waiting for $finder');
     }

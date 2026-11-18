@@ -231,4 +231,27 @@ void main() {
     expect(find.text('Repetir cuestionario'), findsOneWidget);
     expect(find.byType(NavigationBar), findsOneWidget);
   });
+
+  testWidgets('an invalid amount blocks continue until fixed', (tester) async {
+    await pumpApp(tester);
+    await _continue(tester);
+    await tapVisible(tester, find.text('He leído y acepto el aviso legal'));
+    await _continue(tester);
+    await tapVisible(tester, find.text('21–25'));
+    await tapVisible(tester, find.text('Contrato indefinido'));
+    await tapVisible(tester, find.widgetWithText(ChoiceChip, 'No').first);
+    await tapVisible(tester, find.widgetWithText(ChoiceChip, 'No').last);
+    await _continue(tester);
+
+    final food = find.widgetWithText(TextField, 'Alimentación');
+    await tester.enterText(food, '1,2,3');
+    await tester.pumpAndSettle();
+    expect(find.text('Introduce un importe válido'), findsOneWidget);
+    final button = find.widgetWithText(FilledButton, 'Continuar');
+    expect(tester.widget<FilledButton>(button).onPressed, isNull);
+
+    await tester.enterText(food, '123');
+    await tester.pumpAndSettle();
+    expect(tester.widget<FilledButton>(button).onPressed, isNotNull);
+  });
 }

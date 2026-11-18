@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/widgets/async_value_view.dart';
+import '../../../core/widgets/empty_state.dart';
 import '../domain/asset_metrics.dart';
 import '../domain/investment_enums.dart';
 import 'investment_labels.dart';
@@ -34,7 +35,13 @@ class CategoryAssetsScreen extends ConsumerWidget {
       body: AsyncValueView(
         value: summaries,
         data: (summaries) => summaries.isEmpty
-            ? _EmptyCategory(category: category, onAdd: add)
+            ? EmptyState(
+                icon: assetCategoryIcon(category),
+                title: l10n.investmentsEmptyCategory,
+                message: l10n.assetCategoryExamples(category),
+                actionLabel: l10n.investmentsAddAsset,
+                onAction: add,
+              )
             : ListView(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
                 children: [
@@ -51,50 +58,6 @@ class CategoryAssetsScreen extends ConsumerWidget {
                     ),
                 ],
               ),
-      ),
-    );
-  }
-}
-
-class _EmptyCategory extends StatelessWidget {
-  const _EmptyCategory({required this.category, required this.onAdd});
-
-  final AssetCategory category;
-  final VoidCallback onAdd;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              assetCategoryIcon(category),
-              size: 48,
-              color: theme.colorScheme.primary,
-            ),
-            const SizedBox(height: 12),
-            Text(
-              context.l10n.investmentsEmptyCategory,
-              style: theme.textTheme.titleMedium,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              context.l10n.assetCategoryExamples(category),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16),
-            OutlinedButton.icon(
-              onPressed: onAdd,
-              icon: const Icon(Icons.add),
-              label: Text(context.l10n.investmentsAddAsset),
-            ),
-          ],
-        ),
       ),
     );
   }

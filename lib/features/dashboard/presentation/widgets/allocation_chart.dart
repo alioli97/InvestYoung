@@ -44,22 +44,25 @@ class AllocationChart extends StatelessWidget {
             const SizedBox(height: 16),
             Row(
               children: [
-                SizedBox(
-                  width: 120,
-                  height: 120,
-                  child: PieChart(
-                    PieChartData(
-                      centerSpaceRadius: 28,
-                      sectionsSpace: 2,
-                      sections: [
-                        for (final (category, cents) in entries)
-                          PieChartSectionData(
-                            value: cents.toDouble(),
-                            color: categoryColor(category, theme.colorScheme),
-                            radius: 30,
-                            showTitle: false,
-                          ),
-                      ],
+                // The legend next to it reads every category and percentage.
+                ExcludeSemantics(
+                  child: SizedBox(
+                    width: 120,
+                    height: 120,
+                    child: PieChart(
+                      PieChartData(
+                        centerSpaceRadius: 28,
+                        sectionsSpace: 2,
+                        sections: [
+                          for (final (category, cents) in entries)
+                            PieChartSectionData(
+                              value: cents.toDouble(),
+                              color: categoryColor(category, theme.colorScheme),
+                              radius: 30,
+                              showTitle: false,
+                            ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -73,11 +76,13 @@ class AllocationChart extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 4),
                           child: Row(
                             children: [
-                              CircleAvatar(
-                                radius: 6,
-                                backgroundColor: categoryColor(
-                                  category,
-                                  theme.colorScheme,
+                              ExcludeSemantics(
+                                child: CircleAvatar(
+                                  radius: 6,
+                                  backgroundColor: categoryColor(
+                                    category,
+                                    theme.colorScheme,
+                                  ),
                                 ),
                               ),
                               const SizedBox(width: 8),

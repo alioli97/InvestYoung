@@ -40,13 +40,17 @@ class GoalProgressCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(goalIcon(goal.type)),
+                  ExcludeSemantics(child: Icon(goalIcon(goal.type))),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(goal.name, style: theme.textTheme.titleMedium),
                   ),
                   if (progress.isComplete)
-                    Icon(Icons.check_circle, color: colors.primary)
+                    Icon(
+                      Icons.check_circle,
+                      color: colors.primary,
+                      semanticLabel: l10n.goalsCompleted,
+                    )
                   else if (progress.hasTarget)
                     Text(
                       context.formatPercent(progress.ratio, decimalDigits: 0),
@@ -57,6 +61,7 @@ class GoalProgressCard extends StatelessWidget {
               const SizedBox(height: 12),
               LinearProgressIndicator(
                 value: progress.ratio,
+                semanticsLabel: l10n.goalsProgressSemantics(goal.name),
                 minHeight: 8,
                 borderRadius: BorderRadius.circular(4),
               ),

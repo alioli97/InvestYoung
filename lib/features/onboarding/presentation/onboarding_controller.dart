@@ -11,6 +11,7 @@ class OnboardingFlowState {
     this.step = OnboardingStep.language,
     this.answers = const OnboardingAnswers(),
     this.saving = false,
+    this.invalidInputs = const {},
   });
 
   final OnboardingStep step;
@@ -19,18 +20,24 @@ class OnboardingFlowState {
   /// `true` while the result is being persisted.
   final bool saving;
 
+  /// Keys of fields on the current step whose text is not valid.
+  final Set<String> invalidInputs;
+
   bool get isFirst => step == OnboardingStep.values.first;
   bool get isLast => step == OnboardingStep.values.last;
-  bool get canContinue => !saving && answers.isStepComplete(step);
+  bool get canContinue =>
+      !saving && invalidInputs.isEmpty && answers.isStepComplete(step);
 
   OnboardingFlowState copyWith({
     OnboardingStep? step,
     OnboardingAnswers? answers,
     bool? saving,
+    Set<String>? invalidInputs,
   }) => OnboardingFlowState(
     step: step ?? this.step,
     answers: answers ?? this.answers,
     saving: saving ?? this.saving,
+    invalidInputs: invalidInputs ?? this.invalidInputs,
   );
 }
 
@@ -47,14 +54,28 @@ class OnboardingController extends _$OnboardingController {
   /// Moves to the next step if the current one is complete.
   void next() {
     if (!state.canContinue || state.isLast) return;
-    state = state.copyWith(step: OnboardingStep.values[state.step.index + 1]);
+    state = state.copyWith(
+      step: OnboardingStep.values[state.step.index + 1],
+      invalidInputs: const {},
+    );
   }
 
   /// Moves to the previous step. Returns `false` on the first step.
   bool back() {
     if (state.isFirst) return false;
-    state = state.copyWith(step: OnboardingStep.values[state.step.index - 1]);
+    // Fields are rebuilt from the saved answers, so stale errors go away.
+    state = state.copyWith(
+      step: OnboardingStep.values[state.step.index - 1],
+      invalidInputs: const {},
+    );
     return true;
+  }
+
+  /// Tracks whether the text of the field [key] is valid.
+  void setInputValid(String key, {required bool valid}) {
+    final inputs = {...state.invalidInputs};
+    valid ? inputs.remove(key) : inputs.add(key);
+    state = state.copyWith(invalidInputs: inputs);
   }
 
   void update(OnboardingAnswers Function(OnboardingAnswers answers) change) {
@@ -90,10 +111,13 @@ class OnboardingController extends _$OnboardingController {
     }
   }
 
-  void setHighInterestDebt(bool value) => update(
-    (a) => a.copyWith(
-      hasHighInterestDebt: value,
-      debtCents: value ? null : () => null,
-    ),
-  );
+  void setHighInterestDebt(bool value) {
+    if (!value) setInputValid('debt', valid: true); // the field disappears
+    update(
+      (a) => a.copyWith(
+        hasHighInterestDebt: value,
+        debtCents: value ? null : () => null,
+      ),
+    );
+  }
 }

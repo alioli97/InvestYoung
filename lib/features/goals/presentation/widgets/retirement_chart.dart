@@ -56,67 +56,70 @@ class RetirementChart extends StatelessWidget {
                 style: theme.textTheme.titleMedium,
               ),
             ),
-            AspectRatio(
-              aspectRatio: 1.5,
-              child: LineChart(
-                LineChartData(
-                  minY: 0,
-                  maxY: maxY * 1.05,
-                  minX: 0,
-                  maxX: points.last.month.toDouble(),
-                  gridData: const FlGridData(drawVerticalLine: false),
-                  borderData: FlBorderData(show: false),
-                  lineTouchData: const LineTouchData(enabled: false),
-                  titlesData: FlTitlesData(
-                    topTitles: const AxisTitles(),
-                    rightTitles: const AxisTitles(),
-                    leftTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        reservedSize: 56,
-                        getTitlesWidget: (value, meta) => SideTitleWidget(
-                          meta: meta,
-                          child: Text(
-                            context.formatCompactCurrency(value.round()),
-                            style: theme.textTheme.labelSmall,
+            // Screen readers get the summary in the legend below instead.
+            ExcludeSemantics(
+              child: AspectRatio(
+                aspectRatio: 1.5,
+                child: LineChart(
+                  LineChartData(
+                    minY: 0,
+                    maxY: maxY * 1.05,
+                    minX: 0,
+                    maxX: points.last.month.toDouble(),
+                    gridData: const FlGridData(drawVerticalLine: false),
+                    borderData: FlBorderData(show: false),
+                    lineTouchData: const LineTouchData(enabled: false),
+                    titlesData: FlTitlesData(
+                      topTitles: const AxisTitles(),
+                      rightTitles: const AxisTitles(),
+                      leftTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          reservedSize: 56,
+                          getTitlesWidget: (value, meta) => SideTitleWidget(
+                            meta: meta,
+                            child: Text(
+                              context.formatCompactCurrency(value.round()),
+                              style: theme.textTheme.labelSmall,
+                            ),
+                          ),
+                        ),
+                      ),
+                      bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          reservedSize: 28,
+                          interval: math
+                              .max(12, (points.last.month / 4 / 12).ceil() * 12)
+                              .toDouble(),
+                          getTitlesWidget: (value, meta) => SideTitleWidget(
+                            meta: meta,
+                            child: Text(
+                              xLabel(value),
+                              style: theme.textTheme.labelSmall,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    bottomTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        reservedSize: 28,
-                        interval: math
-                            .max(12, (points.last.month / 4 / 12).ceil() * 12)
-                            .toDouble(),
-                        getTitlesWidget: (value, meta) => SideTitleWidget(
-                          meta: meta,
-                          child: Text(
-                            xLabel(value),
-                            style: theme.textTheme.labelSmall,
-                          ),
-                        ),
+                    lineBarsData: [
+                      line(
+                        [
+                          for (final p in points)
+                            FlSpot(
+                              p.month.toDouble(),
+                              p.contributedCents.toDouble(),
+                            ),
+                        ],
+                        contributedColor,
+                        dashed: true,
                       ),
-                    ),
-                  ),
-                  lineBarsData: [
-                    line(
-                      [
+                      line([
                         for (final p in points)
-                          FlSpot(
-                            p.month.toDouble(),
-                            p.contributedCents.toDouble(),
-                          ),
-                      ],
-                      contributedColor,
-                      dashed: true,
-                    ),
-                    line([
-                      for (final p in points)
-                        FlSpot(p.month.toDouble(), p.valueCents.toDouble()),
-                    ], valueColor),
-                  ],
+                          FlSpot(p.month.toDouble(), p.valueCents.toDouble()),
+                      ], valueColor),
+                    ],
+                  ),
                 ),
               ),
             ),

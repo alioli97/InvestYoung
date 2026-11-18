@@ -45,6 +45,8 @@ class SituationStep extends ConsumerWidget {
           onChanged: (cents) => controller.update(
             (a) => a.copyWith(monthlyIncomeCents: () => cents),
           ),
+          onValidityChanged: (valid) =>
+              controller.setInputValid('income', valid: valid),
         ),
         StepSectionLabel(l10n.onboardingDependents),
         YesNoChips(
@@ -69,6 +71,8 @@ class SituationStep extends ConsumerWidget {
             initialCents: answers.debtCents,
             onChanged: (cents) =>
                 controller.update((a) => a.copyWith(debtCents: () => cents)),
+            onValidityChanged: (valid) =>
+                controller.setInputValid('debt', valid: valid),
           ),
         ],
       ],

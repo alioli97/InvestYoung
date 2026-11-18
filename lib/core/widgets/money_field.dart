@@ -13,6 +13,7 @@ class MoneyField extends StatefulWidget {
     this.initialCents,
     this.helperText,
     this.showZeroAsEmpty = true,
+    this.onValidityChanged,
   });
 
   final String label;
@@ -22,6 +23,9 @@ class MoneyField extends StatefulWidget {
 
   /// When `true`, an initial value of 0 shows an empty field with a `0` hint.
   final bool showZeroAsEmpty;
+
+  /// Called when the text switches between valid (or empty) and invalid.
+  final ValueChanged<bool>? onValidityChanged;
 
   @override
   State<MoneyField> createState() => _MoneyFieldState();
@@ -49,7 +53,9 @@ class _MoneyFieldState extends State<MoneyField> {
 
   void _onChanged(String text) {
     final cents = parseEurosToCents(text);
-    setState(() => _invalid = text.trim().isNotEmpty && cents == null);
+    final invalid = text.trim().isNotEmpty && cents == null;
+    if (invalid != _invalid) widget.onValidityChanged?.call(!invalid);
+    setState(() => _invalid = invalid);
     widget.onChanged(cents);
   }
 
