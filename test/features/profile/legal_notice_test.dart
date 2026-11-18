@@ -46,6 +46,7 @@ void main() {
     await tapVisible(tester, find.text('Acerca de'));
     expect(find.textContaining('Aplicación educativa'), findsOneWidget);
     expect(find.textContaining('solo en tu dispositivo'), findsOneWidget);
+    expect(find.text('1.2.3 (45)'), findsOneWidget);
   });
 
   testWidgets('onboarding shows the same legal notice', (tester) async {

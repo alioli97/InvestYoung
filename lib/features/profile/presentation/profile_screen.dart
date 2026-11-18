@@ -7,6 +7,7 @@ import '../../../core/l10n/l10n.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/theme/theme_mode_provider.dart';
 import '../data/preferences_service.dart';
+import 'app_version_provider.dart';
 import 'widgets/choice_dialog.dart';
 import 'widgets/data_section.dart';
 import 'widgets/section_header.dart';
@@ -20,6 +21,7 @@ class ProfileScreen extends ConsumerWidget {
     final language = Localizations.localeOf(context).languageCode;
     final theme = ref.watch(themePreferenceProvider);
     final preferences = ref.read(preferencesServiceProvider);
+    final version = ref.watch(appVersionProvider).value;
 
     String languageName(String code) => code == 'ca'
         ? l10n.onboardingLanguageCatalan
@@ -87,6 +89,7 @@ class ProfileScreen extends ConsumerWidget {
             onTap: () => showAboutDialog(
               context: context,
               applicationName: l10n.appTitle,
+              applicationVersion: version,
               applicationIcon: Icon(
                 Icons.savings_outlined,
                 size: 40,
