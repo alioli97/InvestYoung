@@ -14,7 +14,10 @@ Read both before starting a new task and tick off in ROADMAP.md whatever you com
 
 ## Stack
 
-- Flutter (stable) + Dart with null safety. Targets: Android and iOS.
+- Flutter 3.50 (stable) + Dart 3.14 with null safety. Targets: Android and iOS.
+- Material widgets come from **`package:material_ui`** (import `package:material_ui/material_ui.dart`,
+  not the deprecated `package:flutter/material.dart`). `MaterialUiCompatibilityBridge` in `app.dart`
+  stays until `fl_chart` and `flutter_markdown_plus` migrate.
 - State: **Riverpod** (`flutter_riverpod`, with `riverpod_annotation` + `riverpod_generator`).
 - Local database: **Drift** (`drift`, `drift_flutter`, `drift_dev`, `build_runner`).
 - Navigation: **go_router** with `StatefulShellRoute` for the bottom navigation bar.
@@ -38,6 +41,8 @@ flutter run
 ```
 
 Before considering a task done: `flutter analyze` has no errors and `flutter test` passes.
+CI (`.github/workflows/ci.yml`) runs on every PR: formatting, generated code up to date,
+analyze and tests. When upgrading Flutter, bump `flutter-version` there too.
 
 ## Architecture (feature-first)
 
