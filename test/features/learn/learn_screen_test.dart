@@ -68,13 +68,13 @@ void main() {
       200,
       scrollable: _lessonsList,
     );
-    // Modules without lessons yet are marked as coming soon.
+    // Every module now has lessons: none is marked as coming soon.
     await tester.scrollUntilVisible(
       find.text('Psicología del inversor'),
       200,
       scrollable: _lessonsList,
     );
-    expect(find.text('Próximamente'), findsWidgets);
+    expect(find.text('Próximamente'), findsNothing);
   });
 
   testWidgets('opens a lesson in the current language', (tester) async {
