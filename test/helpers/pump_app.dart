@@ -6,6 +6,7 @@ import 'package:invest_young/app.dart';
 import 'package:invest_young/core/db/app_database.dart';
 import 'package:invest_young/features/onboarding/domain/user_profile.dart';
 import 'package:invest_young/features/onboarding/presentation/onboarding_status_provider.dart';
+import 'package:invest_young/features/profile/presentation/app_version_provider.dart';
 
 import 'test_database.dart';
 
@@ -37,6 +38,8 @@ Future<AppDatabase> pumpApp(
       overrides: [
         appDatabaseProvider.overrideWithValue(db),
         startupProfileProvider.overrideWithValue(startupProfile),
+        // No platform channel in tests: a fixed version.
+        appVersionProvider.overrideWith((ref) async => '1.2.3 (45)'),
         ...overrides,
       ],
       child: const InvestYoungApp(),
