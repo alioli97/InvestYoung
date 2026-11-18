@@ -42,7 +42,8 @@ flutter run
 
 Before considering a task done: `flutter analyze` has no errors and `flutter test` passes.
 CI (`.github/workflows/ci.yml`) runs on every PR: formatting, generated code up to date,
-analyze and tests. When upgrading Flutter, bump `flutter-version` there too.
+analyze and tests. `apk.yml` builds the release APK artifact. When upgrading Flutter, bump
+`flutter-version` in both workflows.
 
 ## Architecture (feature-first)
 

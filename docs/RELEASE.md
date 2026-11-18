@@ -46,3 +46,18 @@ flutter build apk --release
 ```
 
 Requires a JDK 17+ (`flutter config --jdk-dir <path>` if `java` is not on the PATH).
+
+## APK from CI
+
+`.github/workflows/apk.yml` builds the release APK on every push to `main` (and on PRs that
+touch the Android build) and uploads it as an artifact named
+`InvertirSiendoJoven-<version>-<release|debug>` (kept 30 days): GitHub → Actions → APK → run →
+Artifacts. It can also be started by hand ("Run workflow").
+
+It signs with the release key when these repository secrets exist:
+
+- `ANDROID_KEYSTORE_BASE64`: `base64 -w0 ~/.android/invest_young-release.jks`
+- `ANDROID_KEYSTORE_PASSWORD`: the store/key password from `android/key.properties`
+
+Without them the artifact is debug-signed (`-debug` suffix) and cannot update a release install.
+
