@@ -1,4 +1,4 @@
-package com.tunombre.invest_young
+package com.alioli97.investyoung
 
 import io.flutter.embedding.android.FlutterActivity
 

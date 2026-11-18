@@ -54,7 +54,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 
 ## Phase 7 — Stability and sharing (APK for family and friends)
 - [ ] Test on real devices; collect feedback and fix the bugs found
-- [ ] Own release signing key (kept out of Git) so updates install over previous versions
+- [x] Own release signing key (kept out of Git) so updates install over previous versions
 - [ ] Versioning: bump `version` in pubspec.yaml on every shared build
 - [ ] CI job that builds the release APK and uploads it as a downloadable artifact
 
