@@ -4,6 +4,7 @@ import '../../../../core/l10n/formatters.dart';
 import '../../../../core/l10n/l10n.dart';
 import '../../domain/asset_metrics.dart';
 import '../../domain/investment_enums.dart';
+import '../../../../core/widgets/label_value_row.dart';
 import 'return_text.dart';
 
 /// Metrics of an asset (docs/SPEC.md §6): value, contributed capital,
@@ -42,16 +43,16 @@ class AssetMetricsCard extends StatelessWidget {
               style: theme.textTheme.headlineSmall,
             ),
             const Divider(height: 24),
-            _MetricRow(
+            LabelValueRow(
               label: l10n.investmentsNetContributed,
               value: Text(context.formatCurrency(metrics.netContributedCents)),
             ),
             if (metrics.incomeCents != 0)
-              _MetricRow(
+              LabelValueRow(
                 label: l10n.investmentsIncome,
                 value: Text(context.formatCurrency(metrics.incomeCents)),
               ),
-            _MetricRow(
+            LabelValueRow(
               label: l10n.investmentsReturn,
               value: ReturnText(
                 returnCents: metrics.returnCents,
@@ -59,12 +60,12 @@ class AssetMetricsCard extends StatelessWidget {
               ),
             ),
             if (_showHoldings) ...[
-              _MetricRow(
+              LabelValueRow(
                 label: l10n.investmentsHoldings,
                 value: Text(context.formatQuantity(metrics.holdings)),
               ),
               if (avgPrice != null)
-                _MetricRow(
+                LabelValueRow(
                   label: l10n.investmentsAveragePrice,
                   value: Text(context.formatUnitPrice(avgPrice)),
                 ),
@@ -76,27 +77,6 @@ class AssetMetricsCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _MetricRow extends StatelessWidget {
-  const _MetricRow({required this.label, required this.value});
-
-  final String label;
-  final Widget value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        children: [
-          Expanded(child: Text(label)),
-          const SizedBox(width: 8),
-          value,
-        ],
       ),
     );
   }

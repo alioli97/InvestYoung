@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/l10n/l10n.dart';
 import '../../../../core/widgets/async_value_view.dart';
 import '../../../onboarding/domain/onboarding_logic.dart';
 import '../../../onboarding/presentation/profile_providers.dart';
@@ -40,8 +41,14 @@ class LessonsTab extends ConsumerWidget {
                 module: module,
                 recommended: recommended.contains(module.id),
                 lessonTrailing: (lesson) => switch (progress[lesson.id]) {
-                  final s? when s.isQuizPassed => const Icon(Icons.verified),
-                  final s? when s.isRead => const Icon(Icons.check_circle),
+                  final s? when s.isQuizPassed => Icon(
+                    Icons.verified,
+                    semanticLabel: context.l10n.learnQuizPassedShort,
+                  ),
+                  final s? when s.isRead => Icon(
+                    Icons.check_circle,
+                    semanticLabel: context.l10n.learnRead,
+                  ),
                   _ => null,
                 },
               ),

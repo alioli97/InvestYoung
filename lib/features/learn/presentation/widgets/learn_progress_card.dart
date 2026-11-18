@@ -24,10 +24,13 @@ class LearnProgressCard extends StatelessWidget {
               style: theme.textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
-            LinearProgressIndicator(
-              value: total == 0 ? 0 : read / total,
-              minHeight: 8,
-              borderRadius: BorderRadius.circular(4),
+            ExcludeSemantics(
+              // The text above already says "X of Y lessons read".
+              child: LinearProgressIndicator(
+                value: total == 0 ? 0 : read / total,
+                minHeight: 8,
+                borderRadius: BorderRadius.circular(4),
+              ),
             ),
           ],
         ),

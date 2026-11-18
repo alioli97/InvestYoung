@@ -1247,5 +1247,26 @@
   "profileLegalSimulations": "Las simulaciones de rentabilidad son orientativas, se basan en las hipótesis que tú introduces y no garantizan resultados. Los perfiles, rangos y porcentajes que muestra la app son indicativos y no tienen en cuenta toda tu situación personal.",
   "@profileLegalSimulations": {
     "description": "Extra legal text about simulations."
+  },
+  "goalsEmptyTitle": "Aún no tienes objetivos",
+  "@goalsEmptyTitle": {
+    "description": "Goals empty state title."
+  },
+  "goalsEmptyBody": "Crea uno para saber cuánto necesitas y cuánto aportar cada mes.",
+  "@goalsEmptyBody": {
+    "description": "Goals empty state body."
+  },
+  "goalsProgressSemantics": "Progreso de {goal}",
+  "@goalsProgressSemantics": {
+    "description": "Screen reader label of a goal progress bar.",
+    "placeholders": {
+      "goal": {
+        "type": "String"
+      }
+    }
+  },
+  "goalsCompleted": "Objetivo completado",
+  "@goalsCompleted": {
+    "description": "Screen reader label of the completed goal icon."
   }
 }

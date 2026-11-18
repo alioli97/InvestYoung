@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/l10n/formatters.dart';
 import '../../../../core/l10n/l10n.dart';
+import '../../../../core/widgets/label_value_row.dart';
 import '../../../onboarding/presentation/profile_providers.dart';
 import '../../domain/goal.dart';
 import '../../domain/goal_params.dart';
@@ -65,15 +66,15 @@ class GoalInputsCard extends ConsumerWidget {
         child: Column(
           children: [
             for (final (label, value) in rows)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Row(
-                  children: [
-                    Expanded(child: Text(label)),
-                    if (value.isNotEmpty) Text(value),
-                  ],
-                ),
-              ),
+              value.isEmpty
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Text(label),
+                      ),
+                    )
+                  : LabelValueRow(label: label, value: Text(value)),
           ],
         ),
       ),

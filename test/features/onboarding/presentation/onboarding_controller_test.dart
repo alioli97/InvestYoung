@@ -63,4 +63,25 @@ void main() {
     expect(state().answers.hasHighInterestDebt, isFalse);
     expect(state().answers.debtCents, isNull);
   });
+
+  test('invalid inputs block continue until fixed or left', () {
+    controller.next();
+    controller.update((a) => a.copyWith(legalAccepted: true));
+    controller.setInputValid('income', valid: false);
+    expect(state().canContinue, isFalse);
+
+    controller.setInputValid('income', valid: true);
+    expect(state().canContinue, isTrue);
+
+    controller.setInputValid('income', valid: false);
+    controller.back();
+    expect(state().invalidInputs, isEmpty);
+  });
+
+  test('answering no to debt clears its invalid state', () {
+    controller.setHighInterestDebt(true);
+    controller.setInputValid('debt', valid: false);
+    controller.setHighInterestDebt(false);
+    expect(state().invalidInputs, isEmpty);
+  });
 }

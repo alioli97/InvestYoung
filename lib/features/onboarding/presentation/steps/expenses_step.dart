@@ -30,6 +30,10 @@ class ExpensesStep extends ConsumerWidget {
               label: l10n.expenseCategory(category),
               initialCents: answers.expenseCents(category),
               onChanged: (cents) => controller.setExpense(category, cents),
+              onValidityChanged: (valid) => controller.setInputValid(
+                'expense-${category.dbValue}',
+                valid: valid,
+              ),
             ),
           ),
         Card(

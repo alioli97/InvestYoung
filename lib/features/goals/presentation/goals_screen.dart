@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/l10n/l10n.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/widgets/async_value_view.dart';
+import '../../../core/widgets/empty_state.dart';
 import '../domain/goal_progress.dart';
 import '../domain/goal_type.dart';
 import 'goal_labels.dart';
@@ -58,15 +59,23 @@ class GoalsScreen extends ConsumerWidget {
       ),
       body: AsyncValueView(
         value: progress,
-        data: (list) => ListView.separated(
-          padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
-          itemCount: list.length,
-          separatorBuilder: (_, _) => const SizedBox(height: 12),
-          itemBuilder: (context, i) => GoalProgressCard(
-            progress: list[i],
-            onTap: () => context.push(Routes.goal(list[i].goal.id!)),
-          ),
-        ),
+        data: (list) => list.isEmpty
+            ? EmptyState(
+                icon: Icons.flag_outlined,
+                title: context.l10n.goalsEmptyTitle,
+                message: context.l10n.goalsEmptyBody,
+                actionLabel: context.l10n.goalsAddGoal,
+                onAction: () => _add(context, existing),
+              )
+            : ListView.separated(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
+                itemCount: list.length,
+                separatorBuilder: (_, _) => const SizedBox(height: 12),
+                itemBuilder: (context, i) => GoalProgressCard(
+                  progress: list[i],
+                  onTap: () => context.push(Routes.goal(list[i].goal.id!)),
+                ),
+              ),
       ),
     );
   }

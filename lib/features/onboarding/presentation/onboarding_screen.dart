@@ -49,7 +49,10 @@ class OnboardingScreen extends ConsumerWidget {
           title: Text(context.l10n.onboardingStepCounter(current, total)),
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(4),
-            child: LinearProgressIndicator(value: current / total),
+            // The title already reads "Step X of 8".
+            child: ExcludeSemantics(
+              child: LinearProgressIndicator(value: current / total),
+            ),
           ),
         ),
         body: SafeArea(

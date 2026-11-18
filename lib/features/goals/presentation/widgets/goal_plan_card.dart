@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/l10n/formatters.dart';
 import '../../../../core/l10n/l10n.dart';
 import '../../../../core/router/routes.dart';
+import '../../../../core/widgets/label_value_row.dart';
 import '../../domain/goal_progress.dart';
 
 /// What is left and how much to contribute per month to arrive on time.
@@ -44,15 +45,27 @@ class GoalPlanCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _Row(
-              l10n.goalsRemaining,
-              context.formatCurrency(progress.remainingCents),
+            LabelValueRow(
+              label: l10n.goalsRemaining,
+              value: Text(
+                context.formatCurrency(progress.remainingCents),
+                style: theme.textTheme.titleSmall,
+              ),
             ),
             if (targetDate != null)
-              _Row(l10n.goalsTargetDate, context.formatDate(targetDate)),
-            _Row(
-              l10n.goalsExpectedReturn,
-              context.formatPercent(goal.expectedAnnualReturn),
+              LabelValueRow(
+                label: l10n.goalsTargetDate,
+                value: Text(
+                  context.formatDate(targetDate),
+                  style: theme.textTheme.titleSmall,
+                ),
+              ),
+            LabelValueRow(
+              label: l10n.goalsExpectedReturn,
+              value: Text(
+                context.formatPercent(goal.expectedAnnualReturn),
+                style: theme.textTheme.titleSmall,
+              ),
             ),
             if (monthly != null && !progress.isComplete) ...[
               const Divider(height: 24),
@@ -84,22 +97,4 @@ class GoalPlanCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class _Row extends StatelessWidget {
-  const _Row(this.label, this.value);
-
-  final String label;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.symmetric(vertical: 4),
-    child: Row(
-      children: [
-        Expanded(child: Text(label)),
-        Text(value, style: Theme.of(context).textTheme.titleSmall),
-      ],
-    ),
-  );
 }

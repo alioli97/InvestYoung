@@ -51,24 +51,27 @@ class CategoryCard extends StatelessWidget {
                       l10n.assetCategoryExamples(category),
                       style: theme.textTheme.bodySmall,
                     ),
+                    const SizedBox(height: 8),
+                    // Wrap (not Row) so amounts move to a new line with
+                    // large text instead of overflowing.
+                    Wrap(
+                      spacing: 12,
+                      crossAxisAlignment: WrapCrossAlignment.end,
+                      children: [
+                        Text(
+                          context.formatCurrency(metrics.currentValueCents),
+                          style: theme.textTheme.titleMedium,
+                        ),
+                        if (metrics.hasActivity)
+                          ReturnText(
+                            returnCents: metrics.returnCents,
+                            ratio: metrics.returnRatio,
+                            style: theme.textTheme.bodyMedium,
+                          ),
+                      ],
+                    ),
                   ],
                 ),
-              ),
-              const SizedBox(width: 8),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    context.formatCurrency(metrics.currentValueCents),
-                    style: theme.textTheme.titleMedium,
-                  ),
-                  if (metrics.hasActivity)
-                    ReturnText(
-                      returnCents: metrics.returnCents,
-                      ratio: metrics.returnRatio,
-                      style: theme.textTheme.bodySmall,
-                    ),
-                ],
               ),
             ],
           ),

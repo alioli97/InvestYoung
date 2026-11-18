@@ -939,4 +939,19 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get profileLegalSimulations =>
       'Las simulaciones de rentabilidad son orientativas, se basan en las hipótesis que tú introduces y no garantizan resultados. Los perfiles, rangos y porcentajes que muestra la app son indicativos y no tienen en cuenta toda tu situación personal.';
+
+  @override
+  String get goalsEmptyTitle => 'Aún no tienes objetivos';
+
+  @override
+  String get goalsEmptyBody =>
+      'Crea uno para saber cuánto necesitas y cuánto aportar cada mes.';
+
+  @override
+  String goalsProgressSemantics(String goal) {
+    return 'Progreso de $goal';
+  }
+
+  @override
+  String get goalsCompleted => 'Objetivo completado';
 }

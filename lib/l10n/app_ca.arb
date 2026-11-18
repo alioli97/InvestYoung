@@ -276,5 +276,9 @@
   "profileInformation": "Informació",
   "profileAbout": "Quant a",
   "profileAboutBody": "Aplicació educativa per organitzar les teves finances i aprendre a invertir. Funciona sense connexió: les teves dades es desen només al teu dispositiu i no s'envien a cap servidor.",
-  "profileLegalSimulations": "Les simulacions de rendibilitat són orientatives, es basen en les hipòtesis que tu introdueixes i no garanteixen resultats. Els perfils, rangs i percentatges que mostra l'app són indicatius i no tenen en compte tota la teva situació personal."
+  "profileLegalSimulations": "Les simulacions de rendibilitat són orientatives, es basen en les hipòtesis que tu introdueixes i no garanteixen resultats. Els perfils, rangs i percentatges que mostra l'app són indicatius i no tenen en compte tota la teva situació personal.",
+  "goalsEmptyTitle": "Encara no tens objectius",
+  "goalsEmptyBody": "Crea'n un per saber quant necessites i quant aportar cada mes.",
+  "goalsProgressSemantics": "Progrés de {goal}",
+  "goalsCompleted": "Objectiu completat"
 }

@@ -1764,6 +1764,30 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Las simulaciones de rentabilidad son orientativas, se basan en las hipótesis que tú introduces y no garantizan resultados. Los perfiles, rangos y porcentajes que muestra la app son indicativos y no tienen en cuenta toda tu situación personal.'**
   String get profileLegalSimulations;
+
+  /// Goals empty state title.
+  ///
+  /// In es, this message translates to:
+  /// **'Aún no tienes objetivos'**
+  String get goalsEmptyTitle;
+
+  /// Goals empty state body.
+  ///
+  /// In es, this message translates to:
+  /// **'Crea uno para saber cuánto necesitas y cuánto aportar cada mes.'**
+  String get goalsEmptyBody;
+
+  /// Screen reader label of a goal progress bar.
+  ///
+  /// In es, this message translates to:
+  /// **'Progreso de {goal}'**
+  String goalsProgressSemantics(String goal);
+
+  /// Screen reader label of the completed goal icon.
+  ///
+  /// In es, this message translates to:
+  /// **'Objetivo completado'**
+  String get goalsCompleted;
 }
 
 class _AppLocalizationsDelegate
