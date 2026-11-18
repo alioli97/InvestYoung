@@ -34,6 +34,15 @@ class UserProfiles extends Table {
   TextColumn get themeMode => text()
       .map(const DbEnumConverter(AppThemeMode.values))
       .withDefault(const Constant('system'))();
+
+  /// Added in schema v3: day of the month (1–28) of the contribution
+  /// reminder, `null` when it is off.
+  IntColumn get reminderDay => integer().nullable()();
+
+  /// Added in schema v3: local time of the reminder, in minutes after
+  /// midnight (default 9:00).
+  IntColumn get reminderMinuteOfDay =>
+      integer().withDefault(const Constant(540))();
 }
 
 @DataClassName('MonthlyExpenseRow')

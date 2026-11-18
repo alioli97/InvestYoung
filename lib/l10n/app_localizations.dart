@@ -1788,6 +1788,72 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Objetivo completado'**
   String get goalsCompleted;
+
+  /// Profile section: reminders.
+  ///
+  /// In es, this message translates to:
+  /// **'Recordatorios'**
+  String get profileReminders;
+
+  /// Switch that turns the monthly contribution reminder on or off.
+  ///
+  /// In es, this message translates to:
+  /// **'Recordatorio mensual para aportar'**
+  String get profileReminderMonthly;
+
+  /// Reminder switch subtitle while it is off.
+  ///
+  /// In es, this message translates to:
+  /// **'Te avisamos un día al mes para que no se te olvide aportar a tus objetivos'**
+  String get profileReminderOff;
+
+  /// Reminder switch subtitle while it is on.
+  ///
+  /// In es, this message translates to:
+  /// **'El día {day} de cada mes a las {time}'**
+  String profileReminderSchedule(int day, String time);
+
+  /// Reminder day-of-month setting.
+  ///
+  /// In es, this message translates to:
+  /// **'Día del mes'**
+  String get profileReminderDay;
+
+  /// Reminder time setting.
+  ///
+  /// In es, this message translates to:
+  /// **'Hora'**
+  String get profileReminderTime;
+
+  /// Option in the day-of-month list.
+  ///
+  /// In es, this message translates to:
+  /// **'Día {day}'**
+  String profileReminderDayOption(int day);
+
+  /// Shown when the notification permission is denied.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin permiso para mostrar notificaciones. Puedes activarlo en los ajustes del móvil.'**
+  String get profileReminderPermissionDenied;
+
+  /// Title of the monthly reminder notification.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Has aportado este mes?'**
+  String get reminderNotificationTitle;
+
+  /// Body of the monthly reminder notification.
+  ///
+  /// In es, this message translates to:
+  /// **'Es tu día para aportar a tus objetivos. Abre la app para ver cuánto te toca.'**
+  String get reminderNotificationBody;
+
+  /// Android notification channel name.
+  ///
+  /// In es, this message translates to:
+  /// **'Recordatorios de aportación'**
+  String get reminderChannelName;
 }
 
 class _AppLocalizationsDelegate

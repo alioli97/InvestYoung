@@ -280,5 +280,16 @@
   "goalsEmptyTitle": "Encara no tens objectius",
   "goalsEmptyBody": "Crea'n un per saber quant necessites i quant aportar cada mes.",
   "goalsProgressSemantics": "Progrés de {goal}",
-  "goalsCompleted": "Objectiu completat"
+  "goalsCompleted": "Objectiu completat",
+  "profileReminders": "Recordatoris",
+  "profileReminderMonthly": "Recordatori mensual per aportar",
+  "profileReminderOff": "T'avisem un dia al mes perquè no t'oblidis d'aportar als teus objectius",
+  "profileReminderSchedule": "El dia {day} de cada mes a les {time}",
+  "profileReminderDay": "Dia del mes",
+  "profileReminderTime": "Hora",
+  "profileReminderDayOption": "Dia {day}",
+  "profileReminderPermissionDenied": "Sense permís per mostrar notificacions. Ho pots activar a la configuració del mòbil.",
+  "reminderNotificationTitle": "Has aportat aquest mes?",
+  "reminderNotificationBody": "És el teu dia per aportar als teus objectius. Obre l'app per veure quant et toca.",
+  "reminderChannelName": "Recordatoris d'aportació"
 }

@@ -8,11 +8,12 @@ import '../../onboarding/data/profile_repository.dart';
 import '../../onboarding/presentation/onboarding_status_provider.dart';
 import 'backup_files.dart';
 import 'backup_service.dart';
+import 'preferences_service.dart';
 
 part 'data_management.g.dart';
 
 /// Backup and delete actions from Profile, keeping app state (onboarding
-/// status, language and theme) in sync with the data afterwards.
+/// status, language, theme and reminder) in sync with the data afterwards.
 class DataManagement {
   const DataManagement(this._ref);
 
@@ -53,6 +54,7 @@ class DataManagement {
     _ref
         .read(themePreferenceProvider.notifier)
         .set(profile?.themeMode ?? AppThemeMode.system);
+    await _ref.read(preferencesServiceProvider).syncReminder();
   }
 }
 

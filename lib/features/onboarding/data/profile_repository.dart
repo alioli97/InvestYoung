@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/db/app_database.dart';
 import '../../../core/domain/app_theme_mode.dart';
+import '../../profile/domain/contribution_reminder.dart';
 import '../domain/user_profile.dart';
 import 'profile_dao.dart';
 
@@ -31,6 +32,17 @@ class ProfileRepository {
           themeMode: themeMode == null
               ? const Value.absent()
               : Value(themeMode),
+        ),
+      );
+
+  /// Saves the contribution reminder; `null` turns it off.
+  Future<void> updateReminder(ContributionReminder? reminder) =>
+      _dao.updatePreferences(
+        UserProfilesCompanion(
+          reminderDay: Value(reminder?.dayOfMonth),
+          reminderMinuteOfDay: reminder == null
+              ? const Value.absent()
+              : Value(reminder.minuteOfDay),
         ),
       );
 
@@ -71,6 +83,13 @@ extension on UserProfileRow {
     locale: locale,
     onboardingCompletedAt: onboardingCompletedAt,
     themeMode: themeMode,
+    reminder: switch (reminderDay) {
+      null => null,
+      final day => ContributionReminder(
+        dayOfMonth: day,
+        minuteOfDay: reminderMinuteOfDay,
+      ),
+    },
   );
 }
 

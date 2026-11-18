@@ -44,7 +44,7 @@ class AppDatabase extends _$AppDatabase {
 
   /// Bump on every schema change and add the matching migration step.
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -52,6 +52,13 @@ class AppDatabase extends _$AppDatabase {
     onUpgrade: stepByStep(
       from1To2: (m, schema) async {
         await m.addColumn(schema.userProfiles, schema.userProfiles.themeMode);
+      },
+      from2To3: (m, schema) async {
+        await m.addColumn(schema.userProfiles, schema.userProfiles.reminderDay);
+        await m.addColumn(
+          schema.userProfiles,
+          schema.userProfiles.reminderMinuteOfDay,
+        );
       },
     ),
     beforeOpen: (details) async {

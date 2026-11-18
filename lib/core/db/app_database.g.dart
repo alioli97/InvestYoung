@@ -158,6 +158,28 @@ class $UserProfilesTable extends UserProfiles
         requiredDuringInsert: false,
         defaultValue: const Constant('system'),
       ).withConverter<AppThemeMode>($UserProfilesTable.$converterthemeMode);
+  static const VerificationMeta _reminderDayMeta = const VerificationMeta(
+    'reminderDay',
+  );
+  @override
+  late final GeneratedColumn<int> reminderDay = GeneratedColumn<int>(
+    'reminder_day',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _reminderMinuteOfDayMeta =
+      const VerificationMeta('reminderMinuteOfDay');
+  @override
+  late final GeneratedColumn<int> reminderMinuteOfDay = GeneratedColumn<int>(
+    'reminder_minute_of_day',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(540),
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -174,6 +196,8 @@ class $UserProfilesTable extends UserProfiles
     locale,
     onboardingCompletedAt,
     themeMode,
+    reminderDay,
+    reminderMinuteOfDay,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -263,6 +287,24 @@ class $UserProfilesTable extends UserProfiles
         ),
       );
     }
+    if (data.containsKey('reminder_day')) {
+      context.handle(
+        _reminderDayMeta,
+        reminderDay.isAcceptableOrUnknown(
+          data['reminder_day']!,
+          _reminderDayMeta,
+        ),
+      );
+    }
+    if (data.containsKey('reminder_minute_of_day')) {
+      context.handle(
+        _reminderMinuteOfDayMeta,
+        reminderMinuteOfDay.isAcceptableOrUnknown(
+          data['reminder_minute_of_day']!,
+          _reminderMinuteOfDayMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -338,6 +380,14 @@ class $UserProfilesTable extends UserProfiles
           data['${effectivePrefix}theme_mode'],
         )!,
       ),
+      reminderDay: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}reminder_day'],
+      ),
+      reminderMinuteOfDay: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}reminder_minute_of_day'],
+      )!,
     );
   }
 
@@ -375,6 +425,14 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
 
   /// Added in schema v2.
   final AppThemeMode themeMode;
+
+  /// Added in schema v3: day of the month (1–28) of the contribution
+  /// reminder, `null` when it is off.
+  final int? reminderDay;
+
+  /// Added in schema v3: local time of the reminder, in minutes after
+  /// midnight (default 9:00).
+  final int reminderMinuteOfDay;
   const UserProfileRow({
     required this.id,
     required this.ageRange,
@@ -390,6 +448,8 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     required this.locale,
     this.onboardingCompletedAt,
     required this.themeMode,
+    this.reminderDay,
+    required this.reminderMinuteOfDay,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -436,6 +496,10 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
         $UserProfilesTable.$converterthemeMode.toSql(themeMode),
       );
     }
+    if (!nullToAbsent || reminderDay != null) {
+      map['reminder_day'] = Variable<int>(reminderDay);
+    }
+    map['reminder_minute_of_day'] = Variable<int>(reminderMinuteOfDay);
     return map;
   }
 
@@ -461,6 +525,10 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
           ? const Value.absent()
           : Value(onboardingCompletedAt),
       themeMode: Value(themeMode),
+      reminderDay: reminderDay == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reminderDay),
+      reminderMinuteOfDay: Value(reminderMinuteOfDay),
     );
   }
 
@@ -490,6 +558,10 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
         json['onboardingCompletedAt'],
       ),
       themeMode: serializer.fromJson<AppThemeMode>(json['themeMode']),
+      reminderDay: serializer.fromJson<int?>(json['reminderDay']),
+      reminderMinuteOfDay: serializer.fromJson<int>(
+        json['reminderMinuteOfDay'],
+      ),
     );
   }
   @override
@@ -512,6 +584,8 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
         onboardingCompletedAt,
       ),
       'themeMode': serializer.toJson<AppThemeMode>(themeMode),
+      'reminderDay': serializer.toJson<int?>(reminderDay),
+      'reminderMinuteOfDay': serializer.toJson<int>(reminderMinuteOfDay),
     };
   }
 
@@ -530,6 +604,8 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     String? locale,
     Value<DateTime?> onboardingCompletedAt = const Value.absent(),
     AppThemeMode? themeMode,
+    Value<int?> reminderDay = const Value.absent(),
+    int? reminderMinuteOfDay,
   }) => UserProfileRow(
     id: id ?? this.id,
     ageRange: ageRange ?? this.ageRange,
@@ -549,6 +625,8 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
         ? onboardingCompletedAt.value
         : this.onboardingCompletedAt,
     themeMode: themeMode ?? this.themeMode,
+    reminderDay: reminderDay.present ? reminderDay.value : this.reminderDay,
+    reminderMinuteOfDay: reminderMinuteOfDay ?? this.reminderMinuteOfDay,
   );
   UserProfileRow copyWithCompanion(UserProfilesCompanion data) {
     return UserProfileRow(
@@ -582,6 +660,12 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
           ? data.onboardingCompletedAt.value
           : this.onboardingCompletedAt,
       themeMode: data.themeMode.present ? data.themeMode.value : this.themeMode,
+      reminderDay: data.reminderDay.present
+          ? data.reminderDay.value
+          : this.reminderDay,
+      reminderMinuteOfDay: data.reminderMinuteOfDay.present
+          ? data.reminderMinuteOfDay.value
+          : this.reminderMinuteOfDay,
     );
   }
 
@@ -601,7 +685,9 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
           ..write('emergencyMonths: $emergencyMonths, ')
           ..write('locale: $locale, ')
           ..write('onboardingCompletedAt: $onboardingCompletedAt, ')
-          ..write('themeMode: $themeMode')
+          ..write('themeMode: $themeMode, ')
+          ..write('reminderDay: $reminderDay, ')
+          ..write('reminderMinuteOfDay: $reminderMinuteOfDay')
           ..write(')'))
         .toString();
   }
@@ -622,6 +708,8 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
     locale,
     onboardingCompletedAt,
     themeMode,
+    reminderDay,
+    reminderMinuteOfDay,
   );
   @override
   bool operator ==(Object other) =>
@@ -640,7 +728,9 @@ class UserProfileRow extends DataClass implements Insertable<UserProfileRow> {
           other.emergencyMonths == this.emergencyMonths &&
           other.locale == this.locale &&
           other.onboardingCompletedAt == this.onboardingCompletedAt &&
-          other.themeMode == this.themeMode);
+          other.themeMode == this.themeMode &&
+          other.reminderDay == this.reminderDay &&
+          other.reminderMinuteOfDay == this.reminderMinuteOfDay);
 }
 
 class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
@@ -658,6 +748,8 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
   final Value<String> locale;
   final Value<DateTime?> onboardingCompletedAt;
   final Value<AppThemeMode> themeMode;
+  final Value<int?> reminderDay;
+  final Value<int> reminderMinuteOfDay;
   const UserProfilesCompanion({
     this.id = const Value.absent(),
     this.ageRange = const Value.absent(),
@@ -673,6 +765,8 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     this.locale = const Value.absent(),
     this.onboardingCompletedAt = const Value.absent(),
     this.themeMode = const Value.absent(),
+    this.reminderDay = const Value.absent(),
+    this.reminderMinuteOfDay = const Value.absent(),
   });
   UserProfilesCompanion.insert({
     this.id = const Value.absent(),
@@ -689,6 +783,8 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     required String locale,
     this.onboardingCompletedAt = const Value.absent(),
     this.themeMode = const Value.absent(),
+    this.reminderDay = const Value.absent(),
+    this.reminderMinuteOfDay = const Value.absent(),
   }) : ageRange = Value(ageRange),
        employment = Value(employment),
        hasDependents = Value(hasDependents),
@@ -713,6 +809,8 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     Expression<String>? locale,
     Expression<DateTime>? onboardingCompletedAt,
     Expression<String>? themeMode,
+    Expression<int>? reminderDay,
+    Expression<int>? reminderMinuteOfDay,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -732,6 +830,9 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
       if (onboardingCompletedAt != null)
         'onboarding_completed_at': onboardingCompletedAt,
       if (themeMode != null) 'theme_mode': themeMode,
+      if (reminderDay != null) 'reminder_day': reminderDay,
+      if (reminderMinuteOfDay != null)
+        'reminder_minute_of_day': reminderMinuteOfDay,
     });
   }
 
@@ -750,6 +851,8 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
     Value<String>? locale,
     Value<DateTime?>? onboardingCompletedAt,
     Value<AppThemeMode>? themeMode,
+    Value<int?>? reminderDay,
+    Value<int>? reminderMinuteOfDay,
   }) {
     return UserProfilesCompanion(
       id: id ?? this.id,
@@ -767,6 +870,8 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
       onboardingCompletedAt:
           onboardingCompletedAt ?? this.onboardingCompletedAt,
       themeMode: themeMode ?? this.themeMode,
+      reminderDay: reminderDay ?? this.reminderDay,
+      reminderMinuteOfDay: reminderMinuteOfDay ?? this.reminderMinuteOfDay,
     );
   }
 
@@ -827,6 +932,12 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
         $UserProfilesTable.$converterthemeMode.toSql(themeMode.value),
       );
     }
+    if (reminderDay.present) {
+      map['reminder_day'] = Variable<int>(reminderDay.value);
+    }
+    if (reminderMinuteOfDay.present) {
+      map['reminder_minute_of_day'] = Variable<int>(reminderMinuteOfDay.value);
+    }
     return map;
   }
 
@@ -846,7 +957,9 @@ class UserProfilesCompanion extends UpdateCompanion<UserProfileRow> {
           ..write('emergencyMonths: $emergencyMonths, ')
           ..write('locale: $locale, ')
           ..write('onboardingCompletedAt: $onboardingCompletedAt, ')
-          ..write('themeMode: $themeMode')
+          ..write('themeMode: $themeMode, ')
+          ..write('reminderDay: $reminderDay, ')
+          ..write('reminderMinuteOfDay: $reminderMinuteOfDay')
           ..write(')'))
         .toString();
   }
@@ -2987,6 +3100,8 @@ typedef $$UserProfilesTableCreateCompanionBuilder =
       required String locale,
       Value<DateTime?> onboardingCompletedAt,
       Value<AppThemeMode> themeMode,
+      Value<int?> reminderDay,
+      Value<int> reminderMinuteOfDay,
     });
 typedef $$UserProfilesTableUpdateCompanionBuilder =
     UserProfilesCompanion Function({
@@ -3004,6 +3119,8 @@ typedef $$UserProfilesTableUpdateCompanionBuilder =
       Value<String> locale,
       Value<DateTime?> onboardingCompletedAt,
       Value<AppThemeMode> themeMode,
+      Value<int?> reminderDay,
+      Value<int> reminderMinuteOfDay,
     });
 
 class $$UserProfilesTableFilterComposer
@@ -3089,6 +3206,16 @@ class $$UserProfilesTableFilterComposer
     column: $table.themeMode,
     builder: (column) => ColumnWithTypeConverterFilters(column),
   );
+
+  ColumnFilters<int> get reminderDay => $composableBuilder(
+    column: $table.reminderDay,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get reminderMinuteOfDay => $composableBuilder(
+    column: $table.reminderMinuteOfDay,
+    builder: (column) => ColumnFilters(column),
+  );
 }
 
 class $$UserProfilesTableOrderingComposer
@@ -3169,6 +3296,16 @@ class $$UserProfilesTableOrderingComposer
     column: $table.themeMode,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<int> get reminderDay => $composableBuilder(
+    column: $table.reminderDay,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get reminderMinuteOfDay => $composableBuilder(
+    column: $table.reminderMinuteOfDay,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$UserProfilesTableAnnotationComposer
@@ -3240,6 +3377,16 @@ class $$UserProfilesTableAnnotationComposer
 
   GeneratedColumnWithTypeConverter<AppThemeMode, String> get themeMode =>
       $composableBuilder(column: $table.themeMode, builder: (column) => column);
+
+  GeneratedColumn<int> get reminderDay => $composableBuilder(
+    column: $table.reminderDay,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get reminderMinuteOfDay => $composableBuilder(
+    column: $table.reminderMinuteOfDay,
+    builder: (column) => column,
+  );
 }
 
 class $$UserProfilesTableTableManager
@@ -3287,6 +3434,8 @@ class $$UserProfilesTableTableManager
                 Value<String> locale = const Value.absent(),
                 Value<DateTime?> onboardingCompletedAt = const Value.absent(),
                 Value<AppThemeMode> themeMode = const Value.absent(),
+                Value<int?> reminderDay = const Value.absent(),
+                Value<int> reminderMinuteOfDay = const Value.absent(),
               }) => UserProfilesCompanion(
                 id: id,
                 ageRange: ageRange,
@@ -3302,6 +3451,8 @@ class $$UserProfilesTableTableManager
                 locale: locale,
                 onboardingCompletedAt: onboardingCompletedAt,
                 themeMode: themeMode,
+                reminderDay: reminderDay,
+                reminderMinuteOfDay: reminderMinuteOfDay,
               ),
           createCompanionCallback:
               ({
@@ -3319,6 +3470,8 @@ class $$UserProfilesTableTableManager
                 required String locale,
                 Value<DateTime?> onboardingCompletedAt = const Value.absent(),
                 Value<AppThemeMode> themeMode = const Value.absent(),
+                Value<int?> reminderDay = const Value.absent(),
+                Value<int> reminderMinuteOfDay = const Value.absent(),
               }) => UserProfilesCompanion.insert(
                 id: id,
                 ageRange: ageRange,
@@ -3334,6 +3487,8 @@ class $$UserProfilesTableTableManager
                 locale: locale,
                 onboardingCompletedAt: onboardingCompletedAt,
                 themeMode: themeMode,
+                reminderDay: reminderDay,
+                reminderMinuteOfDay: reminderMinuteOfDay,
               ),
           withReferenceMapper: (p0) => p0
               .map(

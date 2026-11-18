@@ -1,4 +1,5 @@
 import '../../../core/domain/app_theme_mode.dart';
+import '../../profile/domain/contribution_reminder.dart';
 import 'profile_enums.dart';
 
 /// Result of the onboarding questionnaire. There is a single profile per app.
@@ -18,6 +19,7 @@ class UserProfile {
     required this.locale,
     this.onboardingCompletedAt,
     this.themeMode = AppThemeMode.system,
+    this.reminder,
   });
 
   /// `null` until persisted.
@@ -43,6 +45,10 @@ class UserProfile {
   /// saving the questionnaire never overwrites it.
   final AppThemeMode themeMode;
 
+  /// Monthly contribution reminder, `null` when off. Like [themeMode], it is
+  /// changed from Profile only.
+  final ContributionReminder? reminder;
+
   bool get onboardingCompleted => onboardingCompletedAt != null;
 
   UserProfile withEmergencyMonths(int months) => UserProfile(
@@ -60,6 +66,7 @@ class UserProfile {
     locale: locale,
     onboardingCompletedAt: onboardingCompletedAt,
     themeMode: themeMode,
+    reminder: reminder,
   );
 }
 

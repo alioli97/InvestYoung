@@ -958,4 +958,44 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get goalsCompleted => 'Objectiu completat';
+
+  @override
+  String get profileReminders => 'Recordatoris';
+
+  @override
+  String get profileReminderMonthly => 'Recordatori mensual per aportar';
+
+  @override
+  String get profileReminderOff =>
+      'T\'avisem un dia al mes perquè no t\'oblidis d\'aportar als teus objectius';
+
+  @override
+  String profileReminderSchedule(int day, String time) {
+    return 'El dia $day de cada mes a les $time';
+  }
+
+  @override
+  String get profileReminderDay => 'Dia del mes';
+
+  @override
+  String get profileReminderTime => 'Hora';
+
+  @override
+  String profileReminderDayOption(int day) {
+    return 'Dia $day';
+  }
+
+  @override
+  String get profileReminderPermissionDenied =>
+      'Sense permís per mostrar notificacions. Ho pots activar a la configuració del mòbil.';
+
+  @override
+  String get reminderNotificationTitle => 'Has aportat aquest mes?';
+
+  @override
+  String get reminderNotificationBody =>
+      'És el teu dia per aportar als teus objectius. Obre l\'app per veure quant et toca.';
+
+  @override
+  String get reminderChannelName => 'Recordatoris d\'aportació';
 }

@@ -41,10 +41,33 @@ void main() {
 
     final db = AppDatabase(schema.newConnection());
     await verifier.migrateAndValidate(db, 2);
+    // Raw query: the generated row class has the columns of the latest schema.
+    final profile = await db
+        .customSelect(
+          'SELECT locale, emergency_months, theme_mode FROM user_profiles',
+        )
+        .getSingle();
+    expect(profile.read<String>('locale'), 'ca');
+    expect(profile.read<int>('emergency_months'), 5);
+    expect(profile.read<String>('theme_mode'), AppThemeMode.system.dbValue);
+    await db.close();
+  });
+
+  test('v2 → v3 keeps the profile with the reminder off at 9:00', () async {
+    final schema = await verifier.schemaAt(2);
+    schema.rawDatabase.execute('''
+      INSERT INTO user_profiles (age_range, employment, has_dependents,
+        has_high_interest_debt, risk_score, risk_profile, knowledge_level,
+        emergency_months, locale, theme_mode)
+      VALUES ('21_25', 'student', 0, 0, 8, 'moderate', 'basic', 5, 'es', 'dark')
+    ''');
+
+    final db = AppDatabase(schema.newConnection());
+    await verifier.migrateAndValidate(db, 3);
     final profile = await db.select(db.userProfiles).getSingle();
-    expect(profile.locale, 'ca');
-    expect(profile.emergencyMonths, 5);
-    expect(profile.themeMode, AppThemeMode.system);
+    expect(profile.themeMode, AppThemeMode.dark);
+    expect(profile.reminderDay, null);
+    expect(profile.reminderMinuteOfDay, 540);
     await db.close();
   });
 }
