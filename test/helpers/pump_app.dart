@@ -6,8 +6,10 @@ import 'package:invest_young/app.dart';
 import 'package:invest_young/core/db/app_database.dart';
 import 'package:invest_young/features/onboarding/domain/user_profile.dart';
 import 'package:invest_young/features/onboarding/presentation/onboarding_status_provider.dart';
+import 'package:invest_young/features/profile/data/reminder_scheduler.dart';
 import 'package:invest_young/features/profile/presentation/app_version_provider.dart';
 
+import 'fake_reminder_scheduler.dart';
 import 'test_database.dart';
 
 /// Pumps the whole app with the device locale set to [locale], backed by an
@@ -19,6 +21,7 @@ Future<AppDatabase> pumpApp(
   AppDatabase? database,
   UserProfile? startupProfile,
   List<Override> overrides = const [],
+  FakeReminderScheduler? reminders,
 }) async {
   final db = database ?? createTestDatabase();
   // Unmount first so no stream query is left waiting, then close outside the
@@ -40,6 +43,10 @@ Future<AppDatabase> pumpApp(
         startupProfileProvider.overrideWithValue(startupProfile),
         // No platform channel in tests: a fixed version.
         appVersionProvider.overrideWith((ref) async => '1.2.3 (45)'),
+        // No notifications plugin in tests.
+        reminderSchedulerProvider.overrideWithValue(
+          reminders ?? FakeReminderScheduler(),
+        ),
         ...overrides,
       ],
       child: const InvestYoungApp(),

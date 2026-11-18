@@ -1268,5 +1268,62 @@
   "goalsCompleted": "Objetivo completado",
   "@goalsCompleted": {
     "description": "Screen reader label of the completed goal icon."
+  },
+  "profileReminders": "Recordatorios",
+  "@profileReminders": {
+    "description": "Profile section: reminders."
+  },
+  "profileReminderMonthly": "Recordatorio mensual para aportar",
+  "@profileReminderMonthly": {
+    "description": "Switch that turns the monthly contribution reminder on or off."
+  },
+  "profileReminderOff": "Te avisamos un día al mes para que no se te olvide aportar a tus objetivos",
+  "@profileReminderOff": {
+    "description": "Reminder switch subtitle while it is off."
+  },
+  "profileReminderSchedule": "El día {day} de cada mes a las {time}",
+  "@profileReminderSchedule": {
+    "description": "Reminder switch subtitle while it is on.",
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "profileReminderDay": "Día del mes",
+  "@profileReminderDay": {
+    "description": "Reminder day-of-month setting."
+  },
+  "profileReminderTime": "Hora",
+  "@profileReminderTime": {
+    "description": "Reminder time setting."
+  },
+  "profileReminderDayOption": "Día {day}",
+  "@profileReminderDayOption": {
+    "description": "Option in the day-of-month list.",
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "profileReminderPermissionDenied": "Sin permiso para mostrar notificaciones. Puedes activarlo en los ajustes del móvil.",
+  "@profileReminderPermissionDenied": {
+    "description": "Shown when the notification permission is denied."
+  },
+  "reminderNotificationTitle": "¿Has aportado este mes?",
+  "@reminderNotificationTitle": {
+    "description": "Title of the monthly reminder notification."
+  },
+  "reminderNotificationBody": "Es tu día para aportar a tus objetivos. Abre la app para ver cuánto te toca.",
+  "@reminderNotificationBody": {
+    "description": "Body of the monthly reminder notification."
+  },
+  "reminderChannelName": "Recordatorios de aportación",
+  "@reminderChannelName": {
+    "description": "Android notification channel name."
   }
 }
