@@ -1740,6 +1740,30 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Borrar todo'**
   String get profileDeleteAllConfirm;
+
+  /// Profile section: information.
+  ///
+  /// In es, this message translates to:
+  /// **'Información'**
+  String get profileInformation;
+
+  /// About option.
+  ///
+  /// In es, this message translates to:
+  /// **'Acerca de'**
+  String get profileAbout;
+
+  /// About dialog text.
+  ///
+  /// In es, this message translates to:
+  /// **'Aplicación educativa para organizar tus finanzas y aprender a invertir. Funciona sin conexión: tus datos se guardan solo en tu dispositivo y no se envían a ningún servidor.'**
+  String get profileAboutBody;
+
+  /// Extra legal text about simulations.
+  ///
+  /// In es, this message translates to:
+  /// **'Las simulaciones de rentabilidad son orientativas, se basan en las hipótesis que tú introduces y no garantizan resultados. Los perfiles, rangos y porcentajes que muestra la app son indicativos y no tienen en cuenta toda tu situación personal.'**
+  String get profileLegalSimulations;
 }
 
 class _AppLocalizationsDelegate

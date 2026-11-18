@@ -37,7 +37,7 @@ void main() {
     await tapVisible(tester, find.text('Idioma'));
     await tapVisible(tester, find.text('Catalán'));
 
-    expect(find.text('Preferències'), findsOneWidget);
+    expect(find.text('Les teves dades'), findsOneWidget);
     expect(find.text('Català'), findsOneWidget);
     final saved = (await tester.runAsync(profiles.getProfile))!;
     expect(saved.locale, 'ca');

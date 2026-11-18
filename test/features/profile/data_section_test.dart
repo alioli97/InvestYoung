@@ -94,7 +94,7 @@ void main() {
     // The confirmation uses the language at the time of the action; the
     // app then switches to the imported profile's language (Catalan).
     expect(find.text('Copia importada'), findsOneWidget);
-    expect(find.text('Preferències'), findsOneWidget);
+    expect(find.text('Les teves dades'), findsOneWidget);
     final goals = (await tester.runAsync(
       GoalsRepository(db.goalsDao).getGoals,
     ))!;
