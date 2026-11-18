@@ -4,9 +4,11 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/domain/app_theme_mode.dart';
 import '../../../core/l10n/locale_provider.dart';
 import '../../../core/theme/theme_mode_provider.dart';
+import '../../investments/data/investments_repository.dart';
 import '../../onboarding/data/profile_repository.dart';
 import '../../onboarding/presentation/onboarding_status_provider.dart';
 import 'backup_files.dart';
+import '../domain/transactions_csv.dart';
 import 'backup_service.dart';
 import 'preferences_service.dart';
 
@@ -19,14 +21,37 @@ class DataManagement {
 
   final Ref _ref;
 
-  static String fileName(DateTime now) {
+  static String fileName(DateTime now) =>
+      'invest-young-backup-${_dateStamp(now)}.json';
+
+  static String csvFileName(DateTime now) =>
+      'invest-young-transactions-${_dateStamp(now)}.csv';
+
+  static String _dateStamp(DateTime now) {
     String two(int n) => n.toString().padLeft(2, '0');
-    return 'invest-young-backup-${now.year}-${two(now.month)}-${two(now.day)}.json';
+    return '${now.year}-${two(now.month)}-${two(now.day)}';
   }
 
   Future<void> exportBackup() async {
     final json = await _ref.read(backupServiceProvider).exportJson();
     await _ref.read(backupFilesProvider).share(json, fileName(DateTime.now()));
+  }
+
+  /// Shares every transaction as a CSV. Returns `false`, sharing nothing,
+  /// when there are no transactions yet.
+  Future<bool> exportTransactionsCsv(TransactionsCsvLabels labels) async {
+    final investments = _ref.read(investmentsRepositoryProvider);
+    final transactions = await investments.getTransactions();
+    if (transactions.isEmpty) return false;
+    final csv = buildTransactionsCsv(
+      assets: await investments.getAssets(includeArchived: true),
+      transactions: transactions,
+      labels: labels,
+    );
+    await _ref
+        .read(backupFilesProvider)
+        .share(csv, csvFileName(DateTime.now()), mimeType: 'text/csv');
+    return true;
   }
 
   /// Asks for a file and returns its contents (`null` if cancelled).

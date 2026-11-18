@@ -998,4 +998,38 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get reminderChannelName => 'Recordatoris d\'aportació';
+
+  @override
+  String get profileExportCsv => 'Exportar moviments (CSV)';
+
+  @override
+  String get profileExportCsvSubtitle =>
+      'Per obrir-los a l\'Excel o un altre full de càlcul';
+
+  @override
+  String get profileExportCsvEmpty => 'Encara no hi ha moviments per exportar';
+
+  @override
+  String get profileCsvDate => 'Data';
+
+  @override
+  String get profileCsvAsset => 'Actiu';
+
+  @override
+  String get profileCsvCategory => 'Categoria';
+
+  @override
+  String get profileCsvType => 'Tipus';
+
+  @override
+  String get profileCsvAmount => 'Import (€)';
+
+  @override
+  String get profileCsvQuantity => 'Quantitat';
+
+  @override
+  String get profileCsvFee => 'Comissions (€)';
+
+  @override
+  String get profileCsvNote => 'Nota';
 }

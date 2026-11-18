@@ -1854,6 +1854,72 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Recordatorios de aportación'**
   String get reminderChannelName;
+
+  /// Profile option: export all transactions as CSV.
+  ///
+  /// In es, this message translates to:
+  /// **'Exportar movimientos (CSV)'**
+  String get profileExportCsv;
+
+  /// Subtitle of the CSV export option.
+  ///
+  /// In es, this message translates to:
+  /// **'Para abrirlos en Excel u otra hoja de cálculo'**
+  String get profileExportCsvSubtitle;
+
+  /// Shown when exporting CSV with no transactions.
+  ///
+  /// In es, this message translates to:
+  /// **'Todavía no hay movimientos que exportar'**
+  String get profileExportCsvEmpty;
+
+  /// CSV column header.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha'**
+  String get profileCsvDate;
+
+  /// CSV column header.
+  ///
+  /// In es, this message translates to:
+  /// **'Activo'**
+  String get profileCsvAsset;
+
+  /// CSV column header.
+  ///
+  /// In es, this message translates to:
+  /// **'Categoría'**
+  String get profileCsvCategory;
+
+  /// CSV column header.
+  ///
+  /// In es, this message translates to:
+  /// **'Tipo'**
+  String get profileCsvType;
+
+  /// CSV column header.
+  ///
+  /// In es, this message translates to:
+  /// **'Importe (€)'**
+  String get profileCsvAmount;
+
+  /// CSV column header.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad'**
+  String get profileCsvQuantity;
+
+  /// CSV column header.
+  ///
+  /// In es, this message translates to:
+  /// **'Comisiones (€)'**
+  String get profileCsvFee;
+
+  /// CSV column header.
+  ///
+  /// In es, this message translates to:
+  /// **'Nota'**
+  String get profileCsvNote;
 }
 
 class _AppLocalizationsDelegate

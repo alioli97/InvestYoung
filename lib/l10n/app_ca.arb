@@ -291,5 +291,16 @@
   "profileReminderPermissionDenied": "Sense permís per mostrar notificacions. Ho pots activar a la configuració del mòbil.",
   "reminderNotificationTitle": "Has aportat aquest mes?",
   "reminderNotificationBody": "És el teu dia per aportar als teus objectius. Obre l'app per veure quant et toca.",
-  "reminderChannelName": "Recordatoris d'aportació"
+  "reminderChannelName": "Recordatoris d'aportació",
+  "profileExportCsv": "Exportar moviments (CSV)",
+  "profileExportCsvSubtitle": "Per obrir-los a l'Excel o un altre full de càlcul",
+  "profileExportCsvEmpty": "Encara no hi ha moviments per exportar",
+  "profileCsvDate": "Data",
+  "profileCsvAsset": "Actiu",
+  "profileCsvCategory": "Categoria",
+  "profileCsvType": "Tipus",
+  "profileCsvAmount": "Import (€)",
+  "profileCsvQuantity": "Quantitat",
+  "profileCsvFee": "Comissions (€)",
+  "profileCsvNote": "Nota"
 }

@@ -1325,5 +1325,49 @@
   "reminderChannelName": "Recordatorios de aportación",
   "@reminderChannelName": {
     "description": "Android notification channel name."
+  },
+  "profileExportCsv": "Exportar movimientos (CSV)",
+  "@profileExportCsv": {
+    "description": "Profile option: export all transactions as CSV."
+  },
+  "profileExportCsvSubtitle": "Para abrirlos en Excel u otra hoja de cálculo",
+  "@profileExportCsvSubtitle": {
+    "description": "Subtitle of the CSV export option."
+  },
+  "profileExportCsvEmpty": "Todavía no hay movimientos que exportar",
+  "@profileExportCsvEmpty": {
+    "description": "Shown when exporting CSV with no transactions."
+  },
+  "profileCsvDate": "Fecha",
+  "@profileCsvDate": {
+    "description": "CSV column header."
+  },
+  "profileCsvAsset": "Activo",
+  "@profileCsvAsset": {
+    "description": "CSV column header."
+  },
+  "profileCsvCategory": "Categoría",
+  "@profileCsvCategory": {
+    "description": "CSV column header."
+  },
+  "profileCsvType": "Tipo",
+  "@profileCsvType": {
+    "description": "CSV column header."
+  },
+  "profileCsvAmount": "Importe (€)",
+  "@profileCsvAmount": {
+    "description": "CSV column header."
+  },
+  "profileCsvQuantity": "Cantidad",
+  "@profileCsvQuantity": {
+    "description": "CSV column header."
+  },
+  "profileCsvFee": "Comisiones (€)",
+  "@profileCsvFee": {
+    "description": "CSV column header."
+  },
+  "profileCsvNote": "Nota",
+  "@profileCsvNote": {
+    "description": "CSV column header."
   }
 }

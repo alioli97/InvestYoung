@@ -68,7 +68,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 
 ## Phase 9 — Useful features
 - [x] Recurring contribution reminders (local notifications)
-- [ ] CSV export of transactions
+- [x] CSV export of transactions
 - [ ] Biometric/PIN lock (local_auth)
 
 ## Future
