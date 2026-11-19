@@ -11,6 +11,7 @@ import 'app_version_provider.dart';
 import 'widgets/choice_dialog.dart';
 import 'widgets/data_section.dart';
 import 'widgets/reminder_section.dart';
+import 'widgets/security_section.dart';
 import 'widgets/section_header.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -69,6 +70,7 @@ class ProfileScreen extends ConsumerWidget {
             },
           ),
           const ReminderSection(),
+          const SecuritySection(),
           SectionHeader(l10n.profileYourData),
           ListTile(
             leading: const Icon(Icons.quiz_outlined),

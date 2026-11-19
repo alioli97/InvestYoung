@@ -1920,6 +1920,60 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Nota'**
   String get profileCsvNote;
+
+  /// Profile section: security.
+  ///
+  /// In es, this message translates to:
+  /// **'Seguridad'**
+  String get profileSecurity;
+
+  /// Switch that turns the app lock on or off.
+  ///
+  /// In es, this message translates to:
+  /// **'Bloquear la app'**
+  String get profileAppLock;
+
+  /// Subtitle of the app lock switch.
+  ///
+  /// In es, this message translates to:
+  /// **'Pide tu huella, tu cara o el PIN del móvil al abrirla'**
+  String get profileAppLockSubtitle;
+
+  /// Shown when the device has no screen lock.
+  ///
+  /// In es, this message translates to:
+  /// **'Configura primero un bloqueo de pantalla en los ajustes del móvil'**
+  String get profileAppLockUnavailable;
+
+  /// System prompt reason when unlocking the app.
+  ///
+  /// In es, this message translates to:
+  /// **'Desbloquea la app para ver tus datos'**
+  String get lockReasonUnlock;
+
+  /// System prompt reason when turning the lock on/off.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirma que eres tú para cambiar el bloqueo'**
+  String get lockReasonSettings;
+
+  /// Lock screen title.
+  ///
+  /// In es, this message translates to:
+  /// **'La app está bloqueada'**
+  String get lockTitle;
+
+  /// Lock screen explanation.
+  ///
+  /// In es, this message translates to:
+  /// **'Tus datos financieros están protegidos con el bloqueo de tu móvil.'**
+  String get lockBody;
+
+  /// Lock screen button.
+  ///
+  /// In es, this message translates to:
+  /// **'Desbloquear'**
+  String get lockUnlock;
 }
 
 class _AppLocalizationsDelegate

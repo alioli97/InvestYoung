@@ -6,9 +6,11 @@ import 'package:invest_young/app.dart';
 import 'package:invest_young/core/db/app_database.dart';
 import 'package:invest_young/features/onboarding/domain/user_profile.dart';
 import 'package:invest_young/features/onboarding/presentation/onboarding_status_provider.dart';
+import 'package:invest_young/features/profile/data/device_auth.dart';
 import 'package:invest_young/features/profile/data/reminder_scheduler.dart';
 import 'package:invest_young/features/profile/presentation/app_version_provider.dart';
 
+import 'fake_device_auth.dart';
 import 'fake_reminder_scheduler.dart';
 import 'test_database.dart';
 
@@ -22,6 +24,7 @@ Future<AppDatabase> pumpApp(
   UserProfile? startupProfile,
   List<Override> overrides = const [],
   FakeReminderScheduler? reminders,
+  FakeDeviceAuth? deviceAuth,
 }) async {
   final db = database ?? createTestDatabase();
   // Unmount first so no stream query is left waiting, then close outside the
@@ -47,6 +50,7 @@ Future<AppDatabase> pumpApp(
         reminderSchedulerProvider.overrideWithValue(
           reminders ?? FakeReminderScheduler(),
         ),
+        deviceAuthProvider.overrideWithValue(deviceAuth ?? FakeDeviceAuth()),
         ...overrides,
       ],
       child: const InvestYoungApp(),
@@ -58,7 +62,8 @@ Future<AppDatabase> pumpApp(
 
 /// Taps the widget found by [finder], scrolling it into view first (lazy
 /// lists may not have built it yet).
-Future<void> tapVisible(WidgetTester tester, Finder finder) async {
+/// Scrolls the first scrollable until [finder] is built and on screen.
+Future<void> scrollIntoView(WidgetTester tester, Finder finder) async {
   if (finder.evaluate().isEmpty) {
     await tester.scrollUntilVisible(
       finder,
@@ -68,6 +73,10 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
   }
   await tester.ensureVisible(finder);
   await tester.pumpAndSettle();
+}
+
+Future<void> tapVisible(WidgetTester tester, Finder finder) async {
+  await scrollIntoView(tester, finder);
   await tester.tap(finder);
   await tester.pumpAndSettle();
 }

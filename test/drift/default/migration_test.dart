@@ -64,10 +64,32 @@ void main() {
 
     final db = AppDatabase(schema.newConnection());
     await verifier.migrateAndValidate(db, 3);
+    final profile = await db
+        .customSelect(
+          'SELECT theme_mode, reminder_day, reminder_minute_of_day '
+          'FROM user_profiles',
+        )
+        .getSingle();
+    expect(profile.read<String>('theme_mode'), AppThemeMode.dark.dbValue);
+    expect(profile.read<int?>('reminder_day'), null);
+    expect(profile.read<int>('reminder_minute_of_day'), 540);
+    await db.close();
+  });
+
+  test('v3 → v4 keeps the profile with the app lock off', () async {
+    final schema = await verifier.schemaAt(3);
+    schema.rawDatabase.execute('''
+      INSERT INTO user_profiles (age_range, employment, has_dependents,
+        has_high_interest_debt, risk_score, risk_profile, knowledge_level,
+        emergency_months, locale, reminder_day)
+      VALUES ('21_25', 'student', 0, 0, 8, 'moderate', 'basic', 5, 'es', 10)
+    ''');
+
+    final db = AppDatabase(schema.newConnection());
+    await verifier.migrateAndValidate(db, 4);
     final profile = await db.select(db.userProfiles).getSingle();
-    expect(profile.themeMode, AppThemeMode.dark);
-    expect(profile.reminderDay, null);
-    expect(profile.reminderMinuteOfDay, 540);
+    expect(profile.reminderDay, 10);
+    expect(profile.appLockEnabled, false);
     await db.close();
   });
 }

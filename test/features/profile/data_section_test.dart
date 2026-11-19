@@ -61,6 +61,7 @@ void main() {
 
   testWidgets('exports a JSON backup', (tester) async {
     await openProfile(tester);
+    await scrollIntoView(tester, find.text('Exportar copia de seguridad'));
     await tester.runAsync(() async {
       await tester.tap(find.text('Exportar copia de seguridad'));
       await Future<void>.delayed(const Duration(milliseconds: 100));
@@ -77,8 +78,7 @@ void main() {
   });
 
   Future<void> tapExportCsv(WidgetTester tester) async {
-    await tester.ensureVisible(find.text('Exportar movimientos (CSV)'));
-    await tester.pumpAndSettle();
+    await scrollIntoView(tester, find.text('Exportar movimientos (CSV)'));
     await tester.runAsync(() async {
       await tester.tap(find.text('Exportar movimientos (CSV)'));
       await Future<void>.delayed(const Duration(milliseconds: 100));

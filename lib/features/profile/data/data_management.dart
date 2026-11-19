@@ -9,6 +9,7 @@ import '../../onboarding/data/profile_repository.dart';
 import '../../onboarding/presentation/onboarding_status_provider.dart';
 import 'backup_files.dart';
 import '../domain/transactions_csv.dart';
+import '../presentation/lock/app_lock_controller.dart';
 import 'backup_service.dart';
 import 'preferences_service.dart';
 
@@ -79,6 +80,9 @@ class DataManagement {
     _ref
         .read(themePreferenceProvider.notifier)
         .set(profile?.themeMode ?? AppThemeMode.system);
+    _ref
+        .read(appLockProvider.notifier)
+        .sync(enabled: profile?.appLockEnabled ?? false);
     await _ref.read(preferencesServiceProvider).syncReminder();
   }
 }

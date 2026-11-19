@@ -1032,4 +1032,35 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get profileCsvNote => 'Nota';
+
+  @override
+  String get profileSecurity => 'Seguretat';
+
+  @override
+  String get profileAppLock => 'Bloquejar l\'app';
+
+  @override
+  String get profileAppLockSubtitle =>
+      'Demana la teva empremta, la teva cara o el PIN del mòbil en obrir-la';
+
+  @override
+  String get profileAppLockUnavailable =>
+      'Configura primer un bloqueig de pantalla a la configuració del mòbil';
+
+  @override
+  String get lockReasonUnlock => 'Desbloqueja l\'app per veure les teves dades';
+
+  @override
+  String get lockReasonSettings =>
+      'Confirma que ets tu per canviar el bloqueig';
+
+  @override
+  String get lockTitle => 'L\'app està bloquejada';
+
+  @override
+  String get lockBody =>
+      'Les teves dades financeres estan protegides amb el bloqueig del teu mòbil.';
+
+  @override
+  String get lockUnlock => 'Desbloquejar';
 }
