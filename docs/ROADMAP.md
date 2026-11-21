@@ -72,6 +72,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [x] Biometric/PIN lock (local_auth)
 
 ## Future
-- [ ] Store release (final application id, icon, splash, privacy policy, Play Store listing)
+- [x] Store release (final application id, icon, splash, privacy policy, Play Store listing)
+  — assets ready; creating the Play Console app and the closed test is manual (docs/RELEASE.md)
 - [ ] Automatic prices (stock and crypto APIs)
 - [ ] Cloud sync
