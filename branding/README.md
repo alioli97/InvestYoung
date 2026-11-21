@@ -1,0 +1,23 @@
+# Branding
+
+App icon: a house with three rising bars (saving and investing towards a home), on the app's
+teal seed colour (`#00897B`, gradient `#00A08E` → `#00695C`); the tallest bar uses the
+"positive" green `#1B7F3B`.
+
+| File | Use |
+|---|---|
+| `icon.svg` | Full icon (legacy Android, iOS) |
+| `icon_foreground.svg` / `icon_background.svg` | Android adaptive icon layers (108×108 canvas, content inside the 66 dp safe zone) |
+| `icon_monochrome.svg` | Android 13+ themed icon (alpha only) |
+| `png/*.png` | 1024×1024 renders of the SVGs, input for `flutter_launcher_icons` |
+| `play_store_icon_512.png` | Google Play listing icon (512×512, no alpha) |
+
+## Regenerating
+
+1. Edit the SVGs.
+2. Render each to a 1024×1024 PNG in `png/` (any SVG renderer; e.g. headless Chrome with a
+   transparent background, cropping to 1024×1024).
+3. `dart run flutter_launcher_icons` (config in `pubspec.yaml`).
+4. Revert the unrelated `ios/Runner.xcodeproj/project.pbxproj` change the tool makes
+   (`ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS`).
+5. Rebuild `play_store_icon_512.png` from `png/icon.png` (resize to 512, drop alpha).
