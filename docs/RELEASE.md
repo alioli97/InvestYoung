@@ -69,3 +69,16 @@ It signs with the release key when these repository secrets exist:
 
 Without them the artifact is debug-signed (`-debug` suffix) and cannot update a release install.
 
+### App Bundle for Google Play
+
+With the signing secrets, the same run also builds the Android App Bundle that Google Play needs
+and uploads it as a second artifact, `InvertirSiendoJoven-<version>-release-play`, containing:
+
+- `InvertirSiendoJoven-<version>-release.aab`: upload it in Play Console → Test and release →
+  your track → Create new release;
+- `mapping.txt` (when R8 produced one): upload it as the deobfuscation file of that release.
+
+No bundle is built without the secrets, since Play rejects debug-signed bundles. Locally:
+`flutter build appbundle --release` (needs the Android SDK `cmdline-tools` component to strip
+native debug symbols).
+
