@@ -6,6 +6,7 @@ import 'core/l10n/locale_provider.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/theme_mode_provider.dart';
+import 'core/widgets/keyboard_dismisser.dart';
 import 'features/profile/presentation/lock/app_lock_gate.dart';
 
 class InvestYoungApp extends ConsumerWidget {
@@ -29,7 +30,9 @@ class InvestYoungApp extends ConsumerWidget {
       // bridge once both have migrated to material_ui.
       builder: (context, child) =>
           // ignore: deprecated_member_use
-          MaterialUiCompatibilityBridge(child: AppLockGate(child: child!)),
+          MaterialUiCompatibilityBridge(
+            child: KeyboardDismisser(child: AppLockGate(child: child!)),
+          ),
       locale: ref.watch(appLocaleProvider),
       supportedLocales: AppLocalizations.supportedLocales,
       localeResolutionCallback: _resolveLocale,
