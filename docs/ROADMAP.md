@@ -76,7 +76,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
   — assets ready; creating the Play Console app and the closed test is manual (docs/RELEASE.md)
 - [ ] iOS release (App Store), built and signed in GitHub Actions since there is no local Mac:
   - [x] Unsigned iOS build in CI; localized display name and Face ID text (es + ca)
-  - [ ] Signing with an App Store Connect API key and upload to TestFlight
+  - [x] Signing in CI (API key + own distribution certificate) and upload to TestFlight
   - [ ] iPhone screenshots and App Store listing
 - [ ] Automatic prices (stock and crypto APIs)
 - [ ] Cloud sync

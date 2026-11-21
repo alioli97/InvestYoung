@@ -108,3 +108,46 @@ Everything the listing needs is in the repository; these steps happen in Play Co
    testing track; testers join through a Google Group. Personal accounts need at least 12
    testers opted in for 14 consecutive days before applying for production access.
 7. **Production**: apply for access, answer the questionnaire, then roll out.
+
+## iOS (App Store / TestFlight)
+
+There is no local Mac: iOS builds run on GitHub Actions macOS runners (`ios.yml`).
+PRs and pushes to `main` build the app unsigned. A signed build is uploaded to TestFlight
+by running the workflow by hand: **Actions → iOS → Run workflow**.
+
+The archive is signed automatically by Xcode through an App Store Connect API key; the
+export re-signs it for distribution with the certificate and profile stored as secrets
+(never in the repository). One-time setup:
+
+1. Register at least one device (Certificates, IDs & Profiles → Devices). Automatic
+   signing needs it to issue the development profile used at archive time; without a Mac,
+   read the iPhone's UDID on Linux with `idevice_id -l` (package `libimobiledevice-utils`).
+   Testers do not need registered devices: TestFlight works on any iPhone.
+2. Register the bundle id `com.alioli97.investyoung` (Certificates, IDs & Profiles →
+   Identifiers), with no extra capabilities.
+3. Create the app in App Store Connect with that bundle id (primary language Spanish).
+4. Create a team API key with the **Admin** role (Users and Access → Integrations →
+   App Store Connect API) and download the `.p8` file (it can only be downloaded once).
+5. Store the GitHub secrets: `APPSTORE_API_KEY` (contents of the `.p8`), `APPSTORE_KEY_ID`,
+   `APPSTORE_ISSUER_ID` and `APPLE_TEAM_ID`.
+6. Distribution certificate and App Store profile. Apple's cloud-managed distribution
+   signing cannot be used: it writes the accented name of the certificate ("Alió") in a
+   different Unicode form than the certificate itself, and App Store Connect rejects the
+   upload (ITMS-90035, "does not satisfy its designated Requirement"). So the export signs
+   on the runner with our own certificate:
+   - Create a private key and a CSR outside the repository (`~/ios-signing`):
+     `openssl genrsa -out dist.key 2048` and
+     `openssl req -new -key dist.key -out dist.csr -subj "/CN=Arnau Alio/C=ES"`.
+   - Certificates → + → **Apple Distribution**, upload `dist.csr`, download the `.cer`.
+   - Build the `.p12`: `openssl x509 -inform der -in distribution.cer -out dist.pem` and
+     `openssl pkcs12 -export -legacy -inkey dist.key -in dist.pem -out dist.p12`.
+   - Profiles → + → **App Store Connect**, bundle id `com.alioli97.investyoung`, that
+     certificate; download the `.mobileprovision`.
+   - Secrets: `IOS_DIST_P12_BASE64` (`base64 -w0 dist.p12`), `IOS_DIST_P12_PASSWORD` and
+     `IOS_APPSTORE_PROFILE_BASE64` (`base64 -w0` of the profile). The certificate and the
+     profile expire after one year: renew them and update the secrets.
+
+The version name comes from `pubspec.yaml`; the build number is `100 + run number` of the
+workflow, so every upload gets a new one. After the upload, Apple processes the build
+(roughly 10–30 minutes) before it shows up in TestFlight.
+
