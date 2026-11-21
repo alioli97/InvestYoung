@@ -147,6 +147,9 @@ export re-signs it for distribution with the certificate and profile stored as s
      `IOS_APPSTORE_PROFILE_BASE64` (`base64 -w0` of the profile). The certificate and the
      profile expire after one year: renew them and update the secrets.
 
+Listing texts, screenshots and every App Store Connect answer (category, age rating, privacy,
+review notes): `store/app-store/README.md`. The app is iPhone-only.
+
 The version name comes from `pubspec.yaml`; the build number is `100 + run number` of the
 workflow, so every upload gets a new one. After the upload, Apple processes the build
 (roughly 10–30 minutes) before it shows up in TestFlight.

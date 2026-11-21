@@ -77,7 +77,8 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
 - [ ] iOS release (App Store), built and signed in GitHub Actions since there is no local Mac:
   - [x] Unsigned iOS build in CI; localized display name and Face ID text (es + ca)
   - [x] Signing in CI (API key + own distribution certificate) and upload to TestFlight
-  - [ ] iPhone screenshots and App Store listing
+  - [x] iPhone screenshots and App Store listing (`store/app-store/`, support page in `site/support/`)
+  - [ ] Submit for App Review (manual, App Store Connect)
 - [ ] Automatic prices (stock and crypto APIs)
 - [ ] Cloud sync
 - [ ] Ads (monetization). Checklist before enabling them:
