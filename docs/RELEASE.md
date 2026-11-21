@@ -25,8 +25,16 @@ a newly signed build.
 
 ## Application id
 
-`com.alioli97.investyoung` (Android) / `com.alioli97.investyoung` (iOS bundle id). Changing it
-makes Android treat the app as a different one.
+`com.alioli97.investyoung` (Android) / `com.alioli97.investyoung` (iOS bundle id).
+
+**This id is final — do not change it.** It is the id used for the Google Play release, and Play
+never allows changing it once an app is published: a new id is a different app (new listing,
+no updates for existing users, and the closed-testing requirement — 12 testers for 14 days on
+personal accounts — starts over).
+
+When enrolling in Play App Signing, upload the existing release keystore as the app signing key
+(Play Console → "Use existing key" / PEPK export) instead of letting Google generate one, so
+APKs already installed from the sideloaded releases can update from Play.
 
 ## Versioning
 
