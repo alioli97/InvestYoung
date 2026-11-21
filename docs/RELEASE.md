@@ -87,8 +87,10 @@ native debug symbols).
 
 Everything the listing needs is in the repository; these steps happen in Play Console.
 
-1. **Developer account** (personal, one-off 25 USD, identity verification). Contact email:
-   `alio.studios.games@gmail.com`.
+1. **Developer account** (personal, one-off 25 USD, identity verification), opened with the
+   owner's personal Google account (private, not recorded here). The **public contact email**
+   for the listing is the dedicated `alio.studios.games@gmail.com`, the same one the privacy
+   policy shows; never use the personal address in public fields.
 2. **Create the app**: default language Spanish (es-ES), app, free.
 3. **Play App Signing**: choose to use the existing key and upload the release keystore
    (Play Console's PEPK export), so sideloaded installs keep updating.
