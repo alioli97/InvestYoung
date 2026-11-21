@@ -15,6 +15,7 @@ import 'widgets/goal_inputs_card.dart';
 import 'widgets/goal_plan_card.dart';
 import 'widgets/goal_progress_card.dart';
 import 'widgets/retirement_chart.dart';
+import 'goal_labels.dart';
 
 /// One goal: progress, plan, inputs and the assets counted for it.
 class GoalDetailScreen extends ConsumerWidget {
@@ -51,7 +52,7 @@ class _GoalDetail extends StatelessWidget {
         : null;
     return Scaffold(
       appBar: AppBar(
-        title: Text(goal.name),
+        title: Text(l10n.goalName(goal)),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit_outlined),

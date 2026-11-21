@@ -43,7 +43,10 @@ class GoalProgressCard extends StatelessWidget {
                   ExcludeSemantics(child: Icon(goalIcon(goal.type))),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: Text(goal.name, style: theme.textTheme.titleMedium),
+                    child: Text(
+                      l10n.goalName(goal),
+                      style: theme.textTheme.titleMedium,
+                    ),
                   ),
                   if (progress.isComplete)
                     Icon(
@@ -61,7 +64,9 @@ class GoalProgressCard extends StatelessWidget {
               const SizedBox(height: 12),
               LinearProgressIndicator(
                 value: progress.ratio,
-                semanticsLabel: l10n.goalsProgressSemantics(goal.name),
+                semanticsLabel: l10n.goalsProgressSemantics(
+                  l10n.goalName(goal),
+                ),
                 minHeight: 8,
                 borderRadius: BorderRadius.circular(4),
               ),

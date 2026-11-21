@@ -58,7 +58,10 @@ class _GoalForm extends ConsumerStatefulWidget {
 class _GoalFormState extends ConsumerState<_GoalForm> {
   final _formKey = GlobalKey<FormState>();
   late String _name =
-      widget.initial?.name ??
+      switch (widget.initial) {
+        final goal? => context.l10n.goalName(goal),
+        null => null,
+      } ??
       (widget.type == GoalType.custom
           ? ''
           : context.l10n.goalTypeName(widget.type));

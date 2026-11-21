@@ -14,6 +14,7 @@ import 'investment_labels.dart';
 import 'investments_providers.dart';
 import 'widgets/asset_metrics_card.dart';
 import 'widgets/transaction_tile.dart';
+import '../../goals/presentation/goal_labels.dart';
 
 /// One asset: details, metrics and its transactions (newest first).
 class AssetDetailScreen extends ConsumerWidget {
@@ -43,10 +44,10 @@ class _AssetDetail extends ConsumerWidget {
     final id = asset.id!;
     final transactions = ref.watch(assetTransactionsProvider(id));
     final details = l10n.assetDetailsLine(context, asset);
-    final goalName = (ref.watch(goalsProvider).value ?? const [])
+    final goal = (ref.watch(goalsProvider).value ?? const [])
         .where((g) => g.id == asset.goalId)
-        .firstOrNull
-        ?.name;
+        .firstOrNull;
+    final goalName = goal == null ? null : l10n.goalName(goal);
 
     return Scaffold(
       appBar: AppBar(
