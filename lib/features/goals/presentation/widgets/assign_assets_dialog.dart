@@ -7,6 +7,7 @@ import '../../../investments/domain/asset.dart';
 import '../../../investments/presentation/investments_providers.dart';
 import '../../domain/goal.dart';
 import '../goals_providers.dart';
+import '../goal_labels.dart';
 
 /// Lets the user pick which assets are assigned to [goal].
 Future<void> showAssignAssetsDialog(BuildContext context, Goal goal) =>
@@ -58,7 +59,10 @@ class _AssignAssetsDialogState extends ConsumerState<_AssignAssetsDialog> {
     String? otherGoal(Asset asset) =>
         asset.goalId == null || asset.goalId == goalId
         ? null
-        : goals.where((g) => g.id == asset.goalId).firstOrNull?.name;
+        : switch (goals.where((g) => g.id == asset.goalId).firstOrNull) {
+            final goal? => l10n.goalName(goal),
+            null => null,
+          };
 
     return AlertDialog(
       title: Text(l10n.goalsAssignAssets),

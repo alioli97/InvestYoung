@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/l10n/l10n.dart';
 import '../../../goals/presentation/goals_providers.dart';
+import '../../../goals/presentation/goal_labels.dart';
 
 /// Optional goal assignment for an asset.
 class GoalDropdown extends ConsumerWidget {
@@ -23,7 +24,10 @@ class GoalDropdown extends ConsumerWidget {
       items: [
         DropdownMenuItem(child: Text(context.l10n.investmentsNoGoal)),
         for (final goal in goals)
-          DropdownMenuItem(value: goal.id, child: Text(goal.name)),
+          DropdownMenuItem(
+            value: goal.id,
+            child: Text(context.l10n.goalName(goal)),
+          ),
       ],
       onChanged: onChanged,
     );
