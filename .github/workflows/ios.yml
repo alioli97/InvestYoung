@@ -90,10 +90,11 @@ jobs:
       - name: Generate the Flutter build configuration
         # TestFlight needs a new build number on every upload; the run number
         # of this workflow always grows. The version name comes from pubspec.yaml.
+        # --no-codesign: xcodebuild signs below with the API key.
         run: |
           build_number=$((100 + GITHUB_RUN_NUMBER))
           echo "BUILD_NUMBER=$build_number" >> "$GITHUB_ENV"
-          flutter build ios --release --config-only --build-number=$build_number
+          flutter build ios --release --config-only --no-codesign --build-number=$build_number
 
       - name: Archive (signed)
         run: |
