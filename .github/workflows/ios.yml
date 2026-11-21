@@ -1,10 +1,13 @@
 name: iOS
 
-# Builds the iOS app on a macOS runner (no local Mac needed).
-# For now the build is unsigned: it checks that the iOS project compiles and
-# that the localized Info.plist strings end up in the bundle. Signing and the
-# TestFlight upload come once the Apple Developer account is ready
-# (docs/RELEASE.md, "iOS" section).
+# Builds the iOS app on macOS runners (there is no local Mac).
+# - On PRs and pushes to main: unsigned build, to check that the iOS project
+#   compiles and that the localized Info.plist strings end up in the bundle.
+# - Run manually ("Run workflow"): signed archive uploaded to TestFlight.
+#   Signing is automatic and cloud-managed through the App Store Connect API
+#   key, so no certificates or profiles are stored in the repository.
+#   Secrets: APPSTORE_API_KEY (.p8 contents), APPSTORE_KEY_ID,
+#   APPSTORE_ISSUER_ID, APPLE_TEAM_ID. See docs/RELEASE.md, "iOS".
 
 on:
   push:
@@ -24,6 +27,7 @@ concurrency:
 jobs:
   build:
     name: Build iOS (unsigned)
+    if: github.event_name != 'workflow_dispatch'
     runs-on: macos-latest
     timeout-minutes: 45
     steps:
@@ -49,3 +53,103 @@ jobs:
               echo "::error::Missing $lang.lproj/InfoPlist.strings in the app bundle"; exit 1; }
           done
           /usr/libexec/PlistBuddy -c 'Print :CFBundleLocalizations' "$app/Info.plist"
+
+  testflight:
+    name: Sign and upload to TestFlight
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-latest
+    timeout-minutes: 60
+    env:
+      KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
+      ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+      TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.50.0
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Write the App Store Connect API key
+        env:
+          API_KEY: ${{ secrets.APPSTORE_API_KEY }}
+        run: |
+          if [ -z "$API_KEY" ] || [ -z "$KEY_ID" ] || [ -z "$ISSUER_ID" ] || [ -z "$TEAM_ID" ]; then
+            echo "::error::Missing App Store Connect secrets (see docs/RELEASE.md)."; exit 1
+          fi
+          # altool looks for the key in ~/private_keys/AuthKey_<id>.p8.
+          mkdir -p ~/private_keys
+          printf '%s\n' "$API_KEY" > ~/private_keys/AuthKey_$KEY_ID.p8
+          echo "KEY_PATH=$HOME/private_keys/AuthKey_$KEY_ID.p8" >> "$GITHUB_ENV"
+
+      - name: Generate the Flutter build configuration
+        # TestFlight needs a new build number on every upload; the run number
+        # of this workflow always grows. The version name comes from pubspec.yaml.
+        run: |
+          build_number=$((100 + GITHUB_RUN_NUMBER))
+          echo "BUILD_NUMBER=$build_number" >> "$GITHUB_ENV"
+          flutter build ios --release --config-only --build-number=$build_number
+
+      - name: Archive (signed)
+        run: |
+          xcodebuild archive \
+            -workspace ios/Runner.xcworkspace \
+            -scheme Runner \
+            -configuration Release \
+            -destination generic/platform=iOS \
+            -archivePath "$RUNNER_TEMP/Runner.xcarchive" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$KEY_PATH" \
+            -authenticationKeyID "$KEY_ID" \
+            -authenticationKeyIssuerID "$ISSUER_ID" \
+            DEVELOPMENT_TEAM="$TEAM_ID" \
+            CODE_SIGN_STYLE=Automatic
+
+      - name: Export the IPA
+        run: |
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>export</string>
+            <key>teamID</key><string>$TEAM_ID</string>
+            <key>signingStyle</key><string>automatic</string>
+            <key>manageAppVersionAndBuildNumber</key><false/>
+            <key>uploadSymbols</key><true/>
+          </dict>
+          </plist>
+          EOF
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/Runner.xcarchive" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" \
+            -exportPath "$RUNNER_TEMP/ipa" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$KEY_PATH" \
+            -authenticationKeyID "$KEY_ID" \
+            -authenticationKeyIssuerID "$ISSUER_ID"
+          ls -la "$RUNNER_TEMP/ipa"
+
+      - name: Upload to TestFlight
+        run: |
+          xcrun altool --upload-app --type ios \
+            --file "$(ls "$RUNNER_TEMP"/ipa/*.ipa)" \
+            --apiKey "$KEY_ID" \
+            --apiIssuer "$ISSUER_ID"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ios-ipa-${{ env.BUILD_NUMBER }}
+          path: ${{ runner.temp }}/ipa/*.ipa
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Remove the API key
+        if: always()
+        run: rm -rf ~/private_keys

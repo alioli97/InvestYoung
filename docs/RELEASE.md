@@ -108,3 +108,25 @@ Everything the listing needs is in the repository; these steps happen in Play Co
    testing track; testers join through a Google Group. Personal accounts need at least 12
    testers opted in for 14 consecutive days before applying for production access.
 7. **Production**: apply for access, answer the questionnaire, then roll out.
+
+## iOS (App Store / TestFlight)
+
+There is no local Mac: iOS builds run on GitHub Actions macOS runners (`ios.yml`).
+PRs and pushes to `main` build the app unsigned. A signed build is uploaded to TestFlight
+by running the workflow by hand: **Actions → iOS → Run workflow**.
+
+Signing is automatic and cloud-managed by Xcode through an App Store Connect API key, so
+no certificates or provisioning profiles live in the repository. One-time setup:
+
+1. Register the bundle id `com.alioli97.investyoung` (Certificates, IDs & Profiles →
+   Identifiers), with no extra capabilities.
+2. Create the app in App Store Connect with that bundle id (primary language Spanish).
+3. Create a team API key with the **Admin** role (Users and Access → Integrations →
+   App Store Connect API) and download the `.p8` file (it can only be downloaded once).
+4. Store the GitHub secrets: `APPSTORE_API_KEY` (contents of the `.p8`), `APPSTORE_KEY_ID`,
+   `APPSTORE_ISSUER_ID` and `APPLE_TEAM_ID`.
+
+The version name comes from `pubspec.yaml`; the build number is `100 + run number` of the
+workflow, so every upload gets a new one. After the upload, Apple processes the build
+(roughly 10–30 minutes) before it shows up in TestFlight.
+
