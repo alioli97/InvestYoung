@@ -1,16 +1,23 @@
-// Google Play screenshots, rendered from the real screens with sample data.
+// Store screenshots, rendered from the real screens with sample data.
 //
 // Not part of the regular test suite (CI only runs test/). Regenerate with:
 //   flutter test store/screenshots/screenshots_test.dart --update-goldens
-// The PNGs land in store/screenshots/{es,ca}/ (1080×1920, 9:16).
+// The PNGs land in:
+// - store/screenshots/{es,ca}/: Google Play (1080×1920, 9:16).
+// - store/screenshots/ios/{es,ca}/: App Store, 6.9" iPhone (1290×2796),
+//   rendered with the iOS platform and the iPhone's safe area insets.
 //
 // Text needs real fonts: Roboto and Material Icons are loaded from the Flutter
-// SDK cache (bin/cache/artifacts/material_fonts).
+// SDK cache (bin/cache/artifacts/material_fonts). On iOS the theme asks for
+// the system font (San Francisco), which is not available here: Roboto stands
+// in for it.
 
 import 'dart:io';
 
 import 'package:decimal/decimal.dart';
 
+import 'package:flutter/foundation.dart'
+    show debugDefaultTargetPlatformOverride;
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:invest_young/core/db/app_database.dart';
@@ -30,8 +37,33 @@ import '../../test/helpers/fixtures.dart';
 import '../../test/helpers/pump_app.dart';
 import '../../test/helpers/test_database.dart';
 
-const _size = Size(1080, 1920);
-const _pixelRatio = 2.625; // A common Android density: 411×731 logical px.
+typedef _Device = ({
+  String dir,
+  Size size,
+  double pixelRatio,
+  TargetPlatform platform,
+  FakeViewPadding padding,
+});
+
+const _devices = <_Device>[
+  // A common Android density: 411×731 logical px.
+  (
+    dir: '',
+    size: Size(1080, 1920),
+    pixelRatio: 2.625,
+    platform: TargetPlatform.android,
+    padding: FakeViewPadding.zero,
+  ),
+  // 6.9" iPhone (430×932 logical px), with the status bar / Dynamic Island
+  // and home indicator insets (59 and 34 logical px).
+  (
+    dir: 'ios/',
+    size: Size(1290, 2796),
+    pixelRatio: 3,
+    platform: TargetPlatform.iOS,
+    padding: FakeViewPadding(top: 177, bottom: 102),
+  ),
+];
 
 Future<void> _loadFonts() async {
   // The test runs inside the SDK's flutter_tester; walk up to find the fonts.
@@ -52,11 +84,19 @@ Future<void> _loadFonts() async {
   Future<ByteData> read(String name) async =>
       ByteData.sublistView(await File('${fonts.path}/$name').readAsBytes());
 
-  final roboto = FontLoader('Roboto');
-  for (final w in ['Light', 'Regular', 'Medium', 'Bold']) {
-    roboto.addFont(read('Roboto-$w.ttf'));
+  // The iOS typography uses the Cupertino system font families.
+  for (final family in [
+    'Roboto',
+    'CupertinoSystemText',
+    'CupertinoSystemDisplay',
+    '.AppleSystemUIFont',
+  ]) {
+    final loader = FontLoader(family);
+    for (final w in ['Light', 'Regular', 'Medium', 'Bold']) {
+      loader.addFont(read('Roboto-$w.ttf'));
+    }
+    await loader.load();
   }
-  await roboto.load();
   await (FontLoader(
     'MaterialIcons',
   )..addFont(read('MaterialIcons-Regular.otf'))).load();
@@ -188,54 +228,65 @@ Future<void> _seed(AppDatabase db, String locale, _Names n) async {
 void main() {
   setUpAll(_loadFonts);
 
-  for (final (locale, names) in [('es', _es), ('ca', _ca)]) {
-    testWidgets('screenshots ($locale)', (tester) async {
-      // flutter_test draws elevation shadows as solid black outlines; render
-      // real ones (restored at the end: the framework checks it is reset).
-      debugDisableShadows = false;
-      final db = createTestDatabase();
-      await tester.runAsync(() => _seed(db, locale, names));
-      await pumpApp(
-        tester,
-        locale: Locale(locale),
-        size: _size,
-        database: db,
-        startupProfile: onboardedProfile(locale: locale),
-      );
-      tester.view.devicePixelRatio = _pixelRatio;
-      // Touch mode, as on a phone: no keyboard focus rings after taps.
-      FocusManager.instance.highlightStrategy =
-          FocusHighlightStrategy.alwaysTouch;
-      addTearDown(
-        () => FocusManager.instance.highlightStrategy =
-            FocusHighlightStrategy.automatic,
-      );
-      await tester.pumpAndSettle();
-
-      Future<void> shot(String name) async {
-        await tester.pumpAndSettle();
-        await expectLater(
-          find.byType(MaterialApp),
-          matchesGoldenFile('$locale/$name.png'),
-        );
-      }
-
-      Future<void> tab(int index) async {
-        await tester.tap(find.byType(NavigationDestination).at(index));
-        await tester.pumpAndSettle();
-      }
-
-      await shot('1_home');
-      await tab(1);
-      await shot('2_goals');
-      await tester.tap(find.text(names.housing).first);
-      await tester.pumpAndSettle();
-      await shot('3_housing_goal');
-      await tab(2);
-      await shot('4_investments');
-      await tab(3);
-      await shot('5_learn');
-      debugDisableShadows = true;
-    });
+  for (final device in _devices) {
+    for (final (locale, names) in [('es', _es), ('ca', _ca)]) {
+      _screenshots(device, locale, names);
+    }
   }
+}
+
+void _screenshots(_Device device, String locale, _Names names) {
+  final platform = device.platform.name;
+  testWidgets('screenshots ($platform, $locale)', (tester) async {
+    debugDefaultTargetPlatformOverride = device.platform;
+    // flutter_test draws elevation shadows as solid black outlines; render
+    // real ones (restored at the end: the framework checks it is reset).
+    debugDisableShadows = false;
+    final db = createTestDatabase();
+    await tester.runAsync(() => _seed(db, locale, names));
+    await pumpApp(
+      tester,
+      locale: Locale(locale),
+      size: device.size,
+      database: db,
+      startupProfile: onboardedProfile(locale: locale),
+    );
+    tester.view.devicePixelRatio = device.pixelRatio;
+    tester.view.padding = device.padding;
+    tester.view.viewPadding = device.padding;
+    // Touch mode, as on a phone: no keyboard focus rings after taps.
+    FocusManager.instance.highlightStrategy =
+        FocusHighlightStrategy.alwaysTouch;
+    addTearDown(
+      () => FocusManager.instance.highlightStrategy =
+          FocusHighlightStrategy.automatic,
+    );
+    await tester.pumpAndSettle();
+
+    Future<void> shot(String name) async {
+      await tester.pumpAndSettle();
+      await expectLater(
+        find.byType(MaterialApp),
+        matchesGoldenFile('${device.dir}$locale/$name.png'),
+      );
+    }
+
+    Future<void> tab(int index) async {
+      await tester.tap(find.byType(NavigationDestination).at(index));
+      await tester.pumpAndSettle();
+    }
+
+    await shot('1_home');
+    await tab(1);
+    await shot('2_goals');
+    await tester.tap(find.text(names.housing).first);
+    await tester.pumpAndSettle();
+    await shot('3_housing_goal');
+    await tab(2);
+    await shot('4_investments');
+    await tab(3);
+    await shot('5_learn');
+    debugDisableShadows = true;
+    debugDefaultTargetPlatformOverride = null;
+  });
 }

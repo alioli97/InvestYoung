@@ -1,6 +1,6 @@
 name: Pages
 
-# Publishes site/ (privacy policy for the Google Play listing) to GitHub Pages:
+# Publishes site/ (privacy policy and support page for the store listings) to GitHub Pages:
 # https://alioli97.github.io/InvestYoung/privacy/
 
 on:

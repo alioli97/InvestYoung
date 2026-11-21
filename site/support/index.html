@@ -1,0 +1,110 @@
+<!doctype html>
+<!--
+  Support page for the App Store listing (support URL), published with GitHub Pages
+  (.github/workflows/pages.yml). User-facing text is in Spanish and Catalan.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ayuda y contacto · Invertir siendo Joven</title>
+<meta name="description" content="Ayuda y contacto de la app Invertir siendo Joven.">
+<link rel="icon" type="image/png" href="../icon.png">
+<style>
+  :root {
+    --bg: #f4f8f7; --surface: #ffffff; --fg: #15302c; --muted: #4f6d68;
+    --line: #d3e3e0; --accent: #00796b; --accent-soft: #e0f2ef;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1816; --surface: #15221f; --fg: #e2eeeb; --muted: #9ab4ae;
+      --line: #27403b; --accent: #5fd4c3; --accent-soft: #173a35; color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: 32px max(16px, env(safe-area-inset-right)) 56px max(16px, env(safe-area-inset-left));
+  }
+  main { max-width: 720px; margin: 0 auto; }
+  header { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+  header img { width: 56px; height: 56px; border-radius: 14px; }
+  .app { font-weight: 600; color: var(--muted); font-size: 15px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 4px 0 0; }
+  h2 { font-size: 20px; margin: 32px 0 8px; }
+  p, li { max-width: 65ch; }
+  ul { padding-left: 22px; }
+  li + li { margin-top: 6px; }
+  a { color: var(--accent); }
+  .updated { color: var(--muted); font-size: 14px; margin: 4px 0 20px; }
+  .summary {
+    background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 20px; margin: 20px 0;
+  }
+  .summary p { margin: 0; }
+  nav.lang { display: flex; gap: 8px; margin: 16px 0 0; }
+  nav.lang a {
+    text-decoration: none; padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--fg); font-size: 14px;
+  }
+  nav.lang a:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  section + section { border-top: 1px solid var(--line); margin-top: 48px; padding-top: 16px; }
+  code { font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="../icon.png" alt="">
+    <span class="app">Invertir siendo Joven</span>
+  </header>
+  <nav class="lang" aria-label="Idioma / Idioma">
+    <a href="#es" hreflang="es">Español</a>
+    <a href="#ca" hreflang="ca">Català</a>
+  </nav>
+
+  <section id="es" lang="es">
+    <h1>Ayuda y contacto</h1>
+    <div class="summary">
+      <p><strong>¿Tienes un problema o una sugerencia?</strong> Escríbenos a <a href="mailto:alio.studios.games@gmail.com">alio.studios.games@gmail.com</a>. Respondemos en unos días.</p>
+    </div>
+
+    <h2>Preguntas frecuentes</h2>
+    <h3>¿Dónde están mis datos?</h3>
+    <p>Solo en tu móvil. La app no tiene cuentas ni servidores, así que nadie más puede verlos. Más detalles en la <a href="../privacy/">política de privacidad</a>.</p>
+    <h3>¿Cómo paso mis datos a un móvil nuevo?</h3>
+    <p>En Perfil → Tus datos, exporta una copia de seguridad y guárdala donde quieras (Archivos, iCloud Drive, Google Drive, email…). En el móvil nuevo, instala la app y usa «Importar copia de seguridad» desde el mismo apartado.</p>
+    <h3>He olvidado cómo desbloquear la app</h3>
+    <p>El bloqueo usa el de tu propio móvil (Face ID, Touch ID, huella o código). Si el sistema no te reconoce, desbloquea con el código del móvil.</p>
+    <h3>No me llega el recordatorio mensual</h3>
+    <p>Comprueba que las notificaciones de la app están permitidas en los ajustes del móvil y que el recordatorio está activado en Perfil.</p>
+    <h3>¿La app me dice en qué invertir?</h3>
+    <p>No. Es una herramienta educativa: no ofrece asesoramiento financiero ni recomienda productos concretos. Las simulaciones son orientativas y los resultados no están garantizados.</p>
+    <h3>¿Cómo borro todos mis datos?</h3>
+    <p>En Perfil → Tus datos → «Borrar todos los datos», o desinstalando la app.</p>
+  </section>
+
+  <section id="ca" lang="ca">
+    <h1>Ajuda i contacte</h1>
+    <div class="summary">
+      <p><strong>Tens un problema o un suggeriment?</strong> Escriu-nos a <a href="mailto:alio.studios.games@gmail.com">alio.studios.games@gmail.com</a>. Responem en uns dies.</p>
+    </div>
+
+    <h2>Preguntes freqüents</h2>
+    <h3>On són les meves dades?</h3>
+    <p>Només al teu mòbil. L'app no té comptes ni servidors, així que ningú més les pot veure. Més detalls a la <a href="../privacy/#ca">política de privacitat</a>.</p>
+    <h3>Com passo les meves dades a un mòbil nou?</h3>
+    <p>A Perfil → Les teves dades, exporta una còpia de seguretat i desa-la on vulguis (Fitxers, iCloud Drive, Google Drive, correu…). Al mòbil nou, instal·la l'app i fes servir «Importar còpia de seguretat» des del mateix apartat.</p>
+    <h3>He oblidat com desbloquejar l'app</h3>
+    <p>El bloqueig fa servir el del teu mòbil (Face ID, Touch ID, empremta o codi). Si el sistema no et reconeix, desbloqueja amb el codi del mòbil.</p>
+    <h3>No m'arriba el recordatori mensual</h3>
+    <p>Comprova que les notificacions de l'app estan permeses a la configuració del mòbil i que el recordatori està activat a Perfil.</p>
+    <h3>L'app em diu en què invertir?</h3>
+    <p>No. És una eina educativa: no ofereix assessorament financer ni recomana productes concrets. Les simulacions són orientatives i els resultats no estan garantits.</p>
+    <h3>Com esborro totes les meves dades?</h3>
+    <p>A Perfil → Les teves dades → «Esborrar totes les dades», o desinstal·lant l'app.</p>
+  </section>
+</main>
+</body>
+</html>
