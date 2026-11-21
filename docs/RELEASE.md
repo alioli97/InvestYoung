@@ -118,12 +118,16 @@ by running the workflow by hand: **Actions → iOS → Run workflow**.
 Signing is automatic and cloud-managed by Xcode through an App Store Connect API key, so
 no certificates or provisioning profiles live in the repository. One-time setup:
 
-1. Register the bundle id `com.alioli97.investyoung` (Certificates, IDs & Profiles →
+1. Register at least one device (Certificates, IDs & Profiles → Devices). Automatic
+   signing needs it to issue the development profile used at archive time; without a Mac,
+   read the iPhone's UDID on Linux with `idevice_id -l` (package `libimobiledevice-utils`).
+   Testers do not need registered devices: TestFlight works on any iPhone.
+2. Register the bundle id `com.alioli97.investyoung` (Certificates, IDs & Profiles →
    Identifiers), with no extra capabilities.
-2. Create the app in App Store Connect with that bundle id (primary language Spanish).
-3. Create a team API key with the **Admin** role (Users and Access → Integrations →
+3. Create the app in App Store Connect with that bundle id (primary language Spanish).
+4. Create a team API key with the **Admin** role (Users and Access → Integrations →
    App Store Connect API) and download the `.p8` file (it can only be downloaded once).
-4. Store the GitHub secrets: `APPSTORE_API_KEY` (contents of the `.p8`), `APPSTORE_KEY_ID`,
+5. Store the GitHub secrets: `APPSTORE_API_KEY` (contents of the `.p8`), `APPSTORE_KEY_ID`,
    `APPSTORE_ISSUER_ID` and `APPLE_TEAM_ID`.
 
 The version name comes from `pubspec.yaml`; the build number is `100 + run number` of the
