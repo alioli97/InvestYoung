@@ -115,8 +115,9 @@ There is no local Mac: iOS builds run on GitHub Actions macOS runners (`ios.yml`
 PRs and pushes to `main` build the app unsigned. A signed build is uploaded to TestFlight
 by running the workflow by hand: **Actions → iOS → Run workflow**.
 
-Signing is automatic and cloud-managed by Xcode through an App Store Connect API key, so
-no certificates or provisioning profiles live in the repository. One-time setup:
+The archive is signed automatically by Xcode through an App Store Connect API key; the
+export re-signs it for distribution with the certificate and profile stored as secrets
+(never in the repository). One-time setup:
 
 1. Register at least one device (Certificates, IDs & Profiles → Devices). Automatic
    signing needs it to issue the development profile used at archive time; without a Mac,
@@ -129,6 +130,22 @@ no certificates or provisioning profiles live in the repository. One-time setup:
    App Store Connect API) and download the `.p8` file (it can only be downloaded once).
 5. Store the GitHub secrets: `APPSTORE_API_KEY` (contents of the `.p8`), `APPSTORE_KEY_ID`,
    `APPSTORE_ISSUER_ID` and `APPLE_TEAM_ID`.
+6. Distribution certificate and App Store profile. Apple's cloud-managed distribution
+   signing cannot be used: it writes the accented name of the certificate ("Alió") in a
+   different Unicode form than the certificate itself, and App Store Connect rejects the
+   upload (ITMS-90035, "does not satisfy its designated Requirement"). So the export signs
+   on the runner with our own certificate:
+   - Create a private key and a CSR outside the repository (`~/ios-signing`):
+     `openssl genrsa -out dist.key 2048` and
+     `openssl req -new -key dist.key -out dist.csr -subj "/CN=Arnau Alio/C=ES"`.
+   - Certificates → + → **Apple Distribution**, upload `dist.csr`, download the `.cer`.
+   - Build the `.p12`: `openssl x509 -inform der -in distribution.cer -out dist.pem` and
+     `openssl pkcs12 -export -legacy -inkey dist.key -in dist.pem -out dist.p12`.
+   - Profiles → + → **App Store Connect**, bundle id `com.alioli97.investyoung`, that
+     certificate; download the `.mobileprovision`.
+   - Secrets: `IOS_DIST_P12_BASE64` (`base64 -w0 dist.p12`), `IOS_DIST_P12_PASSWORD` and
+     `IOS_APPSTORE_PROFILE_BASE64` (`base64 -w0` of the profile). The certificate and the
+     profile expire after one year: renew them and update the secrets.
 
 The version name comes from `pubspec.yaml`; the build number is `100 + run number` of the
 workflow, so every upload gets a new one. After the upload, Apple processes the build
