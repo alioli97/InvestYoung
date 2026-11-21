@@ -1,0 +1,66 @@
+<!doctype html>
+<!--
+  Google Play feature graphic (1024×500). Render one per language by opening
+  feature_graphic.html?lang=es|ca at exactly 1024×500 and taking a screenshot
+  (see store/listing/README.md). Uses Roboto; the render script points
+  --roboto-dir at the Flutter SDK's material_fonts.
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: R; src: url("ROBOTO_DIR/Roboto-Bold.ttf"); font-weight: 700; }
+  @font-face { font-family: R; src: url("ROBOTO_DIR/Roboto-Regular.ttf"); font-weight: 400; }
+  @font-face { font-family: R; src: url("ROBOTO_DIR/Roboto-Medium.ttf"); font-weight: 500; }
+  html, body { margin: 0; }
+  .g {
+    width: 1024px; height: 500px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #00A08E 0%, #00695C 100%);
+    font-family: R, sans-serif; color: #fff;
+    display: flex; align-items: center; gap: 56px; padding: 0 88px; box-sizing: border-box;
+  }
+  .g::before {
+    content: ""; position: absolute; right: -120px; bottom: -220px; width: 560px; height: 560px;
+    border-radius: 50%; background: rgba(255,255,255,.06);
+  }
+  .icon { flex: none; width: 250px; height: 250px; }
+  .text { display: flex; flex-direction: column; gap: 18px; position: relative; }
+  h1 { margin: 0; font-weight: 700; font-size: 60px; line-height: 1.05; letter-spacing: -.5px; }
+  p { margin: 0; font-weight: 400; font-size: 27px; line-height: 1.35; color: #DDF7F1; max-width: 520px; }
+  .chips { display: flex; gap: 10px; margin-top: 6px; }
+  .chips span {
+    font-weight: 500; font-size: 18px; padding: 7px 16px; border-radius: 999px;
+    background: rgba(255,255,255,.16); color: #fff;
+  }
+</style>
+</head>
+<body>
+<div class="g">
+  <svg class="icon" viewBox="28 28 54 52" aria-hidden="true">
+    <path d="M54 30 L80 52 L74 52 L74 78 L34 78 L34 52 L28 52 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"/>
+    <rect x="42" y="64" width="6" height="8" rx="1" fill="#00897B"/>
+    <rect x="51" y="58" width="6" height="14" rx="1" fill="#00897B"/>
+    <rect x="60" y="51" width="6" height="21" rx="1" fill="#1B7F3B"/>
+  </svg>
+  <div class="text">
+    <h1>Invertir siendo Joven</h1>
+    <p id="tagline"></p>
+    <div class="chips" id="chips"></div>
+  </div>
+</div>
+<script>
+  const copy = {
+    es: { tagline: "Aprende a invertir y pon números a tus objetivos.",
+          chips: ["Emergencias", "Vivienda", "Jubilación"] },
+    ca: { tagline: "Aprèn a invertir i posa números als teus objectius.",
+          chips: ["Emergències", "Habitatge", "Jubilació"] },
+  };
+  const lang = new URLSearchParams(location.search).get("lang") === "ca" ? "ca" : "es";
+  document.getElementById("tagline").textContent = copy[lang].tagline;
+  for (const c of copy[lang].chips) {
+    const s = document.createElement("span"); s.textContent = c;
+    document.getElementById("chips").appendChild(s);
+  }
+</script>
+</body>
+</html>

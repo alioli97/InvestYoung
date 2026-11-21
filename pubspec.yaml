@@ -68,6 +68,8 @@ dev_dependencies:
   riverpod_generator: ^4.0.10
   riverpod_lint: ^3.2.0
   sqlite3: ^3.9.1
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.8
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -116,3 +118,29 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# App icon sources live in branding/ (SVG + rendered PNGs, see branding/README.md).
+# Regenerate with: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "branding/png/icon.png"
+  adaptive_icon_background: "branding/png/icon_background.png"
+  adaptive_icon_foreground: "branding/png/icon_foreground.png"
+  adaptive_icon_foreground_inset: 0
+  adaptive_icon_monochrome: "branding/png/icon_monochrome.png"
+  min_sdk_android: 21
+
+# Native launch screen. Regenerate with: dart run flutter_native_splash:create
+flutter_native_splash:
+  color: "#00897B"
+  color_dark: "#00332E"
+  image: "branding/png/icon_foreground.png"
+  android_12:
+    image: "branding/png/icon_foreground.png"
+    color: "#00897B"
+    color_dark: "#00332E"
+    icon_background_color: "#00897B"
+    icon_background_color_dark: "#00332E"
+  web: false

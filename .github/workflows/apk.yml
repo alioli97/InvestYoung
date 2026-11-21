@@ -4,6 +4,9 @@ name: APK
 # Signed with the release key when the ANDROID_KEYSTORE_BASE64 and
 # ANDROID_KEYSTORE_PASSWORD secrets exist; otherwise with a debug key (such an
 # APK cannot update an install signed with the release key).
+# With the release key it also builds the Android App Bundle (.aab) for Google
+# Play, uploaded as a separate artifact together with the R8 mapping file.
+# Play rejects debug-signed bundles, so no AAB is built without the secrets.
 
 on:
   push:
@@ -76,5 +79,22 @@ jobs:
         with:
           name: ${{ env.APK_NAME }}
           path: ${{ env.APK_NAME }}.apk
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Build App Bundle (Google Play)
+        if: env.SIGNING == 'release'
+        run: |
+          flutter build appbundle --release
+          mkdir -p play
+          mv build/app/outputs/bundle/release/app-release.aab "play/$APK_NAME.aab"
+          mapping=build/app/outputs/mapping/release/mapping.txt
+          if [ -f "$mapping" ]; then cp "$mapping" play/mapping.txt; fi
+
+      - uses: actions/upload-artifact@v7
+        if: env.SIGNING == 'release'
+        with:
+          name: ${{ env.APK_NAME }}-play
+          path: play/
           retention-days: 30
           if-no-files-found: error
