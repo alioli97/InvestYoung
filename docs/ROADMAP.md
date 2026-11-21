@@ -76,3 +76,16 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
   — assets ready; creating the Play Console app and the closed test is manual (docs/RELEASE.md)
 - [ ] Automatic prices (stock and crypto APIs)
 - [ ] Cloud sync
+- [ ] Ads (monetization). Checklist before enabling them:
+  - [ ] Legal/tax: register the activity in Spain (Hacienda, and self-employed if it
+        applies — check with an accountant) and declare ad income
+  - [ ] Play Console: switch the EU DSA status from non-trader to **trader** (public name,
+        address, phone and email on the listing); tick "Contains ads"; update Data safety
+        (advertising ID, device data collected by the ad SDK)
+  - [ ] App: add the INTERNET permission and the ad SDK (e.g. AdMob)
+  - [ ] EU consent form before personalized ads (Google UMP)
+  - [ ] Legal notice (CNMV): block finance, crypto, trading and gambling ad categories so no
+        ad looks like a product recommendation; never place ads next to simulations or
+        inside lessons
+  - [ ] Rewrite the privacy policy (`site/privacy/`) and the listing texts (`store/listing/`):
+        both currently promise no internet permission and no data collection
