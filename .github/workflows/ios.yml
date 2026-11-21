@@ -140,12 +140,17 @@ jobs:
             -authenticationKeyIssuerID "$ISSUER_ID"
           ls -la "$RUNNER_TEMP/ipa"
 
-      - name: Upload to TestFlight
+      - name: Check the signature of the IPA
         run: |
-          xcrun altool --upload-app --type ios \
-            --file "$(ls "$RUNNER_TEMP"/ipa/*.ipa)" \
-            --apiKey "$KEY_ID" \
-            --apiIssuer "$ISSUER_ID"
+          /usr/libexec/PlistBuddy -c Print "$RUNNER_TEMP/ipa/DistributionSummary.plist" || true
+          mkdir -p "$RUNNER_TEMP/check" && cd "$RUNNER_TEMP/check"
+          unzip -q "$(ls "$RUNNER_TEMP"/ipa/*.ipa)"
+          app=$(ls -d Payload/*.app)
+          codesign -dvv "$app" 2>&1 | grep -E "Identifier|Authority|TeamIdentifier"
+          for f in "$app"/Frameworks/*.framework; do
+            echo "$f: $(codesign -dvv "$f" 2>&1 | grep -m1 Authority)"
+          done
+          codesign --verify --deep --strict --verbose=2 "$app"
 
       - uses: actions/upload-artifact@v7
         with:
@@ -153,6 +158,13 @@ jobs:
           path: ${{ runner.temp }}/ipa/*.ipa
           retention-days: 30
           if-no-files-found: error
+
+      - name: Upload to TestFlight
+        run: |
+          xcrun altool --upload-app --type ios \
+            --file "$(ls "$RUNNER_TEMP"/ipa/*.ipa)" \
+            --apiKey "$KEY_ID" \
+            --apiIssuer "$ISSUER_ID"
 
       - name: Remove the API key
         if: always()
