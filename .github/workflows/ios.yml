@@ -1,0 +1,51 @@
+name: iOS
+
+# Builds the iOS app on a macOS runner (no local Mac needed).
+# For now the build is unsigned: it checks that the iOS project compiles and
+# that the localized Info.plist strings end up in the bundle. Signing and the
+# TestFlight upload come once the Apple Developer account is ready
+# (docs/RELEASE.md, "iOS" section).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - ios/**
+      - pubspec.yaml
+      - pubspec.lock
+      - .github/workflows/ios.yml
+  workflow_dispatch:
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build iOS (unsigned)
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.50.0
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build iOS app without code signing
+        run: flutter build ios --release --no-codesign
+
+      - name: Check localized resources in the bundle
+        run: |
+          app=build/ios/iphoneos/Runner.app
+          for lang in es ca; do
+            test -f "$app/$lang.lproj/InfoPlist.strings" || {
+              echo "::error::Missing $lang.lproj/InfoPlist.strings in the app bundle"; exit 1; }
+          done
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleLocalizations' "$app/Info.plist"
