@@ -82,3 +82,27 @@ No bundle is built without the secrets, since Play rejects debug-signed bundles.
 `flutter build appbundle --release` (needs the Android SDK `cmdline-tools` component to strip
 native debug symbols).
 
+
+## Google Play (manual steps)
+
+Everything the listing needs is in the repository; these steps happen in Play Console.
+
+1. **Developer account** (personal, one-off 25 USD, identity verification). Contact email:
+   `alio.studios.games@gmail.com`.
+2. **Create the app**: default language Spanish (es-ES), app, free.
+3. **Play App Signing**: choose to use the existing key and upload the release keystore
+   (Play Console's PEPK export), so sideloaded installs keep updating.
+4. **App content**:
+   - Privacy policy URL: https://alioli97.github.io/InvestYoung/privacy/
+   - Data safety: no data collected, no data shared (everything stays on the device; the
+     release build has no INTERNET permission).
+   - Ads: no. Target audience: 18+. Content rating questionnaire: finance/education app,
+     no user-generated content.
+   - Financial features: none of the regulated ones (no loans, payments or trading);
+     the app is educational and only tracks what the user types in.
+5. **Store listing** (es-ES, plus a ca-ES translation): texts in `store/listing/`, graphics
+   in `branding/play_store_icon_512.png`, `store/graphics/` and `store/screenshots/`.
+6. **Closed test**: upload the `.aab` from the CI artifact `…-release-play` to a closed
+   testing track; testers join through a Google Group. Personal accounts need at least 12
+   testers opted in for 14 consecutive days before applying for production access.
+7. **Production**: apply for access, answer the questionnaire, then roll out.
