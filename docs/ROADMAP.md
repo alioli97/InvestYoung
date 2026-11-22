@@ -78,7 +78,7 @@ run `flutter analyze` and `flutter test`, then commit (Conventional Commits, in 
   - [x] Unsigned iOS build in CI; localized display name and Face ID text (es + ca)
   - [x] Signing in CI (API key + own distribution certificate) and upload to TestFlight
   - [x] iPhone screenshots and App Store listing (`store/app-store/`, support page in `site/support/`)
-  - [ ] Submit for App Review (manual, App Store Connect)
+  - [x] Submit for App Review (manual, App Store Connect): 1.1.0 (build 119), manual release
 - [ ] Automatic prices (stock and crypto APIs)
 - [ ] Cloud sync
 - [ ] Ads (monetization). Checklist before enabling them:
