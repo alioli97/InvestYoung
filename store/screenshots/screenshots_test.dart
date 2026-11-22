@@ -63,6 +63,15 @@ const _devices = <_Device>[
     platform: TargetPlatform.iOS,
     padding: FakeViewPadding(top: 177, bottom: 102),
   ),
+  // 6.3" iPhone (402×874 logical px): App Store Connect requires the
+  // "iPhone with Dynamic Island (medium display)" size.
+  (
+    dir: 'ios-medium/',
+    size: Size(1206, 2622),
+    pixelRatio: 3,
+    platform: TargetPlatform.iOS,
+    padding: FakeViewPadding(top: 186, bottom: 102),
+  ),
 ];
 
 Future<void> _loadFonts() async {
@@ -237,7 +246,9 @@ void main() {
 
 void _screenshots(_Device device, String locale, _Names names) {
   final platform = device.platform.name;
-  testWidgets('screenshots ($platform, $locale)', (tester) async {
+  testWidgets('screenshots ($platform ${device.size}, $locale)', (
+    tester,
+  ) async {
     debugDefaultTargetPlatformOverride = device.platform;
     // flutter_test draws elevation shadows as solid black outlines; render
     // real ones (restored at the end: the framework checks it is reset).

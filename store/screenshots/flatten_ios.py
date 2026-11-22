@@ -1,4 +1,4 @@
-"""Removes the alpha channel from the App Store screenshots (store/screenshots/ios/).
+"""Removes the alpha channel from the App Store screenshots (store/screenshots/ios*/).
 
 App Store Connect rejects screenshots with transparency. Run after regenerating them:
     python3 store/screenshots/flatten_ios.py
@@ -8,7 +8,7 @@ import pathlib
 
 from PIL import Image
 
-for path in sorted(pathlib.Path(__file__).parent.glob("ios/*/*.png")):
+for path in sorted(pathlib.Path(__file__).parent.glob("ios*/*/*.png")):
     image = Image.open(path)
     if image.mode == "RGB":
         continue
