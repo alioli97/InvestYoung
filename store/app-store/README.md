@@ -11,7 +11,13 @@ products recommended, no promises of returns, no "best"/ranking claims.
 
 ## Screenshots
 
-6.9" iPhone (1290×2796), five per language: `store/screenshots/ios/{es,ca}/`. Regenerate with
+Five per language and size:
+- `store/screenshots/ios-medium/{es,ca}/`: 6.3" iPhone (1206×2622), **required** slot
+  "iPhone with Dynamic Island (medium display)".
+- `store/screenshots/ios/{es,ca}/`: 6.9" iPhone (1290×2796), optional slot "iPhone with
+  Dynamic Island (large display)".
+
+ Regenerate with
 `flutter test store/screenshots/screenshots_test.dart --update-goldens`, then
 `python3 store/screenshots/flatten_ios.py` (App Store Connect rejects transparency).
 The app is iPhone-only (`TARGETED_DEVICE_FAMILY = 1`), so no iPad screenshots are needed.
