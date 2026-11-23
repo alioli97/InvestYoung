@@ -1,0 +1,23 @@
+SCREEN RECORDING
+A screen recording made on a physical iPhone running the latest iOS is attached to our reply in App Review. It starts at app launch and shows the onboarding questionnaire, Home, Goals, Investments (adding an asset and a transaction), Learn (a lesson and its quiz) and Profile. The app has no accounts, no login, no user-generated content shared with others and no paid content or in-app purchases.
+
+1. PURPOSE AND AUDIENCE
+Invertir siendo Joven ("Investing while young") is an educational personal finance app for young adults in Spain (roughly 16 to 35) who are starting to save and invest. Many of them do not know how big their emergency fund should be, how much to set aside each month for a home down payment or retirement, or how savings accounts, bonds, index funds and crypto differ. The app helps them build an emergency fund first, set goals and calculate the monthly contribution needed, keep a manual record of the savings and investments they already hold elsewhere, and learn the basics through short lessons with quizzes. It is educational only: it does not recommend specific products and every return simulation states that results are not guaranteed.
+
+2. HOW TO USE THE MAIN FEATURES
+No login, credentials or sample files are needed.
+- First launch: pick a language, accept the legal notice and answer the short questionnaire (any values work; income is optional). The result screen shows a risk profile and an emergency fund target; tap the final button to reach the main screens.
+- Home: net worth, goal progress and allocation chart.
+- Goals: open the emergency fund, home down payment or retirement goal to see the target and the monthly contribution needed; "+" adds a custom goal.
+- Investments: choose a category (Emergency fund, Fixed income, Equities, Crypto), tap "+" to add an asset (e.g. "Savings account"), then open it and add a transaction (deposit, buy, valuation...). Home and Goals update.
+- Learn: 8 modules of lessons, each followed by a short quiz, plus quick tips.
+- Profile: language (Spanish/Catalan), theme, retake the questionnaire, export/import a backup file, delete all data, optional app lock (Face ID / passcode), optional monthly reminder (local notification) and the legal notice.
+
+3. EXTERNAL SERVICES
+None. The app makes no network requests and uses no third-party services: no accounts or authentication, no data or price providers, no analytics, no ads, no payments, no AI. All data is stored only on the device (local database). Backups are files that the user exports or imports through the system share sheet / file picker.
+
+4. REGIONAL DIFFERENCES
+The app works the same in every region. The interface is in Spanish and Catalan, amounts are in euros, and one lesson module explains basic taxation in Spain, so the content is most relevant to users in Spain.
+
+5. REGULATED INDUSTRY
+The app does not provide any financial service: no trading, brokerage, accounts, payments, lending, money transfers or personalised investment advice, and it does not connect to any financial institution. Users type in their own figures and the app performs simple calculations (emergency fund range, compound interest, required monthly contribution) and shows general educational content. Under Spanish law (CNMV), general financial education is not a regulated activity, so no license is required. The app does not include protected third-party material. A legal notice explaining this is shown during onboarding and is available in Profile.

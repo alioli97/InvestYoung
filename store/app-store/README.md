@@ -53,14 +53,10 @@ The app is iPhone-only (`TARGETED_DEVICE_FAMILY = 1`), so no iPad screenshots ar
 **App Review Information**
 - Sign-in required: **no**.
 - Contact: name, phone and email of the developer (private, only for Apple).
-- Notes (paste as is):
-
-  > Educational personal finance app for young people in Spain. It does not provide
-  > financial services, trading, accounts or advice: users type in their own savings and
-  > investments, and the app computes goals and shows lessons. All data stays on the
-  > device; the app makes no network requests. No login is needed: on first launch, answer
-  > the short questionnaire (any values) to reach the main screens. The app lock
-  > (Face ID / passcode) and the monthly reminder are optional, in Profile. The UI is in
-  > Spanish and Catalan.
+- Notes: paste `review-notes.txt` as is. The first submission had a short note and App Review
+  asked (guideline 2.1, Information Needed) for: a screen recording on a physical device from app
+  launch, purpose and audience, setup instructions, external services, regional differences and
+  regulatory status. The recording is attached to the reply in App Review (iPhone screen
+  recording, about 2 minutes).
 
 **Version release**: manual or automatic after approval (developer's choice).
