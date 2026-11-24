@@ -115,26 +115,25 @@ There is no local Mac: iOS builds run on GitHub Actions macOS runners (`ios.yml`
 PRs and pushes to `main` build the app unsigned. A signed build is uploaded to TestFlight
 by running the workflow by hand: **Actions → iOS → Run workflow**.
 
-The archive is signed automatically by Xcode through an App Store Connect API key; the
-export re-signs it for distribution with the certificate and profile stored as secrets
-(never in the repository). One-time setup:
+The archive and the export are signed on the runner with the Apple Distribution
+certificate and the App Store profile stored as secrets (never in the repository); the App
+Store Connect API key is only used for the upload. Xcode's automatic signing is not used: on
+every fresh runner it makes Apple issue a new development certificate, until the account
+reaches its limit ("Your account has reached the maximum number of certificates"). No
+registered device is needed; testers install through TestFlight on any iPhone. One-time setup:
 
-1. Register at least one device (Certificates, IDs & Profiles → Devices). Automatic
-   signing needs it to issue the development profile used at archive time; without a Mac,
-   read the iPhone's UDID on Linux with `idevice_id -l` (package `libimobiledevice-utils`).
-   Testers do not need registered devices: TestFlight works on any iPhone.
-2. Register the bundle id `com.alioli97.investyoung` (Certificates, IDs & Profiles →
+1. Register the bundle id `com.alioli97.investyoung` (Certificates, IDs & Profiles →
    Identifiers), with no extra capabilities.
-3. Create the app in App Store Connect with that bundle id (primary language Spanish).
-4. Create a team API key with the **Admin** role (Users and Access → Integrations →
+2. Create the app in App Store Connect with that bundle id (primary language Spanish).
+3. Create a team API key with the **Admin** role (Users and Access → Integrations →
    App Store Connect API) and download the `.p8` file (it can only be downloaded once).
-5. Store the GitHub secrets: `APPSTORE_API_KEY` (contents of the `.p8`), `APPSTORE_KEY_ID`,
+4. Store the GitHub secrets: `APPSTORE_API_KEY` (contents of the `.p8`), `APPSTORE_KEY_ID`,
    `APPSTORE_ISSUER_ID` and `APPLE_TEAM_ID`.
-6. Distribution certificate and App Store profile. Apple's cloud-managed distribution
+5. Distribution certificate and App Store profile. Apple's cloud-managed distribution
    signing cannot be used: it writes the accented name of the certificate ("Alió") in a
    different Unicode form than the certificate itself, and App Store Connect rejects the
-   upload (ITMS-90035, "does not satisfy its designated Requirement"). So the export signs
-   on the runner with our own certificate:
+   upload (ITMS-90035, "does not satisfy its designated Requirement"). So the archive and
+   the export are signed on the runner with our own certificate:
    - Create a private key and a CSR outside the repository (`~/ios-signing`):
      `openssl genrsa -out dist.key 2048` and
      `openssl req -new -key dist.key -out dist.csr -subj "/CN=Arnau Alio/C=ES"`.
